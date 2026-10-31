@@ -1,0 +1,34 @@
+#include "planner.h"
+#include <cassert>
+#include <iostream>
+#include <numeric>
+#include <random>
+using namespace native_scan;
+using native_topology::Topology;
+static hungarian_info_t info_for(const std::vector<unsigned>& a,unsigned n,const std::vector<int>& m){
+    hungarian_info_t info;info.matching.assign(2*n,-1);info.row_to_col.resize(n);
+    for(unsigned s=0;s<n;++s){info.matching[s]=n+m[s];info.matching[n+m[s]]=s;for(unsigned d=0;d<n;++d)if(a[s*n+d])info.row_to_col[s].insert(n+d);}
+    return info;
+}
+int main(){
+    assert(Options::parse("A1").constructive_budget==1);assert(Options::parse("A2").constructive_budget==2);
+    Topology t(6,1,{0,0,1,1,2,2});std::vector<unsigned> a(36,100);for(unsigned s=0;s<6;++s)a[s*6+s]=0;
+    std::vector<uint64_t> real(a.begin(),a.end());auto info=info_for(a,6,{2,3,4,5,0,1});
+    Planner p(t,real,"A1");auto d=p.choose(a,info);assert(d.matching==std::vector<int>({1,0,3,2,5,4}));
+    assert(d.weight==100);assert(d.constructions==1);assert(p.stats().construction_trials==1);
+    std::mt19937 rng(302901);
+    for(unsigned n:{3U,6U,12U,24U})for(unsigned trial=0;trial<4;++trial){
+        unsigned g=2;std::vector<int> dc(n);for(unsigned s=0;s<n;++s)dc[s]=s*3/n;
+        Topology top(n,g,dc);std::vector<unsigned> values(n*n);std::vector<uint64_t> rows(n*n*g);
+        for(unsigned s=0;s<n;++s)for(unsigned z=0;z<n;++z)if(s!=z){values[s*n+z]=(rng()%4)?1+rng()%5000:0;
+            for(unsigned u=0;u<g;++u)rows[(s*n+z)*g+u]=values[s*n+z]?values[s*n+z]-u:0;}
+        for(const std::string& method:{"A1","A2"}){
+            Matrix service(values.data(),n);FastAll2All app(&service,g,ETHER400,H100,1e-6);Planner planner(top,rows,method);planner.decompose_into(app);
+            assert(app.verify_decomposition());assert(planner.remaining_inter_bytes()==0);assert(app.p_sets.size()<=n*n);
+            assert(planner.stats().construction_trials<=Options::parse(method).constructive_budget*app.p_sets.size());
+            for(const auto& decision:planner.stats().decisions){assert(decision.weight==decision.exact_weight);assert(decision.weight>=decision.seed_weight);
+                assert(decision.constructions<=Options::parse(method).constructive_budget);}
+        }
+    }
+    std::cout<<"Constructive augmentation: literal LAN choice, sparse support, exact coefficients and payload conservation passed\n";
+}

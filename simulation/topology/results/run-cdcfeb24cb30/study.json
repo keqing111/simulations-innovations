@@ -1,0 +1,634 @@
+{
+  "archive_sha256": "0a622b7cf875c07e927afda9ce0949fe67ea5180c655311d8fa5792e4d5712cf",
+  "binary_sha256": "68a8702434d29ea84f26fbc6874f622ea02a07a842bbb26cfa3c68ecd8651d0a",
+  "build_command": [
+    "g++",
+    "-std=c++11",
+    "-O2",
+    "-DNOLOG",
+    "-I/home/julius/fast/FAST/simulation",
+    "-I/home/julius/fast/FAST/simulation/algorithm",
+    "-I/home/julius/fast/FAST/simulation/scheduler",
+    "-I/home/julius/fast/FAST/simulation/topology",
+    "/home/julius/fast/FAST/simulation/topology/main.cc",
+    "/home/julius/fast/FAST/simulation/topology/model.cpp",
+    "/home/julius/fast/FAST/simulation/topology/matching.cpp",
+    "/home/julius/fast/FAST/simulation/algorithm/matrix.cpp",
+    "/home/julius/fast/FAST/simulation/algorithm/all2all.cpp",
+    "/home/julius/fast/FAST/simulation/scheduler/config.cpp",
+    "/home/julius/fast/FAST/simulation/scheduler/local.cpp",
+    "/home/julius/fast/FAST/simulation/scheduler/global.cpp",
+    "/home/julius/fast/FAST/simulation/test.cpp",
+    "-o",
+    "/home/julius/fast/FAST/simulation/topology/results/run-cdcfeb24cb30/native_topology"
+  ],
+  "cases": [
+    {
+      "g": 4,
+      "id": "n6-g4-balanced-s0-16MiB-w50",
+      "kind": "balanced",
+      "mib": 16,
+      "n": 6,
+      "seed": 0,
+      "split": "control",
+      "wan_us": 50
+    },
+    {
+      "g": 4,
+      "id": "n6-g4-zipf-s701-16MiB-w50",
+      "kind": "zipf",
+      "mib": 16,
+      "n": 6,
+      "seed": 701,
+      "split": "development",
+      "wan_us": 50
+    },
+    {
+      "g": 4,
+      "id": "n6-g4-zipf-s709-16MiB-w50",
+      "kind": "zipf",
+      "mib": 16,
+      "n": 6,
+      "seed": 709,
+      "split": "development",
+      "wan_us": 50
+    },
+    {
+      "g": 4,
+      "id": "n6-g4-zipf-s801-16MiB-w50",
+      "kind": "zipf",
+      "mib": 16,
+      "n": 6,
+      "seed": 801,
+      "split": "validation",
+      "wan_us": 50
+    },
+    {
+      "g": 4,
+      "id": "n6-g4-zipf-s809-16MiB-w50",
+      "kind": "zipf",
+      "mib": 16,
+      "n": 6,
+      "seed": 809,
+      "split": "validation",
+      "wan_us": 50
+    },
+    {
+      "g": 4,
+      "id": "n6-g4-balanced-s0-16MiB-w5000",
+      "kind": "balanced",
+      "mib": 16,
+      "n": 6,
+      "seed": 0,
+      "split": "control",
+      "wan_us": 5000
+    },
+    {
+      "g": 4,
+      "id": "n6-g4-zipf-s701-16MiB-w5000",
+      "kind": "zipf",
+      "mib": 16,
+      "n": 6,
+      "seed": 701,
+      "split": "development",
+      "wan_us": 5000
+    },
+    {
+      "g": 4,
+      "id": "n6-g4-zipf-s709-16MiB-w5000",
+      "kind": "zipf",
+      "mib": 16,
+      "n": 6,
+      "seed": 709,
+      "split": "development",
+      "wan_us": 5000
+    },
+    {
+      "g": 4,
+      "id": "n6-g4-zipf-s801-16MiB-w5000",
+      "kind": "zipf",
+      "mib": 16,
+      "n": 6,
+      "seed": 801,
+      "split": "validation",
+      "wan_us": 5000
+    },
+    {
+      "g": 4,
+      "id": "n6-g4-zipf-s809-16MiB-w5000",
+      "kind": "zipf",
+      "mib": 16,
+      "n": 6,
+      "seed": 809,
+      "split": "validation",
+      "wan_us": 5000
+    },
+    {
+      "g": 4,
+      "id": "n6-g4-balanced-s0-256MiB-w50",
+      "kind": "balanced",
+      "mib": 256,
+      "n": 6,
+      "seed": 0,
+      "split": "control",
+      "wan_us": 50
+    },
+    {
+      "g": 4,
+      "id": "n6-g4-zipf-s701-256MiB-w50",
+      "kind": "zipf",
+      "mib": 256,
+      "n": 6,
+      "seed": 701,
+      "split": "development",
+      "wan_us": 50
+    },
+    {
+      "g": 4,
+      "id": "n6-g4-zipf-s709-256MiB-w50",
+      "kind": "zipf",
+      "mib": 256,
+      "n": 6,
+      "seed": 709,
+      "split": "development",
+      "wan_us": 50
+    },
+    {
+      "g": 4,
+      "id": "n6-g4-zipf-s801-256MiB-w50",
+      "kind": "zipf",
+      "mib": 256,
+      "n": 6,
+      "seed": 801,
+      "split": "validation",
+      "wan_us": 50
+    },
+    {
+      "g": 4,
+      "id": "n6-g4-zipf-s809-256MiB-w50",
+      "kind": "zipf",
+      "mib": 256,
+      "n": 6,
+      "seed": 809,
+      "split": "validation",
+      "wan_us": 50
+    },
+    {
+      "g": 4,
+      "id": "n6-g4-balanced-s0-256MiB-w5000",
+      "kind": "balanced",
+      "mib": 256,
+      "n": 6,
+      "seed": 0,
+      "split": "control",
+      "wan_us": 5000
+    },
+    {
+      "g": 4,
+      "id": "n6-g4-zipf-s701-256MiB-w5000",
+      "kind": "zipf",
+      "mib": 256,
+      "n": 6,
+      "seed": 701,
+      "split": "development",
+      "wan_us": 5000
+    },
+    {
+      "g": 4,
+      "id": "n6-g4-zipf-s709-256MiB-w5000",
+      "kind": "zipf",
+      "mib": 256,
+      "n": 6,
+      "seed": 709,
+      "split": "development",
+      "wan_us": 5000
+    },
+    {
+      "g": 4,
+      "id": "n6-g4-zipf-s801-256MiB-w5000",
+      "kind": "zipf",
+      "mib": 256,
+      "n": 6,
+      "seed": 801,
+      "split": "validation",
+      "wan_us": 5000
+    },
+    {
+      "g": 4,
+      "id": "n6-g4-zipf-s809-256MiB-w5000",
+      "kind": "zipf",
+      "mib": 256,
+      "n": 6,
+      "seed": 809,
+      "split": "validation",
+      "wan_us": 5000
+    },
+    {
+      "g": 4,
+      "id": "n12-g4-balanced-s0-16MiB-w50",
+      "kind": "balanced",
+      "mib": 16,
+      "n": 12,
+      "seed": 0,
+      "split": "control",
+      "wan_us": 50
+    },
+    {
+      "g": 4,
+      "id": "n12-g4-zipf-s701-16MiB-w50",
+      "kind": "zipf",
+      "mib": 16,
+      "n": 12,
+      "seed": 701,
+      "split": "development",
+      "wan_us": 50
+    },
+    {
+      "g": 4,
+      "id": "n12-g4-zipf-s709-16MiB-w50",
+      "kind": "zipf",
+      "mib": 16,
+      "n": 12,
+      "seed": 709,
+      "split": "development",
+      "wan_us": 50
+    },
+    {
+      "g": 4,
+      "id": "n12-g4-zipf-s801-16MiB-w50",
+      "kind": "zipf",
+      "mib": 16,
+      "n": 12,
+      "seed": 801,
+      "split": "validation",
+      "wan_us": 50
+    },
+    {
+      "g": 4,
+      "id": "n12-g4-zipf-s809-16MiB-w50",
+      "kind": "zipf",
+      "mib": 16,
+      "n": 12,
+      "seed": 809,
+      "split": "validation",
+      "wan_us": 50
+    },
+    {
+      "g": 4,
+      "id": "n12-g4-balanced-s0-16MiB-w5000",
+      "kind": "balanced",
+      "mib": 16,
+      "n": 12,
+      "seed": 0,
+      "split": "control",
+      "wan_us": 5000
+    },
+    {
+      "g": 4,
+      "id": "n12-g4-zipf-s701-16MiB-w5000",
+      "kind": "zipf",
+      "mib": 16,
+      "n": 12,
+      "seed": 701,
+      "split": "development",
+      "wan_us": 5000
+    },
+    {
+      "g": 4,
+      "id": "n12-g4-zipf-s709-16MiB-w5000",
+      "kind": "zipf",
+      "mib": 16,
+      "n": 12,
+      "seed": 709,
+      "split": "development",
+      "wan_us": 5000
+    },
+    {
+      "g": 4,
+      "id": "n12-g4-zipf-s801-16MiB-w5000",
+      "kind": "zipf",
+      "mib": 16,
+      "n": 12,
+      "seed": 801,
+      "split": "validation",
+      "wan_us": 5000
+    },
+    {
+      "g": 4,
+      "id": "n12-g4-zipf-s809-16MiB-w5000",
+      "kind": "zipf",
+      "mib": 16,
+      "n": 12,
+      "seed": 809,
+      "split": "validation",
+      "wan_us": 5000
+    },
+    {
+      "g": 4,
+      "id": "n12-g4-balanced-s0-256MiB-w50",
+      "kind": "balanced",
+      "mib": 256,
+      "n": 12,
+      "seed": 0,
+      "split": "control",
+      "wan_us": 50
+    },
+    {
+      "g": 4,
+      "id": "n12-g4-zipf-s701-256MiB-w50",
+      "kind": "zipf",
+      "mib": 256,
+      "n": 12,
+      "seed": 701,
+      "split": "development",
+      "wan_us": 50
+    },
+    {
+      "g": 4,
+      "id": "n12-g4-zipf-s709-256MiB-w50",
+      "kind": "zipf",
+      "mib": 256,
+      "n": 12,
+      "seed": 709,
+      "split": "development",
+      "wan_us": 50
+    },
+    {
+      "g": 4,
+      "id": "n12-g4-zipf-s801-256MiB-w50",
+      "kind": "zipf",
+      "mib": 256,
+      "n": 12,
+      "seed": 801,
+      "split": "validation",
+      "wan_us": 50
+    },
+    {
+      "g": 4,
+      "id": "n12-g4-zipf-s809-256MiB-w50",
+      "kind": "zipf",
+      "mib": 256,
+      "n": 12,
+      "seed": 809,
+      "split": "validation",
+      "wan_us": 50
+    },
+    {
+      "g": 4,
+      "id": "n12-g4-balanced-s0-256MiB-w5000",
+      "kind": "balanced",
+      "mib": 256,
+      "n": 12,
+      "seed": 0,
+      "split": "control",
+      "wan_us": 5000
+    },
+    {
+      "g": 4,
+      "id": "n12-g4-zipf-s701-256MiB-w5000",
+      "kind": "zipf",
+      "mib": 256,
+      "n": 12,
+      "seed": 701,
+      "split": "development",
+      "wan_us": 5000
+    },
+    {
+      "g": 4,
+      "id": "n12-g4-zipf-s709-256MiB-w5000",
+      "kind": "zipf",
+      "mib": 256,
+      "n": 12,
+      "seed": 709,
+      "split": "development",
+      "wan_us": 5000
+    },
+    {
+      "g": 4,
+      "id": "n12-g4-zipf-s801-256MiB-w5000",
+      "kind": "zipf",
+      "mib": 256,
+      "n": 12,
+      "seed": 801,
+      "split": "validation",
+      "wan_us": 5000
+    },
+    {
+      "g": 4,
+      "id": "n12-g4-zipf-s809-256MiB-w5000",
+      "kind": "zipf",
+      "mib": 256,
+      "n": 12,
+      "seed": 809,
+      "split": "validation",
+      "wan_us": 5000
+    }
+  ],
+  "identity": {
+    "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "digest": "cdcfeb24cb30cba669a8c70843a62761932c05de06e4e892c983fc44c6dc1093",
+    "files": {
+      "algorithm/all2all.cpp": "c4efd3bb06a99b6db1fdf6881a67e22d51a928894196733eaa3ed1e2a6e4d9d7",
+      "algorithm/all2all.h": "1da18cdd025ad405ebb168596f3f246e464490847029453656accc890850f101",
+      "algorithm/matrix.cpp": "4314bbc4f2e1d0d29e38b391d5ba4dd66bc484e16130eb664f85876acf0a4d12",
+      "algorithm/matrix.h": "c1b3c4777e73e59b2411f5c40e4ee587208d9a290c616fbdf27ae2f09b838f6f",
+      "define.h": "38264f4635289b73166ca1e9d16c554a613282375f5b1bd890e2a0c6879bfc39",
+      "scheduler/config.cpp": "4dae2f22bbd6e768979c08d08059f7b7e9ac946b2bc5e53bfefea3e4752b2780",
+      "scheduler/config.h": "0aa552928c7d682836444f1125c07abe3772460fa160acbb7e7c4b6df195b92e",
+      "scheduler/global.cpp": "cf119b8ec24f4118b675d30be7a089cf7126b9c3d1e005798623fe17bb044852",
+      "scheduler/global.h": "f59cbebaf26e658e397f64106298ad39ec6998f049be10c967c6017b5fe3fb2a",
+      "scheduler/local.cpp": "0d2d389edb6cd9ce496e241ca8c091b825feabbce09dcfb4c1bfba8c57079000",
+      "scheduler/local.h": "5a86b382044a2fae2fa0f27d15d395c138176a75f271dc25c64ac30b2820ca78",
+      "test.cpp": "fb49c93744d3adfdfc3d3bf5cc88a088c037c1d3863240ed90fc614e9881cfa3",
+      "test.h": "b2b1c6f3ee70787e9dac0cc7279d6e686fc3afd4a46cadd42ebad48139057f98",
+      "topology/Makefile": "10ab189647ee0a58d181a2aa79b01631eda13157355eafdf01c7fb25380cea51",
+      "topology/main.cc": "d616ff0b76f48189a9646986394d1b9772a91608d881b914c6ccd875560d9158",
+      "topology/matching.cpp": "eca9237a54e4f41974dcfcdcba96bb93934f5364525b2bcb98b3725b57a9a05b",
+      "topology/matching.h": "edffe49644442a9f6350cdbd5f5a2a978205e15c3239b344b7cbbcdb8b27a138",
+      "topology/model.cpp": "ebe5a10ab78268376cb3ea0c0585ea299ba47f0040dcc97362fc37a3cae00ca6",
+      "topology/model.h": "7e6511fcadaaebed86151b47500981ff716a17cc62a683c84ef219ceb0f366e8",
+      "topology/study.py": "e6d7edbe46f55ba717b62f239681e99ebf22eb7207be6c9e1ecef2743072b183",
+      "topology/tests/matching_test.cc": "dd04eb527af4b88dae2ffee4b5aa8c8c8dd9d77db6cf0996e63c83dd95e731cd",
+      "topology/tests/model_test.cc": "15c484f30a93ed1096ab3aa35cad318b0e90aad80dc680c9b6e22046b4dbcf4c",
+      "topology/tests/oracle.cc": "051653ff3ffafd4fa9491a0230bd903bcb9d79622d2aeca5e6121ab1e9598093",
+      "topology/tests/test_native.py": "82fad9f74a36e574b1113b4cd14eeb6dfbbc32a017fb9982a9f836815d3cda3b",
+      "topology/tests/test_study.py": "0d3ec7d48546df758591904238cbd91a5ed8c356421cb28f47cf1e1b0454e840"
+    },
+    "flags": [
+      "-std=c++11",
+      "-O2",
+      "-DNOLOG"
+    ]
+  },
+  "inputs": {
+    "n12-g4-balanced-s0-16MiB-w50": {
+      "matrix_sha256": "3a115b8859f1876986177e0968d888abf1eda199b5b7b8823dbba1ad862c4dfa",
+      "total_bytes": 805306272
+    },
+    "n12-g4-balanced-s0-16MiB-w5000": {
+      "matrix_sha256": "3a115b8859f1876986177e0968d888abf1eda199b5b7b8823dbba1ad862c4dfa",
+      "total_bytes": 805306272
+    },
+    "n12-g4-balanced-s0-256MiB-w50": {
+      "matrix_sha256": "9607f08d710cc5b946c6838cac63ebe6f5fcefc0ece0300155d65ad34ec61b68",
+      "total_bytes": 12884900352
+    },
+    "n12-g4-balanced-s0-256MiB-w5000": {
+      "matrix_sha256": "9607f08d710cc5b946c6838cac63ebe6f5fcefc0ece0300155d65ad34ec61b68",
+      "total_bytes": 12884900352
+    },
+    "n12-g4-zipf-s701-16MiB-w50": {
+      "matrix_sha256": "c96a0c99d60984d6517999565de493c935ad410667e68aadd3648697834683f0",
+      "total_bytes": 805306368
+    },
+    "n12-g4-zipf-s701-16MiB-w5000": {
+      "matrix_sha256": "c96a0c99d60984d6517999565de493c935ad410667e68aadd3648697834683f0",
+      "total_bytes": 805306368
+    },
+    "n12-g4-zipf-s701-256MiB-w50": {
+      "matrix_sha256": "1c98d80eb6a6dc328bafa9219331a318121cfde31e2058cf5fa918847fb29969",
+      "total_bytes": 12884901888
+    },
+    "n12-g4-zipf-s701-256MiB-w5000": {
+      "matrix_sha256": "1c98d80eb6a6dc328bafa9219331a318121cfde31e2058cf5fa918847fb29969",
+      "total_bytes": 12884901888
+    },
+    "n12-g4-zipf-s709-16MiB-w50": {
+      "matrix_sha256": "536bc14c66c8cd2b5eb4f38d3bde14733fc192a5a70cb2c7fa1ed0df4d8933ec",
+      "total_bytes": 805306368
+    },
+    "n12-g4-zipf-s709-16MiB-w5000": {
+      "matrix_sha256": "536bc14c66c8cd2b5eb4f38d3bde14733fc192a5a70cb2c7fa1ed0df4d8933ec",
+      "total_bytes": 805306368
+    },
+    "n12-g4-zipf-s709-256MiB-w50": {
+      "matrix_sha256": "51e8148a838f11b92dba70e057f0d3522a7da90653fcccdc5919c746602762fa",
+      "total_bytes": 12884901888
+    },
+    "n12-g4-zipf-s709-256MiB-w5000": {
+      "matrix_sha256": "51e8148a838f11b92dba70e057f0d3522a7da90653fcccdc5919c746602762fa",
+      "total_bytes": 12884901888
+    },
+    "n12-g4-zipf-s801-16MiB-w50": {
+      "matrix_sha256": "a52d485584bb23b98ee04623c60862798d2602934b59e4d6f6c066cdea1d7495",
+      "total_bytes": 805306368
+    },
+    "n12-g4-zipf-s801-16MiB-w5000": {
+      "matrix_sha256": "a52d485584bb23b98ee04623c60862798d2602934b59e4d6f6c066cdea1d7495",
+      "total_bytes": 805306368
+    },
+    "n12-g4-zipf-s801-256MiB-w50": {
+      "matrix_sha256": "5c5d036f2c0b9af4c466f29f8f38d31ba71c19cbc01fd2a5fa222951bc8c5b5b",
+      "total_bytes": 12884901888
+    },
+    "n12-g4-zipf-s801-256MiB-w5000": {
+      "matrix_sha256": "5c5d036f2c0b9af4c466f29f8f38d31ba71c19cbc01fd2a5fa222951bc8c5b5b",
+      "total_bytes": 12884901888
+    },
+    "n12-g4-zipf-s809-16MiB-w50": {
+      "matrix_sha256": "f1230d02c60398389bcb53d91fe3d0dddd3d3b88be4522d8deff90016296dd93",
+      "total_bytes": 805306368
+    },
+    "n12-g4-zipf-s809-16MiB-w5000": {
+      "matrix_sha256": "f1230d02c60398389bcb53d91fe3d0dddd3d3b88be4522d8deff90016296dd93",
+      "total_bytes": 805306368
+    },
+    "n12-g4-zipf-s809-256MiB-w50": {
+      "matrix_sha256": "0583302df2262c7adb3658795f3bd3523246707404a68a3adb797bb42a190cd5",
+      "total_bytes": 12884901888
+    },
+    "n12-g4-zipf-s809-256MiB-w5000": {
+      "matrix_sha256": "0583302df2262c7adb3658795f3bd3523246707404a68a3adb797bb42a190cd5",
+      "total_bytes": 12884901888
+    },
+    "n6-g4-balanced-s0-16MiB-w50": {
+      "matrix_sha256": "b19e959313012a8ffe1f9fdeb83e991521121e92df71f4f9895de2b0fb2d23bb",
+      "total_bytes": 402653088
+    },
+    "n6-g4-balanced-s0-16MiB-w5000": {
+      "matrix_sha256": "b19e959313012a8ffe1f9fdeb83e991521121e92df71f4f9895de2b0fb2d23bb",
+      "total_bytes": 402653088
+    },
+    "n6-g4-balanced-s0-256MiB-w50": {
+      "matrix_sha256": "1a67bcc92961cda2226ca5dde397d698f940fd8ec636f09f98396a74e25472a9",
+      "total_bytes": 6442450512
+    },
+    "n6-g4-balanced-s0-256MiB-w5000": {
+      "matrix_sha256": "1a67bcc92961cda2226ca5dde397d698f940fd8ec636f09f98396a74e25472a9",
+      "total_bytes": 6442450512
+    },
+    "n6-g4-zipf-s701-16MiB-w50": {
+      "matrix_sha256": "bd5bf7b9fd2afcb130d71d1a357b0733bf9e02d5d7de59c01179d818db563227",
+      "total_bytes": 402653184
+    },
+    "n6-g4-zipf-s701-16MiB-w5000": {
+      "matrix_sha256": "bd5bf7b9fd2afcb130d71d1a357b0733bf9e02d5d7de59c01179d818db563227",
+      "total_bytes": 402653184
+    },
+    "n6-g4-zipf-s701-256MiB-w50": {
+      "matrix_sha256": "0895a8fcfa65f75e2e61afb6ad7a523ec277e630ee2f93cd1a519f4668da6d65",
+      "total_bytes": 6442450944
+    },
+    "n6-g4-zipf-s701-256MiB-w5000": {
+      "matrix_sha256": "0895a8fcfa65f75e2e61afb6ad7a523ec277e630ee2f93cd1a519f4668da6d65",
+      "total_bytes": 6442450944
+    },
+    "n6-g4-zipf-s709-16MiB-w50": {
+      "matrix_sha256": "f1564122808c016475803206855bdca9104f140792bc45c9a9a5705b14da2f48",
+      "total_bytes": 402653184
+    },
+    "n6-g4-zipf-s709-16MiB-w5000": {
+      "matrix_sha256": "f1564122808c016475803206855bdca9104f140792bc45c9a9a5705b14da2f48",
+      "total_bytes": 402653184
+    },
+    "n6-g4-zipf-s709-256MiB-w50": {
+      "matrix_sha256": "2c0d48bae3554481e83e7fcd4e0b16579219646e1cea48155ed4c596d274a385",
+      "total_bytes": 6442450944
+    },
+    "n6-g4-zipf-s709-256MiB-w5000": {
+      "matrix_sha256": "2c0d48bae3554481e83e7fcd4e0b16579219646e1cea48155ed4c596d274a385",
+      "total_bytes": 6442450944
+    },
+    "n6-g4-zipf-s801-16MiB-w50": {
+      "matrix_sha256": "d1c44037102bad539edf31055ef1382f5897a7aefa376c55612229d7394904ab",
+      "total_bytes": 402653184
+    },
+    "n6-g4-zipf-s801-16MiB-w5000": {
+      "matrix_sha256": "d1c44037102bad539edf31055ef1382f5897a7aefa376c55612229d7394904ab",
+      "total_bytes": 402653184
+    },
+    "n6-g4-zipf-s801-256MiB-w50": {
+      "matrix_sha256": "5cca808995f6df74c830abb7c96e3cba4da9d2b59bc780c471653ac377b9eed1",
+      "total_bytes": 6442450944
+    },
+    "n6-g4-zipf-s801-256MiB-w5000": {
+      "matrix_sha256": "5cca808995f6df74c830abb7c96e3cba4da9d2b59bc780c471653ac377b9eed1",
+      "total_bytes": 6442450944
+    },
+    "n6-g4-zipf-s809-16MiB-w50": {
+      "matrix_sha256": "d54eef9e82b03f85ba55908c56205179dbf4d82111d65acf9cb6b8ebda128619",
+      "total_bytes": 402653184
+    },
+    "n6-g4-zipf-s809-16MiB-w5000": {
+      "matrix_sha256": "d54eef9e82b03f85ba55908c56205179dbf4d82111d65acf9cb6b8ebda128619",
+      "total_bytes": 402653184
+    },
+    "n6-g4-zipf-s809-256MiB-w50": {
+      "matrix_sha256": "fd4e34c8ef62963c99de2a6c589f9706a9a236abfd060da1aeaa0e0356e8fce4",
+      "total_bytes": 6442450944
+    },
+    "n6-g4-zipf-s809-256MiB-w5000": {
+      "matrix_sha256": "fd4e34c8ef62963c99de2a6c589f9706a9a236abfd060da1aeaa0e0356e8fce4",
+      "total_bytes": 6442450944
+    }
+  },
+  "methods": [
+    "native",
+    "wan-repair",
+    "link-cost",
+    "link-cost-wan",
+    "maxmin",
+    "spreadout"
+  ],
+  "smoke": false
+}

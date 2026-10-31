@@ -1,0 +1,1441 @@
+{
+  "files": [
+    {
+      "bytes": 52848,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/comparison.csv",
+      "sha256": "5253cfa11616ea4aaeeabc62750753c9cf172731499ae55156b3f548fe39a1fe"
+    },
+    {
+      "bytes": 154863,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/comparison.json",
+      "sha256": "0419b5835ba3e691bc68ca653cd6d288fd1258c96dd4202d6cf70feb6bf12030"
+    },
+    {
+      "bytes": 51076,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/completion.png",
+      "sha256": "009f5dc62b4f7763c5732df3783c8207d3a2a59a25c31cd246b63b14cf92b7da"
+    },
+    {
+      "bytes": 22803,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n12-g4-balanced-s0-16MiB-w50.json",
+      "sha256": "3a115b8859f1876986177e0968d888abf1eda199b5b7b8823dbba1ad862c4dfa"
+    },
+    {
+      "bytes": 22803,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n12-g4-balanced-s0-16MiB-w5000.json",
+      "sha256": "3a115b8859f1876986177e0968d888abf1eda199b5b7b8823dbba1ad862c4dfa"
+    },
+    {
+      "bytes": 25059,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n12-g4-balanced-s0-256MiB-w50.json",
+      "sha256": "9607f08d710cc5b946c6838cac63ebe6f5fcefc0ece0300155d65ad34ec61b68"
+    },
+    {
+      "bytes": 25059,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n12-g4-balanced-s0-256MiB-w5000.json",
+      "sha256": "9607f08d710cc5b946c6838cac63ebe6f5fcefc0ece0300155d65ad34ec61b68"
+    },
+    {
+      "bytes": 20788,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n12-g4-zipf-s701-16MiB-w50.json",
+      "sha256": "c96a0c99d60984d6517999565de493c935ad410667e68aadd3648697834683f0"
+    },
+    {
+      "bytes": 20788,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n12-g4-zipf-s701-16MiB-w5000.json",
+      "sha256": "c96a0c99d60984d6517999565de493c935ad410667e68aadd3648697834683f0"
+    },
+    {
+      "bytes": 23474,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n12-g4-zipf-s701-256MiB-w50.json",
+      "sha256": "1c98d80eb6a6dc328bafa9219331a318121cfde31e2058cf5fa918847fb29969"
+    },
+    {
+      "bytes": 23474,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n12-g4-zipf-s701-256MiB-w5000.json",
+      "sha256": "1c98d80eb6a6dc328bafa9219331a318121cfde31e2058cf5fa918847fb29969"
+    },
+    {
+      "bytes": 20819,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n12-g4-zipf-s709-16MiB-w50.json",
+      "sha256": "536bc14c66c8cd2b5eb4f38d3bde14733fc192a5a70cb2c7fa1ed0df4d8933ec"
+    },
+    {
+      "bytes": 20819,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n12-g4-zipf-s709-16MiB-w5000.json",
+      "sha256": "536bc14c66c8cd2b5eb4f38d3bde14733fc192a5a70cb2c7fa1ed0df4d8933ec"
+    },
+    {
+      "bytes": 23495,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n12-g4-zipf-s709-256MiB-w50.json",
+      "sha256": "51e8148a838f11b92dba70e057f0d3522a7da90653fcccdc5919c746602762fa"
+    },
+    {
+      "bytes": 23495,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n12-g4-zipf-s709-256MiB-w5000.json",
+      "sha256": "51e8148a838f11b92dba70e057f0d3522a7da90653fcccdc5919c746602762fa"
+    },
+    {
+      "bytes": 20807,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n12-g4-zipf-s801-16MiB-w50.json",
+      "sha256": "a52d485584bb23b98ee04623c60862798d2602934b59e4d6f6c066cdea1d7495"
+    },
+    {
+      "bytes": 20807,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n12-g4-zipf-s801-16MiB-w5000.json",
+      "sha256": "a52d485584bb23b98ee04623c60862798d2602934b59e4d6f6c066cdea1d7495"
+    },
+    {
+      "bytes": 23445,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n12-g4-zipf-s801-256MiB-w50.json",
+      "sha256": "5c5d036f2c0b9af4c466f29f8f38d31ba71c19cbc01fd2a5fa222951bc8c5b5b"
+    },
+    {
+      "bytes": 23445,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n12-g4-zipf-s801-256MiB-w5000.json",
+      "sha256": "5c5d036f2c0b9af4c466f29f8f38d31ba71c19cbc01fd2a5fa222951bc8c5b5b"
+    },
+    {
+      "bytes": 20800,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n12-g4-zipf-s809-16MiB-w50.json",
+      "sha256": "f1230d02c60398389bcb53d91fe3d0dddd3d3b88be4522d8deff90016296dd93"
+    },
+    {
+      "bytes": 20800,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n12-g4-zipf-s809-16MiB-w5000.json",
+      "sha256": "f1230d02c60398389bcb53d91fe3d0dddd3d3b88be4522d8deff90016296dd93"
+    },
+    {
+      "bytes": 23468,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n12-g4-zipf-s809-256MiB-w50.json",
+      "sha256": "0583302df2262c7adb3658795f3bd3523246707404a68a3adb797bb42a190cd5"
+    },
+    {
+      "bytes": 23468,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n12-g4-zipf-s809-256MiB-w5000.json",
+      "sha256": "0583302df2262c7adb3658795f3bd3523246707404a68a3adb797bb42a190cd5"
+    },
+    {
+      "bytes": 5643,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n6-g4-balanced-s0-16MiB-w50.json",
+      "sha256": "b19e959313012a8ffe1f9fdeb83e991521121e92df71f4f9895de2b0fb2d23bb"
+    },
+    {
+      "bytes": 5643,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n6-g4-balanced-s0-16MiB-w5000.json",
+      "sha256": "b19e959313012a8ffe1f9fdeb83e991521121e92df71f4f9895de2b0fb2d23bb"
+    },
+    {
+      "bytes": 6747,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n6-g4-balanced-s0-256MiB-w50.json",
+      "sha256": "1a67bcc92961cda2226ca5dde397d698f940fd8ec636f09f98396a74e25472a9"
+    },
+    {
+      "bytes": 6747,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n6-g4-balanced-s0-256MiB-w5000.json",
+      "sha256": "1a67bcc92961cda2226ca5dde397d698f940fd8ec636f09f98396a74e25472a9"
+    },
+    {
+      "bytes": 5350,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n6-g4-zipf-s701-16MiB-w50.json",
+      "sha256": "bd5bf7b9fd2afcb130d71d1a357b0733bf9e02d5d7de59c01179d818db563227"
+    },
+    {
+      "bytes": 5350,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n6-g4-zipf-s701-16MiB-w5000.json",
+      "sha256": "bd5bf7b9fd2afcb130d71d1a357b0733bf9e02d5d7de59c01179d818db563227"
+    },
+    {
+      "bytes": 5982,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n6-g4-zipf-s701-256MiB-w50.json",
+      "sha256": "0895a8fcfa65f75e2e61afb6ad7a523ec277e630ee2f93cd1a519f4668da6d65"
+    },
+    {
+      "bytes": 5982,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n6-g4-zipf-s701-256MiB-w5000.json",
+      "sha256": "0895a8fcfa65f75e2e61afb6ad7a523ec277e630ee2f93cd1a519f4668da6d65"
+    },
+    {
+      "bytes": 5343,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n6-g4-zipf-s709-16MiB-w50.json",
+      "sha256": "f1564122808c016475803206855bdca9104f140792bc45c9a9a5705b14da2f48"
+    },
+    {
+      "bytes": 5343,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n6-g4-zipf-s709-16MiB-w5000.json",
+      "sha256": "f1564122808c016475803206855bdca9104f140792bc45c9a9a5705b14da2f48"
+    },
+    {
+      "bytes": 5977,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n6-g4-zipf-s709-256MiB-w50.json",
+      "sha256": "2c0d48bae3554481e83e7fcd4e0b16579219646e1cea48155ed4c596d274a385"
+    },
+    {
+      "bytes": 5977,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n6-g4-zipf-s709-256MiB-w5000.json",
+      "sha256": "2c0d48bae3554481e83e7fcd4e0b16579219646e1cea48155ed4c596d274a385"
+    },
+    {
+      "bytes": 5331,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n6-g4-zipf-s801-16MiB-w50.json",
+      "sha256": "d1c44037102bad539edf31055ef1382f5897a7aefa376c55612229d7394904ab"
+    },
+    {
+      "bytes": 5331,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n6-g4-zipf-s801-16MiB-w5000.json",
+      "sha256": "d1c44037102bad539edf31055ef1382f5897a7aefa376c55612229d7394904ab"
+    },
+    {
+      "bytes": 5967,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n6-g4-zipf-s801-256MiB-w50.json",
+      "sha256": "5cca808995f6df74c830abb7c96e3cba4da9d2b59bc780c471653ac377b9eed1"
+    },
+    {
+      "bytes": 5967,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n6-g4-zipf-s801-256MiB-w5000.json",
+      "sha256": "5cca808995f6df74c830abb7c96e3cba4da9d2b59bc780c471653ac377b9eed1"
+    },
+    {
+      "bytes": 5284,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n6-g4-zipf-s809-16MiB-w50.json",
+      "sha256": "d54eef9e82b03f85ba55908c56205179dbf4d82111d65acf9cb6b8ebda128619"
+    },
+    {
+      "bytes": 5284,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n6-g4-zipf-s809-16MiB-w5000.json",
+      "sha256": "d54eef9e82b03f85ba55908c56205179dbf4d82111d65acf9cb6b8ebda128619"
+    },
+    {
+      "bytes": 5933,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n6-g4-zipf-s809-256MiB-w50.json",
+      "sha256": "fd4e34c8ef62963c99de2a6c589f9706a9a236abfd060da1aeaa0e0356e8fce4"
+    },
+    {
+      "bytes": 5933,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/matrices/n6-g4-zipf-s809-256MiB-w5000.json",
+      "sha256": "fd4e34c8ef62963c99de2a6c589f9706a9a236abfd060da1aeaa0e0356e8fce4"
+    },
+    {
+      "bytes": 252208,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/native_topology",
+      "sha256": "68a8702434d29ea84f26fbc6874f622ea02a07a842bbb26cfa3c68ecd8651d0a"
+    },
+    {
+      "bytes": 39005,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-16MiB-w50-link-cost-wan.json",
+      "sha256": "226d5ee6642008c930b246bbc6d0bb7815378d4d9c53c189b3e55873f76a12ba"
+    },
+    {
+      "bytes": 39001,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-16MiB-w50-link-cost.json",
+      "sha256": "d7143c0ae84e955af64b631b7016b27cdc79d8d3de34d7ce44e2cf2b30062b7b"
+    },
+    {
+      "bytes": 38789,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-16MiB-w50-maxmin.json",
+      "sha256": "7d0123fae90daee08921743d9a742fb0a14cf29bb6a4ac67b90970265e68e829"
+    },
+    {
+      "bytes": 38784,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-16MiB-w50-native.json",
+      "sha256": "d7fb14df0aebb55df9caa00d9e244bcee36966e10ca3c120de40523fe60f8360"
+    },
+    {
+      "bytes": 172600,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-16MiB-w50-spreadout.json",
+      "sha256": "005e6ade5f509bc736d7f072b0b2c32ed1c15d0149bf056cee0322f7ed301854"
+    },
+    {
+      "bytes": 38793,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-16MiB-w50-wan-repair.json",
+      "sha256": "513f2e8fab83c7969914e875103fae445e343c11c454cc02d70bd50b3dab1860"
+    },
+    {
+      "bytes": 39027,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-16MiB-w5000-link-cost-wan.json",
+      "sha256": "96ee13d07051fc20028daa07a420bc35521d4abd65340db08e08d180ef106cbf"
+    },
+    {
+      "bytes": 39025,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-16MiB-w5000-link-cost.json",
+      "sha256": "a70ada7c6cf3d741849b52c7e95246efcf093259aaaa09d83d84c3d019f4cf36"
+    },
+    {
+      "bytes": 38810,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-16MiB-w5000-maxmin.json",
+      "sha256": "448ad4a3465c09c24bd9ee93ef518dae1a8aa6494ce33e936104931d992fe6d8"
+    },
+    {
+      "bytes": 38805,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-16MiB-w5000-native.json",
+      "sha256": "f226a13c452bfbb395bd2b22aea799d225571d4f3ee62baa160e0bb22a1cb07e"
+    },
+    {
+      "bytes": 172718,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-16MiB-w5000-spreadout.json",
+      "sha256": "1ad3691da7cd8106f3a7069dd5accca5dea7489823a1935b46bef21f12200ca9"
+    },
+    {
+      "bytes": 38814,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-16MiB-w5000-wan-repair.json",
+      "sha256": "310d0f0532f0c9ea48eea835632899e90bceb51f2c16063000e01be9e61529dc"
+    },
+    {
+      "bytes": 40093,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-256MiB-w50-link-cost-wan.json",
+      "sha256": "cb1becb3a308541921b64b4f320f8b8c2e25e9b626268bde51e77cbdb8431111"
+    },
+    {
+      "bytes": 40089,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-256MiB-w50-link-cost.json",
+      "sha256": "f3ac1530c2810a852a9e0060434eca3202a0238f3208a53ff6a6ef67117f2335"
+    },
+    {
+      "bytes": 39868,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-256MiB-w50-maxmin.json",
+      "sha256": "a1f3546faa8b00e6befabd136cb0622aba2c5639c9229a44e110c459827a5398"
+    },
+    {
+      "bytes": 39863,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-256MiB-w50-native.json",
+      "sha256": "23c6c0f65ecbf61e61c06636ac23982ac251250f5c933a2cfce03bafe8df509d"
+    },
+    {
+      "bytes": 176542,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-256MiB-w50-spreadout.json",
+      "sha256": "706b78cc72abdf150f4389ae563bbcd8e2b447153bdf223b35d94b137deb0249"
+    },
+    {
+      "bytes": 39871,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-256MiB-w50-wan-repair.json",
+      "sha256": "4a9191e5b9a98839ed7feb3caa5b065c9d5b35f98ab2265d429d3182af455cbc"
+    },
+    {
+      "bytes": 40117,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-256MiB-w5000-link-cost-wan.json",
+      "sha256": "b9f3dc03a97f56cb8e9bcaad141aaba8e912188bde761240a8eb2936e4a6a9de"
+    },
+    {
+      "bytes": 40114,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-256MiB-w5000-link-cost.json",
+      "sha256": "7ab1ff6ccb35852b9bbc53f7b4ea1e60f6f5fa555bcc211dc4b8cf9c1b1a3162"
+    },
+    {
+      "bytes": 39892,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-256MiB-w5000-maxmin.json",
+      "sha256": "e4f2be19b5d7f5dd1b572dc74b3b30657463b8ba9654a2255c09b00afb25dbae"
+    },
+    {
+      "bytes": 39887,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-256MiB-w5000-native.json",
+      "sha256": "cf4069fae2849261ff9c3a2f22d79bbe97b8a36dd4027a40c13edf8c46be9a40"
+    },
+    {
+      "bytes": 176662,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-256MiB-w5000-spreadout.json",
+      "sha256": "d3739b4da30ebfdd5c4c57044b087ffe8d85b44b287301a2b7b8284a23969d87"
+    },
+    {
+      "bytes": 39896,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-balanced-s0-256MiB-w5000-wan-repair.json",
+      "sha256": "70d074251f9262587e1fd93af6ffc68c66a046bde0c43420c44659791530ea46"
+    },
+    {
+      "bytes": 331567,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-16MiB-w50-link-cost-wan.json",
+      "sha256": "49f8c46a56f64d67d4dc4ddc765b0956ec1061afa378933cafdf74d47cb0fe85"
+    },
+    {
+      "bytes": 323832,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-16MiB-w50-link-cost.json",
+      "sha256": "5c086a0baeae74a58c0e70e09445baa2fc62ab2db45221db7ffdfe50defd552d"
+    },
+    {
+      "bytes": 210766,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-16MiB-w50-maxmin.json",
+      "sha256": "577614fe7f2d55d1a1828cbc35fa23251745fb5f1731a859f5623650cb2f5adc"
+    },
+    {
+      "bytes": 328721,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-16MiB-w50-native.json",
+      "sha256": "3cb08c27905b6193b28d3e8b4481fca8504cd19536c62155ce612682e73d8af2"
+    },
+    {
+      "bytes": 169993,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-16MiB-w50-spreadout.json",
+      "sha256": "87379413388531994b3c87b3dfb76957c002ee57aeee6230a475c27717cb3957"
+    },
+    {
+      "bytes": 326329,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-16MiB-w50-wan-repair.json",
+      "sha256": "8898ceba379db5f5e1aa5986752d46bc866f7fcd9dc8e248cacf0605b3bcd0d1"
+    },
+    {
+      "bytes": 331634,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-16MiB-w5000-link-cost-wan.json",
+      "sha256": "088166ab87113f5de4e4a3c33ffe4075ac9aa40976595289a0737855aee990ab"
+    },
+    {
+      "bytes": 331868,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-16MiB-w5000-link-cost.json",
+      "sha256": "4bd9ece4bede3f0e6044223f49b824ed9e67b08248dd015eeb462afc457a636f"
+    },
+    {
+      "bytes": 210907,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-16MiB-w5000-maxmin.json",
+      "sha256": "88e6a6f0681831bf27ae293ea56206774944da9cbe94a2665f0be0bd76b04627"
+    },
+    {
+      "bytes": 328850,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-16MiB-w5000-native.json",
+      "sha256": "176919a0ee10a66e06fd66eb744a961eb60bc1191b4f7de416665c279e2870d0"
+    },
+    {
+      "bytes": 170085,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-16MiB-w5000-spreadout.json",
+      "sha256": "df4ce1e52ed9e4789a682fab304fe65599904feee95418a762c60d6648bea931"
+    },
+    {
+      "bytes": 326594,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-16MiB-w5000-wan-repair.json",
+      "sha256": "3c257cb788e3848b2e062008b610e8e41e6ca1d7d62b7b1eb0e4efd24efaa589"
+    },
+    {
+      "bytes": 334536,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-256MiB-w50-link-cost-wan.json",
+      "sha256": "a18659a56f24b2582db0656096d4886f2a1f9c65a7b96707ca4de2cfcb796ce7"
+    },
+    {
+      "bytes": 336146,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-256MiB-w50-link-cost.json",
+      "sha256": "7a5b0a7e62439c9434873dcf4027173f7966e8e043372e1452cd911300d881e1"
+    },
+    {
+      "bytes": 238541,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-256MiB-w50-maxmin.json",
+      "sha256": "7f6557b85caf5ba1ebe9827d16cb350bbfc1439bb570b4c38630593a898ff31d"
+    },
+    {
+      "bytes": 338407,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-256MiB-w50-native.json",
+      "sha256": "b090ba5ecfb7493e1dccdbfc81c3bbe38970840f5df06b8fde3573f2dcae1627"
+    },
+    {
+      "bytes": 174635,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-256MiB-w50-spreadout.json",
+      "sha256": "4790f1bd5e488ddd3302f8943adbb9cf93f1168053fc652b2e58561c88444652"
+    },
+    {
+      "bytes": 336354,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-256MiB-w50-wan-repair.json",
+      "sha256": "0db0c1a0b1233882eae1d3d3afec68a8e300c6330f83e7a58cc92c31900cd344"
+    },
+    {
+      "bytes": 340368,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-256MiB-w5000-link-cost-wan.json",
+      "sha256": "17f43924508dd09a1d52535558057e5158aa1f5a1606ebd391af02f0f953d14c"
+    },
+    {
+      "bytes": 338690,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-256MiB-w5000-link-cost.json",
+      "sha256": "a504c7706b89aa136ed30950fd1a14767d64ac81d664bb0c00bef624a004ea21"
+    },
+    {
+      "bytes": 238679,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-256MiB-w5000-maxmin.json",
+      "sha256": "11167b83e9a36dab81fc43363164f56710c108b3aec8adc662d973a24d4c224a"
+    },
+    {
+      "bytes": 338552,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-256MiB-w5000-native.json",
+      "sha256": "642c52c4c75a3def9d0af30cc555ec0ca1e7421ee5499d0ce65309668d69f88e"
+    },
+    {
+      "bytes": 174692,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-256MiB-w5000-spreadout.json",
+      "sha256": "3c12075a7ad0e515a22f3ef0e4f92ba8f67870f331d6ddddf63a37e598bb0298"
+    },
+    {
+      "bytes": 336430,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s701-256MiB-w5000-wan-repair.json",
+      "sha256": "e334813cb577cc23ccfed76c2ff7f9e1980fcab8eea277493631b85942decd8f"
+    },
+    {
+      "bytes": 355029,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-16MiB-w50-link-cost-wan.json",
+      "sha256": "667e593b06feba789cc2f37dc13f97745de5c310354ee95e4683e416da5d96ba"
+    },
+    {
+      "bytes": 353167,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-16MiB-w50-link-cost.json",
+      "sha256": "e7aebab4398a80897bb68df3fa5029751594257890b2430179dcf0b04f6c8b1d"
+    },
+    {
+      "bytes": 231892,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-16MiB-w50-maxmin.json",
+      "sha256": "1b37b7b47fdfd3b9695d33166607f5eeebf4fa6eb7776dd46db4f755bc9e7965"
+    },
+    {
+      "bytes": 348073,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-16MiB-w50-native.json",
+      "sha256": "9eb59cfa7e589cc3779adb3783c0a6a46c1964838069eee15487b54415c1d0b5"
+    },
+    {
+      "bytes": 169967,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-16MiB-w50-spreadout.json",
+      "sha256": "a571d9aaafa20662eef8d57325acab42134477f9b1181f88e3a89cdcaa750164"
+    },
+    {
+      "bytes": 350447,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-16MiB-w50-wan-repair.json",
+      "sha256": "1d95cd5edf46123bb3112fd8d3854a6b8581cf6aa67c75109ab42621d8aa2789"
+    },
+    {
+      "bytes": 349705,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-16MiB-w5000-link-cost-wan.json",
+      "sha256": "63923321603a06d38587b3011028005d4fa129a49a8b72f2eaf5fb2673cc2885"
+    },
+    {
+      "bytes": 354191,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-16MiB-w5000-link-cost.json",
+      "sha256": "f8e898417bff04dbbb1a6d2255f23dcd407c6b1fb31be03da76b966c48312282"
+    },
+    {
+      "bytes": 232075,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-16MiB-w5000-maxmin.json",
+      "sha256": "b4e9225dadeebc6bda99bc7ae3a309076d06548147a1c0d4d4d63509e1fc4e7a"
+    },
+    {
+      "bytes": 348343,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-16MiB-w5000-native.json",
+      "sha256": "6f8f08dc9b683796e03f64cf068276794388f6204f22a1b0aa10cae09073fcf1"
+    },
+    {
+      "bytes": 170077,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-16MiB-w5000-spreadout.json",
+      "sha256": "9f8993880319c36ef2fa0860f238c3a030076ff5d8c34ea4f255ae6464113198"
+    },
+    {
+      "bytes": 350677,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-16MiB-w5000-wan-repair.json",
+      "sha256": "4dd59b3e395ed57c9b42c61e0545a2ab0184dc78be5e4a3c4bf665ca2e012023"
+    },
+    {
+      "bytes": 353690,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-256MiB-w50-link-cost-wan.json",
+      "sha256": "bab6655749bc0afc38578cd4ffeb01681a41a337b1e94c3723caea63d8ae1402"
+    },
+    {
+      "bytes": 361757,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-256MiB-w50-link-cost.json",
+      "sha256": "1bf420de546b2e8820340e8259ba58229ec5989e2d3ec56fb8b78725306dab07"
+    },
+    {
+      "bytes": 248488,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-256MiB-w50-maxmin.json",
+      "sha256": "2b3fc87476d222afe4d186a55373d6277a3fc5df1974c5f21c0fbe118741c278"
+    },
+    {
+      "bytes": 358847,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-256MiB-w50-native.json",
+      "sha256": "056add38a421e2877b0be66a396b96a5070351b0e9cb9202afc73993865f86ca"
+    },
+    {
+      "bytes": 174751,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-256MiB-w50-spreadout.json",
+      "sha256": "a79e7fc454840dafd47ec56cc76085efcec6065c103b936d2415758959fff9e5"
+    },
+    {
+      "bytes": 361500,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-256MiB-w50-wan-repair.json",
+      "sha256": "46b7c13dab47603c0fa31c3926da697d33311fe14ed09eb2eaff361495d81bd2"
+    },
+    {
+      "bytes": 360440,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-256MiB-w5000-link-cost-wan.json",
+      "sha256": "6cb466fa810190c6ec264dec15b9d6da79cbe381100be078d848169213f3535d"
+    },
+    {
+      "bytes": 360387,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-256MiB-w5000-link-cost.json",
+      "sha256": "2f19f0ddfa1bbe82661048c3459ad72ba8b5735a9268e4c9ba8512f26addc4fe"
+    },
+    {
+      "bytes": 248566,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-256MiB-w5000-maxmin.json",
+      "sha256": "b2d1c5eefcac110b1e955ea4946fab1bbb440a18969ceaca87ffe76d25388aba"
+    },
+    {
+      "bytes": 358946,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-256MiB-w5000-native.json",
+      "sha256": "b037a847892614252aa4ad23882a4db91e3b4fd75c1a7f0ec5da4346840209ff"
+    },
+    {
+      "bytes": 174840,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-256MiB-w5000-spreadout.json",
+      "sha256": "7d731e73336ad4304050304e6c00fd05e608cc12bb93bedefa180ea4931c9a83"
+    },
+    {
+      "bytes": 361637,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s709-256MiB-w5000-wan-repair.json",
+      "sha256": "cd5b0ba99fca1663844912f3037a05294c9721b52106d2d01a3038966efef984"
+    },
+    {
+      "bytes": 361847,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-16MiB-w50-link-cost-wan.json",
+      "sha256": "aa71ba96a867e6c80b07e11ad420feb20c3004e0e29f1e156afab83f2a5fd767"
+    },
+    {
+      "bytes": 354500,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-16MiB-w50-link-cost.json",
+      "sha256": "e9420d02b487621298a7523ff6bc839c732dc9e0235c3e9a0fbd82a4058beccc"
+    },
+    {
+      "bytes": 237260,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-16MiB-w50-maxmin.json",
+      "sha256": "b6827f3158af6f649daf82f5fb98d7363eee3fef70885b1398a41b00d46a9112"
+    },
+    {
+      "bytes": 353936,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-16MiB-w50-native.json",
+      "sha256": "5a5cd4d44da0babfbc6925fca2f37eb1ddc4a4999263bd99e0f5eeb0b864bcd0"
+    },
+    {
+      "bytes": 170074,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-16MiB-w50-spreadout.json",
+      "sha256": "c678fff7911a84a42f82f6df416c7f6d0062cd207b6f09e7377503e3bbe5810d"
+    },
+    {
+      "bytes": 353945,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-16MiB-w50-wan-repair.json",
+      "sha256": "9b9489678d70a206f56bbcb684d6baace6d3eb18129ebf309ca9f30190bff9aa"
+    },
+    {
+      "bytes": 359629,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-16MiB-w5000-link-cost-wan.json",
+      "sha256": "a0ec5d32fd4323f54ee98c1faa453b27a983f69488aaf6f410ae3475c6bd9b57"
+    },
+    {
+      "bytes": 344473,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-16MiB-w5000-link-cost.json",
+      "sha256": "78ee81f9c8f74e27be0deede060dc7abd9566b310f4a754791efc042060e111c"
+    },
+    {
+      "bytes": 237335,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-16MiB-w5000-maxmin.json",
+      "sha256": "b04541b6406bbc5165ad6ba8233ad010f1381521323432b79f16a797c773f7d5"
+    },
+    {
+      "bytes": 354212,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-16MiB-w5000-native.json",
+      "sha256": "ecc558f41f8cb43bbcd22c9364197032aeac1ea333929c2e6b594f3f1e2c2e0b"
+    },
+    {
+      "bytes": 170178,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-16MiB-w5000-spreadout.json",
+      "sha256": "6cd49df7f65032a80230d201f60a3eaa481c85f323f79465f26966cfc2dcf47f"
+    },
+    {
+      "bytes": 354221,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-16MiB-w5000-wan-repair.json",
+      "sha256": "8f8e5b3d6ee288c2faec56623e8ab00d2df24e9994da1f6c1ec5c78ccb74d49b"
+    },
+    {
+      "bytes": 365371,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-256MiB-w50-link-cost-wan.json",
+      "sha256": "797df59c452c3653f431808ed85da030c96b1c228307910daf64b5343af787b2"
+    },
+    {
+      "bytes": 367687,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-256MiB-w50-link-cost.json",
+      "sha256": "4e36d518118f32d1f67f85d76e54b8d1f4ef847cea77b9d9b7b61c621d0b0721"
+    },
+    {
+      "bytes": 253692,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-256MiB-w50-maxmin.json",
+      "sha256": "9d47bca682d0918f891e53642797faa75ea295b6b4dfc6f749384bd52f0b2fd3"
+    },
+    {
+      "bytes": 364776,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-256MiB-w50-native.json",
+      "sha256": "c5a998cc64243e70e6991c4f43de52a3e9b4c9abb60097ce52f5e208266f1f85"
+    },
+    {
+      "bytes": 174631,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-256MiB-w50-spreadout.json",
+      "sha256": "4999b36e97bd76e9137d6d0dbb815bf12b695c34deabdea4218fde2fa21c3ede"
+    },
+    {
+      "bytes": 364788,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-256MiB-w50-wan-repair.json",
+      "sha256": "85d489878c8c61f3c189426cd18443b430254a6e624b07e1669cfb36f68cff5a"
+    },
+    {
+      "bytes": 369745,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-256MiB-w5000-link-cost-wan.json",
+      "sha256": "7fe8db7fa36460b39885e9b74a79d03f936a1ffc23ee9792ff93f0b46c2598f6"
+    },
+    {
+      "bytes": 365141,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-256MiB-w5000-link-cost.json",
+      "sha256": "d3afdd197d88de4b4fed3c27c0c9d98a9fc600c113156768d1f28ee3c1c83ade"
+    },
+    {
+      "bytes": 253939,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-256MiB-w5000-maxmin.json",
+      "sha256": "4ce60c9eda7f134927fb666a768b8fa987375d0d8b322fd41b3d0704eb0b98a7"
+    },
+    {
+      "bytes": 365023,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-256MiB-w5000-native.json",
+      "sha256": "d5c5df06c8f7893403978feb0fbb22ff9e54408a5938f4dd626faf5b38484263"
+    },
+    {
+      "bytes": 174745,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-256MiB-w5000-spreadout.json",
+      "sha256": "33b8b5c847279ef1d3e5134fb5a3028be3d893d1a4137c2f5250d33e9338ef96"
+    },
+    {
+      "bytes": 365032,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s801-256MiB-w5000-wan-repair.json",
+      "sha256": "d54ee506c7032acc859c5cab1362c8745c3a22e154ba3ef128f2b6e16f496792"
+    },
+    {
+      "bytes": 335808,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-16MiB-w50-link-cost-wan.json",
+      "sha256": "639085e2c92ea173688f00bc102ad17428592c003dcee18394002b3bb3ef699e"
+    },
+    {
+      "bytes": 335661,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-16MiB-w50-link-cost.json",
+      "sha256": "bc857a16a0d2286d91d62142753d69ddfce939fea923c1231a291e5b8df76031"
+    },
+    {
+      "bytes": 240584,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-16MiB-w50-maxmin.json",
+      "sha256": "0272cd593b8af610c9a22253e4b9b5214f455edb9f6523b235a6b1a90fe7c263"
+    },
+    {
+      "bytes": 330198,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-16MiB-w50-native.json",
+      "sha256": "533ded6e5deadc7008d724491325d2ced48077e518e78e75631a709446df49b2"
+    },
+    {
+      "bytes": 170075,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-16MiB-w50-spreadout.json",
+      "sha256": "a6c702ee699853c25a542d8f7f03a46ad05a4e7cebc0be5da5bd4f3c29b09e0d"
+    },
+    {
+      "bytes": 331384,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-16MiB-w50-wan-repair.json",
+      "sha256": "057684907813b41837db46cb8b47b72d1e7daa40149e4850d4ace2d9a8b36221"
+    },
+    {
+      "bytes": 338044,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-16MiB-w5000-link-cost-wan.json",
+      "sha256": "5c5ee34dd339e407a95af68ae479622cafef9e51d1335b189481d4807215ff4d"
+    },
+    {
+      "bytes": 338732,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-16MiB-w5000-link-cost.json",
+      "sha256": "992377157c294f7d69c9d369d45ea4c07f1e2c4969b9860d7451667beff42960"
+    },
+    {
+      "bytes": 240672,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-16MiB-w5000-maxmin.json",
+      "sha256": "5d943d6fbb36552c45ba045d3c256bb20555469c93281dc6899d9be6be92f54a"
+    },
+    {
+      "bytes": 330397,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-16MiB-w5000-native.json",
+      "sha256": "5e49fc8427e5696a04805c05550d5aa428f32cd22d27d7ff8cc5e3ed45c12cfa"
+    },
+    {
+      "bytes": 170130,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-16MiB-w5000-spreadout.json",
+      "sha256": "4e30c79d59d424c47a8412c012bd843af6754cec18b4a1b180d528364c9e6cd5"
+    },
+    {
+      "bytes": 331626,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-16MiB-w5000-wan-repair.json",
+      "sha256": "0f6eb41e2b67456d9b15890a84194167c6487b0fdcb3841c0ebce3ebb25b234a"
+    },
+    {
+      "bytes": 342112,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-256MiB-w50-link-cost-wan.json",
+      "sha256": "bb1229e60f151e2df0b3b791110aefe3433b553ba775f939e8f14a47e680840d"
+    },
+    {
+      "bytes": 342789,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-256MiB-w50-link-cost.json",
+      "sha256": "51b838b2b6f887cd97c6feea276a4e44671a64924bf09b6ffe9077839c17216e"
+    },
+    {
+      "bytes": 245165,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-256MiB-w50-maxmin.json",
+      "sha256": "507e1c06afa6f81d055f7b2e7b48a4c2005e920f10fd55992ec255637f28049e"
+    },
+    {
+      "bytes": 340041,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-256MiB-w50-native.json",
+      "sha256": "74bb383ccf8fe679de16465b6d9359f5ee5311b2124258493b28ea18fb9388c0"
+    },
+    {
+      "bytes": 174637,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-256MiB-w50-spreadout.json",
+      "sha256": "01749d250879e212f724e531abff5703ab44dd265a1bbe816862bcf146dfea9e"
+    },
+    {
+      "bytes": 341420,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-256MiB-w50-wan-repair.json",
+      "sha256": "9d274ca86ac5b76cf2e612f823c63e173160bd7f804daf520f4661730d707cad"
+    },
+    {
+      "bytes": 354724,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-256MiB-w5000-link-cost-wan.json",
+      "sha256": "44f96715aad566d34193b5cbb45215c67ebd918fe8e6d2200b979bb13bc729cf"
+    },
+    {
+      "bytes": 354855,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-256MiB-w5000-link-cost.json",
+      "sha256": "34d3ecddefbdfbe2ea1fca82347142865592403969696f87426659bd38fdd2a7"
+    },
+    {
+      "bytes": 245212,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-256MiB-w5000-maxmin.json",
+      "sha256": "44195fd878e58927c38b8ab258d7a642d62ef2bb4b89e2d7418f6f607a5c74e0"
+    },
+    {
+      "bytes": 340168,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-256MiB-w5000-native.json",
+      "sha256": "24b1a419ae8f603b654e9752066bbb25d0f9c7e7e40c2e0387a57bbafd7b4849"
+    },
+    {
+      "bytes": 174790,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-256MiB-w5000-spreadout.json",
+      "sha256": "cdf2c7ac175c44a49c533028cdd4e08e22034ade29c588c4a557167150624f20"
+    },
+    {
+      "bytes": 341602,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n12-g4-zipf-s809-256MiB-w5000-wan-repair.json",
+      "sha256": "06f12c502488b3a53e4bdb3b3cb79abf1fc31bfd4dca36c799d26eefeb9f5114"
+    },
+    {
+      "bytes": 11504,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-16MiB-w50-link-cost-wan.json",
+      "sha256": "83b3febc985369350762f79c9ea3957a703bcf7782da4fb62b1c9f876f4aadc3"
+    },
+    {
+      "bytes": 11499,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-16MiB-w50-link-cost.json",
+      "sha256": "9fab629a4b82dd990bc12e3de6218847e57835063b35780a513f1d2bf13a5bfa"
+    },
+    {
+      "bytes": 11380,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-16MiB-w50-maxmin.json",
+      "sha256": "ff2a0a086032e0c247b8a473cb11d98262b13e88ed4bbe4c46dcae32a32d3a73"
+    },
+    {
+      "bytes": 11377,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-16MiB-w50-native.json",
+      "sha256": "56d9ef58d5b920d3053b121599cd12d2a857a6655536c669fc4c03a8caaeb203"
+    },
+    {
+      "bytes": 52392,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-16MiB-w50-spreadout.json",
+      "sha256": "5eaf2bd2186293b962a2d9f4e44c2ffcf5805bc5b8ccd75d3a515b89923b4827"
+    },
+    {
+      "bytes": 11386,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-16MiB-w50-wan-repair.json",
+      "sha256": "c7286b52d2e6d4bdb62d9624a40681ae2f8614440eac2fa1edb26f9a83edabb5"
+    },
+    {
+      "bytes": 11485,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-16MiB-w5000-link-cost-wan.json",
+      "sha256": "5d3992bf719a4f2e388b47240eff49c15585d5e82e159ff9df05b26253cf4498"
+    },
+    {
+      "bytes": 11480,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-16MiB-w5000-link-cost.json",
+      "sha256": "d5cc6922fea16cc1bbde6f03ea03c12585190f421f5a2a9b55717df648978eb4"
+    },
+    {
+      "bytes": 11371,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-16MiB-w5000-maxmin.json",
+      "sha256": "a72321e8d5f7a3242bb7b2616c8bf5bd77e6d01f63cf2458760861f2592b989d"
+    },
+    {
+      "bytes": 11367,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-16MiB-w5000-native.json",
+      "sha256": "d1f075a73fa72ebc3db53b1c5720870fbaa618a825b3bf829dcd3bf8874a40be"
+    },
+    {
+      "bytes": 52475,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-16MiB-w5000-spreadout.json",
+      "sha256": "74c5f3d52b16b8619d473f30d15a55c4b7732ad7a428e22874bb562def2c675b"
+    },
+    {
+      "bytes": 11375,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-16MiB-w5000-wan-repair.json",
+      "sha256": "921bc578de23393d2dad021d6faf6676114123deb6989290cceb8540a04e5764"
+    },
+    {
+      "bytes": 11806,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-256MiB-w50-link-cost-wan.json",
+      "sha256": "6b1e42f1f7c627f95b2a670d6b23074034f9d0fe0d6e633a8e49814ff9cca397"
+    },
+    {
+      "bytes": 11801,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-256MiB-w50-link-cost.json",
+      "sha256": "f6d40380c15bc4de9036009178992cb3ec5c2c600b6c2e158d608b2551610a09"
+    },
+    {
+      "bytes": 11690,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-256MiB-w50-maxmin.json",
+      "sha256": "ebaff6f53ca3ea3b0db130bf38b8062793f04d446ee8ce212aa8c886272d7eea"
+    },
+    {
+      "bytes": 11684,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-256MiB-w50-native.json",
+      "sha256": "b70ae6ee83eb32642b286768cd43a3531d9771a9aade9b44cc71acddc2869af5"
+    },
+    {
+      "bytes": 54044,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-256MiB-w50-spreadout.json",
+      "sha256": "561be223317d8655567548e2c37c53903ec5b67b1ee00b6b233af337528266ad"
+    },
+    {
+      "bytes": 11692,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-256MiB-w50-wan-repair.json",
+      "sha256": "2011282a8c448e3ddcb32447c43c970fca4bb89d53e4567e1ed696fb701dba6c"
+    },
+    {
+      "bytes": 11816,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-256MiB-w5000-link-cost-wan.json",
+      "sha256": "6ee0686ae2e7c56155ecc6b9868aa6fb2028e1b3da157dce10b78a37484fc18f"
+    },
+    {
+      "bytes": 11812,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-256MiB-w5000-link-cost.json",
+      "sha256": "99431cfe25f54c699fc115663d3a49c82fe13692e9bb33e4c34ced7d9769048d"
+    },
+    {
+      "bytes": 11713,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-256MiB-w5000-maxmin.json",
+      "sha256": "bb98899fd837e641957f063507a027f2da5ec293223d80b4a6815991175c114e"
+    },
+    {
+      "bytes": 11709,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-256MiB-w5000-native.json",
+      "sha256": "b546344592398f1cb82c37de7bf8d8edb7573ca27af71442d077e2fa0f1b4b15"
+    },
+    {
+      "bytes": 54106,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-256MiB-w5000-spreadout.json",
+      "sha256": "e3cdc47a96d28fa5f4eaa551e181faea5a319921d349f4a9e1ba0b42fb18cf6d"
+    },
+    {
+      "bytes": 11718,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-balanced-s0-256MiB-w5000-wan-repair.json",
+      "sha256": "2a0d0173b75b9e612bb7debbdd31301ff5b526bd1dca1ebc1cb36612a4ee0a84"
+    },
+    {
+      "bytes": 44726,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-16MiB-w50-link-cost-wan.json",
+      "sha256": "2de36ed77ec94b353b909725a7f58fb058a1efa81cc1f643c834e01c67c1a756"
+    },
+    {
+      "bytes": 44352,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-16MiB-w50-link-cost.json",
+      "sha256": "5e9d3382bbb91912480e2e43443066c26de6d11b4f110a13a52378c528a6ed7a"
+    },
+    {
+      "bytes": 43234,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-16MiB-w50-maxmin.json",
+      "sha256": "411796f0077d6c3c2617b18760ba3859178496d85992dac4eea96a72ecc72794"
+    },
+    {
+      "bytes": 44375,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-16MiB-w50-native.json",
+      "sha256": "e5b60ca3715ad2856594604b90b05b053264da1a8863c300df8b1a59b9f3f620"
+    },
+    {
+      "bytes": 51932,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-16MiB-w50-spreadout.json",
+      "sha256": "4b2781732763ceb80301bcae8283c17603f219a5227651a853da8d6dbd2e46f3"
+    },
+    {
+      "bytes": 44384,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-16MiB-w50-wan-repair.json",
+      "sha256": "5dcbbcb3bb90da2701aa66b84c972cd1674196016385df4f37045d700f60139c"
+    },
+    {
+      "bytes": 45482,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-16MiB-w5000-link-cost-wan.json",
+      "sha256": "cb887080e6e41332553ec0644826014dba427d7e39ac696963386a724d069f81"
+    },
+    {
+      "bytes": 42731,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-16MiB-w5000-link-cost.json",
+      "sha256": "dc755b788a844129c809c0c614e65d17a41efe03b9c87f89057218f2df279b58"
+    },
+    {
+      "bytes": 43305,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-16MiB-w5000-maxmin.json",
+      "sha256": "32d6561a5c85a9d977ccac77e3b9fe9f6c44d039088ff908b53b0cc26065f750"
+    },
+    {
+      "bytes": 44450,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-16MiB-w5000-native.json",
+      "sha256": "c30b137aef8787dcb04c8b4d292c74646f0ba6fecacb91834ed1026c6b186ec9"
+    },
+    {
+      "bytes": 52038,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-16MiB-w5000-spreadout.json",
+      "sha256": "63dd4a0b58e46909d19d668ed87d9655a9af67bcc24a0de7cbe309402c82dff9"
+    },
+    {
+      "bytes": 44458,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-16MiB-w5000-wan-repair.json",
+      "sha256": "bdc5faa7d74298b225ef0596a64d62ae502bf8f3f39544b807e3d97ba6bb5b31"
+    },
+    {
+      "bytes": 46114,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-256MiB-w50-link-cost-wan.json",
+      "sha256": "479426f3ce6de1050861b3ac2cab83fcfc5abd2ccf8e9fcb73b093aad33abc44"
+    },
+    {
+      "bytes": 47576,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-256MiB-w50-link-cost.json",
+      "sha256": "1a14e6b45f9b40566e3807da767b416c55fd8a4ea94a8b95b793434447c50517"
+    },
+    {
+      "bytes": 44434,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-256MiB-w50-maxmin.json",
+      "sha256": "3caaa2100f1d0fafcbdcdab39c886a23ea982e6b9b7bfaa624292309d5930150"
+    },
+    {
+      "bytes": 45677,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-256MiB-w50-native.json",
+      "sha256": "318527d1383b24c947f8db080c176ced3a3dcb467f9181e3009ca2e78c1c6049"
+    },
+    {
+      "bytes": 53202,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-256MiB-w50-spreadout.json",
+      "sha256": "5b89ea9cdc83bfe48ed8c02119a469ae5b9320bf0b9ae2d448b606a86b9f5006"
+    },
+    {
+      "bytes": 45686,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-256MiB-w50-wan-repair.json",
+      "sha256": "60979d995bb28e78de3c0613827245d362c61d71c42045dd54f526116fe3d932"
+    },
+    {
+      "bytes": 46649,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-256MiB-w5000-link-cost-wan.json",
+      "sha256": "cbc8f40c4647729f337e0883256ed4a8bd153a18af40d5258d69591e394e7695"
+    },
+    {
+      "bytes": 46697,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-256MiB-w5000-link-cost.json",
+      "sha256": "ad96fee74b6f047f6ef98321f874c893d0ae0313ebcf2aae7f603e65d1527c78"
+    },
+    {
+      "bytes": 44487,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-256MiB-w5000-maxmin.json",
+      "sha256": "3b7fb807a9e4f5b91bb4f397078741285645e741ffb295bdfc6fc1f8650380ad"
+    },
+    {
+      "bytes": 45708,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-256MiB-w5000-native.json",
+      "sha256": "e281495c1a8ac32385597dedb4780c10ff60f74894c8e2b74469a0e51f41bbe1"
+    },
+    {
+      "bytes": 53247,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-256MiB-w5000-spreadout.json",
+      "sha256": "3a535adefce0c22c1dc3e5a578d549dffa4c464ab700344484168d233ca38ae5"
+    },
+    {
+      "bytes": 45716,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s701-256MiB-w5000-wan-repair.json",
+      "sha256": "5bdd82815de20bacad8caac3b91e14532d28d2fdf984b32560f6ee993acbecc3"
+    },
+    {
+      "bytes": 46538,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-16MiB-w50-link-cost-wan.json",
+      "sha256": "6a14254b48b0613fe99cec52cf76e72c30c20f90b821eecbc382b63484e68b79"
+    },
+    {
+      "bytes": 46533,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-16MiB-w50-link-cost.json",
+      "sha256": "01e41c7614817ba093dfc1ae0a0c6830775d18c7842328e3bf370d1dcff0da70"
+    },
+    {
+      "bytes": 42818,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-16MiB-w50-maxmin.json",
+      "sha256": "aa393e1f0d52585de93d32e165294788cf6dc3ba4ebf1324fe9a13501d27052f"
+    },
+    {
+      "bytes": 46913,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-16MiB-w50-native.json",
+      "sha256": "a4f1b1e616ff5de21bae80a50ff4f7f4dc8c0923846f45a2cf3260a002f21350"
+    },
+    {
+      "bytes": 51982,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-16MiB-w50-spreadout.json",
+      "sha256": "4995a5c01752ac715224835798f1f9d934804d2da5cd3c5c28d84f78e0900c21"
+    },
+    {
+      "bytes": 46922,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-16MiB-w50-wan-repair.json",
+      "sha256": "84c39ed72856f163fdb051db8fdff282ef9bb6c94f2d96a0697872bd9b75f5e5"
+    },
+    {
+      "bytes": 48535,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-16MiB-w5000-link-cost-wan.json",
+      "sha256": "31c9bdbb50e8478ce0624d714d3617db6a831255baf64604cc7919c0a822374e"
+    },
+    {
+      "bytes": 48530,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-16MiB-w5000-link-cost.json",
+      "sha256": "3388fc5709c06482b0ec255ff27a3204a7627ee6e9b466dbde347c8aa25ebe14"
+    },
+    {
+      "bytes": 42809,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-16MiB-w5000-maxmin.json",
+      "sha256": "3bb60f1483625f9075f998066f05a1096726e4802f3888a0b95cc4872b691b47"
+    },
+    {
+      "bytes": 46898,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-16MiB-w5000-native.json",
+      "sha256": "2d1b22321566c6740093a02721a5fb7fb192a5ea2bcd8839d900e025a48c620e"
+    },
+    {
+      "bytes": 52037,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-16MiB-w5000-spreadout.json",
+      "sha256": "ce0c7a870865581ee5e3b9b66984079dda79631fd6f08db1707470ac82dd1741"
+    },
+    {
+      "bytes": 46907,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-16MiB-w5000-wan-repair.json",
+      "sha256": "8245b9a9f8c7f6fd0de010437aef6e0414ad536db05dd3732224267a9ea39ebf"
+    },
+    {
+      "bytes": 50243,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-256MiB-w50-link-cost-wan.json",
+      "sha256": "f052227839616fe4f3105c9da8412eeabbbdcc87e24b7272e2aafcb24f5ffa3e"
+    },
+    {
+      "bytes": 50238,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-256MiB-w50-link-cost.json",
+      "sha256": "63a8e2352d99bb4d0895b757c1f94e67d0260ee6f3af6b68ff2144cfc65cd03e"
+    },
+    {
+      "bytes": 43994,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-256MiB-w50-maxmin.json",
+      "sha256": "61e5ddb17f3b1900c81d5de2f65714653982f243ff2a6baac634adab5be210e1"
+    },
+    {
+      "bytes": 48240,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-256MiB-w50-native.json",
+      "sha256": "f3225a5f5f9f421273ffc4c0c47c05d22549b678e787b5412f425e0ab8459d3d"
+    },
+    {
+      "bytes": 53291,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-256MiB-w50-spreadout.json",
+      "sha256": "5b7281b601860363e47a6e0a2a61a5357f8970461fb6c045b86a14df01a54378"
+    },
+    {
+      "bytes": 48249,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-256MiB-w50-wan-repair.json",
+      "sha256": "ddd9329f1078487fac940752651665ad7b2364eb3efff7edee8ef15288797318"
+    },
+    {
+      "bytes": 48210,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-256MiB-w5000-link-cost-wan.json",
+      "sha256": "8441255b29a2b019bd42a2023a0300159b4f91eb0e70782f72f97155f927dc08"
+    },
+    {
+      "bytes": 48207,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-256MiB-w5000-link-cost.json",
+      "sha256": "ec7b320d431a6e5dfb5bdd76031ce87a22944bc4566854c6c0fda0c12abf17bd"
+    },
+    {
+      "bytes": 43997,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-256MiB-w5000-maxmin.json",
+      "sha256": "31409318d62493dd38151cb3904e4ca2496b2402b435f01d4a59144b94a2d865"
+    },
+    {
+      "bytes": 48296,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-256MiB-w5000-native.json",
+      "sha256": "f8fa8bd1821442d38a831f800b4498901132b523e70c4b57e3a36782f3fe4665"
+    },
+    {
+      "bytes": 53336,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-256MiB-w5000-spreadout.json",
+      "sha256": "88360b998e74cbb965f7181ca20d8d8a12f0879fdd0deab90e38a1ee5119276b"
+    },
+    {
+      "bytes": 48305,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s709-256MiB-w5000-wan-repair.json",
+      "sha256": "606449a8f69c0dffeac4c33980fe7ca04d4b38ea6a89b82f1bf63713ead087ad"
+    },
+    {
+      "bytes": 44187,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-16MiB-w50-link-cost-wan.json",
+      "sha256": "c1bf766b00f3782e3e3cd2c3281bd92531aae173de68d3f1c921d20119eb548d"
+    },
+    {
+      "bytes": 44183,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-16MiB-w50-link-cost.json",
+      "sha256": "46396acab1f77eec793cc22b07e505e5ecef3af64893c03d17afaeb8ea6480e6"
+    },
+    {
+      "bytes": 42856,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-16MiB-w50-maxmin.json",
+      "sha256": "ff8f1bc9ae1ed3958928b213f8ef34541a65c9c36bef95baf5948db911c112ee"
+    },
+    {
+      "bytes": 44806,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-16MiB-w50-native.json",
+      "sha256": "5529e09dc9d8c2408521957051f7c425fbe3c8c2f60be194341769f9d6cac57d"
+    },
+    {
+      "bytes": 51877,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-16MiB-w50-spreadout.json",
+      "sha256": "21f7034e4faa8bce9d5ff65b4ed3065ce030e516bbd6c5119fbbaeff4738d9f9"
+    },
+    {
+      "bytes": 44815,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-16MiB-w50-wan-repair.json",
+      "sha256": "73b108d88621c3194b41d6f8727c7c0b1f605e5bd8477dbbcb24c8a4b6594baf"
+    },
+    {
+      "bytes": 44876,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-16MiB-w5000-link-cost-wan.json",
+      "sha256": "8bde37f662a05cb1271e902eabe464a0605e9dce7bef6e138f4f67f6db225083"
+    },
+    {
+      "bytes": 43984,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-16MiB-w5000-link-cost.json",
+      "sha256": "d0a7c2b129db5b30a1c5a95069ec78c76ce5a09a16094ca79b6ed7758e5ec573"
+    },
+    {
+      "bytes": 42891,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-16MiB-w5000-maxmin.json",
+      "sha256": "e7a70a4cbcebbfa305f178e4042f49759ee57218a494635a3e3cf77b82d9413b"
+    },
+    {
+      "bytes": 44798,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-16MiB-w5000-native.json",
+      "sha256": "4ab0650ce0a431e908a9a66f1128d5b79cfc8cce06d6a3f14159ce8e9666029f"
+    },
+    {
+      "bytes": 51910,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-16MiB-w5000-spreadout.json",
+      "sha256": "a7ee224c2b8227fe697e3a5153195dcad047345d821f8cbcba8594d2770f70ff"
+    },
+    {
+      "bytes": 44807,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-16MiB-w5000-wan-repair.json",
+      "sha256": "b741ccfc2ab34a110090c2c8239ef7ae255485740fb1b7026bf8fe1c7da59267"
+    },
+    {
+      "bytes": 45197,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-256MiB-w50-link-cost-wan.json",
+      "sha256": "5b530d7307f77bc22ede26a7a279b250e10cb89be34eb14dfb79af346ce9b2d6"
+    },
+    {
+      "bytes": 45194,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-256MiB-w50-link-cost.json",
+      "sha256": "24c2db10f26b6107f951f21a372f6695abfe00da1f9db0bc2fb18e9c2c55a46e"
+    },
+    {
+      "bytes": 43968,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-256MiB-w50-maxmin.json",
+      "sha256": "c728a158a970bb5f99b7901fd096b25ea3bda921d7e74fc7988010335828deee"
+    },
+    {
+      "bytes": 46009,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-256MiB-w50-native.json",
+      "sha256": "72310b69c9823909f5b85f426cab3e615246ddef751899ab475fbffe95153e8e"
+    },
+    {
+      "bytes": 53248,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-256MiB-w50-spreadout.json",
+      "sha256": "d769acc63831f48ae6daa239dbea2b8bd077055b483aad60392b76490ded8e3f"
+    },
+    {
+      "bytes": 46019,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-256MiB-w50-wan-repair.json",
+      "sha256": "617c98022498fd96fb158991c5f6a99121790af9bf73d3d65397cf2c340dcc83"
+    },
+    {
+      "bytes": 44907,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-256MiB-w5000-link-cost-wan.json",
+      "sha256": "d41570fbd6dfef2cce07d9fabba0f3fd11f5163a41722b41e29fa48db37f4eb4"
+    },
+    {
+      "bytes": 44903,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-256MiB-w5000-link-cost.json",
+      "sha256": "e094b9d493bf0aee8903bdef3ab38d7a5ff82733de14037bccccc933b0c3d1dd"
+    },
+    {
+      "bytes": 44050,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-256MiB-w5000-maxmin.json",
+      "sha256": "221b1c9b5671f76fca4e89649a808f7f7f3761b3dee81653eb2f141ab0849d6a"
+    },
+    {
+      "bytes": 46036,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-256MiB-w5000-native.json",
+      "sha256": "ba2a965f993f57490db31b9eba74a86270e3a8264400c52174850df696ce96f6"
+    },
+    {
+      "bytes": 53281,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-256MiB-w5000-spreadout.json",
+      "sha256": "b52cf25845097fb9ac0275b648d5225b11d0ca234fe59b5bed905422cafbd58c"
+    },
+    {
+      "bytes": 46045,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s801-256MiB-w5000-wan-repair.json",
+      "sha256": "6296214ba4bb08fa7df01130327d992c8c4a0c2b00829b14afdb277932ad17c0"
+    },
+    {
+      "bytes": 47762,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-16MiB-w50-link-cost-wan.json",
+      "sha256": "3c9bda7c1a28c4c1715eac5d4c0dc17902cef649e80881b41cb4d54f721e92a1"
+    },
+    {
+      "bytes": 47648,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-16MiB-w50-link-cost.json",
+      "sha256": "75c819e56ae555f6371c35198cb647b8a57ebe86f487d30b40a82362a13350ef"
+    },
+    {
+      "bytes": 45251,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-16MiB-w50-maxmin.json",
+      "sha256": "ebb2cb94b3f55d435c42d2ef360f9e2dfdb8ab603a9065bdc246aa1bea325d3b"
+    },
+    {
+      "bytes": 47214,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-16MiB-w50-native.json",
+      "sha256": "068e8ec7708481dec1b4101230583783c9c1b45d8365f53130f56a1cb649e4ef"
+    },
+    {
+      "bytes": 51854,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-16MiB-w50-spreadout.json",
+      "sha256": "cafc92ff65abd5231367262011eaaa2bdc7444b2a15f6a5fc510df2433bb639e"
+    },
+    {
+      "bytes": 47465,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-16MiB-w50-wan-repair.json",
+      "sha256": "5745a603152172d303f0995c9c5a13b66a4e4a1a2a1e3ff6cda8fbff7f673ce8"
+    },
+    {
+      "bytes": 46260,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-16MiB-w5000-link-cost-wan.json",
+      "sha256": "788b0848f27f278afec1393c9a4925f83f3d0086aab09273190fd04a485a6c2f"
+    },
+    {
+      "bytes": 47410,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-16MiB-w5000-link-cost.json",
+      "sha256": "cd8ed4e2539fb67298188cce82c50bf9e699290979f4f20bede4cd2cb2b3be45"
+    },
+    {
+      "bytes": 45301,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-16MiB-w5000-maxmin.json",
+      "sha256": "f88e0b45f8d2e3dc226c0a32f04454d423adac9087c880dfa38225f270b15196"
+    },
+    {
+      "bytes": 47285,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-16MiB-w5000-native.json",
+      "sha256": "ebcfd0353a708daff05a81a9940c4084fcb7cc12c92e91d010d7848778efe161"
+    },
+    {
+      "bytes": 51880,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-16MiB-w5000-spreadout.json",
+      "sha256": "1ca85677117f6409d378eadb24c8b11550f95765633793833fd04b910a5b3ea8"
+    },
+    {
+      "bytes": 47534,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-16MiB-w5000-wan-repair.json",
+      "sha256": "74529ebdbd164505707b4d2f43284b66308a6657ee0d3b3b97a7858c09cfce9e"
+    },
+    {
+      "bytes": 47576,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-256MiB-w50-link-cost-wan.json",
+      "sha256": "08c703a0dcfe11c069b264233cd439785d7429f4153966180f5a6908d5690a35"
+    },
+    {
+      "bytes": 49484,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-256MiB-w50-link-cost.json",
+      "sha256": "c014bd0a5618352468e8dcf72924d6790c0bf49975dd4f96c0f62c05fe1df0d3"
+    },
+    {
+      "bytes": 46517,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-256MiB-w50-maxmin.json",
+      "sha256": "4c30b6bddb7f7a9f9023b00a367abe71ed72e49cd91c7c8e63d2b5126d342fbb"
+    },
+    {
+      "bytes": 48587,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-256MiB-w50-native.json",
+      "sha256": "3bee1212646c9d33984afd8b4c3723f91242385136e119ed47032fdc53e8d52a"
+    },
+    {
+      "bytes": 53142,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-256MiB-w50-spreadout.json",
+      "sha256": "fd9261b10348b3cb71cc5686daa9033b43a32fcac6c1a5ad3b94089366915807"
+    },
+    {
+      "bytes": 48834,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-256MiB-w50-wan-repair.json",
+      "sha256": "f6907d32efb588165dee6ca6191584e69d4b9e0d160bd3f766dcdae708d4465f"
+    },
+    {
+      "bytes": 47982,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-256MiB-w5000-link-cost-wan.json",
+      "sha256": "b611375bbe52dcd05cc918c65d1ae359f2be4642aba96f55740d3797f9ef02cd"
+    },
+    {
+      "bytes": 47832,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-256MiB-w5000-link-cost.json",
+      "sha256": "f4eb5693495331aff67529776bc5017f1b95d5d00760d11ecee18fb918fe5464"
+    },
+    {
+      "bytes": 46544,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-256MiB-w5000-maxmin.json",
+      "sha256": "dcc27878c7ce630cab4b2b353547551eb95d390e5a5f66adf3e04ab6b46599da"
+    },
+    {
+      "bytes": 48608,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-256MiB-w5000-native.json",
+      "sha256": "c4228adb5bfd37da51af8974986f27a64465367800fa22fb91d0986b5e50b016"
+    },
+    {
+      "bytes": 53179,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-256MiB-w5000-spreadout.json",
+      "sha256": "3e603c4630b515edb4d9f40682e9d6255231235259ff58ed6db0acd39396549f"
+    },
+    {
+      "bytes": 48866,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/raw/n6-g4-zipf-s809-256MiB-w5000-wan-repair.json",
+      "sha256": "78caa4d47e497f0196c74a5bdf7de391a37aeb94f685e8c0830bc0eaaa70a48b"
+    },
+    {
+      "bytes": 60600,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/source.tar.gz",
+      "sha256": "0a622b7cf875c07e927afda9ce0949fe67ea5180c655311d8fa5792e4d5712cf"
+    },
+    {
+      "bytes": 154018,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/speedup.png",
+      "sha256": "873f82c7920455223871f35309d560b393a2c456cc6cb7b2cce93e4a30636177"
+    },
+    {
+      "bytes": 18347,
+      "path": "simulation/topology/results/run-cdcfeb24cb30/study.json",
+      "sha256": "7a7787ffe8c0167c86c035aa6bf1334e0c85fce442825d447e005f2ddf21b9fb"
+    }
+  ],
+  "omitted": [],
+  "root": "simulation/topology/results/run-cdcfeb24cb30"
+}

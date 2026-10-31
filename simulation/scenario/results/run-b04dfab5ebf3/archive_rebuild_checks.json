@@ -1,0 +1,91 @@
+{
+  "archived_harness": "/home/julius/fast/FAST/simulation/scenario/results/run-b04dfab5ebf3/source/scenario/study.py",
+  "checks": [
+    {
+      "case": "n24g8-d2-endpoint_control-balanced-s0-l520101-w50",
+      "method": "F000"
+    },
+    {
+      "case": "n24g8-d2-endpoint_control-balanced-s0-l520101-w50",
+      "method": "maxmin"
+    },
+    {
+      "case": "n24g8-d2-endpoint_control-balanced-s0-l520101-w50",
+      "method": "spreadout"
+    },
+    {
+      "case": "n24g8-d2-endpoint_control-balanced-s0-l520101-w50",
+      "method": "X10"
+    },
+    {
+      "case": "n24g8-d2-endpoint_control-balanced-s0-l520101-w50",
+      "method": "X11"
+    },
+    {
+      "case": "n24g8-d2-endpoint_control-balanced-s0-l520101-w50",
+      "method": "A1"
+    },
+    {
+      "case": "n24g8-d2-endpoint_control-balanced-s0-l520101-w50",
+      "method": "A2"
+    },
+    {
+      "case": "n24g8-d3-shared25-zipf-s520101-l520101-w5000",
+      "method": "F000"
+    },
+    {
+      "case": "n24g8-d3-shared25-zipf-s520101-l520101-w5000",
+      "method": "maxmin"
+    },
+    {
+      "case": "n24g8-d3-shared25-zipf-s520101-l520101-w5000",
+      "method": "spreadout"
+    },
+    {
+      "case": "n24g8-d3-shared25-zipf-s520101-l520101-w5000",
+      "method": "X10"
+    },
+    {
+      "case": "n24g8-d3-shared25-zipf-s520101-l520101-w5000",
+      "method": "X11"
+    },
+    {
+      "case": "n24g8-d3-shared25-zipf-s520101-l520101-w5000",
+      "method": "A1"
+    },
+    {
+      "case": "n24g8-d3-shared25-zipf-s520101-l520101-w5000",
+      "method": "A2"
+    },
+    {
+      "case": "n24g8-d6-asymmetric-block-s0-l520101-w5000",
+      "method": "F000"
+    },
+    {
+      "case": "n24g8-d6-asymmetric-block-s0-l520101-w5000",
+      "method": "maxmin"
+    },
+    {
+      "case": "n24g8-d6-asymmetric-block-s0-l520101-w5000",
+      "method": "spreadout"
+    },
+    {
+      "case": "n24g8-d6-asymmetric-block-s0-l520101-w5000",
+      "method": "X10"
+    },
+    {
+      "case": "n24g8-d6-asymmetric-block-s0-l520101-w5000",
+      "method": "X11"
+    },
+    {
+      "case": "n24g8-d6-asymmetric-block-s0-l520101-w5000",
+      "method": "A1"
+    },
+    {
+      "case": "n24g8-d6-asymmetric-block-s0-l520101-w5000",
+      "method": "A2"
+    }
+  ],
+  "identity_equal": true,
+  "rebuilt_binary_sha256": "1d21fa5463ac352b5cc5505af5eae07e99b97f160d9ce3d3dfe389cb3dd2509a"
+}

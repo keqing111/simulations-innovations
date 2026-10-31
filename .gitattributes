@@ -1,0 +1,9 @@
+verified_data/*.tar.gz.part-* -text -diff -delta
+*.png binary
+*.jpg binary
+*.pdf binary
+# Preserve byte-exact audit digests, including original CSV CRLF endings.
+*.json -text
+*.csv -text
+# Frozen source snapshots/data retain upstream formatting; do not rewrite them.
+simulation/**/results/** -whitespace

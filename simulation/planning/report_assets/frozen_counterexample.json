@@ -1,0 +1,35 @@
+{
+  "case": "n24g8-d6-asymmetric-zipf-s760203-l760203-w5000",
+  "critical_one_way_wan_us": 2729.4299573333774,
+  "frozen_schedule_only": true,
+  "metrics": {
+    "A1": {
+      "alpha_ms": 860.4816000000023,
+      "serial_ms": 171.40940292000008,
+      "stages": 172,
+      "total_ms": 1032.1118690133335,
+      "wan_stages": 172
+    },
+    "SPM": {
+      "alpha_ms": 835.4676000000021,
+      "serial_ms": 158.70287943999995,
+      "stages": 167,
+      "total_ms": 994.3913455333334,
+      "wan_stages": 167
+    },
+    "maxmin": {
+      "alpha_ms": 835.4676000000021,
+      "serial_ms": 185.07055270666677,
+      "stages": 167,
+      "total_ms": 1020.7590188000003,
+      "wan_stages": 167
+    }
+  },
+  "not_an_algorithm_crossover": true,
+  "pipeline_reconstructed_at_original_wan": true,
+  "source": {
+    "A1": "cc8579a420f960099df05398d0c3786f4b170e1bd35e145b74c398cee2d6d5ac",
+    "SPM": "fcac7db25d4004ce4c21556d2604b65fb485464eed7692441dc9af3edc03602a",
+    "maxmin": "d227d48f3aa70b24e65421af03b44a4d8977b0b3a68a4288d4fea44b939386b4"
+  }
+}

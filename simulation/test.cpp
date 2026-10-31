@@ -12,6 +12,25 @@
 using namespace std;
 using namespace chrono;
 
+// ============================================================================
+// 实验驱动的实现。
+//
+// 矩阵元素与物理量：
+//   - 默认 1 个元素 = 1 个"单位"，通过 MBpu（MB per unit）换算成 MB；
+//   - 传输时间由 alpha + 元素数 * MBpu * beta 得到（beta 单位 us/MB）；
+//   - 算法带宽 algbw = 总工作量 / 模型时间 / GPU 数，再乘 1e3 换算单位。
+//
+// 注意区分两类"时间"：
+//   - fastall2all_r.t：模型估算的端到端时间（网络传输 + 未被重叠的 server 内开销，
+//     仿真的核心输出）；
+//   - cur_time：在本机跑完整调度算法实际花的 CPU 时间（wall clock），
+//     用来观察调度器的计算开销，不是网络时间。
+// ============================================================================
+
+// 只测分解：对每个维度生成随机矩阵，分别计时
+//   建矩阵 / scaling（可选）/ 双随机化 / Birkhoff 分解，
+// 并用 verify_decomposition() 校验分解结果能否还原"双随机化后的矩阵"
+// （不是原始随机矩阵——双随机化会补入流量）。
 void DecompositionTester::run(bool enable_scaling){
 
     for (auto test_dim = test_dims.begin(); test_dim != test_dims.end(); test_dim++){
@@ -29,6 +48,7 @@ void DecompositionTester::run(bool enable_scaling){
                     mat[id] = rand() % MAX_ELEMENT;
                 }
             }
+            // 分阶段计时：建对象 -> scaling -> 双随机化 -> 分解
             auto t1 = high_resolution_clock::now();
             Matrix m(mat, dim);
             FastAll2All app(&m, dim);
@@ -60,6 +80,11 @@ void DecompositionTester::run(bool enable_scaling){
 }
 
 
+// 构造 benchmark 上下文并设置随机种子。
+//   s_n / g_n       ：server 数和每 server GPU 数
+//   times           ：每个配置点重复次数
+//   scaling         ：是否允许 FastAll2All 做矩阵缩放
+//   inter/intra_type：默认链路类型（benchmark 方法可以覆盖）
 FastAll2AllTester::FastAll2AllTester(uint s_n, uint g_n, uint times, bool scaling, INTER_LINK_TYPE inter_type, INTRA_LINK_TYPE intra_type){
     srand((unsigned)time(0));
     server_n = s_n;
@@ -70,6 +95,8 @@ FastAll2AllTester::FastAll2AllTester(uint s_n, uint g_n, uint times, bool scalin
     intra_link_type = intra_type;
 }
 
+// 最简单的端到端对比：固定规模，重复 test_times 次。
+// 每次随机生成流量，跑 FAST（pipeline2），再和 Spread-out 基线比加速比。
 void FastAll2AllTester::run(){
 
     uint dim = server_n * gpu_n;
@@ -84,13 +111,14 @@ void FastAll2AllTester::run(){
             }
         }
         for (uint i = 0; i < dim; i++){
-            mat[i * dim + i] = 0;                 //clean the diagnal
+            mat[i * dim + i] = 0;                 // 自己发给自己的流量没有意义，清掉对角线
         }
 
         // print_matrix(mat, dim, dim);
 
         // FastAll2All
         cout << "++++++++++++ FAST ALL2ALL ++++++++++++"<<endl;
+        // 每个源 server 一个 LocalScheduler；mat + s*dim*gpu_n 指向该 server 的第一行
         vector<LocalScheduler*> local_schedulers;
         for (uint s = 0; s < server_n; s++){
             LocalScheduler* ls = new LocalScheduler(mat + s * dim * gpu_n, gpu_n, server_n, s, intra_link_type);
@@ -105,7 +133,7 @@ void FastAll2AllTester::run(){
         }
 
         cout << "++++++++++++ BASELINE ALL2ALL ++++++++++++"<<endl;
-        // Baseline - Spreadout
+        // Baseline - Spreadout：经典 all-to-all 的耗时模型
         double baseline = spread_out_baseline(mat, server_n, gpu_n, get_inter_link_info(inter_link_type), get_intra_link_info(intra_link_type));
         cout << "Baseline All2All: " << baseline << endl;
 
@@ -116,6 +144,12 @@ void FastAll2AllTester::run(){
 }
 
 
+// 扫描 "server 数 × 每 server GPU 数" 的影响。
+// 固定 g_n=8，server 数从 2 到 64（步长 2），每个配置重复 test_times 次。
+// 输出三个文件：
+//   speedup_server_gpu_number.txt  每个配置的加速比（Spread-out 时间 / FAST 时间）
+//   time_server_gpu_number.txt     每次调度在本机实际消耗的 CPU 时间
+//   sim_scale.txt                  三种算法带宽（FAST / 理论最优 / Spread-out）
 void FastAll2AllTester::server_gpu_number_benchmark(INTRA_LINK_TYPE _intra_type, INTER_LINK_TYPE _inter_type){
 
     cout << "Benchmarking the effect of server and gpu number" <<endl;
@@ -174,9 +208,10 @@ void FastAll2AllTester::server_gpu_number_benchmark(INTRA_LINK_TYPE _intra_type,
 
                 GlobalScheduler global_scheduler(s_n, g_n, local_schedulers, _inter_type, _intra_type, enable_scaling);
 
-                auto t1 = high_resolution_clock::now();   
+                // 跑 FAST 并记录"调度算法本身"的 CPU 耗时（不是网络时间）
+                auto t1 = high_resolution_clock::now();
                 struct pipeline_result_t fastall2all_r = global_scheduler.pipeline2();
-                auto t2 = high_resolution_clock::now();     
+                auto t2 = high_resolution_clock::now();
                 auto duration = duration_cast<microseconds>(t2 - t1).count();
                 cur_time.push_back(duration);
 
@@ -188,16 +223,22 @@ void FastAll2AllTester::server_gpu_number_benchmark(INTRA_LINK_TYPE _intra_type,
                 // Baseline - Spreadout
                 double baseline = spread_out_baseline(mat, s_n, g_n, get_inter_link_info(_inter_type), get_intra_link_info(_intra_type));
                 cur_speedup.push_back(baseline/fastall2all_r.t);
+                // 算法带宽 = 总工作量 / 时间 / GPU 数。
+                // 工作量按 MB 计、时间按 us 计时，MB/us * 1e3 = GB/s。
                 double spreadout_algbw = workload_sz / baseline * 1e3 / (s_n * g_n);
                 cur_spread_algbw.push_back(spreadout_algbw);
 
-                // calculate theoretical optimal
+                // 理论最优上界：把最忙 server 的跨 server 总流量平均分摊到
+                // g_n 块 GPU 的网卡上，用 inter.beta 估计所需传输时间，再反推带宽。
+                // 它对时间是一个宽松下界（忽略 server 内开销和负载不均），
+                // 因此反推出的带宽是理论上界。
                 // cout << "workload sz: " << workload_sz << endl;
                 // cout << "cross node sz: " << MAX(max_cross_node_send_sz, max_cross_node_recv_sz)  << endl;
                 double crossnode_time_limit = MAX(max_cross_node_send_sz, max_cross_node_recv_sz) * get_inter_link_info(_inter_type).beta / g_n;
                 double opt_algbw_limit = workload_sz  * 1e3 / (g_n * s_n) / crossnode_time_limit;
                 cur_opt_algbw.push_back(opt_algbw_limit);
 
+                // FAST 的算法带宽：用模型时间 fastall2all_r.t
                 double flash_algbw = workload_sz / fastall2all_r.t * 1e3 / (s_n * g_n);
                 cur_flash_algbw.push_back(flash_algbw);
                 // std::cout << "flash algbw: " << flash_algbw  << " GBps" << std::endl;
@@ -232,6 +273,8 @@ void FastAll2AllTester::server_gpu_number_benchmark(INTRA_LINK_TYPE _intra_type,
 
     }
 
+    // 把结果写到文本文件（列格式与 plot/ 下的 Python 脚本约定一致），
+    // 同时打印到终端方便直接观察。
     // output benchmark results to files
     string benchmark_dir(BENCHMARK_DIR);
 
@@ -263,6 +306,10 @@ void FastAll2AllTester::server_gpu_number_benchmark(INTRA_LINK_TYPE _intra_type,
     scale_f.close();
 }
 
+// 评估 server 内拓扑的影响：固定 4 个 server × 8 GPU，把 server 内代价函数
+// 换成调用者提供的 fn（如 full mesh / 2 ring / hybrid cube mesh），
+// 其余流程与 pipeline3 一致。只打印结果，不写文件。
+// inter_Gbps / intra_Gbps 用来把链路带宽换算成 beta（us/MB）。
 void FastAll2AllTester::topology_benchmark(intra_transfer_topo_fn fn, uint inter_Gbps, uint intra_Gbps){
     cout << "Benchmarking topology" <<endl;
 
@@ -343,6 +390,9 @@ void FastAll2AllTester::topology_benchmark(intra_transfer_topo_fn fn, uint inter
 
 
 
+// 扫描 server 内链路带宽对 FAST 的影响。
+// 固定 server 间 100 Gbps，server 内带宽从 100 到 7000 Gbps；
+// server 数取 4、8、16。输出加速比、intra 开销比例和算法带宽。
 void FastAll2AllTester::fabric_speed_benchmark(){
 
     cout << "Benchmarking the effect of intra-link speed" <<endl;
@@ -465,6 +515,8 @@ void FastAll2AllTester::fabric_speed_benchmark(){
         
     }
 
+    // 把结果写到文本文件（列格式与 plot/ 下的 Python 脚本约定一致），
+    // 同时打印到终端方便直接观察。
     // output benchmark results to files
     string benchmark_dir(BENCHMARK_DIR);
 
@@ -486,6 +538,8 @@ void FastAll2AllTester::fabric_speed_benchmark(){
     }
     ratio_f.close();
 
+    // sim_intra_speed.txt 中存的是 algbw / 12.5，即相对 100 Gbps 网卡
+    // （12.5 GB/s）的归一化带宽；终端打印的是原始 GB/s。
     ofstream scale_f;
     scale_f.open(benchmark_dir + "sim_intra_speed.txt");
     cout << " ----------------- AlgBW -----------------" << endl;
@@ -494,10 +548,13 @@ void FastAll2AllTester::fabric_speed_benchmark(){
         cout << tr->first.svr_n << " " << tr->first.ratio << " " << tr->second.flash_algbw << " " << tr->second.opt_algbw << " " << tr->second.spread_algbw << endl;
     }
     scale_f.close();
-    
+
 }
 
 
+// 扫描流量偏斜度：用 Zipf(s) 生成矩阵，s 越大表示少数流占越大比例。
+// 固定 16 GPU/server，server 数 16/32/48/64。
+// 主要看 FAST 相对 Spread-out 的加速比随偏斜度的变化。
 void FastAll2AllTester::skewness_benchmark(INTRA_LINK_TYPE _intra_type, INTER_LINK_TYPE _inter_type){
     cout << "Benchmarking the effect of skewness" <<endl;
     map<struct server_skewness_config_t, struct statistics_t> algo_speedup;
@@ -569,6 +626,8 @@ void FastAll2AllTester::skewness_benchmark(INTRA_LINK_TYPE _intra_type, INTER_LI
         }
     }
 
+    // 把结果写到文本文件（列格式与 plot/ 下的 Python 脚本约定一致），
+    // 同时打印到终端方便直接观察。
     // output benchmark results to files
     string benchmark_dir(BENCHMARK_DIR);
 
@@ -592,6 +651,13 @@ void FastAll2AllTester::skewness_benchmark(INTRA_LINK_TYPE _intra_type, INTER_LI
 }
 
 
+// 扫描单条消息大小，并对比 scaling 开/关的效果。
+// 矩阵元素取值 0..MAX_ELEMENT-1；第 k 个配置把"最大元素"对应的消息大小定为
+// transfer_sizes[k] MB，于是 MBpu = transfer_sizes[k] / MAX_ELEMENT。
+// （随机元素的平均值约为 transfer_sizes[k]/2，不是 transfer_sizes[k]。）
+//   - 消息很小时，固定延迟 alpha 占主导，scaling 减少阶段数可能更有利；
+//   - 消息很大时，传输时间 beta 占主导，保持高精度（不缩放）通常更合适。
+// fstr 用于区分不同 scaling 策略的输出文件名（"0"/"1"/"2"）。
 void FastAll2AllTester::transfer_size_benchmark(bool enable_scaling, INTRA_LINK_TYPE _intra_type, INTER_LINK_TYPE _inter_type, scaling_success_condition fn, string fstr){
     cout << "Benchmarking the effect of transfer size, enable scaling: " << enable_scaling <<endl;
     map<struct server_transfer_config_t, struct statistics_t> algo_speedup;
@@ -607,8 +673,12 @@ void FastAll2AllTester::transfer_size_benchmark(bool enable_scaling, INTRA_LINK_
             vector <double> cur_speedup;
             vector <double> cur_time;
             struct server_transfer_config_t cur_config = {.svr_n=s_n, .sz=*t_sz};
+            // 令最大元素（MAX_ELEMENT 个单位）对应 *t_sz MB：
+            // 一个单位 = (*t_sz / MAX_ELEMENT) MB，传进 pipeline 里参与 beta 计算。
             double MBpu = (*t_sz) / MAX_ELEMENT;
 
+            // 原实现每个配置只采样 1 次（注意这里是 tt < 1，而不是 test_times），
+            // 因此下面算出的标准差恒为 0，err 只有形式意义。
             for (uint tt = 0; tt < 1; tt++){
                 uint dim = s_n * g_n;
                 uint* mat = new uint[dim * dim];
@@ -660,6 +730,8 @@ void FastAll2AllTester::transfer_size_benchmark(bool enable_scaling, INTRA_LINK_
         }
     }
 
+    // 把结果写到文本文件（列格式与 plot/ 下的 Python 脚本约定一致），
+    // 同时打印到终端方便直接观察。
     // output benchmark results to files
     string benchmark_dir(BENCHMARK_DIR);
 
@@ -683,6 +755,10 @@ void FastAll2AllTester::transfer_size_benchmark(bool enable_scaling, INTRA_LINK_
 
 }
 
+// 用牛顿迭代求 Zipf 分布的逆 CDF：给定概率 p 和取值范围 N，
+// 返回对应的流量大小（1..N）。
+// 公式来自 Castan 的 pcap 生成脚本；这里只关心"能生成近似 Zipf 的随机流量"，
+// 精度由 tolerance 控制（0.01）。
 uint32_t zipf_distribution::zipf_inverse_cdf_fast(double p, uint32_t N){
     if (p > 1.0 || p < 0){
         printf("ERROR: probability must be within [0,1]\n");
@@ -690,7 +766,7 @@ uint32_t zipf_distribution::zipf_inverse_cdf_fast(double p, uint32_t N){
     }
 
     double tolerance = 0.01;
-    double x = (double) N / 2.0;
+    double x = (double) N / 2.0;   // 牛顿迭代初值：取范围中点
 
     double D = p * (12 * (pow(N, 1 - s) - 1) / (1 - s) +
                     6 - 6 * pow(N, -s) +
@@ -711,6 +787,8 @@ uint32_t zipf_distribution::zipf_inverse_cdf_fast(double p, uint32_t N){
 }
 
 
+// 生成 N 个服从 Zipf 分布的流量值：每次取 [0,1] 均匀随机数 p，
+// 通过逆 CDF 映射成 1..MAX_ELEMENT 的流量大小。
 void zipf_distribution::zipf(vector<uint> * r, uint N){
     double p = 0.0;
     uint sampled_transfer_size = 0;

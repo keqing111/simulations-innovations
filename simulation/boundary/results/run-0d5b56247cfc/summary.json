@@ -1,0 +1,1730 @@
+[
+  {
+    "F000": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "SPM": {
+      "gm": 0.9374509861959536,
+      "losses": 14,
+      "maximum": 0.9958701593169307,
+      "minimum": 0.8144480970306103,
+      "near_ties": 1,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 0.9729963133300678,
+      "losses": 15,
+      "maximum": 0.9842962152298178,
+      "minimum": 0.9647333996543416,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 3,
+    "kind": "balanced",
+    "maxmin": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "method": "F000-opt",
+    "n": 24,
+    "seed": 0,
+    "spreadout": {
+      "gm": 2.2523484859781426,
+      "losses": 0,
+      "maximum": 5.228300138167914,
+      "minimum": 1.3888849216118047,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "SPM": {
+      "gm": 0.9374509861959536,
+      "losses": 14,
+      "maximum": 0.9958701593169307,
+      "minimum": 0.8144480970306103,
+      "near_ties": 1,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 0.9729963133300678,
+      "losses": 15,
+      "maximum": 0.9842962152298178,
+      "minimum": 0.9647333996543416,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 3,
+    "kind": "balanced",
+    "maxmin": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "method": "maxmin-opt",
+    "n": 24,
+    "seed": 0,
+    "spreadout": {
+      "gm": 2.2523484859781426,
+      "losses": 0,
+      "maximum": 5.228300138167914,
+      "minimum": 1.3888849216118047,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 0.4439810296787725,
+      "losses": 15,
+      "maximum": 0.7200020566423151,
+      "minimum": 0.19126675469523008,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "SPM": {
+      "gm": 0.41621045412466023,
+      "losses": 15,
+      "maximum": 0.7125959756640444,
+      "minimum": 0.15577684438675068,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 0.43199190506593305,
+      "losses": 15,
+      "maximum": 0.6977996972140921,
+      "minimum": 0.18826314274580494,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 3,
+    "kind": "balanced",
+    "maxmin": {
+      "gm": 0.4439810296787725,
+      "losses": 15,
+      "maximum": 0.7200020566423151,
+      "minimum": 0.19126675469523008,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "method": "spreadout-opt",
+    "n": 24,
+    "seed": 0,
+    "spreadout": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.0277531233160715,
+      "losses": 0,
+      "maximum": 1.036555799102938,
+      "minimum": 1.0159543281048944,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "SPM": {
+      "gm": 0.9634681790186227,
+      "losses": 7,
+      "maximum": 1.0274687199899253,
+      "minimum": 0.8274420691950435,
+      "near_ties": 5,
+      "wins": 3
+    },
+    "X10": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 3,
+    "kind": "balanced",
+    "maxmin": {
+      "gm": 1.0277531233160715,
+      "losses": 0,
+      "maximum": 1.036555799102938,
+      "minimum": 1.0159543281048944,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "method": "X10-opt",
+    "n": 24,
+    "seed": 0,
+    "spreadout": {
+      "gm": 2.3148581912602606,
+      "losses": 0,
+      "maximum": 5.311714154003109,
+      "minimum": 1.4330760015981918,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.0667224363994343,
+      "losses": 0,
+      "maximum": 1.2278253256971094,
+      "minimum": 1.0041469669960812,
+      "near_ties": 1,
+      "wins": 14
+    },
+    "SPM": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 1.037916997963117,
+      "losses": 3,
+      "maximum": 1.208543821046983,
+      "minimum": 0.9732656386948747,
+      "near_ties": 5,
+      "wins": 7
+    },
+    "configs": 15,
+    "dc_count": 3,
+    "kind": "balanced",
+    "maxmin": {
+      "gm": 1.0667224363994343,
+      "losses": 0,
+      "maximum": 1.2278253256971094,
+      "minimum": 1.0041469669960812,
+      "near_ties": 1,
+      "wins": 14
+    },
+    "method": "SPM-opt",
+    "n": 24,
+    "seed": 0,
+    "spreadout": {
+      "gm": 2.402630664583181,
+      "losses": 0,
+      "maximum": 6.419439319988261,
+      "minimum": 1.4033197409908658,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.0863963657964788,
+      "losses": 0,
+      "maximum": 1.2758829831022975,
+      "minimum": 1.0041469669960812,
+      "near_ties": 1,
+      "wins": 14
+    },
+    "SPM": {
+      "gm": 1.018443344515609,
+      "losses": 0,
+      "maximum": 1.0771007370047785,
+      "minimum": 0.9999999999999999,
+      "near_ties": 10,
+      "wins": 5
+    },
+    "X10": {
+      "gm": 1.0570596587351575,
+      "losses": 3,
+      "maximum": 1.255846791343721,
+      "minimum": 0.9732656386948747,
+      "near_ties": 4,
+      "wins": 8
+    },
+    "configs": 15,
+    "dc_count": 3,
+    "kind": "balanced",
+    "maxmin": {
+      "gm": 1.0863963657964788,
+      "losses": 0,
+      "maximum": 1.2758829831022975,
+      "minimum": 1.0041469669960812,
+      "near_ties": 1,
+      "wins": 14
+    },
+    "method": "A1-opt",
+    "n": 24,
+    "seed": 0,
+    "spreadout": {
+      "gm": 2.4469432096738553,
+      "losses": 0,
+      "maximum": 6.6706991768398325,
+      "minimum": 1.4033197409908658,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "SPM": {
+      "gm": 0.5465710017176691,
+      "losses": 15,
+      "maximum": 0.9440863864242113,
+      "minimum": 0.35188577436820523,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 0.5441502294986384,
+      "losses": 15,
+      "maximum": 0.9320935126766033,
+      "minimum": 0.35597941748238054,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 3,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 0.5481863966107735,
+      "losses": 15,
+      "maximum": 0.9540035333272334,
+      "minimum": 0.3490051607122645,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "method": "F000-opt",
+    "n": 24,
+    "seed": 760203,
+    "spreadout": {
+      "gm": 0.719504453208004,
+      "losses": 11,
+      "maximum": 1.3960067557300349,
+      "minimum": 0.407524107748623,
+      "near_ties": 0,
+      "wins": 4
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.8241970362318671,
+      "losses": 0,
+      "maximum": 2.8652871434885308,
+      "minimum": 1.0482141470821882,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "SPM": {
+      "gm": 0.9970532014236548,
+      "losses": 4,
+      "maximum": 1.0169726154505125,
+      "minimum": 0.9762420718848737,
+      "near_ties": 9,
+      "wins": 2
+    },
+    "X10": {
+      "gm": 0.9926372359163067,
+      "losses": 7,
+      "maximum": 1.0199832482588014,
+      "minimum": 0.9770336063911466,
+      "near_ties": 6,
+      "wins": 2
+    },
+    "configs": 15,
+    "dc_count": 3,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "method": "maxmin-opt",
+    "n": 24,
+    "seed": 760203,
+    "spreadout": {
+      "gm": 1.3125178910976711,
+      "losses": 0,
+      "maximum": 1.4633140307785313,
+      "minimum": 1.1676735865937644,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.3898454631397625,
+      "losses": 4,
+      "maximum": 2.4538425604426806,
+      "minimum": 0.7163289116584932,
+      "near_ties": 0,
+      "wins": 11
+    },
+    "SPM": {
+      "gm": 0.7596492270210577,
+      "losses": 15,
+      "maximum": 0.8634722895590321,
+      "minimum": 0.676276373698855,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 0.7562847277351432,
+      "losses": 15,
+      "maximum": 0.8735174452598586,
+      "minimum": 0.6676855314995732,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 3,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 0.7618943762844181,
+      "losses": 15,
+      "maximum": 0.8564037171698924,
+      "minimum": 0.6833803127466542,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "method": "spreadout-opt",
+    "n": 24,
+    "seed": 760203,
+    "spreadout": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.8377277924174837,
+      "losses": 0,
+      "maximum": 2.8091511781000533,
+      "minimum": 1.0728537280861403,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "SPM": {
+      "gm": 1.0044487203860248,
+      "losses": 3,
+      "maximum": 1.0399673540060235,
+      "minimum": 0.9843303279570559,
+      "near_ties": 6,
+      "wins": 6
+    },
+    "X10": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 3,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 1.007417376476812,
+      "losses": 2,
+      "maximum": 1.023506247337473,
+      "minimum": 0.9804082583778562,
+      "near_ties": 6,
+      "wins": 7
+    },
+    "method": "X10-opt",
+    "n": 24,
+    "seed": 760203,
+    "spreadout": {
+      "gm": 1.322253330428494,
+      "losses": 0,
+      "maximum": 1.4977110523184058,
+      "minimum": 1.1447968273862175,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.829588464915578,
+      "losses": 0,
+      "maximum": 2.841831278333016,
+      "minimum": 1.0592251031047752,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "SPM": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 0.9955709830718734,
+      "losses": 6,
+      "maximum": 1.015919119423523,
+      "minimum": 0.96156864554251,
+      "near_ties": 6,
+      "wins": 3
+    },
+    "configs": 15,
+    "dc_count": 3,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 1.0029555078627075,
+      "losses": 2,
+      "maximum": 1.0243361035129903,
+      "minimum": 0.983310646528084,
+      "near_ties": 9,
+      "wins": 4
+    },
+    "method": "SPM-opt",
+    "n": 24,
+    "seed": 760203,
+    "spreadout": {
+      "gm": 1.3163970480447544,
+      "losses": 0,
+      "maximum": 1.478685399773109,
+      "minimum": 1.1581147560747913,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.8296003069321949,
+      "losses": 0,
+      "maximum": 2.8720623401555256,
+      "minimum": 1.0547105089525812,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "SPM": {
+      "gm": 1.0000064725028848,
+      "losses": 3,
+      "maximum": 1.0230261398578318,
+      "minimum": 0.9801812240528629,
+      "near_ties": 9,
+      "wins": 3
+    },
+    "X10": {
+      "gm": 0.9955774269079334,
+      "losses": 4,
+      "maximum": 1.0223950788216467,
+      "minimum": 0.9830888231465396,
+      "near_ties": 10,
+      "wins": 1
+    },
+    "configs": 15,
+    "dc_count": 3,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 1.0029619994951253,
+      "losses": 1,
+      "maximum": 1.0241722238842887,
+      "minimum": 0.9893868157223136,
+      "near_ties": 13,
+      "wins": 1
+    },
+    "method": "A1-opt",
+    "n": 24,
+    "seed": 760203,
+    "spreadout": {
+      "gm": 1.3164055684284455,
+      "losses": 0,
+      "maximum": 1.472382995837267,
+      "minimum": 1.170434642570303,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "SPM": {
+      "gm": 0.5395736336174842,
+      "losses": 15,
+      "maximum": 0.9279828799462347,
+      "minimum": 0.34851346567521396,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 0.5460122983794715,
+      "losses": 15,
+      "maximum": 0.9603276335613341,
+      "minimum": 0.34863224952141997,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 3,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 0.5576263532097058,
+      "losses": 14,
+      "maximum": 0.9974149277257303,
+      "minimum": 0.3482426268417221,
+      "near_ties": 1,
+      "wins": 0
+    },
+    "method": "F000-opt",
+    "n": 24,
+    "seed": 810203,
+    "spreadout": {
+      "gm": 0.6963013590425735,
+      "losses": 11,
+      "maximum": 1.362664062280011,
+      "minimum": 0.39399036524628656,
+      "near_ties": 0,
+      "wins": 4
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.7933155315274911,
+      "losses": 0,
+      "maximum": 2.8715611557068366,
+      "minimum": 1.0025917721927065,
+      "near_ties": 1,
+      "wins": 14
+    },
+    "SPM": {
+      "gm": 0.9676257775689584,
+      "losses": 13,
+      "maximum": 1.0007777302737122,
+      "minimum": 0.930388000169787,
+      "near_ties": 2,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 0.979172335088929,
+      "losses": 11,
+      "maximum": 1.0011188253524028,
+      "minimum": 0.9628165840178858,
+      "near_ties": 4,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 3,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "method": "maxmin-opt",
+    "n": 24,
+    "seed": 810203,
+    "spreadout": {
+      "gm": 1.248688041794747,
+      "losses": 0,
+      "maximum": 1.3661957771046287,
+      "minimum": 1.1313674285639852,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.43615977049796,
+      "losses": 4,
+      "maximum": 2.5381331327097096,
+      "minimum": 0.7338565884879938,
+      "near_ties": 0,
+      "wins": 11
+    },
+    "SPM": {
+      "gm": 0.7749139458228365,
+      "losses": 15,
+      "maximum": 0.8845735744257487,
+      "minimum": 0.6810063504526074,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 0.7841608971297255,
+      "losses": 15,
+      "maximum": 0.8848750636414348,
+      "minimum": 0.7047427609960688,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 3,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 0.8008405354492655,
+      "losses": 15,
+      "maximum": 0.8838861494088385,
+      "minimum": 0.7319595161678033,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "method": "spreadout-opt",
+    "n": 24,
+    "seed": 810203,
+    "spreadout": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.8314605787597351,
+      "losses": 0,
+      "maximum": 2.868351970802288,
+      "minimum": 1.0413112827874615,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "SPM": {
+      "gm": 0.9882078393085708,
+      "losses": 8,
+      "maximum": 1.0168745130899344,
+      "minimum": 0.9663190431216165,
+      "near_ties": 6,
+      "wins": 1
+    },
+    "X10": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 3,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 1.0212706835811283,
+      "losses": 0,
+      "maximum": 1.0386194178614434,
+      "minimum": 0.9988824250188193,
+      "near_ties": 4,
+      "wins": 11
+    },
+    "method": "X10-opt",
+    "n": 24,
+    "seed": 810203,
+    "spreadout": {
+      "gm": 1.2752484900233017,
+      "losses": 0,
+      "maximum": 1.4189574627011716,
+      "minimum": 1.1301030406312993,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.8533151690449765,
+      "losses": 0,
+      "maximum": 2.869329591218487,
+      "minimum": 1.077606086933347,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "SPM": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 1.0119328750717864,
+      "losses": 1,
+      "maximum": 1.0348549033759904,
+      "minimum": 0.9834055108347063,
+      "near_ties": 6,
+      "wins": 8
+    },
+    "configs": 15,
+    "dc_count": 3,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 1.0334573790627797,
+      "losses": 0,
+      "maximum": 1.0748203973154313,
+      "minimum": 0.9992228741206106,
+      "near_ties": 2,
+      "wins": 13
+    },
+    "method": "SPM-opt",
+    "n": 24,
+    "seed": 810203,
+    "spreadout": {
+      "gm": 1.2904658709402341,
+      "losses": 0,
+      "maximum": 1.4684150879582614,
+      "minimum": 1.1304882136561498,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.877441265489886,
+      "losses": 0,
+      "maximum": 2.9440921752562073,
+      "minimum": 1.0810089863801118,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "SPM": {
+      "gm": 1.0130178055237855,
+      "losses": 1,
+      "maximum": 1.07628442957951,
+      "minimum": 0.9898599401723143,
+      "near_ties": 8,
+      "wins": 6
+    },
+    "X10": {
+      "gm": 1.0251060204425964,
+      "losses": 0,
+      "maximum": 1.0584240392740785,
+      "minimum": 1.0028720781263984,
+      "near_ties": 2,
+      "wins": 13
+    },
+    "configs": 15,
+    "dc_count": 3,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 1.0469107262405402,
+      "losses": 0,
+      "maximum": 1.0982242098360233,
+      "minimum": 1.0044236430891331,
+      "near_ties": 2,
+      "wins": 13
+    },
+    "method": "A1-opt",
+    "n": 24,
+    "seed": 810203,
+    "spreadout": {
+      "gm": 1.3072649046832168,
+      "losses": 0,
+      "maximum": 1.4730520967419203,
+      "minimum": 1.1482825792805262,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "SPM": {
+      "gm": 0.9118333405176263,
+      "losses": 15,
+      "maximum": 0.9854880032594644,
+      "minimum": 0.8502097892464094,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 0.9651909623192878,
+      "losses": 14,
+      "maximum": 0.992025495066172,
+      "minimum": 0.949055173409035,
+      "near_ties": 1,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 6,
+    "kind": "balanced",
+    "maxmin": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "method": "F000-opt",
+    "n": 24,
+    "seed": 0,
+    "spreadout": {
+      "gm": 2.493892625235888,
+      "losses": 0,
+      "maximum": 6.0447177108592935,
+      "minimum": 1.3164274700901646,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "SPM": {
+      "gm": 0.9118333405176263,
+      "losses": 15,
+      "maximum": 0.9854880032594644,
+      "minimum": 0.8502097892464094,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 0.9651909623192878,
+      "losses": 14,
+      "maximum": 0.992025495066172,
+      "minimum": 0.949055173409035,
+      "near_ties": 1,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 6,
+    "kind": "balanced",
+    "maxmin": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "method": "maxmin-opt",
+    "n": 24,
+    "seed": 0,
+    "spreadout": {
+      "gm": 2.493892625235888,
+      "losses": 0,
+      "maximum": 6.0447177108592935,
+      "minimum": 1.3164274700901646,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 0.4009795730100503,
+      "losses": 15,
+      "maximum": 0.7596316718698586,
+      "minimum": 0.16543369729301122,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "SPM": {
+      "gm": 0.3656265435370856,
+      "losses": 15,
+      "maximum": 0.7452536896919034,
+      "minimum": 0.14621836508573027,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 0.3870218599439476,
+      "losses": 15,
+      "maximum": 0.7209323680734439,
+      "minimum": 0.1641144454577267,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 6,
+    "kind": "balanced",
+    "maxmin": {
+      "gm": 0.4009795730100503,
+      "losses": 15,
+      "maximum": 0.7596316718698586,
+      "minimum": 0.16543369729301122,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "method": "spreadout-opt",
+    "n": 24,
+    "seed": 0,
+    "spreadout": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.0360644049101626,
+      "losses": 0,
+      "maximum": 1.0536795204518716,
+      "minimum": 1.0080386088598419,
+      "near_ties": 1,
+      "wins": 14
+    },
+    "SPM": {
+      "gm": 0.9447180673206401,
+      "losses": 10,
+      "maximum": 1.0381419609027573,
+      "minimum": 0.8909536554074627,
+      "near_ties": 3,
+      "wins": 2
+    },
+    "X10": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 6,
+    "kind": "balanced",
+    "maxmin": {
+      "gm": 1.0360644049101626,
+      "losses": 0,
+      "maximum": 1.0536795204518716,
+      "minimum": 1.0080386088598419,
+      "near_ties": 1,
+      "wins": 14
+    },
+    "method": "X10-opt",
+    "n": 24,
+    "seed": 0,
+    "spreadout": {
+      "gm": 2.5838333786748633,
+      "losses": 0,
+      "maximum": 6.09330883220505,
+      "minimum": 1.3870926653942752,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.0966916382245067,
+      "losses": 0,
+      "maximum": 1.1761802941440587,
+      "minimum": 1.014725695992785,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "SPM": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 1.0585168576654278,
+      "losses": 2,
+      "maximum": 1.12239283595808,
+      "minimum": 0.9632593977132091,
+      "near_ties": 3,
+      "wins": 10
+    },
+    "configs": 15,
+    "dc_count": 6,
+    "kind": "balanced",
+    "maxmin": {
+      "gm": 1.0966916382245067,
+      "losses": 0,
+      "maximum": 1.1761802941440587,
+      "minimum": 1.014725695992785,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "method": "SPM-opt",
+    "n": 24,
+    "seed": 0,
+    "spreadout": {
+      "gm": 2.735031188725962,
+      "losses": 0,
+      "maximum": 6.839086180547042,
+      "minimum": 1.3418249568323664,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.2244318569340038,
+      "losses": 0,
+      "maximum": 1.3036039370583676,
+      "minimum": 1.1216256174024992,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "SPM": {
+      "gm": 1.116477790344333,
+      "losses": 0,
+      "maximum": 1.2789298813702992,
+      "minimum": 1.0080848196396142,
+      "near_ties": 1,
+      "wins": 14
+    },
+    "X10": {
+      "gm": 1.1818105622885238,
+      "losses": 0,
+      "maximum": 1.2371920605416298,
+      "minimum": 1.0942794168832297,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "configs": 15,
+    "dc_count": 6,
+    "kind": "balanced",
+    "maxmin": {
+      "gm": 1.2244318569340038,
+      "losses": 0,
+      "maximum": 1.3036039370583676,
+      "minimum": 1.1216256174024992,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "method": "A1-opt",
+    "n": 24,
+    "seed": 0,
+    "spreadout": {
+      "gm": 3.0536015781115964,
+      "losses": 0,
+      "maximum": 6.894378958816543,
+      "minimum": 1.565637675706912,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "SPM": {
+      "gm": 0.4885736781151272,
+      "losses": 15,
+      "maximum": 0.8758925533733688,
+      "minimum": 0.33785626607280084,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 0.49388074062383874,
+      "losses": 15,
+      "maximum": 0.9016276447801927,
+      "minimum": 0.34123960711246015,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 6,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 0.4974688759712207,
+      "losses": 15,
+      "maximum": 0.9147984258579583,
+      "minimum": 0.3405051841092509,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "method": "F000-opt",
+    "n": 24,
+    "seed": 760203,
+    "spreadout": {
+      "gm": 0.688889730564665,
+      "losses": 11,
+      "maximum": 1.5558549932628314,
+      "minimum": 0.39734687765071575,
+      "near_ties": 0,
+      "wins": 4
+    }
+  },
+  {
+    "F000": {
+      "gm": 2.0101760095999484,
+      "losses": 0,
+      "maximum": 2.936812849460614,
+      "minimum": 1.0931369925151915,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "SPM": {
+      "gm": 0.982119086669036,
+      "losses": 8,
+      "maximum": 1.0101836395899262,
+      "minimum": 0.947906829061433,
+      "near_ties": 6,
+      "wins": 1
+    },
+    "X10": {
+      "gm": 0.9927872164054952,
+      "losses": 3,
+      "maximum": 1.0025094261617957,
+      "minimum": 0.9481388049031719,
+      "near_ties": 12,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 6,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "method": "maxmin-opt",
+    "n": 24,
+    "seed": 760203,
+    "spreadout": {
+      "gm": 1.3847896096408616,
+      "losses": 0,
+      "maximum": 1.700762648125075,
+      "minimum": 1.1669334159776763,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.451611129665594,
+      "losses": 4,
+      "maximum": 2.51669273434946,
+      "minimum": 0.6427334194575994,
+      "near_ties": 0,
+      "wins": 11
+    },
+    "SPM": {
+      "gm": 0.7092189888135741,
+      "losses": 15,
+      "maximum": 0.8553947793621408,
+      "minimum": 0.5629654159071132,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 0.7169227798170508,
+      "losses": 15,
+      "maximum": 0.8587952398921928,
+      "minimum": 0.5795062192070751,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 6,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 0.722131357022057,
+      "losses": 15,
+      "maximum": 0.8569469228560768,
+      "minimum": 0.5879715203661149,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "method": "spreadout-opt",
+    "n": 24,
+    "seed": 760203,
+    "spreadout": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    }
+  },
+  {
+    "F000": {
+      "gm": 2.0247803118154875,
+      "losses": 0,
+      "maximum": 2.9304921795623695,
+      "minimum": 1.1091053006075355,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "SPM": {
+      "gm": 0.9892543643187869,
+      "losses": 7,
+      "maximum": 1.0417741396637685,
+      "minimum": 0.9561937792922347,
+      "near_ties": 6,
+      "wins": 2
+    },
+    "X10": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 6,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 1.0072651858075083,
+      "losses": 0,
+      "maximum": 1.0546978932078668,
+      "minimum": 0.9974968552950138,
+      "near_ties": 12,
+      "wins": 3
+    },
+    "method": "X10-opt",
+    "n": 24,
+    "seed": 760203,
+    "spreadout": {
+      "gm": 1.3948503634592093,
+      "losses": 0,
+      "maximum": 1.725607020004508,
+      "minimum": 1.164421917528948,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 2.0467742017087556,
+      "losses": 0,
+      "maximum": 2.9598385479833644,
+      "minimum": 1.1416925468182713,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "SPM": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 1.0108623586296863,
+      "losses": 2,
+      "maximum": 1.0458131203700052,
+      "minimum": 0.9599009631039114,
+      "near_ties": 6,
+      "wins": 7
+    },
+    "configs": 15,
+    "dc_count": 6,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 1.0182064614909472,
+      "losses": 1,
+      "maximum": 1.054956003418761,
+      "minimum": 0.9899190214622163,
+      "near_ties": 6,
+      "wins": 8
+    },
+    "method": "SPM-opt",
+    "n": 24,
+    "seed": 760203,
+    "spreadout": {
+      "gm": 1.4100017283418518,
+      "losses": 0,
+      "maximum": 1.7763080497381663,
+      "minimum": 1.1690508571325275,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 2.0419410727973766,
+      "losses": 0,
+      "maximum": 2.9257642684750302,
+      "minimum": 1.143862370407305,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "SPM": {
+      "gm": 0.9976386604309632,
+      "losses": 7,
+      "maximum": 1.0558701595386775,
+      "minimum": 0.9581132264983786,
+      "near_ties": 3,
+      "wins": 5
+    },
+    "X10": {
+      "gm": 1.0084753693434043,
+      "losses": 1,
+      "maximum": 1.0588280753152597,
+      "minimum": 0.9799763026151405,
+      "near_ties": 7,
+      "wins": 7
+    },
+    "configs": 15,
+    "dc_count": 6,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 1.0158021302839797,
+      "losses": 1,
+      "maximum": 1.0734455493681017,
+      "minimum": 0.9890003685121983,
+      "near_ties": 6,
+      "wins": 8
+    },
+    "method": "A1-opt",
+    "n": 24,
+    "seed": 760203,
+    "spreadout": {
+      "gm": 1.4066722354683079,
+      "losses": 0,
+      "maximum": 1.8037457856798236,
+      "minimum": 1.1625432968205838,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "SPM": {
+      "gm": 0.47004989019984167,
+      "losses": 15,
+      "maximum": 0.7755663352826573,
+      "minimum": 0.33976705115124367,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 0.4779029172962138,
+      "losses": 15,
+      "maximum": 0.835129051031973,
+      "minimum": 0.3385446977537238,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 6,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 0.4831403015531354,
+      "losses": 15,
+      "maximum": 0.8575773962858613,
+      "minimum": 0.33845063414202525,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "method": "F000-opt",
+    "n": 24,
+    "seed": 810203,
+    "spreadout": {
+      "gm": 0.6674457747523043,
+      "losses": 11,
+      "maximum": 1.492885888845931,
+      "minimum": 0.38511098778895514,
+      "near_ties": 0,
+      "wins": 4
+    }
+  },
+  {
+    "F000": {
+      "gm": 2.0697921427488715,
+      "losses": 0,
+      "maximum": 2.954640645112121,
+      "minimum": 1.1660755103049196,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "SPM": {
+      "gm": 0.972905569435602,
+      "losses": 10,
+      "maximum": 1.009177352538552,
+      "minimum": 0.904368910190041,
+      "near_ties": 5,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 0.9891597032164671,
+      "losses": 9,
+      "maximum": 1.0031311479323564,
+      "minimum": 0.9738235343525713,
+      "near_ties": 6,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 6,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "method": "maxmin-opt",
+    "n": 24,
+    "seed": 810203,
+    "spreadout": {
+      "gm": 1.3814740202932525,
+      "losses": 0,
+      "maximum": 1.7408176746630326,
+      "minimum": 1.1378645774005247,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 1.4982490530726784,
+      "losses": 4,
+      "maximum": 2.5966540340521536,
+      "minimum": 0.6698435610326825,
+      "near_ties": 0,
+      "wins": 11
+    },
+    "SPM": {
+      "gm": 0.7042518028888292,
+      "losses": 15,
+      "maximum": 0.8867117984814281,
+      "minimum": 0.5195081158428025,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 0.7160175932997228,
+      "losses": 15,
+      "maximum": 0.879083455129174,
+      "minimum": 0.5594058174651017,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 6,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 0.7238644993032334,
+      "losses": 15,
+      "maximum": 0.8788392044723994,
+      "minimum": 0.5744426969892573,
+      "near_ties": 0,
+      "wins": 0
+    },
+    "method": "spreadout-opt",
+    "n": 24,
+    "seed": 810203,
+    "spreadout": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    }
+  },
+  {
+    "F000": {
+      "gm": 2.0924751948734808,
+      "losses": 0,
+      "maximum": 2.9538197072206263,
+      "minimum": 1.197419726644996,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "SPM": {
+      "gm": 0.9835677355961719,
+      "losses": 11,
+      "maximum": 1.0214418908494545,
+      "minimum": 0.9286784291892206,
+      "near_ties": 2,
+      "wins": 2
+    },
+    "X10": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "configs": 15,
+    "dc_count": 6,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 1.0109590966436293,
+      "losses": 0,
+      "maximum": 1.0268800914375433,
+      "minimum": 0.9968786255527903,
+      "near_ties": 6,
+      "wins": 9
+    },
+    "method": "X10-opt",
+    "n": 24,
+    "seed": 810203,
+    "spreadout": {
+      "gm": 1.3966137275923092,
+      "losses": 0,
+      "maximum": 1.7876110129340665,
+      "minimum": 1.1375484251982177,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 2.12743374873431,
+      "losses": 0,
+      "maximum": 2.9431929806367854,
+      "minimum": 1.289380359238449,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "SPM": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "near_ties": 15,
+      "wins": 0
+    },
+    "X10": {
+      "gm": 1.0167067948745472,
+      "losses": 2,
+      "maximum": 1.0767989958300705,
+      "minimum": 0.9790082127612537,
+      "near_ties": 2,
+      "wins": 11
+    },
+    "configs": 15,
+    "dc_count": 6,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 1.027848982897812,
+      "losses": 0,
+      "maximum": 1.1057434512978377,
+      "minimum": 0.9909061053387034,
+      "near_ties": 5,
+      "wins": 10
+    },
+    "method": "SPM-opt",
+    "n": 24,
+    "seed": 810203,
+    "spreadout": {
+      "gm": 1.4199466666581706,
+      "losses": 0,
+      "maximum": 1.924897743662178,
+      "minimum": 1.127762145166657,
+      "near_ties": 0,
+      "wins": 15
+    }
+  },
+  {
+    "F000": {
+      "gm": 2.1147638362080103,
+      "losses": 0,
+      "maximum": 2.9298995684550935,
+      "minimum": 1.1999987680131305,
+      "near_ties": 0,
+      "wins": 15
+    },
+    "SPM": {
+      "gm": 0.9940445090081713,
+      "losses": 6,
+      "maximum": 1.0380874719599438,
+      "minimum": 0.9306786468516473,
+      "near_ties": 5,
+      "wins": 4
+    },
+    "X10": {
+      "gm": 1.0106518067163408,
+      "losses": 0,
+      "maximum": 1.0437419371490555,
+      "minimum": 0.9919019638513956,
+      "near_ties": 8,
+      "wins": 7
+    },
+    "configs": 15,
+    "dc_count": 6,
+    "kind": "zipf",
+    "maxmin": {
+      "gm": 1.0217276375392037,
+      "losses": 0,
+      "maximum": 1.0535577209205889,
+      "minimum": 0.9916263669160726,
+      "near_ties": 3,
+      "wins": 12
+    },
+    "method": "A1-opt",
+    "n": 24,
+    "seed": 810203,
+    "spreadout": {
+      "gm": 1.4114901870760108,
+      "losses": 0,
+      "maximum": 1.8089398950510724,
+      "minimum": 1.1283365169301747,
+      "near_ties": 0,
+      "wins": 15
+    }
+  }
+]

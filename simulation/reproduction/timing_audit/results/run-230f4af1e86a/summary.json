@@ -1,0 +1,290 @@
+[
+  {
+    "bandwidth_mean": 73.05991543899287,
+    "gpus": 16,
+    "reliable": false,
+    "successful": 20,
+    "time_mean_us": 10388.224444444446,
+    "variant": "pipeline1"
+  },
+  {
+    "bandwidth_mean": 72.86766204530441,
+    "gpus": 16,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 10414.436666666666,
+    "variant": "pipeline2"
+  },
+  {
+    "bandwidth_mean": 72.86766204530441,
+    "gpus": 16,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 10414.436666666666,
+    "variant": "spread_out"
+  },
+  {
+    "bandwidth_mean": 85.14320841105653,
+    "gpus": 16,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 8914.394444444446,
+    "variant": "full_mesh"
+  },
+  {
+    "bandwidth_mean": 66.89396489187702,
+    "gpus": 16,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 11357.51888888889,
+    "variant": "two_ring"
+  },
+  {
+    "bandwidth_mean": 78.56943031684818,
+    "gpus": 16,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 9657.975,
+    "variant": "hybrid_cube"
+  },
+  {
+    "bandwidth_mean": 52.45035232695432,
+    "gpus": 32,
+    "reliable": false,
+    "successful": 20,
+    "time_mean_us": 29585.466666666667,
+    "variant": "pipeline1"
+  },
+  {
+    "bandwidth_mean": 50.41182514105624,
+    "gpus": 32,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 30788.591666666667,
+    "variant": "pipeline2"
+  },
+  {
+    "bandwidth_mean": 50.41182514105624,
+    "gpus": 32,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 30788.591666666667,
+    "variant": "spread_out"
+  },
+  {
+    "bandwidth_mean": 58.63882308279548,
+    "gpus": 32,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 26454.312222222223,
+    "variant": "full_mesh"
+  },
+  {
+    "bandwidth_mean": 44.74357953852978,
+    "gpus": 32,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 34706.36666666667,
+    "variant": "two_ring"
+  },
+  {
+    "bandwidth_mean": 54.59040312959206,
+    "gpus": 32,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 28423.297777777778,
+    "variant": "hybrid_cube"
+  },
+  {
+    "bandwidth_mean": 43.74461873507428,
+    "gpus": 64,
+    "reliable": false,
+    "successful": 20,
+    "time_mean_us": 72154.25777777778,
+    "variant": "pipeline1"
+  },
+  {
+    "bandwidth_mean": 43.78536476140022,
+    "gpus": 64,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 72072.16888888889,
+    "variant": "pipeline2"
+  },
+  {
+    "bandwidth_mean": 43.78536476140022,
+    "gpus": 64,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 72072.16888888889,
+    "variant": "spread_out"
+  },
+  {
+    "bandwidth_mean": 51.94050702810101,
+    "gpus": 64,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 60727.97666666666,
+    "variant": "full_mesh"
+  },
+  {
+    "bandwidth_mean": 37.633968616164076,
+    "gpus": 64,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 83867.49333333333,
+    "variant": "two_ring"
+  },
+  {
+    "bandwidth_mean": 47.50712449646605,
+    "gpus": 64,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 66409.78555555556,
+    "variant": "hybrid_cube"
+  },
+  {
+    "bandwidth_mean": 37.62566669095068,
+    "gpus": 128,
+    "reliable": false,
+    "successful": 20,
+    "time_mean_us": 168725.26055555555,
+    "variant": "pipeline1"
+  },
+  {
+    "bandwidth_mean": 39.46107247157549,
+    "gpus": 128,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 160876.46944444446,
+    "variant": "pipeline2"
+  },
+  {
+    "bandwidth_mean": 39.46107247157549,
+    "gpus": 128,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 160876.46944444446,
+    "variant": "spread_out"
+  },
+  {
+    "bandwidth_mean": 49.033600081751544,
+    "gpus": 128,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 129435.18444444443,
+    "variant": "full_mesh"
+  },
+  {
+    "bandwidth_mean": 32.51971833881554,
+    "gpus": 128,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 195214.34555555557,
+    "variant": "two_ring"
+  },
+  {
+    "bandwidth_mean": 43.10980268162845,
+    "gpus": 128,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 147261.6905555555,
+    "variant": "hybrid_cube"
+  },
+  {
+    "bandwidth_mean": 32.92053773913959,
+    "gpus": 256,
+    "reliable": false,
+    "successful": 20,
+    "time_mean_us": 387288.5744444445,
+    "variant": "pipeline1"
+  },
+  {
+    "bandwidth_mean": 36.976130234566874,
+    "gpus": 256,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 344805.1200000001,
+    "variant": "pipeline2"
+  },
+  {
+    "bandwidth_mean": 36.976130234566874,
+    "gpus": 256,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 344805.1200000001,
+    "variant": "spread_out"
+  },
+  {
+    "bandwidth_mean": 48.10854901882008,
+    "gpus": 256,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 265007.6544444444,
+    "variant": "full_mesh"
+  },
+  {
+    "bandwidth_mean": 30.195639093222308,
+    "gpus": 256,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 422239.6122222223,
+    "variant": "two_ring"
+  },
+  {
+    "bandwidth_mean": 40.87480836934943,
+    "gpus": 256,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 311911.1750000003,
+    "variant": "hybrid_cube"
+  },
+  {
+    "bandwidth_mean": 31.812183003687604,
+    "gpus": 320,
+    "reliable": false,
+    "successful": 20,
+    "time_mean_us": 501457.8633333334,
+    "variant": "pipeline1"
+  },
+  {
+    "bandwidth_mean": 36.47125569328953,
+    "gpus": 320,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 437398.4072222222,
+    "variant": "pipeline2"
+  },
+  {
+    "bandwidth_mean": 36.47125569328953,
+    "gpus": 320,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 437398.4072222222,
+    "variant": "spread_out"
+  },
+  {
+    "bandwidth_mean": 47.91267142478672,
+    "gpus": 320,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 332936.3405555557,
+    "variant": "full_mesh"
+  },
+  {
+    "bandwidth_mean": 29.907324894084763,
+    "gpus": 320,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 533396.243888889,
+    "variant": "two_ring"
+  },
+  {
+    "bandwidth_mean": 40.493691418192284,
+    "gpus": 320,
+    "reliable": true,
+    "successful": 20,
+    "time_mean_us": 393945.09833333374,
+    "variant": "hybrid_cube"
+  }
+]

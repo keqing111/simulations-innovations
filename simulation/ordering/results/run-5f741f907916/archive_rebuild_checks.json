@@ -1,0 +1,90 @@
+{
+  "binary_sha256": "b911515f26959bda0b3ddfc73164de270cf9ee5fe26fd6bdc59d0adb233c5421",
+  "checks": [
+    {
+      "case": "n12g8-d3-shared100-balanced-s0-l640101-w50-original",
+      "method": "F000"
+    },
+    {
+      "case": "n12g8-d3-shared100-balanced-s0-l640101-w50-original",
+      "method": "maxmin"
+    },
+    {
+      "case": "n12g8-d3-shared100-balanced-s0-l640101-w50-original",
+      "method": "spreadout"
+    },
+    {
+      "case": "n12g8-d3-shared100-balanced-s0-l640101-w50-original",
+      "method": "A1"
+    },
+    {
+      "case": "n12g8-d3-shared100-balanced-s0-l640101-w50-original",
+      "method": "A1D"
+    },
+    {
+      "case": "n12g8-d3-shared100-balanced-s0-l640101-w50-original",
+      "method": "A1P"
+    },
+    {
+      "case": "n12g8-d3-shared100-balanced-s0-l640101-w50-original",
+      "method": "A1DP"
+    },
+    {
+      "case": "n12g8-d6-shared100-balanced-s0-l640101-w5000-original",
+      "method": "F000"
+    },
+    {
+      "case": "n12g8-d6-shared100-balanced-s0-l640101-w5000-original",
+      "method": "maxmin"
+    },
+    {
+      "case": "n12g8-d6-shared100-balanced-s0-l640101-w5000-original",
+      "method": "spreadout"
+    },
+    {
+      "case": "n12g8-d6-shared100-balanced-s0-l640101-w5000-original",
+      "method": "A1"
+    },
+    {
+      "case": "n12g8-d6-shared100-balanced-s0-l640101-w5000-original",
+      "method": "A1D"
+    },
+    {
+      "case": "n12g8-d6-shared100-balanced-s0-l640101-w5000-original",
+      "method": "A1P"
+    },
+    {
+      "case": "n12g8-d6-shared100-balanced-s0-l640101-w5000-original",
+      "method": "A1DP"
+    },
+    {
+      "case": "n24g8-d6-shared100-block-s0-l640101-w5000-original",
+      "method": "F000"
+    },
+    {
+      "case": "n24g8-d6-shared100-block-s0-l640101-w5000-original",
+      "method": "maxmin"
+    },
+    {
+      "case": "n24g8-d6-shared100-block-s0-l640101-w5000-original",
+      "method": "spreadout"
+    },
+    {
+      "case": "n24g8-d6-shared100-block-s0-l640101-w5000-original",
+      "method": "A1"
+    },
+    {
+      "case": "n24g8-d6-shared100-block-s0-l640101-w5000-original",
+      "method": "A1D"
+    },
+    {
+      "case": "n24g8-d6-shared100-block-s0-l640101-w5000-original",
+      "method": "A1P"
+    },
+    {
+      "case": "n24g8-d6-shared100-block-s0-l640101-w5000-original",
+      "method": "A1DP"
+    }
+  ],
+  "identity_equal": true
+}

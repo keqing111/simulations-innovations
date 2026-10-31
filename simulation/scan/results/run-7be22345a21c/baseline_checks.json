@@ -1,0 +1,1280 @@
+{
+  "binary": "/home/julius/fast/FAST/simulation/bottleneck/results/run-33e58e040218/native_bottleneck",
+  "checks": [
+    {
+      "case": "n6-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n6-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n6-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n6-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n6-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n6-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n6-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n6-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n6-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n6-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n6-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n6-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n6-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n6-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n6-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n6-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n12-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n12-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n12-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n12-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n12-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n12-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n12-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n12-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n12-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n12-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n12-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n12-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n12-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n12-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n12-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n12-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n24-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n24-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n24-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n24-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n24-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n24-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n24-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n24-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n24-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n24-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n24-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n24-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n24-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n24-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n24-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n24-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n24-g8-zipf-s280203-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n24-g8-zipf-s280203-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n24-g8-zipf-s280203-256MiB-w50",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n24-g8-zipf-s280203-256MiB-w50",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    },
+    {
+      "case": "n24-g8-zipf-s280203-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F000",
+      "old": "native"
+    },
+    {
+      "case": "n24-g8-zipf-s280203-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "F010",
+      "old": "bounded"
+    },
+    {
+      "case": "n24-g8-zipf-s280203-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "maxmin",
+      "old": "maxmin"
+    },
+    {
+      "case": "n24-g8-zipf-s280203-256MiB-w5000",
+      "fields": [
+        "total_us",
+        "stages",
+        "inter_bytes"
+      ],
+      "method": "spreadout",
+      "old": "spreadout"
+    }
+  ],
+  "sha256": "7e598f7b8cbdbf316156576fecb3b4ec6672f222c0f5b0fbeb962dc6a24f8969"
+}

@@ -1,0 +1,704 @@
+{
+  "binaries": {
+    "run-5f741f907916": "b911515f26959bda0b3ddfc73164de270cf9ee5fe26fd6bdc59d0adb233c5421",
+    "run-fd58e408d88f": "b911515f26959bda0b3ddfc73164de270cf9ee5fe26fd6bdc59d0adb233c5421"
+  },
+  "checks": [
+    {
+      "archive": "run-5f741f907916",
+      "case": "n12g8-d3-shared100-balanced-s0-l640101-w50-original",
+      "equal": true,
+      "stages": 11
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n12g8-d3-shared100-balanced-s0-l640101-w5000-original",
+      "equal": true,
+      "stages": 11
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n12g8-d3-shared100-zipf-s640101-l640101-w50-original",
+      "equal": true,
+      "stages": 83
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n12g8-d3-shared100-zipf-s640101-l640101-w5000-original",
+      "equal": true,
+      "stages": 86
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n12g8-d3-asymmetric-balanced-s0-l640101-w50-original",
+      "equal": true,
+      "stages": 11
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n12g8-d3-asymmetric-balanced-s0-l640101-w5000-original",
+      "equal": true,
+      "stages": 11
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n12g8-d3-asymmetric-zipf-s640101-l640101-w50-original",
+      "equal": true,
+      "stages": 87
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n12g8-d3-asymmetric-zipf-s640101-l640101-w5000-original",
+      "equal": true,
+      "stages": 86
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n12g8-d6-shared100-balanced-s0-l640101-w50-original",
+      "equal": true,
+      "stages": 11
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n12g8-d6-shared100-balanced-s0-l640101-w5000-original",
+      "equal": true,
+      "stages": 11
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n12g8-d6-shared100-zipf-s640101-l640101-w50-original",
+      "equal": true,
+      "stages": 82
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n12g8-d6-shared100-zipf-s640101-l640101-w5000-original",
+      "equal": true,
+      "stages": 84
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n12g8-d6-asymmetric-balanced-s0-l640101-w50-original",
+      "equal": true,
+      "stages": 11
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n12g8-d6-asymmetric-balanced-s0-l640101-w5000-original",
+      "equal": true,
+      "stages": 11
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n12g8-d6-asymmetric-zipf-s640101-l640101-w50-original",
+      "equal": true,
+      "stages": 87
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n12g8-d6-asymmetric-zipf-s640101-l640101-w5000-original",
+      "equal": true,
+      "stages": 82
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n24g8-d3-shared100-balanced-s0-l640101-w50-original",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n24g8-d3-shared100-balanced-s0-l640101-w5000-original",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n24g8-d3-shared100-zipf-s640101-l640101-w50-original",
+      "equal": true,
+      "stages": 171
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n24g8-d3-shared100-zipf-s640101-l640101-w5000-original",
+      "equal": true,
+      "stages": 172
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n24g8-d3-asymmetric-balanced-s0-l640101-w50-original",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n24g8-d3-asymmetric-balanced-s0-l640101-w5000-original",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n24g8-d3-asymmetric-zipf-s640101-l640101-w50-original",
+      "equal": true,
+      "stages": 170
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n24g8-d3-asymmetric-zipf-s640101-l640101-w5000-original",
+      "equal": true,
+      "stages": 169
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n24g8-d6-shared100-balanced-s0-l640101-w50-original",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n24g8-d6-shared100-balanced-s0-l640101-w5000-original",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n24g8-d6-shared100-zipf-s640101-l640101-w50-original",
+      "equal": true,
+      "stages": 172
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n24g8-d6-shared100-zipf-s640101-l640101-w5000-original",
+      "equal": true,
+      "stages": 173
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n24g8-d6-asymmetric-balanced-s0-l640101-w50-original",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n24g8-d6-asymmetric-balanced-s0-l640101-w5000-original",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n24g8-d6-asymmetric-zipf-s640101-l640101-w50-original",
+      "equal": true,
+      "stages": 172
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n24g8-d6-asymmetric-zipf-s640101-l640101-w5000-original",
+      "equal": true,
+      "stages": 172
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n48g8-d3-shared100-balanced-s0-l640101-w50-original",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n48g8-d3-shared100-balanced-s0-l640101-w5000-original",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n48g8-d3-shared100-zipf-s640101-l640101-w50-original",
+      "equal": true,
+      "stages": 313
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n48g8-d3-shared100-zipf-s640101-l640101-w5000-original",
+      "equal": true,
+      "stages": 310
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n48g8-d3-asymmetric-balanced-s0-l640101-w50-original",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n48g8-d3-asymmetric-balanced-s0-l640101-w5000-original",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n48g8-d3-asymmetric-zipf-s640101-l640101-w50-original",
+      "equal": true,
+      "stages": 309
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n48g8-d3-asymmetric-zipf-s640101-l640101-w5000-original",
+      "equal": true,
+      "stages": 307
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n48g8-d6-shared100-balanced-s0-l640101-w50-original",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n48g8-d6-shared100-balanced-s0-l640101-w5000-original",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n48g8-d6-shared100-zipf-s640101-l640101-w50-original",
+      "equal": true,
+      "stages": 309
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n48g8-d6-shared100-zipf-s640101-l640101-w5000-original",
+      "equal": true,
+      "stages": 312
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n48g8-d6-asymmetric-balanced-s0-l640101-w50-original",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n48g8-d6-asymmetric-balanced-s0-l640101-w5000-original",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n48g8-d6-asymmetric-zipf-s640101-l640101-w50-original",
+      "equal": true,
+      "stages": 310
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n48g8-d6-asymmetric-zipf-s640101-l640101-w5000-original",
+      "equal": true,
+      "stages": 310
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n24g8-d3-shared100-block-s0-l640101-w50-original",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n24g8-d3-shared100-block-s0-l640101-w5000-original",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n24g8-d6-shared100-block-s0-l640101-w50-original",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-5f741f907916",
+      "case": "n24g8-d6-shared100-block-s0-l640101-w5000-original",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d3-asymmetric-balanced-s0-l640201-w50-original",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d3-asymmetric-balanced-s0-l640201-w50-permuted",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d3-asymmetric-balanced-s0-l640203-w50-original",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d3-asymmetric-balanced-s0-l640203-w50-permuted",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d3-asymmetric-balanced-s0-l640201-w5000-original",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d3-asymmetric-balanced-s0-l640201-w5000-permuted",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d3-asymmetric-balanced-s0-l640203-w5000-original",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d3-asymmetric-balanced-s0-l640203-w5000-permuted",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d3-asymmetric-zipf-s640201-l640201-w50-original",
+      "equal": true,
+      "stages": 169
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d3-asymmetric-zipf-s640201-l640201-w50-permuted",
+      "equal": true,
+      "stages": 170
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d3-asymmetric-zipf-s640203-l640203-w50-original",
+      "equal": true,
+      "stages": 171
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d3-asymmetric-zipf-s640203-l640203-w50-permuted",
+      "equal": true,
+      "stages": 170
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d3-asymmetric-zipf-s640201-l640201-w5000-original",
+      "equal": true,
+      "stages": 170
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d3-asymmetric-zipf-s640201-l640201-w5000-permuted",
+      "equal": true,
+      "stages": 172
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d3-asymmetric-zipf-s640203-l640203-w5000-original",
+      "equal": true,
+      "stages": 172
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d3-asymmetric-zipf-s640203-l640203-w5000-permuted",
+      "equal": true,
+      "stages": 172
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d6-asymmetric-balanced-s0-l640201-w50-original",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d6-asymmetric-balanced-s0-l640201-w50-permuted",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d6-asymmetric-balanced-s0-l640203-w50-original",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d6-asymmetric-balanced-s0-l640203-w50-permuted",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d6-asymmetric-balanced-s0-l640201-w5000-original",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d6-asymmetric-balanced-s0-l640201-w5000-permuted",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d6-asymmetric-balanced-s0-l640203-w5000-original",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d6-asymmetric-balanced-s0-l640203-w5000-permuted",
+      "equal": true,
+      "stages": 23
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d6-asymmetric-zipf-s640201-l640201-w50-original",
+      "equal": true,
+      "stages": 171
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d6-asymmetric-zipf-s640201-l640201-w50-permuted",
+      "equal": true,
+      "stages": 172
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d6-asymmetric-zipf-s640203-l640203-w50-original",
+      "equal": true,
+      "stages": 171
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d6-asymmetric-zipf-s640203-l640203-w50-permuted",
+      "equal": true,
+      "stages": 172
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d6-asymmetric-zipf-s640201-l640201-w5000-original",
+      "equal": true,
+      "stages": 171
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d6-asymmetric-zipf-s640201-l640201-w5000-permuted",
+      "equal": true,
+      "stages": 172
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d6-asymmetric-zipf-s640203-l640203-w5000-original",
+      "equal": true,
+      "stages": 174
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n24g8-d6-asymmetric-zipf-s640203-l640203-w5000-permuted",
+      "equal": true,
+      "stages": 171
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d3-asymmetric-balanced-s0-l640201-w50-original",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d3-asymmetric-balanced-s0-l640201-w50-permuted",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d3-asymmetric-balanced-s0-l640203-w50-original",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d3-asymmetric-balanced-s0-l640203-w50-permuted",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d3-asymmetric-balanced-s0-l640201-w5000-original",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d3-asymmetric-balanced-s0-l640201-w5000-permuted",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d3-asymmetric-balanced-s0-l640203-w5000-original",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d3-asymmetric-balanced-s0-l640203-w5000-permuted",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d3-asymmetric-zipf-s640201-l640201-w50-original",
+      "equal": true,
+      "stages": 311
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d3-asymmetric-zipf-s640201-l640201-w50-permuted",
+      "equal": true,
+      "stages": 314
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d3-asymmetric-zipf-s640203-l640203-w50-original",
+      "equal": true,
+      "stages": 312
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d3-asymmetric-zipf-s640203-l640203-w50-permuted",
+      "equal": true,
+      "stages": 309
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d3-asymmetric-zipf-s640201-l640201-w5000-original",
+      "equal": true,
+      "stages": 315
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d3-asymmetric-zipf-s640201-l640201-w5000-permuted",
+      "equal": true,
+      "stages": 311
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d3-asymmetric-zipf-s640203-l640203-w5000-original",
+      "equal": true,
+      "stages": 310
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d3-asymmetric-zipf-s640203-l640203-w5000-permuted",
+      "equal": true,
+      "stages": 311
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d6-asymmetric-balanced-s0-l640201-w50-original",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d6-asymmetric-balanced-s0-l640201-w50-permuted",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d6-asymmetric-balanced-s0-l640203-w50-original",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d6-asymmetric-balanced-s0-l640203-w50-permuted",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d6-asymmetric-balanced-s0-l640201-w5000-original",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d6-asymmetric-balanced-s0-l640201-w5000-permuted",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d6-asymmetric-balanced-s0-l640203-w5000-original",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d6-asymmetric-balanced-s0-l640203-w5000-permuted",
+      "equal": true,
+      "stages": 47
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d6-asymmetric-zipf-s640201-l640201-w50-original",
+      "equal": true,
+      "stages": 310
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d6-asymmetric-zipf-s640201-l640201-w50-permuted",
+      "equal": true,
+      "stages": 310
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d6-asymmetric-zipf-s640203-l640203-w50-original",
+      "equal": true,
+      "stages": 307
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d6-asymmetric-zipf-s640203-l640203-w50-permuted",
+      "equal": true,
+      "stages": 313
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d6-asymmetric-zipf-s640201-l640201-w5000-original",
+      "equal": true,
+      "stages": 310
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d6-asymmetric-zipf-s640201-l640201-w5000-permuted",
+      "equal": true,
+      "stages": 310
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d6-asymmetric-zipf-s640203-l640203-w5000-original",
+      "equal": true,
+      "stages": 303
+    },
+    {
+      "archive": "run-fd58e408d88f",
+      "case": "n48g8-d6-asymmetric-zipf-s640203-l640203-w5000-permuted",
+      "equal": true,
+      "stages": 315
+    }
+  ]
+}

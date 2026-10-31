@@ -1,0 +1,2690 @@
+[
+  {
+    "A1": {
+      "gm": 0.8980682067349804,
+      "losses": 6,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.760401292041006,
+      "wins": 2,
+      "with_planning_gm": 0.9010176198212541
+    },
+    "F000": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "SPM": {
+      "gm": 0.8961279857721245,
+      "losses": 6,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.7795187412589686,
+      "wins": 2,
+      "with_planning_gm": 0.8985104610277259
+    },
+    "X10": {
+      "gm": 0.9089938499392799,
+      "losses": 6,
+      "maximum": 1.0,
+      "minimum": 0.7649726011682858,
+      "wins": 0,
+      "with_planning_gm": 0.9113718119420604
+    },
+    "configs": 8,
+    "group": "all",
+    "maxmin": {
+      "gm": 0.9140932896203671,
+      "losses": 4,
+      "maximum": 1.0,
+      "minimum": 0.7816154710099097,
+      "wins": 0,
+      "with_planning_gm": 0.9156233082813168
+    },
+    "method": "F000-ref",
+    "planning_median_ms": 0.5074660000000001,
+    "planning_p95_median_ms": 0.6144449999999999,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 1.5222883543115384,
+      "losses": 2,
+      "maximum": 3.5238060075370874,
+      "minimum": 0.9569879205687178,
+      "wins": 6,
+      "with_planning_gm": 1.5193915355980907
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.8980682067349804,
+      "losses": 6,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.760401292041006,
+      "wins": 2,
+      "with_planning_gm": 0.9003670993772971
+    },
+    "F000": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "SPM": {
+      "gm": 0.8961279857721245,
+      "losses": 6,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.7795187412589686,
+      "wins": 2,
+      "with_planning_gm": 0.8983130667192939
+    },
+    "X10": {
+      "gm": 0.9089938499392799,
+      "losses": 6,
+      "maximum": 1.0,
+      "minimum": 0.7649726011682858,
+      "wins": 0,
+      "with_planning_gm": 0.9108096223472585
+    },
+    "configs": 8,
+    "group": "all",
+    "maxmin": {
+      "gm": 0.9140932896203671,
+      "losses": 4,
+      "maximum": 1.0,
+      "minimum": 0.7816154710099097,
+      "wins": 0,
+      "with_planning_gm": 0.9152458252198149
+    },
+    "method": "F000-opt",
+    "planning_median_ms": 0.5514692499999999,
+    "planning_p95_median_ms": 0.6690209999999999,
+    "planning_speedup": 0.9522900371859804,
+    "spreadout": {
+      "gm": 1.5222883543115384,
+      "losses": 2,
+      "maximum": 3.5238060075370874,
+      "minimum": 0.9569879205687178,
+      "wins": 6,
+      "with_planning_gm": 1.5193736127565827
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.982468875915234,
+      "losses": 3,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.7939655155343331,
+      "wins": 5,
+      "with_planning_gm": 0.9840483653834909
+    },
+    "F000": {
+      "gm": 1.0939802439806892,
+      "losses": 0,
+      "maximum": 1.2794014922810062,
+      "minimum": 1.0,
+      "wins": 4,
+      "with_planning_gm": 1.092152188520696
+    },
+    "SPM": {
+      "gm": 0.9803463125129124,
+      "losses": 4,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.7939655155343335,
+      "wins": 4,
+      "with_planning_gm": 0.9813101664201703
+    },
+    "X10": {
+      "gm": 0.9944213137335194,
+      "losses": 4,
+      "maximum": 1.105238459280557,
+      "minimum": 0.941340100427889,
+      "wins": 2,
+      "with_planning_gm": 0.9953567189685933
+    },
+    "configs": 8,
+    "group": "all",
+    "maxmin": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "method": "maxmin-ref",
+    "planning_median_ms": 0.8249627499999999,
+    "planning_p95_median_ms": 1.005263,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 1.6653533852586986,
+      "losses": 0,
+      "maximum": 3.5238060075370874,
+      "minimum": 1.1793975877532104,
+      "wins": 8,
+      "with_planning_gm": 1.6594067908232755
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.982468875915234,
+      "losses": 3,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.7939655155343331,
+      "wins": 5,
+      "with_planning_gm": 0.9837434649440282
+    },
+    "F000": {
+      "gm": 1.0939802439806892,
+      "losses": 0,
+      "maximum": 1.2794014922810062,
+      "minimum": 1.0,
+      "wins": 4,
+      "with_planning_gm": 1.0926026346635667
+    },
+    "SPM": {
+      "gm": 0.9803463125129124,
+      "losses": 4,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.7939655155343335,
+      "wins": 4,
+      "with_planning_gm": 0.9814992234502089
+    },
+    "X10": {
+      "gm": 0.9944213137335194,
+      "losses": 4,
+      "maximum": 1.105238459280557,
+      "minimum": 0.941340100427889,
+      "wins": 2,
+      "with_planning_gm": 0.9951529930535429
+    },
+    "configs": 8,
+    "group": "all",
+    "maxmin": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "method": "maxmin-opt",
+    "planning_median_ms": 0.7781005000000001,
+    "planning_p95_median_ms": 0.9250955,
+    "planning_speedup": 1.0475259402201886,
+    "spreadout": {
+      "gm": 1.6653533852586986,
+      "losses": 0,
+      "maximum": 3.5238060075370874,
+      "minimum": 1.1793975877532104,
+      "wins": 8,
+      "with_planning_gm": 1.6600716123361439
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.5899461847628308,
+      "losses": 8,
+      "maximum": 0.8523833637019751,
+      "minimum": 0.2355861772293636,
+      "wins": 0,
+      "with_planning_gm": 0.5930121359183294
+    },
+    "F000": {
+      "gm": 0.6569057676672921,
+      "losses": 6,
+      "maximum": 1.044945268907596,
+      "minimum": 0.2837840669608641,
+      "wins": 2,
+      "with_planning_gm": 0.6581582012080657
+    },
+    "SPM": {
+      "gm": 0.5886716424217817,
+      "losses": 8,
+      "maximum": 0.8523833637019751,
+      "minimum": 0.2355861772293636,
+      "wins": 0,
+      "with_planning_gm": 0.5913620287966379
+    },
+    "X10": {
+      "gm": 0.5971233027992101,
+      "losses": 8,
+      "maximum": 0.8478904911998605,
+      "minimum": 0.2837840669608641,
+      "wins": 0,
+      "with_planning_gm": 0.599826832379522
+    },
+    "configs": 8,
+    "group": "all",
+    "maxmin": {
+      "gm": 0.6004731541375877,
+      "losses": 8,
+      "maximum": 0.8478904911998605,
+      "minimum": 0.2837840669608641,
+      "wins": 0,
+      "with_planning_gm": 0.6026249895626096
+    },
+    "method": "spreadout-ref",
+    "planning_median_ms": 0.0699955,
+    "planning_p95_median_ms": 0.1132405,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.5899461847628308,
+      "losses": 8,
+      "maximum": 0.8523833637019751,
+      "minimum": 0.2355861772293636,
+      "wins": 0,
+      "with_planning_gm": 0.5925909807948889
+    },
+    "F000": {
+      "gm": 0.6569057676672921,
+      "losses": 6,
+      "maximum": 1.044945268907596,
+      "minimum": 0.2837840669608641,
+      "wins": 2,
+      "with_planning_gm": 0.6581659649766533
+    },
+    "SPM": {
+      "gm": 0.5886716424217817,
+      "losses": 8,
+      "maximum": 0.8523833637019751,
+      "minimum": 0.2355861772293636,
+      "wins": 0,
+      "with_planning_gm": 0.5912390864084408
+    },
+    "X10": {
+      "gm": 0.5971233027992101,
+      "losses": 8,
+      "maximum": 0.8478904911998605,
+      "minimum": 0.2837840669608641,
+      "wins": 0,
+      "with_planning_gm": 0.5994638940022046
+    },
+    "configs": 8,
+    "group": "all",
+    "maxmin": {
+      "gm": 0.6004731541375877,
+      "losses": 8,
+      "maximum": 0.8478904911998605,
+      "minimum": 0.2837840669608641,
+      "wins": 0,
+      "with_planning_gm": 0.6023836517466528
+    },
+    "method": "spreadout-opt",
+    "planning_median_ms": 0.12213949999999998,
+    "planning_p95_median_ms": 0.223563,
+    "planning_speedup": 0.5405349941365754,
+    "spreadout": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.987980509213534,
+      "losses": 5,
+      "maximum": 1.2144052046629463,
+      "minimum": 0.7939655155343331,
+      "wins": 3,
+      "with_planning_gm": 0.9886388936050782
+    },
+    "F000": {
+      "gm": 1.1001174541134675,
+      "losses": 0,
+      "maximum": 1.307236361763512,
+      "minimum": 1.0,
+      "wins": 6,
+      "with_planning_gm": 1.0972470147711504
+    },
+    "SPM": {
+      "gm": 0.9858460382674593,
+      "losses": 4,
+      "maximum": 1.2144052046629463,
+      "minimum": 0.7939655155343335,
+      "wins": 4,
+      "with_planning_gm": 0.9858879211033222
+    },
+    "X10": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "configs": 8,
+    "group": "all",
+    "maxmin": {
+      "gm": 1.0056099825993627,
+      "losses": 2,
+      "maximum": 1.0623153093610342,
+      "minimum": 0.9047821233536689,
+      "wins": 4,
+      "with_planning_gm": 1.0046649416665596
+    },
+    "method": "X10-ref",
+    "planning_median_ms": 1.012846,
+    "planning_p95_median_ms": 1.1944569999999999,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 1.6746959887717898,
+      "losses": 0,
+      "maximum": 3.5238060075370874,
+      "minimum": 1.1793975877532104,
+      "wins": 8,
+      "with_planning_gm": 1.6671478267035589
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.987980509213534,
+      "losses": 5,
+      "maximum": 1.2144052046629463,
+      "minimum": 0.7939655155343331,
+      "wins": 3,
+      "with_planning_gm": 0.9885349004734383
+    },
+    "F000": {
+      "gm": 1.1001174541134675,
+      "losses": 0,
+      "maximum": 1.307236361763512,
+      "minimum": 1.0,
+      "wins": 6,
+      "with_planning_gm": 1.0979242812816226
+    },
+    "SPM": {
+      "gm": 0.9858460382674593,
+      "losses": 4,
+      "maximum": 1.2144052046629463,
+      "minimum": 0.7939655155343335,
+      "wins": 4,
+      "with_planning_gm": 0.9862797281436712
+    },
+    "X10": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "configs": 8,
+    "group": "all",
+    "maxmin": {
+      "gm": 1.0056099825993627,
+      "losses": 2,
+      "maximum": 1.0623153093610342,
+      "minimum": 0.9047821233536689,
+      "wins": 4,
+      "with_planning_gm": 1.004870614850471
+    },
+    "method": "X10-opt",
+    "planning_median_ms": 0.924765,
+    "planning_p95_median_ms": 1.093561,
+    "planning_speedup": 1.2209625830187127,
+    "spreadout": {
+      "gm": 1.6746959887717898,
+      "losses": 0,
+      "maximum": 3.5238060075370874,
+      "minimum": 1.1793975877532104,
+      "wins": 8,
+      "with_planning_gm": 1.6681571817840333
+    }
+  },
+  {
+    "A1": {
+      "gm": 1.002165115913866,
+      "losses": 1,
+      "maximum": 1.0270704780186488,
+      "minimum": 0.9754753180313706,
+      "wins": 3,
+      "with_planning_gm": 1.002790350143125
+    },
+    "F000": {
+      "gm": 1.115912030287032,
+      "losses": 2,
+      "maximum": 1.2828427939845823,
+      "minimum": 0.864476777243162,
+      "wins": 6,
+      "with_planning_gm": 1.1129530966797976
+    },
+    "SPM": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "X10": {
+      "gm": 1.0143571726041676,
+      "losses": 4,
+      "maximum": 1.259500545596123,
+      "minimum": 0.8234483812818855,
+      "wins": 4,
+      "with_planning_gm": 1.0143140803275943
+    },
+    "configs": 8,
+    "group": "all",
+    "maxmin": {
+      "gm": 1.020047698692016,
+      "losses": 4,
+      "maximum": 1.259500545596123,
+      "minimum": 0.864476777243162,
+      "wins": 4,
+      "with_planning_gm": 1.0190457963438924
+    },
+    "method": "SPM-ref",
+    "planning_median_ms": 0.99213425,
+    "planning_p95_median_ms": 1.1552535,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 1.6987398881420934,
+      "losses": 0,
+      "maximum": 4.244731213692615,
+      "minimum": 1.1731810387017798,
+      "wins": 8,
+      "with_planning_gm": 1.6910115146129676
+    }
+  },
+  {
+    "A1": {
+      "gm": 1.002165115913866,
+      "losses": 1,
+      "maximum": 1.0270704780186488,
+      "minimum": 0.9754753180313706,
+      "wins": 3,
+      "with_planning_gm": 1.0022865443397198
+    },
+    "F000": {
+      "gm": 1.115912030287032,
+      "losses": 2,
+      "maximum": 1.2828427939845823,
+      "minimum": 0.864476777243162,
+      "wins": 6,
+      "with_planning_gm": 1.1131976557483176
+    },
+    "SPM": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "X10": {
+      "gm": 1.0143571726041676,
+      "losses": 4,
+      "maximum": 1.259500545596123,
+      "minimum": 0.8234483812818855,
+      "wins": 4,
+      "with_planning_gm": 1.0139111364299787
+    },
+    "configs": 8,
+    "group": "all",
+    "maxmin": {
+      "gm": 1.020047698692016,
+      "losses": 4,
+      "maximum": 1.259500545596123,
+      "minimum": 0.864476777243162,
+      "wins": 4,
+      "with_planning_gm": 1.0188495070681323
+    },
+    "method": "SPM-opt",
+    "planning_median_ms": 0.9874552500000001,
+    "planning_p95_median_ms": 1.2971965,
+    "planning_speedup": 1.0158338421136475,
+    "spreadout": {
+      "gm": 1.6987398881420934,
+      "losses": 0,
+      "maximum": 4.244731213692615,
+      "minimum": 1.1731810387017798,
+      "wins": 8,
+      "with_planning_gm": 1.6913631439264798
+    }
+  },
+  {
+    "A1": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "F000": {
+      "gm": 1.113501171181199,
+      "losses": 2,
+      "maximum": 1.3150950826449586,
+      "minimum": 0.864476777243162,
+      "wins": 6,
+      "with_planning_gm": 1.1098562092474755
+    },
+    "SPM": {
+      "gm": 0.9978395616855096,
+      "losses": 3,
+      "maximum": 1.0251412634592574,
+      "minimum": 0.9736430180810267,
+      "wins": 1,
+      "with_planning_gm": 0.9972174142454333
+    },
+    "X10": {
+      "gm": 1.0121657165038953,
+      "losses": 3,
+      "maximum": 1.2595005455961235,
+      "minimum": 0.8234483812818855,
+      "wins": 5,
+      "with_planning_gm": 1.0114916644170182
+    },
+    "configs": 8,
+    "group": "all",
+    "maxmin": {
+      "gm": 1.0178439485611537,
+      "losses": 5,
+      "maximum": 1.2595005455961235,
+      "minimum": 0.864476777243162,
+      "wins": 3,
+      "with_planning_gm": 1.016210214027735
+    },
+    "method": "A1-ref",
+    "planning_median_ms": 1.11843575,
+    "planning_p95_median_ms": 1.607737,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 1.6950698654013983,
+      "losses": 0,
+      "maximum": 4.244731213692615,
+      "minimum": 1.1731810387017798,
+      "wins": 8,
+      "with_planning_gm": 1.6863061300615976
+    }
+  },
+  {
+    "A1": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "F000": {
+      "gm": 1.113501171181199,
+      "losses": 2,
+      "maximum": 1.3150950826449586,
+      "minimum": 0.864476777243162,
+      "wins": 6,
+      "with_planning_gm": 1.1106580867866118
+    },
+    "SPM": {
+      "gm": 0.9978395616855096,
+      "losses": 3,
+      "maximum": 1.0251412634592574,
+      "minimum": 0.9736430180810267,
+      "wins": 1,
+      "with_planning_gm": 0.9977186720178649
+    },
+    "X10": {
+      "gm": 1.0121657165038953,
+      "losses": 3,
+      "maximum": 1.2595005455961235,
+      "minimum": 0.8234483812818855,
+      "wins": 5,
+      "with_planning_gm": 1.0115980725830427
+    },
+    "configs": 8,
+    "group": "all",
+    "maxmin": {
+      "gm": 1.0178439485611537,
+      "losses": 5,
+      "maximum": 1.2595005455961235,
+      "minimum": 0.864476777243162,
+      "wins": 3,
+      "with_planning_gm": 1.0165251771780732
+    },
+    "method": "A1-opt",
+    "planning_median_ms": 1.0136785,
+    "planning_p95_median_ms": 1.204724,
+    "planning_speedup": 1.1106363876435195,
+    "spreadout": {
+      "gm": 1.6950698654013983,
+      "losses": 0,
+      "maximum": 4.244731213692615,
+      "minimum": 1.1731810387017798,
+      "wins": 8,
+      "with_planning_gm": 1.6875045898582883
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.9472769937681695,
+      "losses": 2,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.7939655155343331,
+      "wins": 2,
+      "with_planning_gm": 0.9484452176399423
+    },
+    "F000": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "SPM": {
+      "gm": 0.9472769937681697,
+      "losses": 2,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.7939655155343335,
+      "wins": 2,
+      "with_planning_gm": 0.9481751358104802
+    },
+    "X10": {
+      "gm": 0.9788189429662848,
+      "losses": 2,
+      "maximum": 1.0,
+      "minimum": 0.9525396204486637,
+      "wins": 0,
+      "with_planning_gm": 0.9802138374435593
+    },
+    "configs": 4,
+    "group": "load:balanced",
+    "maxmin": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0001921023370253
+    },
+    "method": "F000-ref",
+    "planning_median_ms": 0.13486900000000002,
+    "planning_p95_median_ms": 0.2071565,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 2.0388159998451814,
+      "losses": 0,
+      "maximum": 3.5238060075370874,
+      "minimum": 1.1793975877532104,
+      "wins": 4,
+      "with_planning_gm": 2.037378438507968
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.9472769937681695,
+      "losses": 2,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.7939655155343331,
+      "wins": 2,
+      "with_planning_gm": 0.9482479915866577
+    },
+    "F000": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "SPM": {
+      "gm": 0.9472769937681697,
+      "losses": 2,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.7939655155343335,
+      "wins": 2,
+      "with_planning_gm": 0.9481206902727699
+    },
+    "X10": {
+      "gm": 0.9788189429662848,
+      "losses": 2,
+      "maximum": 1.0,
+      "minimum": 0.9525396204486637,
+      "wins": 0,
+      "with_planning_gm": 0.9795238173927194
+    },
+    "configs": 4,
+    "group": "load:balanced",
+    "maxmin": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0001641129498786
+    },
+    "method": "F000-opt",
+    "planning_median_ms": 0.13613725000000002,
+    "planning_p95_median_ms": 0.17320649999999999,
+    "planning_speedup": 0.9930825469293377,
+    "spreadout": {
+      "gm": 2.0388159998451814,
+      "losses": 0,
+      "maximum": 3.5238060075370874,
+      "minimum": 1.1793975877532104,
+      "wins": 4,
+      "with_planning_gm": 2.0378735843423095
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.9472769937681695,
+      "losses": 2,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.7939655155343331,
+      "wins": 2,
+      "with_planning_gm": 0.9482630540911368
+    },
+    "F000": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 0.9998079345591948
+    },
+    "SPM": {
+      "gm": 0.9472769937681697,
+      "losses": 2,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.7939655155343335,
+      "wins": 2,
+      "with_planning_gm": 0.9479930241350603
+    },
+    "X10": {
+      "gm": 0.9788189429662848,
+      "losses": 2,
+      "maximum": 1.0,
+      "minimum": 0.9525396204486637,
+      "wins": 0,
+      "with_planning_gm": 0.9800255722407875
+    },
+    "configs": 4,
+    "group": "load:balanced",
+    "maxmin": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "method": "maxmin-ref",
+    "planning_median_ms": 0.16697299999999998,
+    "planning_p95_median_ms": 0.2420525,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 2.0388159998451814,
+      "losses": 0,
+      "maximum": 3.5238060075370874,
+      "minimum": 1.1793975877532104,
+      "wins": 4,
+      "with_planning_gm": 2.0369871285200887
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.9472769937681695,
+      "losses": 2,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.7939655155343331,
+      "wins": 2,
+      "with_planning_gm": 0.9480923973465716
+    },
+    "F000": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 0.9998359139787623
+    },
+    "SPM": {
+      "gm": 0.9472769937681697,
+      "losses": 2,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.7939655155343335,
+      "wins": 2,
+      "with_planning_gm": 0.9479651169210499
+    },
+    "X10": {
+      "gm": 0.9788189429662848,
+      "losses": 2,
+      "maximum": 1.0,
+      "minimum": 0.9525396204486637,
+      "wins": 0,
+      "with_planning_gm": 0.9793630912268159
+    },
+    "configs": 4,
+    "group": "load:balanced",
+    "maxmin": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "method": "maxmin-opt",
+    "planning_median_ms": 0.16367350000000003,
+    "planning_p95_median_ms": 0.267586,
+    "planning_speedup": 1.0232516482406302,
+    "spreadout": {
+      "gm": 2.0388159998451814,
+      "losses": 0,
+      "maximum": 3.5238060075370874,
+      "minimum": 1.1793975877532104,
+      "wins": 4,
+      "with_planning_gm": 2.0375391977740693
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.46462113002845845,
+      "losses": 4,
+      "maximum": 0.8523833637019751,
+      "minimum": 0.2355861772293636,
+      "wins": 0,
+      "with_planning_gm": 0.4655223593779252
+    },
+    "F000": {
+      "gm": 0.4904807496487842,
+      "losses": 4,
+      "maximum": 0.8478904911998605,
+      "minimum": 0.2837840669608641,
+      "wins": 0,
+      "with_planning_gm": 0.49082682976282466
+    },
+    "SPM": {
+      "gm": 0.46462113002845845,
+      "losses": 4,
+      "maximum": 0.8523833637019751,
+      "minimum": 0.2355861772293636,
+      "wins": 0,
+      "with_planning_gm": 0.46538979596979374
+    },
+    "X10": {
+      "gm": 0.4800918489165339,
+      "losses": 4,
+      "maximum": 0.8478904911998605,
+      "minimum": 0.2837840669608641,
+      "wins": 0,
+      "with_planning_gm": 0.48111525032207497
+    },
+    "configs": 4,
+    "group": "load:balanced",
+    "maxmin": {
+      "gm": 0.4904807496487842,
+      "losses": 4,
+      "maximum": 0.8478904911998605,
+      "minimum": 0.2837840669608641,
+      "wins": 0,
+      "with_planning_gm": 0.4909211187438968
+    },
+    "method": "spreadout-ref",
+    "planning_median_ms": 0.032152,
+    "planning_p95_median_ms": 0.040162,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.46462113002845845,
+      "losses": 4,
+      "maximum": 0.8523833637019751,
+      "minimum": 0.2355861772293636,
+      "wins": 0,
+      "with_planning_gm": 0.4653124702495661
+    },
+    "F000": {
+      "gm": 0.4904807496487842,
+      "losses": 4,
+      "maximum": 0.8478904911998605,
+      "minimum": 0.2837840669608641,
+      "wins": 0,
+      "with_planning_gm": 0.4907075726793591
+    },
+    "SPM": {
+      "gm": 0.46462113002845845,
+      "losses": 4,
+      "maximum": 0.8523833637019751,
+      "minimum": 0.2355861772293636,
+      "wins": 0,
+      "with_planning_gm": 0.4652500025308294
+    },
+    "X10": {
+      "gm": 0.4800918489165339,
+      "losses": 4,
+      "maximum": 0.8478904911998605,
+      "minimum": 0.2837840669608641,
+      "wins": 0,
+      "with_planning_gm": 0.48065975481440115
+    },
+    "configs": 4,
+    "group": "load:balanced",
+    "maxmin": {
+      "gm": 0.4904807496487842,
+      "losses": 4,
+      "maximum": 0.8478904911998605,
+      "minimum": 0.2837840669608641,
+      "wins": 0,
+      "with_planning_gm": 0.49078810414663937
+    },
+    "method": "spreadout-opt",
+    "planning_median_ms": 0.093462,
+    "planning_p95_median_ms": 0.1449665,
+    "planning_speedup": 0.33834411417833327,
+    "spreadout": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.967775501869091,
+      "losses": 2,
+      "maximum": 1.2144052046629463,
+      "minimum": 0.7939655155343331,
+      "wins": 2,
+      "with_planning_gm": 0.9675901129018225
+    },
+    "F000": {
+      "gm": 1.0216394024512097,
+      "losses": 0,
+      "maximum": 1.0498250975943464,
+      "minimum": 1.0,
+      "wins": 2,
+      "with_planning_gm": 1.0201855572739555
+    },
+    "SPM": {
+      "gm": 0.9677755018690911,
+      "losses": 2,
+      "maximum": 1.2144052046629463,
+      "minimum": 0.7939655155343335,
+      "wins": 2,
+      "with_planning_gm": 0.9673145793201232
+    },
+    "X10": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "configs": 4,
+    "group": "load:balanced",
+    "maxmin": {
+      "gm": 1.0216394024512097,
+      "losses": 0,
+      "maximum": 1.0498250975943464,
+      "minimum": 1.0,
+      "wins": 2,
+      "with_planning_gm": 1.020381537303707
+    },
+    "method": "X10-ref",
+    "planning_median_ms": 0.36241975,
+    "planning_p95_median_ms": 0.47769149999999994,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 2.0829347597897967,
+      "losses": 0,
+      "maximum": 3.5238060075370874,
+      "minimum": 1.1793975877532104,
+      "wins": 4,
+      "with_planning_gm": 2.0785040576671925
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.967775501869091,
+      "losses": 2,
+      "maximum": 1.2144052046629463,
+      "minimum": 0.7939655155343331,
+      "wins": 2,
+      "with_planning_gm": 0.968070377411229
+    },
+    "F000": {
+      "gm": 1.0216394024512097,
+      "losses": 0,
+      "maximum": 1.0498250975943464,
+      "minimum": 1.0,
+      "wins": 2,
+      "with_planning_gm": 1.0209042212590438
+    },
+    "SPM": {
+      "gm": 0.9677755018690911,
+      "losses": 2,
+      "maximum": 1.2144052046629463,
+      "minimum": 0.7939655155343335,
+      "wins": 2,
+      "with_planning_gm": 0.9679404149625093
+    },
+    "X10": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "configs": 4,
+    "group": "load:balanced",
+    "maxmin": {
+      "gm": 1.0216394024512097,
+      "losses": 0,
+      "maximum": 1.0498250975943464,
+      "minimum": 1.0,
+      "wins": 2,
+      "with_planning_gm": 1.0210717648623382
+    },
+    "method": "X10-opt",
+    "planning_median_ms": 0.25208224999999995,
+    "planning_p95_median_ms": 0.3771185,
+    "planning_speedup": 1.4500420500348852,
+    "spreadout": {
+      "gm": 2.0829347597897967,
+      "losses": 0,
+      "maximum": 3.5238060075370874,
+      "minimum": 1.1793975877532104,
+      "wins": 4,
+      "with_planning_gm": 2.080473744647362
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.9999999999999999,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 0.9999999999999997,
+      "wins": 0,
+      "with_planning_gm": 1.0002848438218446
+    },
+    "F000": {
+      "gm": 1.055657433442043,
+      "losses": 2,
+      "maximum": 1.259500545596123,
+      "minimum": 0.864476777243162,
+      "wins": 2,
+      "with_planning_gm": 1.054657480703943
+    },
+    "SPM": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "X10": {
+      "gm": 1.0332974931362418,
+      "losses": 2,
+      "maximum": 1.259500545596123,
+      "minimum": 0.8234483812818855,
+      "wins": 2,
+      "with_planning_gm": 1.0337898563493686
+    },
+    "configs": 4,
+    "group": "load:balanced",
+    "maxmin": {
+      "gm": 1.055657433442043,
+      "losses": 2,
+      "maximum": 1.259500545596123,
+      "minimum": 0.864476777243162,
+      "wins": 2,
+      "with_planning_gm": 1.0548600828707473
+    },
+    "method": "SPM-ref",
+    "planning_median_ms": 0.26484,
+    "planning_p95_median_ms": 0.3733915,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 2.1522912656571367,
+      "losses": 0,
+      "maximum": 4.244731213692615,
+      "minimum": 1.1731810387017798,
+      "wins": 4,
+      "with_planning_gm": 2.148736411197347
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.9999999999999999,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 0.9999999999999997,
+      "wins": 0,
+      "with_planning_gm": 1.000134266992793
+    },
+    "F000": {
+      "gm": 1.055657433442043,
+      "losses": 2,
+      "maximum": 1.259500545596123,
+      "minimum": 0.864476777243162,
+      "wins": 2,
+      "with_planning_gm": 1.0547180440839283
+    },
+    "SPM": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "X10": {
+      "gm": 1.0332974931362418,
+      "losses": 2,
+      "maximum": 1.259500545596123,
+      "minimum": 0.8234483812818855,
+      "wins": 2,
+      "with_planning_gm": 1.033121444814072
+    },
+    "configs": 4,
+    "group": "load:balanced",
+    "maxmin": {
+      "gm": 1.055657433442043,
+      "losses": 2,
+      "maximum": 1.259500545596123,
+      "minimum": 0.864476777243162,
+      "wins": 2,
+      "with_planning_gm": 1.0548911369734333
+    },
+    "method": "SPM-opt",
+    "planning_median_ms": 0.25582499999999997,
+    "planning_p95_median_ms": 0.37256049999999996,
+    "planning_speedup": 1.0289724657327173,
+    "spreadout": {
+      "gm": 2.1522912656571367,
+      "losses": 0,
+      "maximum": 4.244731213692615,
+      "minimum": 1.1731810387017798,
+      "wins": 4,
+      "with_planning_gm": 2.1493820409678253
+    }
+  },
+  {
+    "A1": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "F000": {
+      "gm": 1.055657433442043,
+      "losses": 2,
+      "maximum": 1.2595005455961235,
+      "minimum": 0.864476777243162,
+      "wins": 2,
+      "with_planning_gm": 1.0543571535827274
+    },
+    "SPM": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0000000000000002,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 0.9997152372910538
+    },
+    "X10": {
+      "gm": 1.0332974931362418,
+      "losses": 2,
+      "maximum": 1.2595005455961235,
+      "minimum": 0.8234483812818855,
+      "wins": 2,
+      "with_planning_gm": 1.0334954715493936
+    },
+    "configs": 4,
+    "group": "load:balanced",
+    "maxmin": {
+      "gm": 1.055657433442043,
+      "losses": 2,
+      "maximum": 1.2595005455961235,
+      "minimum": 0.864476777243162,
+      "wins": 2,
+      "with_planning_gm": 1.05455969805599
+    },
+    "method": "A1-ref",
+    "planning_median_ms": 0.30601100000000003,
+    "planning_p95_median_ms": 0.360686,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 2.1522912656571367,
+      "losses": 0,
+      "maximum": 4.244731213692615,
+      "minimum": 1.1731810387017798,
+      "wins": 4,
+      "with_planning_gm": 2.148124531196083
+    }
+  },
+  {
+    "A1": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "F000": {
+      "gm": 1.055657433442043,
+      "losses": 2,
+      "maximum": 1.2595005455961235,
+      "minimum": 0.864476777243162,
+      "wins": 2,
+      "with_planning_gm": 1.054576449275414
+    },
+    "SPM": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0000000000000002,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 0.9998657510324122
+    },
+    "X10": {
+      "gm": 1.0332974931362418,
+      "losses": 2,
+      "maximum": 1.2595005455961235,
+      "minimum": 0.8234483812818855,
+      "wins": 2,
+      "with_planning_gm": 1.032982749326713
+    },
+    "configs": 4,
+    "group": "load:balanced",
+    "maxmin": {
+      "gm": 1.055657433442043,
+      "losses": 2,
+      "maximum": 1.2595005455961235,
+      "minimum": 0.864476777243162,
+      "wins": 2,
+      "with_planning_gm": 1.054749518927377
+    },
+    "method": "A1-opt",
+    "planning_median_ms": 0.27660225000000005,
+    "planning_p95_median_ms": 0.3999195,
+    "planning_speedup": 1.1121715357257804,
+    "spreadout": {
+      "gm": 2.1522912656571367,
+      "losses": 0,
+      "maximum": 4.244731213692615,
+      "minimum": 1.1731810387017798,
+      "wins": 4,
+      "with_planning_gm": 2.1490934886478734
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.8514156991609233,
+      "losses": 4,
+      "maximum": 0.9545045774697967,
+      "minimum": 0.760401292041006,
+      "wins": 0,
+      "with_planning_gm": 0.8559616687703658
+    },
+    "F000": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "SPM": {
+      "gm": 0.8477408109422924,
+      "losses": 4,
+      "maximum": 0.9293467175798481,
+      "minimum": 0.7795187412589686,
+      "wins": 0,
+      "with_planning_gm": 0.8514471832107002
+    },
+    "X10": {
+      "gm": 0.8441498043789849,
+      "losses": 4,
+      "maximum": 0.960601573083493,
+      "minimum": 0.7649726011682858,
+      "wins": 0,
+      "with_planning_gm": 0.8473646748027878
+    },
+    "configs": 4,
+    "group": "load:zipf",
+    "maxmin": {
+      "gm": 0.8355665421289843,
+      "losses": 4,
+      "maximum": 0.917702877788075,
+      "minimum": 0.7816154710099097,
+      "wins": 0,
+      "with_planning_gm": 0.8382050215244822
+    },
+    "method": "F000-ref",
+    "planning_median_ms": 0.907646,
+    "planning_p95_median_ms": 1.135361,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 1.1366213693871845,
+      "losses": 2,
+      "maximum": 1.4251992557259592,
+      "minimum": 0.9569879205687178,
+      "wins": 2,
+      "with_planning_gm": 1.1330985912159466
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.8514156991609233,
+      "losses": 4,
+      "maximum": 0.9545045774697967,
+      "minimum": 0.760401292041006,
+      "wins": 0,
+      "with_planning_gm": 0.8549039078739811
+    },
+    "F000": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "SPM": {
+      "gm": 0.8477408109422924,
+      "losses": 4,
+      "maximum": 0.9293467175798481,
+      "minimum": 0.7795187412589686,
+      "wins": 0,
+      "with_planning_gm": 0.8511219870188278
+    },
+    "X10": {
+      "gm": 0.8441498043789849,
+      "losses": 4,
+      "maximum": 0.960601573083493,
+      "minimum": 0.7649726011682858,
+      "wins": 0,
+      "with_planning_gm": 0.846915770122367
+    },
+    "configs": 4,
+    "group": "load:zipf",
+    "maxmin": {
+      "gm": 0.8355665421289843,
+      "losses": 4,
+      "maximum": 0.917702877788075,
+      "minimum": 0.7816154710099097,
+      "wins": 0,
+      "with_planning_gm": 0.837537469837491
+    },
+    "method": "F000-opt",
+    "planning_median_ms": 0.9853455,
+    "planning_p95_median_ms": 1.1643895,
+    "planning_speedup": 0.9131731473156206,
+    "spreadout": {
+      "gm": 1.1366213693871845,
+      "losses": 2,
+      "maximum": 1.4251992557259592,
+      "minimum": 0.9569879205687178,
+      "wins": 2,
+      "with_planning_gm": 1.1327965546430199
+    }
+  },
+  {
+    "A1": {
+      "gm": 1.0189681566133033,
+      "losses": 1,
+      "maximum": 1.0982234447030863,
+      "minimum": 0.9728585477696682,
+      "wins": 3,
+      "with_planning_gm": 1.021184133702264
+    },
+    "F000": {
+      "gm": 1.1967927742200484,
+      "losses": 0,
+      "maximum": 1.2794014922810062,
+      "minimum": 1.0896773064614165,
+      "wins": 4,
+      "with_planning_gm": 1.1930255418671363
+    },
+    "SPM": {
+      "gm": 1.0145700769471795,
+      "losses": 2,
+      "maximum": 1.0692775892280546,
+      "minimum": 0.9895672188395642,
+      "wins": 2,
+      "with_planning_gm": 1.0157982371211924
+    },
+    "X10": {
+      "gm": 1.0102723862400365,
+      "losses": 2,
+      "maximum": 1.105238459280557,
+      "minimum": 0.941340100427889,
+      "wins": 2,
+      "with_planning_gm": 1.0109277003156656
+    },
+    "configs": 4,
+    "group": "load:zipf",
+    "maxmin": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "method": "maxmin-ref",
+    "planning_median_ms": 1.513233,
+    "planning_p95_median_ms": 2.0640850000000004,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 1.3603002419066788,
+      "losses": 0,
+      "maximum": 1.5530072861502786,
+      "minimum": 1.2243717736705146,
+      "wins": 4,
+      "with_planning_gm": 1.3518155607742934
+    }
+  },
+  {
+    "A1": {
+      "gm": 1.0189681566133033,
+      "losses": 1,
+      "maximum": 1.0982234447030863,
+      "minimum": 0.9728585477696682,
+      "wins": 3,
+      "with_planning_gm": 1.0207351177253714
+    },
+    "F000": {
+      "gm": 1.1967927742200484,
+      "losses": 0,
+      "maximum": 1.2794014922810062,
+      "minimum": 1.0896773064614165,
+      "wins": 4,
+      "with_planning_gm": 1.193976432115965
+    },
+    "SPM": {
+      "gm": 1.0145700769471795,
+      "losses": 2,
+      "maximum": 1.0692775892280546,
+      "minimum": 0.9895672188395642,
+      "wins": 2,
+      "with_planning_gm": 1.0162195933561906
+    },
+    "X10": {
+      "gm": 1.0102723862400365,
+      "losses": 2,
+      "maximum": 1.105238459280557,
+      "minimum": 0.941340100427889,
+      "wins": 2,
+      "with_planning_gm": 1.0111974695134485
+    },
+    "configs": 4,
+    "group": "load:zipf",
+    "maxmin": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "method": "maxmin-opt",
+    "planning_median_ms": 1.4014449999999998,
+    "planning_p95_median_ms": 1.893129,
+    "planning_speedup": 1.0723760839485539,
+    "spreadout": {
+      "gm": 1.3603002419066788,
+      "losses": 0,
+      "maximum": 1.5530072861502786,
+      "minimum": 1.2243717736705146,
+      "wins": 4,
+      "with_planning_gm": 1.3525323886259302
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.7490759210518526,
+      "losses": 4,
+      "maximum": 0.8163488954009932,
+      "minimum": 0.6470512394456697,
+      "wins": 0,
+      "with_planning_gm": 0.7554167619711002
+    },
+    "F000": {
+      "gm": 0.879800456803971,
+      "losses": 2,
+      "maximum": 1.044945268907596,
+      "minimum": 0.7016562743646861,
+      "wins": 2,
+      "with_planning_gm": 0.8825357367419224
+    },
+    "SPM": {
+      "gm": 0.7458427527183976,
+      "losses": 4,
+      "maximum": 0.8162909015516859,
+      "minimum": 0.6371941894056301,
+      "wins": 0,
+      "with_planning_gm": 0.7514325671316899
+    },
+    "X10": {
+      "gm": 0.7426833835036137,
+      "losses": 4,
+      "maximum": 0.8317342496371699,
+      "minimum": 0.6061401699932522,
+      "wins": 0,
+      "with_planning_gm": 0.7478296075661578
+    },
+    "configs": 4,
+    "group": "load:zipf",
+    "maxmin": {
+      "gm": 0.735131825455195,
+      "losses": 4,
+      "maximum": 0.8167453885367875,
+      "minimum": 0.6439119822025315,
+      "wins": 0,
+      "with_planning_gm": 0.7397458862118879
+    },
+    "method": "spreadout-ref",
+    "planning_median_ms": 0.12637725,
+    "planning_p95_median_ms": 0.1914595,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.7490759210518526,
+      "losses": 4,
+      "maximum": 0.8163488954009932,
+      "minimum": 0.6470512394456697,
+      "wins": 0,
+      "with_planning_gm": 0.7546844174004295
+    },
+    "F000": {
+      "gm": 0.879800456803971,
+      "losses": 2,
+      "maximum": 1.044945268907596,
+      "minimum": 0.7016562743646861,
+      "wins": 2,
+      "with_planning_gm": 0.8827710464878064
+    },
+    "SPM": {
+      "gm": 0.7458427527183976,
+      "losses": 4,
+      "maximum": 0.8162909015516859,
+      "minimum": 0.6371941894056301,
+      "wins": 0,
+      "with_planning_gm": 0.7513458471693918
+    },
+    "X10": {
+      "gm": 0.7426833835036137,
+      "losses": 4,
+      "maximum": 0.8317342496371699,
+      "minimum": 0.6061401699932522,
+      "wins": 0,
+      "with_planning_gm": 0.7476327206779484
+    },
+    "configs": 4,
+    "group": "load:zipf",
+    "maxmin": {
+      "gm": 0.735131825455195,
+      "losses": 4,
+      "maximum": 0.8167453885367875,
+      "minimum": 0.6439119822025315,
+      "wins": 0,
+      "with_planning_gm": 0.7393538287211915
+    },
+    "method": "spreadout-opt",
+    "planning_median_ms": 0.14403100000000002,
+    "planning_p95_median_ms": 0.2674085,
+    "planning_speedup": 0.8635530149409584,
+    "spreadout": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    }
+  },
+  {
+    "A1": {
+      "gm": 1.0086073523256736,
+      "losses": 3,
+      "maximum": 1.0674944038981495,
+      "minimum": 0.9815020792484038,
+      "wins": 1,
+      "with_planning_gm": 1.010145565685257
+    },
+    "F000": {
+      "gm": 1.184623860377092,
+      "losses": 0,
+      "maximum": 1.307236361763512,
+      "minimum": 1.0410143268764798,
+      "wins": 4,
+      "with_planning_gm": 1.1801294410021708
+    },
+    "SPM": {
+      "gm": 1.0042539920576647,
+      "losses": 2,
+      "maximum": 1.05123240621509,
+      "minimum": 0.9674632476362514,
+      "wins": 2,
+      "with_planning_gm": 1.0048178883653165
+    },
+    "X10": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "configs": 4,
+    "group": "load:zipf",
+    "maxmin": {
+      "gm": 0.9898320627387753,
+      "losses": 2,
+      "maximum": 1.0623153093610342,
+      "minimum": 0.9047821233536689,
+      "wins": 2,
+      "with_planning_gm": 0.9891904234968996
+    },
+    "method": "X10-ref",
+    "planning_median_ms": 1.67723,
+    "planning_p95_median_ms": 1.9716250000000002,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 1.3464687943905431,
+      "losses": 0,
+      "maximum": 1.6497834156266735,
+      "minimum": 1.2023071076323155,
+      "wins": 4,
+      "with_planning_gm": 1.3372030070520222
+    }
+  },
+  {
+    "A1": {
+      "gm": 1.0086073523256736,
+      "losses": 3,
+      "maximum": 1.0674944038981495,
+      "minimum": 0.9815020792484038,
+      "wins": 1,
+      "with_planning_gm": 1.0094320333065234
+    },
+    "F000": {
+      "gm": 1.184623860377092,
+      "losses": 0,
+      "maximum": 1.307236361763512,
+      "minimum": 1.0410143268764798,
+      "wins": 4,
+      "with_planning_gm": 1.1807549643992514
+    },
+    "SPM": {
+      "gm": 1.0042539920576647,
+      "losses": 2,
+      "maximum": 1.05123240621509,
+      "minimum": 0.9674632476362514,
+      "wins": 2,
+      "with_planning_gm": 1.0049665114818362
+    },
+    "X10": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "configs": 4,
+    "group": "load:zipf",
+    "maxmin": {
+      "gm": 0.9898320627387753,
+      "losses": 2,
+      "maximum": 1.0623153093610342,
+      "minimum": 0.9047821233536689,
+      "wins": 2,
+      "with_planning_gm": 0.9889265253810057
+    },
+    "method": "X10-opt",
+    "planning_median_ms": 1.627527,
+    "planning_p95_median_ms": 1.853853,
+    "planning_speedup": 1.0280733783519331,
+    "spreadout": {
+      "gm": 1.3464687943905431,
+      "losses": 0,
+      "maximum": 1.6497834156266735,
+      "minimum": 1.2023071076323155,
+      "wins": 4,
+      "with_planning_gm": 1.3375551555491134
+    }
+  },
+  {
+    "A1": {
+      "gm": 1.0043349195546527,
+      "losses": 1,
+      "maximum": 1.0270704780186488,
+      "minimum": 0.9754753180313706,
+      "wins": 3,
+      "with_planning_gm": 1.0053021322387161
+    },
+    "F000": {
+      "gm": 1.1796058265597316,
+      "losses": 0,
+      "maximum": 1.2828427939845823,
+      "minimum": 1.0760246752731244,
+      "wins": 4,
+      "with_planning_gm": 1.1744709709757049
+    },
+    "SPM": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "X10": {
+      "gm": 0.9957640277347082,
+      "losses": 2,
+      "maximum": 1.033630995744018,
+      "minimum": 0.9512644340945027,
+      "wins": 2,
+      "with_planning_gm": 0.9952052123861426
+    },
+    "configs": 4,
+    "group": "load:zipf",
+    "maxmin": {
+      "gm": 0.9856391615737173,
+      "losses": 2,
+      "maximum": 1.010542771589251,
+      "minimum": 0.9352108470934397,
+      "wins": 2,
+      "with_planning_gm": 0.9844474655065703
+    },
+    "method": "SPM-ref",
+    "planning_median_ms": 1.7806967500000002,
+    "planning_p95_median_ms": 2.1885135,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 1.3407651899214237,
+      "losses": 0,
+      "maximum": 1.5693802872446032,
+      "minimum": 1.2250534681926526,
+      "wins": 4,
+      "with_planning_gm": 1.3307914026365963
+    }
+  },
+  {
+    "A1": {
+      "gm": 1.0043349195546527,
+      "losses": 1,
+      "maximum": 1.0270704780186488,
+      "minimum": 0.9754753180313706,
+      "wins": 3,
+      "with_planning_gm": 1.004443453362543
+    },
+    "F000": {
+      "gm": 1.1796058265597316,
+      "losses": 0,
+      "maximum": 1.2828427939845823,
+      "minimum": 1.0760246752731244,
+      "wins": 4,
+      "with_planning_gm": 1.1749197121585802
+    },
+    "SPM": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "X10": {
+      "gm": 0.9957640277347082,
+      "losses": 2,
+      "maximum": 1.033630995744018,
+      "minimum": 0.9512644340945027,
+      "wins": 2,
+      "with_planning_gm": 0.9950580328547337
+    },
+    "configs": 4,
+    "group": "load:zipf",
+    "maxmin": {
+      "gm": 0.9856391615737173,
+      "losses": 2,
+      "maximum": 1.010542771589251,
+      "minimum": 0.9352108470934397,
+      "wins": 2,
+      "with_planning_gm": 0.9840392829834904
+    },
+    "method": "SPM-opt",
+    "planning_median_ms": 1.7788300000000001,
+    "planning_p95_median_ms": 2.3266675,
+    "planning_speedup": 1.0028629814195853,
+    "spreadout": {
+      "gm": 1.3407651899214237,
+      "losses": 0,
+      "maximum": 1.5693802872446032,
+      "minimum": 1.2250534681926526,
+      "wins": 4,
+      "with_planning_gm": 1.330945001915408
+    }
+  },
+  {
+    "A1": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "F000": {
+      "gm": 1.1745144011151165,
+      "losses": 0,
+      "maximum": 1.3150950826449586,
+      "minimum": 1.0476639123625815,
+      "wins": 4,
+      "with_planning_gm": 1.1682766138775267
+    },
+    "SPM": {
+      "gm": 0.9956837908647298,
+      "losses": 3,
+      "maximum": 1.0251412634592574,
+      "minimum": 0.9736430180810267,
+      "wins": 1,
+      "with_planning_gm": 0.9947258320969549
+    },
+    "X10": {
+      "gm": 0.9914661019416262,
+      "losses": 1,
+      "maximum": 1.0188465426031101,
+      "minimum": 0.9367730606814598,
+      "wins": 3,
+      "with_planning_gm": 0.9899563329980324
+    },
+    "configs": 4,
+    "group": "load:zipf",
+    "maxmin": {
+      "gm": 0.9813849368204527,
+      "losses": 3,
+      "maximum": 1.0278986624443553,
+      "minimum": 0.9105615117061703,
+      "wins": 1,
+      "with_planning_gm": 0.9792553242817613
+    },
+    "method": "A1-ref",
+    "planning_median_ms": 2.01464425,
+    "planning_p95_median_ms": 2.812213,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 1.3349781669604326,
+      "losses": 0,
+      "maximum": 1.5454726597181119,
+      "minimum": 1.22496643975833,
+      "wins": 4,
+      "with_planning_gm": 1.323772585335162
+    }
+  },
+  {
+    "A1": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "F000": {
+      "gm": 1.1745144011151165,
+      "losses": 0,
+      "maximum": 1.3150950826449586,
+      "minimum": 1.0476639123625815,
+      "wins": 4,
+      "with_planning_gm": 1.1697221065310734
+    },
+    "SPM": {
+      "gm": 0.9956837908647298,
+      "losses": 3,
+      "maximum": 1.0251412634592574,
+      "minimum": 0.9736430180810267,
+      "wins": 1,
+      "with_planning_gm": 0.9955762035705763
+    },
+    "X10": {
+      "gm": 0.9914661019416262,
+      "losses": 1,
+      "maximum": 1.0188465426031101,
+      "minimum": 0.9367730606814598,
+      "wins": 3,
+      "with_planning_gm": 0.9906560986819216
+    },
+    "configs": 4,
+    "group": "load:zipf",
+    "maxmin": {
+      "gm": 0.9813849368204527,
+      "losses": 3,
+      "maximum": 1.0278986624443553,
+      "minimum": 0.9105615117061703,
+      "wins": 1,
+      "with_planning_gm": 0.9796860935170154
+    },
+    "method": "A1-opt",
+    "planning_median_ms": 1.8267775,
+    "planning_p95_median_ms": 2.1501935000000003,
+    "planning_speedup": 1.1091033585506043,
+    "spreadout": {
+      "gm": 1.3349781669604326,
+      "losses": 0,
+      "maximum": 1.5454726597181119,
+      "minimum": 1.22496643975833,
+      "wins": 4,
+      "with_planning_gm": 1.3250571721681754
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.8980682067349804,
+      "losses": 6,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.760401292041006,
+      "wins": 2,
+      "with_planning_gm": 0.9010176198212541
+    },
+    "F000": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "SPM": {
+      "gm": 0.8961279857721245,
+      "losses": 6,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.7795187412589686,
+      "wins": 2,
+      "with_planning_gm": 0.8985104610277259
+    },
+    "X10": {
+      "gm": 0.9089938499392799,
+      "losses": 6,
+      "maximum": 1.0,
+      "minimum": 0.7649726011682858,
+      "wins": 0,
+      "with_planning_gm": 0.9113718119420604
+    },
+    "configs": 8,
+    "group": "N:12",
+    "maxmin": {
+      "gm": 0.9140932896203671,
+      "losses": 4,
+      "maximum": 1.0,
+      "minimum": 0.7816154710099097,
+      "wins": 0,
+      "with_planning_gm": 0.9156233082813168
+    },
+    "method": "F000-ref",
+    "planning_median_ms": 0.5074660000000001,
+    "planning_p95_median_ms": 0.6144449999999999,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 1.5222883543115384,
+      "losses": 2,
+      "maximum": 3.5238060075370874,
+      "minimum": 0.9569879205687178,
+      "wins": 6,
+      "with_planning_gm": 1.5193915355980907
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.8980682067349804,
+      "losses": 6,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.760401292041006,
+      "wins": 2,
+      "with_planning_gm": 0.9003670993772971
+    },
+    "F000": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "SPM": {
+      "gm": 0.8961279857721245,
+      "losses": 6,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.7795187412589686,
+      "wins": 2,
+      "with_planning_gm": 0.8983130667192939
+    },
+    "X10": {
+      "gm": 0.9089938499392799,
+      "losses": 6,
+      "maximum": 1.0,
+      "minimum": 0.7649726011682858,
+      "wins": 0,
+      "with_planning_gm": 0.9108096223472585
+    },
+    "configs": 8,
+    "group": "N:12",
+    "maxmin": {
+      "gm": 0.9140932896203671,
+      "losses": 4,
+      "maximum": 1.0,
+      "minimum": 0.7816154710099097,
+      "wins": 0,
+      "with_planning_gm": 0.9152458252198149
+    },
+    "method": "F000-opt",
+    "planning_median_ms": 0.5514692499999999,
+    "planning_p95_median_ms": 0.6690209999999999,
+    "planning_speedup": 0.9522900371859804,
+    "spreadout": {
+      "gm": 1.5222883543115384,
+      "losses": 2,
+      "maximum": 3.5238060075370874,
+      "minimum": 0.9569879205687178,
+      "wins": 6,
+      "with_planning_gm": 1.5193736127565827
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.982468875915234,
+      "losses": 3,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.7939655155343331,
+      "wins": 5,
+      "with_planning_gm": 0.9840483653834909
+    },
+    "F000": {
+      "gm": 1.0939802439806892,
+      "losses": 0,
+      "maximum": 1.2794014922810062,
+      "minimum": 1.0,
+      "wins": 4,
+      "with_planning_gm": 1.092152188520696
+    },
+    "SPM": {
+      "gm": 0.9803463125129124,
+      "losses": 4,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.7939655155343335,
+      "wins": 4,
+      "with_planning_gm": 0.9813101664201703
+    },
+    "X10": {
+      "gm": 0.9944213137335194,
+      "losses": 4,
+      "maximum": 1.105238459280557,
+      "minimum": 0.941340100427889,
+      "wins": 2,
+      "with_planning_gm": 0.9953567189685933
+    },
+    "configs": 8,
+    "group": "N:12",
+    "maxmin": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "method": "maxmin-ref",
+    "planning_median_ms": 0.8249627499999999,
+    "planning_p95_median_ms": 1.005263,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 1.6653533852586986,
+      "losses": 0,
+      "maximum": 3.5238060075370874,
+      "minimum": 1.1793975877532104,
+      "wins": 8,
+      "with_planning_gm": 1.6594067908232755
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.982468875915234,
+      "losses": 3,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.7939655155343331,
+      "wins": 5,
+      "with_planning_gm": 0.9837434649440282
+    },
+    "F000": {
+      "gm": 1.0939802439806892,
+      "losses": 0,
+      "maximum": 1.2794014922810062,
+      "minimum": 1.0,
+      "wins": 4,
+      "with_planning_gm": 1.0926026346635667
+    },
+    "SPM": {
+      "gm": 0.9803463125129124,
+      "losses": 4,
+      "maximum": 1.1567690727205246,
+      "minimum": 0.7939655155343335,
+      "wins": 4,
+      "with_planning_gm": 0.9814992234502089
+    },
+    "X10": {
+      "gm": 0.9944213137335194,
+      "losses": 4,
+      "maximum": 1.105238459280557,
+      "minimum": 0.941340100427889,
+      "wins": 2,
+      "with_planning_gm": 0.9951529930535429
+    },
+    "configs": 8,
+    "group": "N:12",
+    "maxmin": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "method": "maxmin-opt",
+    "planning_median_ms": 0.7781005000000001,
+    "planning_p95_median_ms": 0.9250955,
+    "planning_speedup": 1.0475259402201886,
+    "spreadout": {
+      "gm": 1.6653533852586986,
+      "losses": 0,
+      "maximum": 3.5238060075370874,
+      "minimum": 1.1793975877532104,
+      "wins": 8,
+      "with_planning_gm": 1.6600716123361439
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.5899461847628308,
+      "losses": 8,
+      "maximum": 0.8523833637019751,
+      "minimum": 0.2355861772293636,
+      "wins": 0,
+      "with_planning_gm": 0.5930121359183294
+    },
+    "F000": {
+      "gm": 0.6569057676672921,
+      "losses": 6,
+      "maximum": 1.044945268907596,
+      "minimum": 0.2837840669608641,
+      "wins": 2,
+      "with_planning_gm": 0.6581582012080657
+    },
+    "SPM": {
+      "gm": 0.5886716424217817,
+      "losses": 8,
+      "maximum": 0.8523833637019751,
+      "minimum": 0.2355861772293636,
+      "wins": 0,
+      "with_planning_gm": 0.5913620287966379
+    },
+    "X10": {
+      "gm": 0.5971233027992101,
+      "losses": 8,
+      "maximum": 0.8478904911998605,
+      "minimum": 0.2837840669608641,
+      "wins": 0,
+      "with_planning_gm": 0.599826832379522
+    },
+    "configs": 8,
+    "group": "N:12",
+    "maxmin": {
+      "gm": 0.6004731541375877,
+      "losses": 8,
+      "maximum": 0.8478904911998605,
+      "minimum": 0.2837840669608641,
+      "wins": 0,
+      "with_planning_gm": 0.6026249895626096
+    },
+    "method": "spreadout-ref",
+    "planning_median_ms": 0.0699955,
+    "planning_p95_median_ms": 0.1132405,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.5899461847628308,
+      "losses": 8,
+      "maximum": 0.8523833637019751,
+      "minimum": 0.2355861772293636,
+      "wins": 0,
+      "with_planning_gm": 0.5925909807948889
+    },
+    "F000": {
+      "gm": 0.6569057676672921,
+      "losses": 6,
+      "maximum": 1.044945268907596,
+      "minimum": 0.2837840669608641,
+      "wins": 2,
+      "with_planning_gm": 0.6581659649766533
+    },
+    "SPM": {
+      "gm": 0.5886716424217817,
+      "losses": 8,
+      "maximum": 0.8523833637019751,
+      "minimum": 0.2355861772293636,
+      "wins": 0,
+      "with_planning_gm": 0.5912390864084408
+    },
+    "X10": {
+      "gm": 0.5971233027992101,
+      "losses": 8,
+      "maximum": 0.8478904911998605,
+      "minimum": 0.2837840669608641,
+      "wins": 0,
+      "with_planning_gm": 0.5994638940022046
+    },
+    "configs": 8,
+    "group": "N:12",
+    "maxmin": {
+      "gm": 0.6004731541375877,
+      "losses": 8,
+      "maximum": 0.8478904911998605,
+      "minimum": 0.2837840669608641,
+      "wins": 0,
+      "with_planning_gm": 0.6023836517466528
+    },
+    "method": "spreadout-opt",
+    "planning_median_ms": 0.12213949999999998,
+    "planning_p95_median_ms": 0.223563,
+    "planning_speedup": 0.5405349941365754,
+    "spreadout": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.987980509213534,
+      "losses": 5,
+      "maximum": 1.2144052046629463,
+      "minimum": 0.7939655155343331,
+      "wins": 3,
+      "with_planning_gm": 0.9886388936050782
+    },
+    "F000": {
+      "gm": 1.1001174541134675,
+      "losses": 0,
+      "maximum": 1.307236361763512,
+      "minimum": 1.0,
+      "wins": 6,
+      "with_planning_gm": 1.0972470147711504
+    },
+    "SPM": {
+      "gm": 0.9858460382674593,
+      "losses": 4,
+      "maximum": 1.2144052046629463,
+      "minimum": 0.7939655155343335,
+      "wins": 4,
+      "with_planning_gm": 0.9858879211033222
+    },
+    "X10": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "configs": 8,
+    "group": "N:12",
+    "maxmin": {
+      "gm": 1.0056099825993627,
+      "losses": 2,
+      "maximum": 1.0623153093610342,
+      "minimum": 0.9047821233536689,
+      "wins": 4,
+      "with_planning_gm": 1.0046649416665596
+    },
+    "method": "X10-ref",
+    "planning_median_ms": 1.012846,
+    "planning_p95_median_ms": 1.1944569999999999,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 1.6746959887717898,
+      "losses": 0,
+      "maximum": 3.5238060075370874,
+      "minimum": 1.1793975877532104,
+      "wins": 8,
+      "with_planning_gm": 1.6671478267035589
+    }
+  },
+  {
+    "A1": {
+      "gm": 0.987980509213534,
+      "losses": 5,
+      "maximum": 1.2144052046629463,
+      "minimum": 0.7939655155343331,
+      "wins": 3,
+      "with_planning_gm": 0.9885349004734383
+    },
+    "F000": {
+      "gm": 1.1001174541134675,
+      "losses": 0,
+      "maximum": 1.307236361763512,
+      "minimum": 1.0,
+      "wins": 6,
+      "with_planning_gm": 1.0979242812816226
+    },
+    "SPM": {
+      "gm": 0.9858460382674593,
+      "losses": 4,
+      "maximum": 1.2144052046629463,
+      "minimum": 0.7939655155343335,
+      "wins": 4,
+      "with_planning_gm": 0.9862797281436712
+    },
+    "X10": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "configs": 8,
+    "group": "N:12",
+    "maxmin": {
+      "gm": 1.0056099825993627,
+      "losses": 2,
+      "maximum": 1.0623153093610342,
+      "minimum": 0.9047821233536689,
+      "wins": 4,
+      "with_planning_gm": 1.004870614850471
+    },
+    "method": "X10-opt",
+    "planning_median_ms": 0.924765,
+    "planning_p95_median_ms": 1.093561,
+    "planning_speedup": 1.2209625830187127,
+    "spreadout": {
+      "gm": 1.6746959887717898,
+      "losses": 0,
+      "maximum": 3.5238060075370874,
+      "minimum": 1.1793975877532104,
+      "wins": 8,
+      "with_planning_gm": 1.6681571817840333
+    }
+  },
+  {
+    "A1": {
+      "gm": 1.002165115913866,
+      "losses": 1,
+      "maximum": 1.0270704780186488,
+      "minimum": 0.9754753180313706,
+      "wins": 3,
+      "with_planning_gm": 1.002790350143125
+    },
+    "F000": {
+      "gm": 1.115912030287032,
+      "losses": 2,
+      "maximum": 1.2828427939845823,
+      "minimum": 0.864476777243162,
+      "wins": 6,
+      "with_planning_gm": 1.1129530966797976
+    },
+    "SPM": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "X10": {
+      "gm": 1.0143571726041676,
+      "losses": 4,
+      "maximum": 1.259500545596123,
+      "minimum": 0.8234483812818855,
+      "wins": 4,
+      "with_planning_gm": 1.0143140803275943
+    },
+    "configs": 8,
+    "group": "N:12",
+    "maxmin": {
+      "gm": 1.020047698692016,
+      "losses": 4,
+      "maximum": 1.259500545596123,
+      "minimum": 0.864476777243162,
+      "wins": 4,
+      "with_planning_gm": 1.0190457963438924
+    },
+    "method": "SPM-ref",
+    "planning_median_ms": 0.99213425,
+    "planning_p95_median_ms": 1.1552535,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 1.6987398881420934,
+      "losses": 0,
+      "maximum": 4.244731213692615,
+      "minimum": 1.1731810387017798,
+      "wins": 8,
+      "with_planning_gm": 1.6910115146129676
+    }
+  },
+  {
+    "A1": {
+      "gm": 1.002165115913866,
+      "losses": 1,
+      "maximum": 1.0270704780186488,
+      "minimum": 0.9754753180313706,
+      "wins": 3,
+      "with_planning_gm": 1.0022865443397198
+    },
+    "F000": {
+      "gm": 1.115912030287032,
+      "losses": 2,
+      "maximum": 1.2828427939845823,
+      "minimum": 0.864476777243162,
+      "wins": 6,
+      "with_planning_gm": 1.1131976557483176
+    },
+    "SPM": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "X10": {
+      "gm": 1.0143571726041676,
+      "losses": 4,
+      "maximum": 1.259500545596123,
+      "minimum": 0.8234483812818855,
+      "wins": 4,
+      "with_planning_gm": 1.0139111364299787
+    },
+    "configs": 8,
+    "group": "N:12",
+    "maxmin": {
+      "gm": 1.020047698692016,
+      "losses": 4,
+      "maximum": 1.259500545596123,
+      "minimum": 0.864476777243162,
+      "wins": 4,
+      "with_planning_gm": 1.0188495070681323
+    },
+    "method": "SPM-opt",
+    "planning_median_ms": 0.9874552500000001,
+    "planning_p95_median_ms": 1.2971965,
+    "planning_speedup": 1.0158338421136475,
+    "spreadout": {
+      "gm": 1.6987398881420934,
+      "losses": 0,
+      "maximum": 4.244731213692615,
+      "minimum": 1.1731810387017798,
+      "wins": 8,
+      "with_planning_gm": 1.6913631439264798
+    }
+  },
+  {
+    "A1": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "F000": {
+      "gm": 1.113501171181199,
+      "losses": 2,
+      "maximum": 1.3150950826449586,
+      "minimum": 0.864476777243162,
+      "wins": 6,
+      "with_planning_gm": 1.1098562092474755
+    },
+    "SPM": {
+      "gm": 0.9978395616855096,
+      "losses": 3,
+      "maximum": 1.0251412634592574,
+      "minimum": 0.9736430180810267,
+      "wins": 1,
+      "with_planning_gm": 0.9972174142454333
+    },
+    "X10": {
+      "gm": 1.0121657165038953,
+      "losses": 3,
+      "maximum": 1.2595005455961235,
+      "minimum": 0.8234483812818855,
+      "wins": 5,
+      "with_planning_gm": 1.0114916644170182
+    },
+    "configs": 8,
+    "group": "N:12",
+    "maxmin": {
+      "gm": 1.0178439485611537,
+      "losses": 5,
+      "maximum": 1.2595005455961235,
+      "minimum": 0.864476777243162,
+      "wins": 3,
+      "with_planning_gm": 1.016210214027735
+    },
+    "method": "A1-ref",
+    "planning_median_ms": 1.11843575,
+    "planning_p95_median_ms": 1.607737,
+    "planning_speedup": 1.0,
+    "spreadout": {
+      "gm": 1.6950698654013983,
+      "losses": 0,
+      "maximum": 4.244731213692615,
+      "minimum": 1.1731810387017798,
+      "wins": 8,
+      "with_planning_gm": 1.6863061300615976
+    }
+  },
+  {
+    "A1": {
+      "gm": 1.0,
+      "losses": 0,
+      "maximum": 1.0,
+      "minimum": 1.0,
+      "wins": 0,
+      "with_planning_gm": 1.0
+    },
+    "F000": {
+      "gm": 1.113501171181199,
+      "losses": 2,
+      "maximum": 1.3150950826449586,
+      "minimum": 0.864476777243162,
+      "wins": 6,
+      "with_planning_gm": 1.1106580867866118
+    },
+    "SPM": {
+      "gm": 0.9978395616855096,
+      "losses": 3,
+      "maximum": 1.0251412634592574,
+      "minimum": 0.9736430180810267,
+      "wins": 1,
+      "with_planning_gm": 0.9977186720178649
+    },
+    "X10": {
+      "gm": 1.0121657165038953,
+      "losses": 3,
+      "maximum": 1.2595005455961235,
+      "minimum": 0.8234483812818855,
+      "wins": 5,
+      "with_planning_gm": 1.0115980725830427
+    },
+    "configs": 8,
+    "group": "N:12",
+    "maxmin": {
+      "gm": 1.0178439485611537,
+      "losses": 5,
+      "maximum": 1.2595005455961235,
+      "minimum": 0.864476777243162,
+      "wins": 3,
+      "with_planning_gm": 1.0165251771780732
+    },
+    "method": "A1-opt",
+    "planning_median_ms": 1.0136785,
+    "planning_p95_median_ms": 1.204724,
+    "planning_speedup": 1.1106363876435195,
+    "spreadout": {
+      "gm": 1.6950698654013983,
+      "losses": 0,
+      "maximum": 4.244731213692615,
+      "minimum": 1.1731810387017798,
+      "wins": 8,
+      "with_planning_gm": 1.6875045898582883
+    }
+  }
+]

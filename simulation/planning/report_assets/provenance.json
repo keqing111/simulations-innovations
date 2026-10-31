@@ -1,0 +1,9 @@
+{
+  "binary_sha256": "9626cbf3ebf05cd3f1f18cf99b794898fbb4073488a9c4e489f8c9c07747cade",
+  "communication_sha256": "28612de6d2264a900bf567da2b27d521e3429bcb4f3678c90156a2431c116fae",
+  "cpu_sha256": "df6b033f03a05b95ca06934d645fd94e6207f274234a2bd17edf0b78f5d13d28",
+  "cpu_warning": "Only isolated final-binary CPU; no V1 timing is used in these figures. No confidence intervals implied.",
+  "final_checks_sha256": "7ce2d3321fe39005b579694d6854fd278499654706263aff2f3c2bfd3244702b",
+  "script_sha256": "17f78f42cf0d2e02c04c090e16aa4efbd8062e97562e1695a7db63507a73bc37",
+  "test_sha256": "92268c04c3fbb0cb711bf330c3bda2a0d1b36640adf0b4af0a1169eb3b3eec91"
+}

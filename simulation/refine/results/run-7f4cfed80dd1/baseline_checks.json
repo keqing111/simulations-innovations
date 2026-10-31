@@ -1,0 +1,1696 @@
+{
+  "binary_sha256": "7d3661c223c486d60bb6d84d32ce72b43293eec7366b6d9c5515e71dce009d27",
+  "checks": [
+    {
+      "case": "n6-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n6-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n6-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n6-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n6-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n6-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n6-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n6-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n6-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n6-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n6-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n6-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n6-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n6-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n6-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n6-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n6-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n6-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n6-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n6-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n6-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n12-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n12-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n12-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n12-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n12-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n12-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n12-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n12-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n12-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n12-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n12-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n12-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n12-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n12-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n12-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n12-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n12-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n12-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n12-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n12-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n12-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n24-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n24-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n24-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n24-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n24-g8-balanced-s0-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-16MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n24-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n24-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n24-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n24-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n24-g8-balanced-s0-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-16MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n24-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n24-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n24-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n24-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n24-g8-balanced-s0-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n24-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n24-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n24-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n24-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n24-g8-balanced-s0-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n24-g8-zipf-s280101-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n24-g8-zipf-s280203-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n24-g8-zipf-s280203-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n24-g8-zipf-s280203-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n24-g8-zipf-s280203-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n24-g8-zipf-s280203-256MiB-w50",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    },
+    {
+      "case": "n24-g8-zipf-s280203-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F000"
+    },
+    {
+      "case": "n24-g8-zipf-s280203-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F011"
+    },
+    {
+      "case": "n24-g8-zipf-s280203-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "F111"
+    },
+    {
+      "case": "n24-g8-zipf-s280203-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "maxmin"
+    },
+    {
+      "case": "n24-g8-zipf-s280203-256MiB-w5000",
+      "fields": [
+        "stages",
+        "total_us",
+        "balance_us",
+        "intrinsic_us",
+        "dispatch_us",
+        "service",
+        "inter_bytes"
+      ],
+      "method": "spreadout"
+    }
+  ],
+  "frozen": "/home/julius/fast/FAST/simulation/scan/results/run-7be22345a21c"
+}

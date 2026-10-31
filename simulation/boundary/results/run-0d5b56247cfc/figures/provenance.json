@@ -1,0 +1,24 @@
+{
+  "binary_sha256": "9626cbf3ebf05cd3f1f18cf99b794898fbb4073488a9c4e489f8c9c07747cade",
+  "derived_tables": {
+    "analysis.csv": "68ab5fb00c88193a600aabfcab1d3f980f1a94787cdfcf73d813cb646ac4d087",
+    "analysis.json": "d128fea7b428d81c0fb021896c389388f1e63b8cfcae00082523ac7108d0532b",
+    "comparison.csv": "09a6a13986f5c8d12f71cc33d6eb294313e3ddade30d79ae162c11c69dabc203",
+    "comparison.json": "41407cb91eccdc2ccf8f480338b5cf5e498fac0ba6062edd2d2cc0e49c9b6dfa",
+    "crossings.json": "7fd2a7f020f70dcc1ca3593bf1d5b9a44588e3b0e8599dd7cec0ac9c4f8be638",
+    "summary.json": "36e92f99322eac27730a6bd89d27aa35cb34a7cbef19702fa6a29d650f664a65"
+  },
+  "identity": {
+    "digest": "0d5b56247cfcc28c0828e1dcc13078c5acbc872f44fc027c6b209206c2538ece",
+    "files": {
+      "DESIGN.md": "42db863e531d192cf6be92d29911a7d133751bd5adc6ed28a3069747b6611127",
+      "Makefile": "69878062be56ba8aed483d17271c0c9000684d3a1955ee4f176deb96b3ff11c8",
+      "analysis.py": "4126ebf74e6e38f411fcf7ee43c3289620631a08248869a1990c465e7f85d3d3",
+      "study.py": "e76027254fd0e352c079692be7ad8e3776419b4cb8239e1324eb289b37454c3f",
+      "tests/test_analysis.py": "4fd22fd34bf0fea8fa38d5b9b91297aaca029864ad42c8ee35876506d3e2a84b",
+      "tests/test_study.py": "b01270d3120aefb133d507d5eab577ca8c0660eb1b60609f28b1c1f892bbd6df"
+    }
+  },
+  "raw_records_fingerprint": "4abf2d1743813c696a07d711efbdc7cb406d9e48155eb347dd4f2cde0e5fb8ab",
+  "warning": "Communication only; frozen roots are not global/rerun algorithm thresholds; no CPU inference"
+}

@@ -1,0 +1,19 @@
+{
+  "checks": [
+    {
+      "phase": "audit",
+      "returncode": 0
+    },
+    {
+      "phase": "analyze",
+      "returncode": 0
+    },
+    {
+      "phase": "render",
+      "returncode": 0
+    }
+  ],
+  "original_execution_root_no_longer_exists": true,
+  "smoke_outcomes": 48,
+  "warning": "Compatible local runtime path relocation; not a cross-platform binary guarantee"
+}

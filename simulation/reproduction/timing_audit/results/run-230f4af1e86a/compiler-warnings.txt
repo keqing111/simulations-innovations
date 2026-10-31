@@ -1,0 +1,25 @@
+/home/julius/fast/FAST/simulation/reproduction/timing_audit/results/run-230f4af1e86a/native/upstream/simulation/scheduler/global.cpp: In member function ‘pipeline_result_t GlobalScheduler::pipeline3(double, intra_transfer_topo_fn)’:
+/home/julius/fast/FAST/simulation/reproduction/timing_audit/results/run-230f4af1e86a/native/upstream/simulation/scheduler/global.cpp:146:37: warning: unused variable ‘next_pid’ [-Wunused-variable]
+  146 |     uint prev_pid = 0, cur_pid = 1, next_pid = 2;
+      |                                     ^~~~~~~~
+/home/julius/fast/FAST/simulation/reproduction/timing_audit/results/run-230f4af1e86a/native/upstream/simulation/scheduler/global.cpp:147:20: warning: unused variable ‘intra2’ [-Wunused-variable]
+  147 |     double intra1, intra2, intra_time, largest_intra_time, inter, balance_time;
+      |                    ^~~~~~
+/home/julius/fast/FAST/simulation/reproduction/timing_audit/results/run-230f4af1e86a/native/upstream/simulation/scheduler/global.cpp:147:28: warning: unused variable ‘intra_time’ [-Wunused-variable]
+  147 |     double intra1, intra2, intra_time, largest_intra_time, inter, balance_time;
+      |                            ^~~~~~~~~~
+/home/julius/fast/FAST/simulation/reproduction/timing_audit/results/run-230f4af1e86a/native/upstream/simulation/scheduler/global.cpp: In member function ‘pipeline_result_t GlobalScheduler::pipeline2(double, scaling_success_condition)’:
+/home/julius/fast/FAST/simulation/reproduction/timing_audit/results/run-230f4af1e86a/native/upstream/simulation/scheduler/global.cpp:314:37: warning: unused variable ‘next_pid’ [-Wunused-variable]
+  314 |     uint prev_pid = 0, cur_pid = 1, next_pid = 2;
+      |                                     ^~~~~~~~
+/home/julius/fast/FAST/simulation/reproduction/timing_audit/results/run-230f4af1e86a/native/upstream/simulation/scheduler/global.cpp:315:20: warning: unused variable ‘intra2’ [-Wunused-variable]
+  315 |     double intra1, intra2, intra_time, largest_intra_time, inter, balance_time;
+      |                    ^~~~~~
+/home/julius/fast/FAST/simulation/reproduction/timing_audit/results/run-230f4af1e86a/native/upstream/simulation/scheduler/global.cpp:315:28: warning: unused variable ‘intra_time’ [-Wunused-variable]
+  315 |     double intra1, intra2, intra_time, largest_intra_time, inter, balance_time;
+      |                            ^~~~~~~~~~
+/home/julius/fast/FAST/simulation/reproduction/timing_audit/results/run-230f4af1e86a/native/upstream/simulation/scheduler/global.cpp: In member function ‘pipeline_result_t GlobalScheduler::pipeline(double)’:
+/home/julius/fast/FAST/simulation/reproduction/timing_audit/results/run-230f4af1e86a/native/upstream/simulation/scheduler/global.cpp:492:24: warning: ‘intra1’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+  492 |             intra_time = intra1 + intra2;
+      |             ~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+

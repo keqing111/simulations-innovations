@@ -1,0 +1,1122 @@
+[
+  {
+    "method": "F000",
+    "permuted_over_original": 0.9384924133295182,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 0.9384924133295182,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.6571864942684231,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.827064561513244,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.827064561513244,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 0.9240074103905541,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 0.9240074103905541,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.9138893786613254,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 0.9138893786613254,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.7130473404214964,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.8517696241542091,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.8517696241542091,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 1.0253308632031488,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 1.0253308632031488,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.9538805666362026,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 0.9538805666362026,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.8845300315395549,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.8597524734750684,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.8597524734750684,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 0.9386650493291558,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 0.9386650493291558,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.9354327932906836,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 0.9354327932906836,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.9033456558823122,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.8797878344072015,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.8797878344072015,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 1.020444983556948,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 1.020444983556948,
+    "problem_id": "n24g8-d3-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.9288164269231822,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 1.0113335637400795,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.7275659550455207,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.9844620794947657,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 1.0161820926859044,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 0.9959692268285155,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 0.9924665411086556,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.969876233723301,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 0.9970107578210755,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.7471213814227624,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 1.006599928609408,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 1.029942356259909,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 0.977041996937713,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 1.0345936996476963,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.9925687297706086,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 1.0115470104210198,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.9089416497199656,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 1.0099168563827416,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 1.0162289897522094,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 1.0031449874420144,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 0.9970915759525866,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 1.0047399165472506,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 0.9825528172577486,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.9134242042839579,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 1.0003581144000766,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.9911176122764066,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 0.9934980062546488,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 1.0140952290317193,
+    "problem_id": "n24g8-d3-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.8376978575145755,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 0.8376978575145755,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.5585638483493208,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.8898263792027534,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.8898263792027534,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 0.9021538602674076,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 0.9021538602674076,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.7971223218932194,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 0.7971223218932194,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.6192730845571426,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.9027879816494883,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.9027879816494883,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 0.8630154043743705,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 0.8630154043743705,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.895307372938194,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 0.895307372938194,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.8994923921518896,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.931629187097126,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.931629187097126,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 0.9394292077737771,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 0.9394292077737771,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.8691342161727424,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 0.8691342161727424,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.9133148670052017,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.9396728121445229,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.9396728121445229,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 0.9152008908832882,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 0.9152008908832882,
+    "problem_id": "n24g8-d6-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.899781109713684,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 1.0398208925178303,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.6202144144757843,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 1.0676897802845013,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.9560025704500598,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 1.014086444564422,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 1.0303426583405213,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.8644533597358687,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 1.133223393662138,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.6321951921148419,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.9282337237162417,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 1.0189251002593096,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 1.0205713154264862,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 1.035866583308529,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.9933645225916491,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 1.0168463780283994,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.9007096608697248,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 1.0208495294325441,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 1.0083033799242094,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 1.0172668737782518,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 1.0295724471837797,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.9972019716709584,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 1.005916309997367,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.9023608055227813,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.9722045384364866,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.9982440516139259,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 1.0085964227268753,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 1.0210105700740848,
+    "problem_id": "n24g8-d6-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.8384270114071407,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 0.8384270114071407,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.6362617088808288,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.865575660078868,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.865575660078868,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 0.8988705031692207,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 0.8988705031692207,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.822698667384827,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 0.822698667384827,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.6427143592489085,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.8705565666787148,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.8705565666787148,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 0.8799087225134498,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 0.8799087225134498,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.877395207769658,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 0.877395207769658,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.8778980719407694,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.8916086297996593,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.8916086297996593,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 0.918387725850627,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 0.918387725850627,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.8654602279950229,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 0.8654602279950229,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.8800641376816366,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.9013208803637057,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.9013208803637057,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 0.9030854244476192,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 0.9030854244476192,
+    "problem_id": "n48g8-d3-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.8633723384302293,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 1.0391064130313519,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.6766998726825022,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.9729694480174909,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.9935412657210265,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 1.0077784552935674,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 1.009427526105066,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.8465474472160404,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 1.0370113586078213,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.6787490255621222,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 1.0121942124311902,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 1.029556508736979,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 1.0276181897541694,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 1.025455501638556,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.9878632172632806,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 1.013575287884628,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.8904333837797708,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.9834749991326405,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.9957982138938308,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 1.0034216983793145,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 1.0053033886308684,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.9877269802847611,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 1.0128450584664315,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.8913866064881732,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 1.0043472021963489,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 1.0159899000606378,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 1.0098345150642694,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 1.000596153012831,
+    "problem_id": "n48g8-d3-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.746886110820701,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 0.746886110820701,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.5163004488687248,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.9362548184485223,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.9362548184485223,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 0.9027134143601432,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 0.9027134143601432,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640201-w50"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.7576569146155645,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 0.7576569146155645,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.5115952003168635,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.9271483639411683,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.9271483639411683,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 0.9369438796778707,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 0.9369438796778707,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640203-w50"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.8416603557209543,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 0.8416603557209543,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.8902983532258741,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.962260921644444,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.962260921644444,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 0.9421482684281361,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 0.9421482684281361,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640201-w5000"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.8483982129243177,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 0.8483982129243177,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.8892312165841042,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 0.9568696247365076,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.9568696247365076,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 0.9625035073145326,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 0.9625035073145326,
+    "problem_id": "n48g8-d6-asymmetric-balanced-s0-l640203-w5000"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.7820679158071877,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 1.0204728776991934,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.5355439807276897,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 1.0025333485804993,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.9614942381696017,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 0.9977362485731407,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 0.9798651070474312,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640201-l640201-w50"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.7955410397986784,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 1.0225794399488652,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.5286792759964717,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 1.007744901785278,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.977826740047345,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 1.0050863882611252,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 1.000211401384487,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640203-l640203-w50"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.9875687503354842,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 1.0060942832132045,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.8834624962719615,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 1.011353885877287,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.9930588886073568,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 1.0056195174509006,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 1.0120070626930069,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640201-l640201-w5000"
+  },
+  {
+    "method": "F000",
+    "permuted_over_original": 0.9897805314958433,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "maxmin",
+    "permuted_over_original": 1.0064676826409529,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "spreadout",
+    "permuted_over_original": 0.8816738924989527,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "A1",
+    "permuted_over_original": 1.0340818764631672,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "A1D",
+    "permuted_over_original": 0.9748849758060872,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "A1P",
+    "permuted_over_original": 1.0130146684908061,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640203-l640203-w5000"
+  },
+  {
+    "method": "A1DP",
+    "permuted_over_original": 1.0004948162148921,
+    "problem_id": "n48g8-d6-asymmetric-zipf-s640203-l640203-w5000"
+  }
+]

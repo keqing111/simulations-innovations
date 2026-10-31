@@ -1,0 +1,36 @@
+# Local builds and caches. Frozen audit dependencies live only in verified_data archives.
+**/__pycache__/
+*.py[cod]
+**/build/
+*.o
+*.a
+*.so
+*.so.*
+*.dylib
+*.dll
+*.exe
+core
+core.*
+*.core
+gmon.out
+
+# Result trees are curated explicitly: selected summaries/figures are tracked,
+# complete accepted runs are distributed in verified_data/ chunks.
+**/results/**
+simulation/benchmark/
+
+# Downloaded papers are references, not redistributable research output.
+research/topology_aware/papers/
+simulation/reproduction/assets/paper.pdf
+
+# Credentials never belong in the project.
+.env
+.env.*
+.git-credentials
+*.pem
+*.key
+id_rsa
+id_ed25519
+
+# In-progress packaging output.
+verified_data/*.tmp

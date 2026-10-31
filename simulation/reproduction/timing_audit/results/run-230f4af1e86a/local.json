@@ -1,0 +1,1922 @@
+[
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 0,
+    "endpoint_bound_us": 0.0,
+    "fixture": "empty",
+    "model": "spread_out",
+    "time_us": 0
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 0.1,
+    "endpoint_bound_us": 0.0,
+    "fixture": "empty",
+    "model": "full_mesh",
+    "time_us": 0.1
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 0,
+    "endpoint_bound_us": 0.0,
+    "fixture": "empty",
+    "model": "two_ring",
+    "time_us": 0
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 0.30000000000000004,
+    "endpoint_bound_us": 0.0,
+    "fixture": "empty",
+    "model": "hybrid_cube",
+    "time_us": 0.30000000000000004
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 3111.811111111112,
+    "endpoint_bound_us": 1555.5555555555557,
+    "fixture": "dense100",
+    "model": "spread_out",
+    "time_us": 1556.2555555555557
+  },
+  {
+    "below_same_aggregate_GPU_bound": true,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 1555.5555555555557,
+    "fixture": "dense100",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 4445.444444444445,
+    "endpoint_bound_us": 1555.5555555555557,
+    "fixture": "dense100",
+    "model": "two_ring",
+    "time_us": 2223.222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": true,
+    "doubled_us": 2222.5222222222224,
+    "endpoint_bound_us": 1555.5555555555557,
+    "fixture": "dense100",
+    "model": "hybrid_cube",
+    "time_us": 1111.4111111111113
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 3111.811111111112,
+    "endpoint_bound_us": 1555.5555555555557,
+    "fixture": "fanout100",
+    "model": "spread_out",
+    "time_us": 1556.2555555555557
+  },
+  {
+    "below_same_aggregate_GPU_bound": true,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 1555.5555555555557,
+    "fixture": "fanout100",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 4445.444444444445,
+    "endpoint_bound_us": 1555.5555555555557,
+    "fixture": "fanout100",
+    "model": "two_ring",
+    "time_us": 2223.222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": true,
+    "doubled_us": 1111.411111111111,
+    "endpoint_bound_us": 1555.5555555555557,
+    "fixture": "fanout100",
+    "model": "hybrid_cube",
+    "time_us": 555.8555555555556
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 0.0,
+    "fixture": "self100",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 0.0,
+    "fixture": "self100",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 0,
+    "endpoint_bound_us": 0.0,
+    "fixture": "self100",
+    "model": "two_ring",
+    "time_us": 0
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 0.30000000000000004,
+    "endpoint_bound_us": 0.0,
+    "fixture": "self100",
+    "model": "hybrid_cube",
+    "time_us": 0.30000000000000004
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-1",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-1",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-1",
+    "model": "two_ring",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": true,
+    "doubled_us": 222.5222222222222,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-1",
+    "model": "hybrid_cube",
+    "time_us": 111.41111111111111
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-2",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-2",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 889.088888888889,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-2",
+    "model": "two_ring",
+    "time_us": 444.64444444444445
+  },
+  {
+    "below_same_aggregate_GPU_bound": true,
+    "doubled_us": 222.5222222222222,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-2",
+    "model": "hybrid_cube",
+    "time_us": 111.41111111111111
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-3",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-3",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1333.6333333333334,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-3",
+    "model": "two_ring",
+    "time_us": 666.9666666666667
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.74444444444447,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-3",
+    "model": "hybrid_cube",
+    "time_us": 222.5222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-4",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-4",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1778.177777777778,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-4",
+    "model": "two_ring",
+    "time_us": 889.2888888888889
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.74444444444447,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-4",
+    "model": "hybrid_cube",
+    "time_us": 222.5222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-5",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-5",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1333.6333333333334,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-5",
+    "model": "two_ring",
+    "time_us": 666.9666666666667
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.74444444444447,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-5",
+    "model": "hybrid_cube",
+    "time_us": 222.5222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-6",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-6",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 889.088888888889,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-6",
+    "model": "two_ring",
+    "time_us": 444.64444444444445
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 666.9666666666667,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-6",
+    "model": "hybrid_cube",
+    "time_us": 333.6333333333333
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-7",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-7",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-7",
+    "model": "two_ring",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 666.9666666666667,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-0-7",
+    "model": "hybrid_cube",
+    "time_us": 333.6333333333334
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-0",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-0",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-0",
+    "model": "two_ring",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": true,
+    "doubled_us": 222.5222222222222,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-0",
+    "model": "hybrid_cube",
+    "time_us": 111.41111111111111
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-2",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-2",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-2",
+    "model": "two_ring",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.74444444444447,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-2",
+    "model": "hybrid_cube",
+    "time_us": 222.5222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-3",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-3",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 889.088888888889,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-3",
+    "model": "two_ring",
+    "time_us": 444.64444444444445
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.74444444444447,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-3",
+    "model": "hybrid_cube",
+    "time_us": 222.5222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-4",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-4",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1333.6333333333334,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-4",
+    "model": "two_ring",
+    "time_us": 666.9666666666667
+  },
+  {
+    "below_same_aggregate_GPU_bound": true,
+    "doubled_us": 222.5222222222222,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-4",
+    "model": "hybrid_cube",
+    "time_us": 111.41111111111111
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-5",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-5",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1778.177777777778,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-5",
+    "model": "two_ring",
+    "time_us": 889.2888888888889
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 666.9666666666667,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-5",
+    "model": "hybrid_cube",
+    "time_us": 333.6333333333334
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-6",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-6",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1333.6333333333334,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-6",
+    "model": "two_ring",
+    "time_us": 666.9666666666667
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 666.9666666666667,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-6",
+    "model": "hybrid_cube",
+    "time_us": 333.6333333333333
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-7",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-7",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 889.088888888889,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-7",
+    "model": "two_ring",
+    "time_us": 444.64444444444445
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 889.188888888889,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-1-7",
+    "model": "hybrid_cube",
+    "time_us": 444.74444444444447
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-0",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-0",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 889.088888888889,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-0",
+    "model": "two_ring",
+    "time_us": 444.64444444444445
+  },
+  {
+    "below_same_aggregate_GPU_bound": true,
+    "doubled_us": 222.5222222222222,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-0",
+    "model": "hybrid_cube",
+    "time_us": 111.41111111111111
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-1",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-1",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-1",
+    "model": "two_ring",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.74444444444447,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-1",
+    "model": "hybrid_cube",
+    "time_us": 222.5222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-3",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-3",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-3",
+    "model": "two_ring",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": true,
+    "doubled_us": 222.5222222222222,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-3",
+    "model": "hybrid_cube",
+    "time_us": 111.41111111111111
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-4",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-4",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 889.088888888889,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-4",
+    "model": "two_ring",
+    "time_us": 444.64444444444445
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 666.9666666666667,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-4",
+    "model": "hybrid_cube",
+    "time_us": 333.6333333333333
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-5",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-5",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1333.6333333333334,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-5",
+    "model": "two_ring",
+    "time_us": 666.9666666666667
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 666.9666666666667,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-5",
+    "model": "hybrid_cube",
+    "time_us": 333.6333333333334
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-6",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-6",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1778.177777777778,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-6",
+    "model": "two_ring",
+    "time_us": 889.2888888888889
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.74444444444447,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-6",
+    "model": "hybrid_cube",
+    "time_us": 222.5222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-7",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-7",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1333.6333333333334,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-7",
+    "model": "two_ring",
+    "time_us": 666.9666666666667
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.74444444444447,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-2-7",
+    "model": "hybrid_cube",
+    "time_us": 222.5222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-0",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-0",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1333.6333333333334,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-0",
+    "model": "two_ring",
+    "time_us": 666.9666666666667
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.74444444444447,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-0",
+    "model": "hybrid_cube",
+    "time_us": 222.5222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-1",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-1",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 889.088888888889,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-1",
+    "model": "two_ring",
+    "time_us": 444.64444444444445
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.74444444444447,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-1",
+    "model": "hybrid_cube",
+    "time_us": 222.5222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-2",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-2",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-2",
+    "model": "two_ring",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": true,
+    "doubled_us": 222.5222222222222,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-2",
+    "model": "hybrid_cube",
+    "time_us": 111.41111111111111
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-4",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-4",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-4",
+    "model": "two_ring",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 666.9666666666667,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-4",
+    "model": "hybrid_cube",
+    "time_us": 333.6333333333333
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-5",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-5",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 889.088888888889,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-5",
+    "model": "two_ring",
+    "time_us": 444.64444444444445
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 889.188888888889,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-5",
+    "model": "hybrid_cube",
+    "time_us": 444.74444444444447
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-6",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-6",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1333.6333333333334,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-6",
+    "model": "two_ring",
+    "time_us": 666.9666666666667
+  },
+  {
+    "below_same_aggregate_GPU_bound": true,
+    "doubled_us": 222.5222222222222,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-6",
+    "model": "hybrid_cube",
+    "time_us": 111.41111111111111
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-7",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-7",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1778.177777777778,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-7",
+    "model": "two_ring",
+    "time_us": 889.2888888888889
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 666.9666666666667,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-3-7",
+    "model": "hybrid_cube",
+    "time_us": 333.6333333333334
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-0",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-0",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1778.177777777778,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-0",
+    "model": "two_ring",
+    "time_us": 889.2888888888889
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 666.9666666666667,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-0",
+    "model": "hybrid_cube",
+    "time_us": 333.6333333333334
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-1",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-1",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1333.6333333333334,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-1",
+    "model": "two_ring",
+    "time_us": 666.9666666666667
+  },
+  {
+    "below_same_aggregate_GPU_bound": true,
+    "doubled_us": 222.5222222222222,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-1",
+    "model": "hybrid_cube",
+    "time_us": 111.41111111111111
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-2",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-2",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 889.088888888889,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-2",
+    "model": "two_ring",
+    "time_us": 444.64444444444445
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 889.188888888889,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-2",
+    "model": "hybrid_cube",
+    "time_us": 444.74444444444447
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-3",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-3",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-3",
+    "model": "two_ring",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 666.9666666666667,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-3",
+    "model": "hybrid_cube",
+    "time_us": 333.6333333333333
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-5",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-5",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-5",
+    "model": "two_ring",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": true,
+    "doubled_us": 222.5222222222222,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-5",
+    "model": "hybrid_cube",
+    "time_us": 111.41111111111111
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-6",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-6",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 889.088888888889,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-6",
+    "model": "two_ring",
+    "time_us": 444.64444444444445
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.74444444444447,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-6",
+    "model": "hybrid_cube",
+    "time_us": 222.5222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-7",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-7",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1333.6333333333334,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-7",
+    "model": "two_ring",
+    "time_us": 666.9666666666667
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.74444444444447,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-4-7",
+    "model": "hybrid_cube",
+    "time_us": 222.5222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-0",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-0",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1333.6333333333334,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-0",
+    "model": "two_ring",
+    "time_us": 666.9666666666667
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.74444444444447,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-0",
+    "model": "hybrid_cube",
+    "time_us": 222.5222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-1",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-1",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1778.177777777778,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-1",
+    "model": "two_ring",
+    "time_us": 889.2888888888889
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.74444444444447,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-1",
+    "model": "hybrid_cube",
+    "time_us": 222.5222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-2",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-2",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1333.6333333333334,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-2",
+    "model": "two_ring",
+    "time_us": 666.9666666666667
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 666.9666666666667,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-2",
+    "model": "hybrid_cube",
+    "time_us": 333.6333333333334
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-3",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-3",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 889.088888888889,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-3",
+    "model": "two_ring",
+    "time_us": 444.64444444444445
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 666.9666666666667,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-3",
+    "model": "hybrid_cube",
+    "time_us": 333.6333333333333
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-4",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-4",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-4",
+    "model": "two_ring",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": true,
+    "doubled_us": 222.5222222222222,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-4",
+    "model": "hybrid_cube",
+    "time_us": 111.41111111111111
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-6",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-6",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-6",
+    "model": "two_ring",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.74444444444447,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-6",
+    "model": "hybrid_cube",
+    "time_us": 222.5222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-7",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-7",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 889.088888888889,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-7",
+    "model": "two_ring",
+    "time_us": 444.64444444444445
+  },
+  {
+    "below_same_aggregate_GPU_bound": true,
+    "doubled_us": 222.5222222222222,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-5-7",
+    "model": "hybrid_cube",
+    "time_us": 111.41111111111111
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-0",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-0",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 889.088888888889,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-0",
+    "model": "two_ring",
+    "time_us": 444.64444444444445
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 889.188888888889,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-0",
+    "model": "hybrid_cube",
+    "time_us": 444.74444444444447
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-1",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-1",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1333.6333333333334,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-1",
+    "model": "two_ring",
+    "time_us": 666.9666666666667
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 666.9666666666667,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-1",
+    "model": "hybrid_cube",
+    "time_us": 333.6333333333333
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-2",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-2",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1778.177777777778,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-2",
+    "model": "two_ring",
+    "time_us": 889.2888888888889
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 666.9666666666667,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-2",
+    "model": "hybrid_cube",
+    "time_us": 333.6333333333334
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-3",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-3",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1333.6333333333334,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-3",
+    "model": "two_ring",
+    "time_us": 666.9666666666667
+  },
+  {
+    "below_same_aggregate_GPU_bound": true,
+    "doubled_us": 222.5222222222222,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-3",
+    "model": "hybrid_cube",
+    "time_us": 111.41111111111111
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-4",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-4",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 889.088888888889,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-4",
+    "model": "two_ring",
+    "time_us": 444.64444444444445
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.74444444444447,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-4",
+    "model": "hybrid_cube",
+    "time_us": 222.5222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-5",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-5",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-5",
+    "model": "two_ring",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.74444444444447,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-5",
+    "model": "hybrid_cube",
+    "time_us": 222.5222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-7",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-7",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-7",
+    "model": "two_ring",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": true,
+    "doubled_us": 222.5222222222222,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-6-7",
+    "model": "hybrid_cube",
+    "time_us": 111.41111111111111
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-0",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-0",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-0",
+    "model": "two_ring",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 666.9666666666667,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-0",
+    "model": "hybrid_cube",
+    "time_us": 333.6333333333334
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-1",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-1",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 889.088888888889,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-1",
+    "model": "two_ring",
+    "time_us": 444.64444444444445
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 666.9666666666667,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-1",
+    "model": "hybrid_cube",
+    "time_us": 333.6333333333333
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-2",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-2",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1333.6333333333334,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-2",
+    "model": "two_ring",
+    "time_us": 666.9666666666667
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.74444444444447,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-2",
+    "model": "hybrid_cube",
+    "time_us": 222.5222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-3",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-3",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1778.177777777778,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-3",
+    "model": "two_ring",
+    "time_us": 889.2888888888889
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.74444444444447,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-3",
+    "model": "hybrid_cube",
+    "time_us": 222.5222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-4",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-4",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 1333.6333333333334,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-4",
+    "model": "two_ring",
+    "time_us": 666.9666666666667
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.74444444444447,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-4",
+    "model": "hybrid_cube",
+    "time_us": 222.5222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-5",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-5",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 889.088888888889,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-5",
+    "model": "two_ring",
+    "time_us": 444.64444444444445
+  },
+  {
+    "below_same_aggregate_GPU_bound": true,
+    "doubled_us": 222.5222222222222,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-5",
+    "model": "hybrid_cube",
+    "time_us": 111.41111111111111
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-6",
+    "model": "spread_out",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-6",
+    "model": "full_mesh",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": false,
+    "doubled_us": 444.5444444444445,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-6",
+    "model": "two_ring",
+    "time_us": 222.32222222222222
+  },
+  {
+    "below_same_aggregate_GPU_bound": true,
+    "doubled_us": 222.5222222222222,
+    "endpoint_bound_us": 222.22222222222223,
+    "fixture": "edge-7-6",
+    "model": "hybrid_cube",
+    "time_us": 111.41111111111111
+  }
+]

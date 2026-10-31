@@ -1,0 +1,19 @@
+{
+  "binary_sha256": "8b8ae984bcffc551fceef2634b8631b5c5825f5046c802474eb31b6afbcd6947",
+  "command": [
+    "/home/julius/fast/FAST/simulation/planning/results/profile-after/native_scan",
+    "48",
+    "8",
+    "A1-opt",
+    "50",
+    "20",
+    "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2",
+    "400",
+    "400",
+    "100",
+    "asymmetric"
+  ],
+  "gmon_sha256": "d1e637df3ffa8dd47a76d67a28576edc2b997485d89bb797fc1ca2c4b822a075",
+  "input_sha256": "d05faa9292e42f09c4b1375d210beda999fbd612272a3f0bd7afadc7aa21daf2",
+  "warning": "diagnostic -pg build, not fair timing"
+}

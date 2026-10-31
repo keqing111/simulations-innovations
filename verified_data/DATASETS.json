@@ -1,0 +1,471 @@
+{
+  "datasets": [
+    {
+      "archive_sha256": "bf1d990a0b088ec23788888c351ee9f258e5f3234b06a79374d0c98211a2093c",
+      "classification": "historical-data-only",
+      "compressed_bytes": 36600443,
+      "id": "reproduction-run-9247cfc8536a",
+      "included_files": 1997,
+      "inventory": "verified_data/inventories/reproduction-run-9247cfc8536a.json",
+      "inventory_sha256": "ffee248a05c0e498cb35a0d9a28bf7cd15a4522631557e99d5889d72f4f36e31",
+      "manifest": "simulation/reproduction/results/run-9247cfc8536a/study.json",
+      "note": "Native reproduction data; Fig17a mismatch remains; PDF and PDF-containing adapter archive omitted",
+      "omitted_files": 2,
+      "original_manifest_sha256": "bfc38c9d4c475a6f4b5a58c3ba18ee1b464537a29cdbb3f3d345dc26df63325f",
+      "parts": [
+        {
+          "bytes": 36600443,
+          "path": "verified_data/reproduction-run-9247cfc8536a.tar.gz.part-000",
+          "sha256": "bf1d990a0b088ec23788888c351ee9f258e5f3234b06a79374d0c98211a2093c"
+        }
+      ],
+      "raw_files": 981,
+      "registered_raw_digests_verified": 981,
+      "root": "simulation/reproduction/results/run-9247cfc8536a",
+      "unpacked_bytes": 67988145
+    },
+    {
+      "archive_sha256": "4ea1ffceed7a24c61b7690cce2e078409ef225e1615a6b82845db2fdfde87569",
+      "classification": "diagnostic-only",
+      "compressed_bytes": 975596,
+      "id": "timing-audit-run-230f4af1e86a",
+      "included_files": 35,
+      "inventory": "verified_data/inventories/timing-audit-run-230f4af1e86a.json",
+      "inventory_sha256": "fa958aaa6b0ab915ad7c64e9586b1bafd6c3489bb87f60ccf09714192bfcb7bc",
+      "manifest": "simulation/reproduction/timing_audit/results/run-230f4af1e86a/registration.json",
+      "note": "pipeline1 undefined behavior is diagnostic, never a valid performance baseline",
+      "omitted_files": 2,
+      "original_manifest_sha256": "913de58083dda68889f30c416a82028f416b7c641a1dcb8664daadfc48940b2c",
+      "parts": [
+        {
+          "bytes": 975596,
+          "path": "verified_data/timing-audit-run-230f4af1e86a.tar.gz.part-000",
+          "sha256": "4ea1ffceed7a24c61b7690cce2e078409ef225e1615a6b82845db2fdfde87569"
+        }
+      ],
+      "raw_files": 0,
+      "registered_raw_digests_verified": 0,
+      "root": "simulation/reproduction/timing_audit/results/run-230f4af1e86a",
+      "unpacked_bytes": 1913049
+    },
+    {
+      "archive_sha256": "b0a0cfc71ca44087b90b4bde4ad9de8f04de0d7f1c323de2f12cd7d327dc525c",
+      "classification": "audited-study",
+      "compressed_bytes": 3158893,
+      "id": "topology-run-cdcfeb24cb30",
+      "included_files": 287,
+      "inventory": "verified_data/inventories/topology-run-cdcfeb24cb30.json",
+      "inventory_sha256": "8ce58a0695efdbf7460328eeb8a35a18fcdb29e6c4f111a1a40107e4ca928f94",
+      "manifest": "simulation/topology/results/run-cdcfeb24cb30/study.json",
+      "note": "240 analytic-model results",
+      "omitted_files": 0,
+      "original_manifest_sha256": "7a7787ffe8c0167c86c035aa6bf1334e0c85fce442825d447e005f2ddf21b9fb",
+      "parts": [
+        {
+          "bytes": 3158893,
+          "path": "verified_data/topology-run-cdcfeb24cb30.tar.gz.part-000",
+          "sha256": "b0a0cfc71ca44087b90b4bde4ad9de8f04de0d7f1c323de2f12cd7d327dc525c"
+        }
+      ],
+      "raw_files": 240,
+      "registered_raw_digests_verified": 0,
+      "root": "simulation/topology/results/run-cdcfeb24cb30",
+      "unpacked_bytes": 36549961
+    },
+    {
+      "archive_sha256": "317ec711f6c4c34d0549a4e262e1ef44748c62afcf8f1a4f42d62cb169b2b22f",
+      "classification": "audited-study",
+      "compressed_bytes": 23976682,
+      "id": "bottleneck-run-33e58e040218",
+      "included_files": 517,
+      "inventory": "verified_data/inventories/bottleneck-run-33e58e040218.json",
+      "inventory_sha256": "cb08a49fc6755790e1f4f479fd5560d14b65723237b316520bcd962aa216620d",
+      "manifest": "simulation/bottleneck/results/run-33e58e040218/study.json",
+      "note": "420 results, includes legitimate counterexamples",
+      "omitted_files": 2,
+      "original_manifest_sha256": "f19b3964932a17640a3f98229e108a6953ccdea4dda53349ce225e1403ff16cf",
+      "parts": [
+        {
+          "bytes": 23976682,
+          "path": "verified_data/bottleneck-run-33e58e040218.tar.gz.part-000",
+          "sha256": "317ec711f6c4c34d0549a4e262e1ef44748c62afcf8f1a4f42d62cb169b2b22f"
+        }
+      ],
+      "raw_files": 420,
+      "registered_raw_digests_verified": 420,
+      "root": "simulation/bottleneck/results/run-33e58e040218",
+      "unpacked_bytes": 408123255
+    },
+    {
+      "archive_sha256": "3142f3fdcee5fcefcfd57a3f46e6cfe09e451292843e3073f249823b7444208e",
+      "classification": "audited-study",
+      "compressed_bytes": 10576803,
+      "id": "scan-run-7be22345a21c",
+      "included_files": 332,
+      "inventory": "verified_data/inventories/scan-run-7be22345a21c.json",
+      "inventory_sha256": "4efd597871bf607e245da090971dbf595e147657c9ac27b66a17c8cd8bb81b73",
+      "manifest": "simulation/scan/results/run-7be22345a21c/study.json",
+      "note": "260 valid results; invalid seed batch excluded",
+      "omitted_files": 2,
+      "original_manifest_sha256": "836747d3feea5af833ce7f161ab165ee0474d7d698f2df5b02b5011447070c00",
+      "parts": [
+        {
+          "bytes": 10576803,
+          "path": "verified_data/scan-run-7be22345a21c.tar.gz.part-000",
+          "sha256": "3142f3fdcee5fcefcfd57a3f46e6cfe09e451292843e3073f249823b7444208e"
+        }
+      ],
+      "raw_files": 260,
+      "registered_raw_digests_verified": 260,
+      "root": "simulation/scan/results/run-7be22345a21c",
+      "unpacked_bytes": 179983618
+    },
+    {
+      "archive_sha256": "3a9172d1a9686d910faffe844bd1e6f252b10b508100806bf34670137d227e96",
+      "classification": "audited-study",
+      "compressed_bytes": 10818055,
+      "id": "refine-run-7f4cfed80dd1",
+      "included_files": 414,
+      "inventory": "verified_data/inventories/refine-run-7f4cfed80dd1.json",
+      "inventory_sha256": "74b5f01accfb9ec8d49df84f1a3e82a3b5b466e1a15dca0e4146f4945ad5aabd",
+      "manifest": "simulation/refine/results/run-7f4cfed80dd1/study.json",
+      "note": "338 results, historical dependencies retained",
+      "omitted_files": 2,
+      "original_manifest_sha256": "f7b37a6c9bafa07914e61f6385e212fca97cc1e2c4dd5d0cc80676f78c6ff0c6",
+      "parts": [
+        {
+          "bytes": 10818055,
+          "path": "verified_data/refine-run-7f4cfed80dd1.tar.gz.part-000",
+          "sha256": "3a9172d1a9686d910faffe844bd1e6f252b10b508100806bf34670137d227e96"
+        }
+      ],
+      "raw_files": 338,
+      "registered_raw_digests_verified": 338,
+      "root": "simulation/refine/results/run-7f4cfed80dd1",
+      "unpacked_bytes": 174850528
+    },
+    {
+      "archive_sha256": "f12c805a26ea09580015d847906cb1076ae1cc469648541aa25e334ed2c0ae09",
+      "classification": "audited-study",
+      "compressed_bytes": 36607396,
+      "id": "scenario-run-b04dfab5ebf3",
+      "included_files": 901,
+      "inventory": "verified_data/inventories/scenario-run-b04dfab5ebf3.json",
+      "inventory_sha256": "42af84dca290de7de1717440ef04dd927cf2a23e7d5ef8973ca8079fc7e0857c",
+      "manifest": "simulation/scenario/results/run-b04dfab5ebf3/study.json",
+      "note": "106 exploration configurations",
+      "omitted_files": 5,
+      "original_manifest_sha256": "13b130fdde16af0fe8a4c4a18532e1c14ef39981282a7899929326fa69e6b180",
+      "parts": [
+        {
+          "bytes": 36607396,
+          "path": "verified_data/scenario-run-b04dfab5ebf3.tar.gz.part-000",
+          "sha256": "f12c805a26ea09580015d847906cb1076ae1cc469648541aa25e334ed2c0ae09"
+        }
+      ],
+      "raw_files": 742,
+      "registered_raw_digests_verified": 742,
+      "root": "simulation/scenario/results/run-b04dfab5ebf3",
+      "unpacked_bytes": 689483873
+    },
+    {
+      "archive_sha256": "a74b0677b516eecef9fecd991a02b0dad128aacf06df3696f1a7f2e7ac2b9de6",
+      "classification": "audited-study",
+      "compressed_bytes": 17449818,
+      "id": "scenario-run-cab50c039780",
+      "included_files": 436,
+      "inventory": "verified_data/inventories/scenario-run-cab50c039780.json",
+      "inventory_sha256": "74124755b44f6d1aeb7ab6c8cb4e9b63b2bc1f574cedf72213667f8e45e1baee",
+      "manifest": "simulation/scenario/results/run-cab50c039780/study.json",
+      "note": "48 confirmation configurations",
+      "omitted_files": 2,
+      "original_manifest_sha256": "8a7cec2ea06e90051c3f4573e708e3a4df6f920b9f9be14d425bed806578b8a1",
+      "parts": [
+        {
+          "bytes": 17449818,
+          "path": "verified_data/scenario-run-cab50c039780.tar.gz.part-000",
+          "sha256": "a74b0677b516eecef9fecd991a02b0dad128aacf06df3696f1a7f2e7ac2b9de6"
+        }
+      ],
+      "raw_files": 336,
+      "registered_raw_digests_verified": 336,
+      "root": "simulation/scenario/results/run-cab50c039780",
+      "unpacked_bytes": 314772386
+    },
+    {
+      "archive_sha256": "a5bf869a2dfb9d3767ce315f6950b68d9500e86929b91c9f09ceffca623e26c3",
+      "classification": "audited-study",
+      "compressed_bytes": 45648952,
+      "id": "ordering-run-5f741f907916",
+      "included_files": 475,
+      "inventory": "verified_data/inventories/ordering-run-5f741f907916.json",
+      "inventory_sha256": "5179dbd3f6193bfc058c802d8bfa30998941ed1a53b91986ba0967a03901dd67",
+      "manifest": "simulation/ordering/results/run-5f741f907916/study.json",
+      "note": "52 configurations; aborted earlier archive excluded",
+      "omitted_files": 6,
+      "original_manifest_sha256": "6f7a680e9e205a5bd22ed291c83d0234092feb384bbad6e74455025c87e6c493",
+      "parts": [
+        {
+          "bytes": 41943040,
+          "path": "verified_data/ordering-run-5f741f907916.tar.gz.part-000",
+          "sha256": "4fa2d40da3ae13e791def0095118231125911780a2e1fd4eeb66eddf3ca9636c"
+        },
+        {
+          "bytes": 3705912,
+          "path": "verified_data/ordering-run-5f741f907916.tar.gz.part-001",
+          "sha256": "a9a75a21530a2c0fbf1a5259413adfa1611302a8782434ecfd659c69c3ba9941"
+        }
+      ],
+      "raw_files": 364,
+      "registered_raw_digests_verified": 364,
+      "root": "simulation/ordering/results/run-5f741f907916",
+      "unpacked_bytes": 803049613
+    },
+    {
+      "archive_sha256": "a5ec905ecae5b355e62db01a29de930ceae0c15d37d3110ad98fa79f4b74bb34",
+      "classification": "audited-study",
+      "compressed_bytes": 86223693,
+      "id": "ordering-run-fd58e408d88f",
+      "included_files": 570,
+      "inventory": "verified_data/inventories/ordering-run-fd58e408d88f.json",
+      "inventory_sha256": "6f26908f0acd928366e3f6627da8d3e8f0e4eec78c8bbfb21b47071e9d4ad570",
+      "manifest": "simulation/ordering/results/run-fd58e408d88f/study.json",
+      "note": "64 confirmation configurations",
+      "omitted_files": 6,
+      "original_manifest_sha256": "8e8c7064d2b020e6b7733f79c20a8d2afb651725d2dfd79fa47bf6d3eebdf5ae",
+      "parts": [
+        {
+          "bytes": 41943040,
+          "path": "verified_data/ordering-run-fd58e408d88f.tar.gz.part-000",
+          "sha256": "99222529ad0f53b7067d65d5c1ac93ab80e080cadb053d58b80652867a124b22"
+        },
+        {
+          "bytes": 41943040,
+          "path": "verified_data/ordering-run-fd58e408d88f.tar.gz.part-001",
+          "sha256": "346d0a5ece421e8ed613137331cfe76f53df1662350b820795dac9fcacf5806c"
+        },
+        {
+          "bytes": 2337613,
+          "path": "verified_data/ordering-run-fd58e408d88f.tar.gz.part-002",
+          "sha256": "ce85c3605da43ce65074b26cbb50c3969a977115261723ced94125a6c2a75540"
+        }
+      ],
+      "raw_files": 448,
+      "registered_raw_digests_verified": 448,
+      "root": "simulation/ordering/results/run-fd58e408d88f",
+      "unpacked_bytes": 1516487259
+    },
+    {
+      "archive_sha256": "21c1b9b2fce95355c2c02d6216b8a9ba3b02b6aaec74d37e77c296f61f4401e1",
+      "classification": "audited-v1-study",
+      "compressed_bytes": 2379804,
+      "id": "planning-run-45a8ce2df36d",
+      "included_files": 159,
+      "inventory": "verified_data/inventories/planning-run-45a8ce2df36d.json",
+      "inventory_sha256": "ea2665d7611f67254a981292e6959fc21c8dbe9413f4279600950224cf9f5c2c",
+      "manifest": "simulation/planning/results/run-45a8ce2df36d/study.json",
+      "note": "8 configurations; V1 CPU is not final CPU",
+      "omitted_files": 6,
+      "original_manifest_sha256": "1fae0cd15a68eac7e7145173b02f7d569b4def963e6d64f48f475597f056dbfd",
+      "parts": [
+        {
+          "bytes": 2379804,
+          "path": "verified_data/planning-run-45a8ce2df36d.tar.gz.part-000",
+          "sha256": "21c1b9b2fce95355c2c02d6216b8a9ba3b02b6aaec74d37e77c296f61f4401e1"
+        }
+      ],
+      "raw_files": 96,
+      "registered_raw_digests_verified": 96,
+      "root": "simulation/planning/results/run-45a8ce2df36d",
+      "unpacked_bytes": 28042871
+    },
+    {
+      "archive_sha256": "303a7d1bc78e1d3c3e3e5913a235c591ef19a42183d32accea4127a2ddfb99b8",
+      "classification": "audited-v1-study",
+      "compressed_bytes": 64074517,
+      "id": "planning-run-600edb9c2a2c",
+      "included_files": 472,
+      "inventory": "verified_data/inventories/planning-run-600edb9c2a2c.json",
+      "inventory_sha256": "8dbe74545afb0bcd5731b13d30d3a02814aa9f05b6ad6283def59056fece74fe",
+      "manifest": "simulation/planning/results/run-600edb9c2a2c/study.json",
+      "note": "32 configurations; semantic bridge validates communication reuse",
+      "omitted_files": 6,
+      "original_manifest_sha256": "fec27a03d2fd74a246656bc2ce6c7aa8007af9f9a20d1a731f593b533dab7389",
+      "parts": [
+        {
+          "bytes": 41943040,
+          "path": "verified_data/planning-run-600edb9c2a2c.tar.gz.part-000",
+          "sha256": "6afd1345cb6ceab9c308046a4b2819b8087b17eb16b140390ab2df77204370a8"
+        },
+        {
+          "bytes": 22131477,
+          "path": "verified_data/planning-run-600edb9c2a2c.tar.gz.part-001",
+          "sha256": "2316255c946cf00f2d6f716a5b96c4173e9fff64e80d014cf38f5b2c012c37c5"
+        }
+      ],
+      "raw_files": 384,
+      "registered_raw_digests_verified": 384,
+      "root": "simulation/planning/results/run-600edb9c2a2c",
+      "unpacked_bytes": 1254821469
+    },
+    {
+      "archive_sha256": "f86db76e65ff2c5feb40c7e6a9514b68e0279d48ed8c3a01ba960d9eb3c1867c",
+      "classification": "semantic-bridge",
+      "compressed_bytes": 61148758,
+      "id": "planning-final-96b18da3da36",
+      "included_files": 532,
+      "inventory": "verified_data/inventories/planning-final-96b18da3da36.json",
+      "inventory_sha256": "75e92900524dd12585a17aae2483429f6cf122cd1bda26b7386b5b8eb71f707c",
+      "manifest": "simulation/planning/results/final-96b18da3da36/checks.json",
+      "note": "480 semantic comparisons +116 historical checks; bridge timings are not performance evidence",
+      "omitted_files": 2,
+      "original_manifest_sha256": "7ce2d3321fe39005b579694d6854fd278499654706263aff2f3c2bfd3244702b",
+      "parts": [
+        {
+          "bytes": 41943040,
+          "path": "verified_data/planning-final-96b18da3da36.tar.gz.part-000",
+          "sha256": "e1322ac6ba8bb55ef2d0597e40305e8463d3ff9fb3cc06d43cba40335cff0726"
+        },
+        {
+          "bytes": 19205718,
+          "path": "verified_data/planning-final-96b18da3da36.tar.gz.part-001",
+          "sha256": "a5c85e740a1e16eb4babcba594d6118aac3d72ccb4e8da2fc2562da1490c37bb"
+        }
+      ],
+      "raw_files": 480,
+      "registered_raw_digests_verified": 0,
+      "root": "simulation/planning/results/final-96b18da3da36",
+      "unpacked_bytes": 1250168837
+    },
+    {
+      "archive_sha256": "b7c97e320599cb45e6d188ff101819a113029659651bde7ea242ade2aef52174",
+      "classification": "historical-cpu-diagnostic",
+      "compressed_bytes": 47465576,
+      "id": "planning-isolated-600edb9c2a2c",
+      "included_files": 197,
+      "inventory": "verified_data/inventories/planning-isolated-600edb9c2a2c.json",
+      "inventory_sha256": "6704ed563e23f2dbd3c3bfd52ee724a2c02f817a373ea7469f3bc2cb3655d79c",
+      "manifest": "simulation/planning/results/isolated-600edb9c2a2c/registration.json",
+      "note": "V1 isolated timing; failed implementation optimization retained as negative evidence",
+      "omitted_files": 0,
+      "original_manifest_sha256": "3c620292f2b92ed12861530bd1d83fc197356effbd3d05a9862aa4b11d8970a6",
+      "parts": [
+        {
+          "bytes": 41943040,
+          "path": "verified_data/planning-isolated-600edb9c2a2c.tar.gz.part-000",
+          "sha256": "0e8eda93ee6f5b75e2183b9e0ab11005165988fc3368570b1bb9b8b8ef420406"
+        },
+        {
+          "bytes": 5522536,
+          "path": "verified_data/planning-isolated-600edb9c2a2c.tar.gz.part-001",
+          "sha256": "6fbb071dd550d1780d598167e2876057544e71b8cf90c39536b878898db39eac"
+        }
+      ],
+      "raw_files": 192,
+      "registered_raw_digests_verified": 192,
+      "root": "simulation/planning/results/isolated-600edb9c2a2c",
+      "unpacked_bytes": 1006319217
+    },
+    {
+      "archive_sha256": "62f8c4eb66a17dce8ec8e1d8646d4d0d57ff0c4d0dae629550961a7eff2b0cd9",
+      "classification": "audited-final-cpu-diagnostic",
+      "compressed_bytes": 47467842,
+      "id": "planning-isolated-final-96b18da3da36",
+      "included_files": 197,
+      "inventory": "verified_data/inventories/planning-isolated-final-96b18da3da36.json",
+      "inventory_sha256": "9d78dc4cc53958a67f9255e39e2f9b68b21cc8b4c1ad94c8946881975d4814b9",
+      "manifest": "simulation/planning/results/isolated-final-96b18da3da36/registration.json",
+      "note": "Final CPU evidence, only8 N48 configurations",
+      "omitted_files": 0,
+      "original_manifest_sha256": "c7627923e41e72a0e7b21ebbfd4723ae5521b6498bb71b644b56394965333379",
+      "parts": [
+        {
+          "bytes": 41943040,
+          "path": "verified_data/planning-isolated-final-96b18da3da36.tar.gz.part-000",
+          "sha256": "b7c656e085f013b59d0fa9787f25d7e05412887132454198d6ef1922e51d221f"
+        },
+        {
+          "bytes": 5524802,
+          "path": "verified_data/planning-isolated-final-96b18da3da36.tar.gz.part-001",
+          "sha256": "77ea98c076857f00545cd4205dd5dd3271000fc8c0f2aca61f861468b1c15b1f"
+        }
+      ],
+      "raw_files": 192,
+      "registered_raw_digests_verified": 192,
+      "root": "simulation/planning/results/isolated-final-96b18da3da36",
+      "unpacked_bytes": 1006348037
+    },
+    {
+      "archive_sha256": "9de425e6abfc1daf8968a4acdf377e721853aa8e661a5a713f8a700946893b3d",
+      "classification": "source-rebuild-check",
+      "compressed_bytes": 391509,
+      "id": "planning-archive-rebuild-600edb9c2a2c",
+      "included_files": 50,
+      "inventory": "verified_data/inventories/planning-archive-rebuild-600edb9c2a2c.json",
+      "inventory_sha256": "2b97ab52dbfa986ef943bf4c2882fc000ad083d764f2ad6f05dfcfc77408b9b0",
+      "manifest": "simulation/planning/results/archive-rebuild-600edb9c2a2c/checks.json",
+      "note": "36 archive-only semantic checks",
+      "omitted_files": 2,
+      "original_manifest_sha256": "065fd19a51b85c6630574857cbdb7308b40ce2a05e7167184872ecd69fc6d5a1",
+      "parts": [
+        {
+          "bytes": 391509,
+          "path": "verified_data/planning-archive-rebuild-600edb9c2a2c.tar.gz.part-000",
+          "sha256": "9de425e6abfc1daf8968a4acdf377e721853aa8e661a5a713f8a700946893b3d"
+        }
+      ],
+      "raw_files": 0,
+      "registered_raw_digests_verified": 0,
+      "root": "simulation/planning/results/archive-rebuild-600edb9c2a2c",
+      "unpacked_bytes": 937221
+    },
+    {
+      "archive_sha256": "2b84a0b9e6f471213de2260f8cd520474738b612f100a2c829ecf004f812a2e8",
+      "classification": "audited-study",
+      "compressed_bytes": 46616488,
+      "id": "boundary-run-0d5b56247cfc",
+      "included_files": 659,
+      "inventory": "verified_data/inventories/boundary-run-0d5b56247cfc.json",
+      "inventory_sha256": "cd52790c5515826d3904d0cc4dfe955fe89c3922be6a6efebce85ede2eb81800",
+      "manifest": "simulation/boundary/results/run-0d5b56247cfc/study.json",
+      "note": "90 conditions/540 results/3 demand matrices; communication only",
+      "omitted_files": 4,
+      "original_manifest_sha256": "c0343f8a2ef0746938a0ac045afe5915d4081958012a0be5fc50db4909920afb",
+      "parts": [
+        {
+          "bytes": 41943040,
+          "path": "verified_data/boundary-run-0d5b56247cfc.tar.gz.part-000",
+          "sha256": "a60d7feef8259276112667262820dd95433e8b653f775e8ef4f4e6e6ce4a1651"
+        },
+        {
+          "bytes": 4673448,
+          "path": "verified_data/boundary-run-0d5b56247cfc.tar.gz.part-001",
+          "sha256": "285ae42565143de9d2c9a364c1dd54c77ae94352e63b0ee9a3a4eb3e9b9ac7bf"
+        }
+      ],
+      "raw_files": 540,
+      "registered_raw_digests_verified": 540,
+      "root": "simulation/boundary/results/run-0d5b56247cfc",
+      "unpacked_bytes": 785542218
+    }
+  ],
+  "excluded_runs": [
+    "simulation/scan/results/run-f5a6696f2ed1",
+    "simulation/ordering/results/run-3529088c29dc",
+    "simulation/ordering/results/run-f36c2931b947",
+    "simulation/topology/results/run-3da0bf06da2b"
+  ],
+  "exclusions": [
+    "unstarted/invalid runs",
+    "ordinary build/object/cache files",
+    "downloaded PDFs and PDF-containing source archive",
+    "profiling executables/gmon",
+    "unregistered ad-hoc benchmark"
+  ],
+  "generated_utc": "2026-10-31T12:25:44.902936+00:00",
+  "max_part_bytes": 41943040,
+  "repository": "keqing111/simulations-innovations",
+  "schema": 1,
+  "security": "No credentials stored in repository; local consistency hashes are not authenticated provenance",
+  "selection_complete": true
+}

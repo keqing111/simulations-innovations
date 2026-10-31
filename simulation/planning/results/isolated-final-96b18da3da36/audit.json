@@ -1,0 +1,1159 @@
+{
+  "binary_sha256": "9626cbf3ebf05cd3f1f18cf99b794898fbb4073488a9c4e489f8c9c07747cade",
+  "checks": [
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "F000-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "F000-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "maxmin-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "maxmin-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "spreadout-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "spreadout-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "X10-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "X10-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "SPM-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "SPM-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "A1-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "A1-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "F000-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "F000-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "maxmin-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "maxmin-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "spreadout-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "spreadout-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "X10-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "X10-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "SPM-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "SPM-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "A1-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "A1-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "F000-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "F000-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "maxmin-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "maxmin-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "spreadout-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "spreadout-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "X10-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "X10-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "SPM-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "SPM-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "A1-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "A1-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "F000-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "F000-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "maxmin-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "maxmin-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "spreadout-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "spreadout-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "X10-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "X10-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "SPM-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "SPM-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "A1-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "A1-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "F000-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "F000-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "maxmin-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "maxmin-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "spreadout-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "spreadout-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "X10-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "X10-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "SPM-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "SPM-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "A1-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "A1-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "F000-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "F000-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "maxmin-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "maxmin-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "spreadout-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "spreadout-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "X10-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "X10-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "SPM-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "SPM-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "A1-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "A1-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "F000-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "F000-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "maxmin-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "maxmin-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "spreadout-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "spreadout-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "X10-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "X10-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "SPM-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "SPM-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "A1-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "A1-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "F000-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "F000-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "maxmin-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "maxmin-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "spreadout-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "spreadout-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "X10-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "X10-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "SPM-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "SPM-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "A1-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d3-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "A1-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "F000-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "F000-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "maxmin-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "maxmin-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "spreadout-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "spreadout-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "X10-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "X10-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "SPM-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "SPM-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "A1-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "A1-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "F000-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "F000-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "maxmin-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "maxmin-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "spreadout-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "spreadout-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "X10-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "X10-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "SPM-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "SPM-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "A1-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w50",
+      "equal": true,
+      "method": "A1-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "F000-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "F000-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "maxmin-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "maxmin-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "spreadout-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "spreadout-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "X10-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "X10-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "SPM-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "SPM-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "A1-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "A1-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "F000-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "F000-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "maxmin-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "maxmin-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "spreadout-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "spreadout-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "X10-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "X10-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "SPM-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "SPM-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "A1-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-balanced-s0-l760201-w5000",
+      "equal": true,
+      "method": "A1-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "F000-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "F000-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "maxmin-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "maxmin-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "spreadout-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "spreadout-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "X10-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "X10-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "SPM-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "SPM-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "A1-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "A1-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "F000-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "F000-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "maxmin-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "maxmin-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "spreadout-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "spreadout-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "X10-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "X10-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "SPM-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "SPM-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "A1-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w50",
+      "equal": true,
+      "method": "A1-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "F000-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "F000-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "maxmin-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "maxmin-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "spreadout-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "spreadout-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "X10-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "X10-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "SPM-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "SPM-opt"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "A1-ref"
+    },
+    {
+      "block": 0,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "A1-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "F000-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "F000-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "maxmin-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "maxmin-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "spreadout-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "spreadout-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "X10-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "X10-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "SPM-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "SPM-opt"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "A1-ref"
+    },
+    {
+      "block": 1,
+      "case": "n48g8-d6-asymmetric-zipf-s760201-l760201-w5000",
+      "equal": true,
+      "method": "A1-opt"
+    }
+  ],
+  "registration_sha256": "c7627923e41e72a0e7b21ebbfd4723ae5521b6498bb71b644b56394965333379",
+  "source_archive_sha256": "db8a12bee73b8966789cbc0b676b0e0bf30275da5631273fee657f3a6af7b64a"
+}

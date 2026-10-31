@@ -1,0 +1,7 @@
+{
+  "checks": {
+    "isolated.py": "5387b1ac66d7e111b2e9fe86d6e4d39a2305e56e78ce176492622a738fdbd4e3",
+    "test_isolated.py": "82e6a9b59870bb721cf039c2d8a1eabd40aabbcbbb6134da6a80131cf91608e0"
+  },
+  "source_archive_sha256": "714f9d161adb470b826c31b2f4d8d81c5711a509d9dc64367ae9210e0a19f117"
+}

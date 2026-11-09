@@ -37,6 +37,8 @@
 
 using namespace std;
 
+namespace native_topology {class Topology; struct GpuStageCost;}
+
 // pipeline 的返回结果。
 //   t     ：模型估算的端到端时间（us）
 //   ratio ：server 内开销未被 server 间传输掩盖的比例
@@ -70,6 +72,11 @@ struct pipeline_hooks_t {
 
 class GlobalScheduler{
 private:
+    ScheduleMode schedule_mode_ = ScheduleMode::Native;
+    const native_topology::Topology* topology_ = nullptr; // 只借用，调用者负责生命周期
+    vector<uint64_t> collect_pending_units() const;
+    native_topology::GpuStageCost topology_stage_cost(const PermutationSet&,
+        const vector<uint64_t>& actual_payload_units,double MBpu) const;
     uint server_n;
     uint gpu_n;
     bool enable_scaling;              // 是否在分解前做矩阵缩放
@@ -81,6 +88,7 @@ private:
     struct link_info_t intra_info;
     bool* if_approx;                  // [src_server*server_n + dst_server] 是否跳过 balance
 public:
+    void set_schedule(ScheduleMode mode,const native_topology::Topology* topology = nullptr);
     // 构造时会对每个 local 调用 prepare_load_balance()，并决定每个
     // (源 server, 目的 server) 组合是否需要平衡，然后汇总成 server 级矩阵。
     GlobalScheduler(uint _server_n, uint _gpu_n, vector<LocalScheduler*> _locals, INTER_LINK_TYPE type = INFB, INTRA_LINK_TYPE itype = DGX2, bool scaling = false, double MBpu = 1.0);

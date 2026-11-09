@@ -26,15 +26,27 @@
 #include <unordered_set>
 #include <map>
 #include <functional>
+#include <cstdint>
 #include "matrix.h"
 #include "config.h"
 using namespace std;
+
+namespace native_topology {class Topology; struct GpuTransfer;}
+enum class ScheduleMode {Native, BandwidthAware, CompletionTimeAware};
 
 
 // 匈牙利算法（求二分图最大匹配）的运行时状态。
 // 行顶点编号 0..dim-1，列顶点编号 dim..2*dim-1。
 // matching/visit 需要覆盖 2*dim 个顶点，row_to_col 只需每个行顶点一项。
 struct hungarian_info_t{
+    // 拓扑匹配工作区：同一次分解复用，不复制到PermutationSet。
+    struct Candidate {uint dest,ordinal; double peak,square;};
+    vector<int> seed_matching,candidate_matching,inverse_matching;
+    vector<unsigned char> candidate_visit;
+    vector<double> resource_load_bytes,edge_cost_us,cost_thresholds_us;
+    vector<vector<pair<uint,double>>> edge_loads;
+    vector<vector<double>> reduced_loads;
+    vector<vector<Candidate>> candidates;
     vector<int> matching;                       // 长度 2*dim。matching[row] = 列顶点编号（j+dim）；matching[col_id] = 匹配的行；-1 表示未匹配
     vector<bool> visit;                         // 长度 2*dim，DFS 过程中的访问标记，防止重复访问
     vector<unordered_set<uint> > row_to_col;    // 长度 dim。邻接表：每个行顶点可以连接到哪些列顶点（只保留矩阵中 >0 的边）
@@ -72,11 +84,12 @@ struct scale_info_t{
 typedef bool (*scaling_success_condition)(uint, uint, struct scale_info_t, struct link_info_t, struct link_info_t, double);
 bool limit_max_sum(struct scale_info_t s_info);
 
+// 这个类中具体实现算法的分解
 class FastAll2All{
 private:
     Matrix mat;     // 原始输入矩阵（server 级流量需求）
     Matrix S_mat;   // 缩放后的矩阵（未做双随机化）
-    Matrix SDS_mat; // 缩放 + 双随机化后的矩阵，分解直接作用在它上面
+    Matrix SDS_mat; // 缩放 + 双随机化后的矩阵，分解直接作用在它上面，也就是分解时不断扣减的残余矩阵
     struct hungarian_info_t hungarian_info;  // 匈牙利算法运行时状态（匹配、邻接表）
     bool is_scaled;
     uint scaling_factor;
@@ -86,6 +99,16 @@ private:
     INTRA_LINK_TYPE intra_type;
     struct link_info_t intra_link;   // server 内链路模型（alpha/beta）
     uint gpu_n;
+
+    vector<uint64_t> remaining_units_;
+    void adjust_matching(ScheduleMode,const native_topology::Topology&);
+    void prepare_topology_stage(const native_topology::Topology&,uint q_scaled);
+    bool match_bandwidth(const native_topology::Topology&,uint q_scaled,vector<int>&);
+    bool match_completion_time(const native_topology::Topology&,uint q_scaled,vector<int>&);
+    bool accept_candidate(ScheduleMode,const native_topology::Topology&,uint q_scaled);
+    void build_transfers(const vector<int>&,uint q_scaled,vector<native_topology::GpuTransfer>&) const;
+    void consume_pending(const vector<int>&,uint q_scaled);
+    uint original_units(uint q_scaled) const;
 
 public:
     vector<PermutationSet> p_sets; // 分解结果：每个元素是一个"置换 + 权重"阶段
@@ -106,6 +129,8 @@ public:
     uint update_permutation_sets();
     // Birkhoff 分解主循环：反复"找完美匹配 -> 取瓶颈 -> 减去"直到流量耗尽。
     void decompose();
+    // pending按(src_server,dst_server,src_gpu)展平，单位与原始矩阵相同。
+    void decompose(ScheduleMode,const native_topology::Topology&,const vector<uint64_t>& pending_units);
     // 与 decompose 相同，但允许在每次匹配后回调 adjust 来修改矩阵/匹配（研究用扩展点）。
     void decompose_with(const std::function<void(Matrix&, hungarian_info_t&)>& adjust);
     // 用 Kuhn 增广路求二分图最大匹配，返回匹配边数。

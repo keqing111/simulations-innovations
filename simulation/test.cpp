@@ -98,16 +98,15 @@ FastAll2AllTester::FastAll2AllTester(uint s_n, uint g_n, uint times, bool scalin
 // 最简单的端到端对比：固定规模，重复 test_times 次。
 // 每次随机生成流量，跑 FAST（pipeline2），再和 Spread-out 基线比加速比。
 void FastAll2AllTester::run(){
-
-    uint dim = server_n * gpu_n;
+    uint dim = server_n * gpu_n;        // 总共 rank 数
     uint* mat = new uint[dim * dim];
 
-
-    for (uint t = 0; t < test_times; t++){
+        // 这部分随机数据生成有待商榷，因为完全随机，很有可能和现实情况脱节。zipf 分布呢？
+    for (uint t = 0; t < test_times; t++){      // 总共 test_time 轮
         // randomly generate data
         for (uint i = 0; i < dim; i++){
             for (uint j = 0; j < dim; j++){
-                mat[i * dim + j] = rand() % MAX_ELEMENT;
+                mat[i * dim + j] = rand() % MAX_ELEMENT;            // 最大流量数据大小
             }
         }
         for (uint i = 0; i < dim; i++){
@@ -119,13 +118,15 @@ void FastAll2AllTester::run(){
         // FastAll2All
         cout << "++++++++++++ FAST ALL2ALL ++++++++++++"<<endl;
         // 每个源 server 一个 LocalScheduler；mat + s*dim*gpu_n 指向该 server 的第一行
+        // localscheduler 只得到本机的发送矩阵，没有接受？
         vector<LocalScheduler*> local_schedulers;
         for (uint s = 0; s < server_n; s++){
             LocalScheduler* ls = new LocalScheduler(mat + s * dim * gpu_n, gpu_n, server_n, s, intra_link_type);
             local_schedulers.push_back(ls);
         }
-
+            // global scheduler 的功能是？
         GlobalScheduler global_scheduler(server_n, gpu_n, local_schedulers, inter_link_type, intra_link_type, enable_scaling);
+        // pipeline2 是怎么计算的？
         struct pipeline_result_t fastall2all_r = global_scheduler.pipeline2();
 
         for (auto ls = local_schedulers.begin(); ls != local_schedulers.end(); ls++){
@@ -134,6 +135,7 @@ void FastAll2AllTester::run(){
 
         cout << "++++++++++++ BASELINE ALL2ALL ++++++++++++"<<endl;
         // Baseline - Spreadout：经典 all-to-all 的耗时模型
+        // 这个 spreadout 实现每轮都累加最长耗时的 server 内 gpu，和实际对比耗时会长不少
         double baseline = spread_out_baseline(mat, server_n, gpu_n, get_inter_link_info(inter_link_type), get_intra_link_info(intra_link_type));
         cout << "Baseline All2All: " << baseline << endl;
 
@@ -159,7 +161,7 @@ void FastAll2AllTester::server_gpu_number_benchmark(INTRA_LINK_TYPE _intra_type,
 
 
     for (uint s_n = 2; s_n <= 64; s_n += 2){
-        for (uint g_n = 8; g_n <= 8; g_n *= 2){
+        for (uint g_n = 8; g_n <= 8; g_n *= 2){     // g_n 是固定的，为什么？
             vector <double> cur_speedup;
             vector <double> cur_time;
             vector <double> cur_flash_algbw;
@@ -168,7 +170,7 @@ void FastAll2AllTester::server_gpu_number_benchmark(INTRA_LINK_TYPE _intra_type,
 
             struct server_gpu_config_t cur_config = {.svr_n=s_n, .gpu_n=g_n};
 
-            for (uint tt = 0; tt < test_times; tt++){
+            for (uint tt = 0; tt < test_times; tt++){       // 所以 test_time 是全局参数
                 uint dim = s_n * g_n;
                 uint* mat = new uint[dim * dim];
                 // randomly generate data
@@ -179,11 +181,11 @@ void FastAll2AllTester::server_gpu_number_benchmark(INTRA_LINK_TYPE _intra_type,
                             mat[i * dim + j] = 0;
                             continue;
                         }
-                        mat[i * dim + j] = rand() % MAX_ELEMENT;
+                        mat[i * dim + j] = rand() % MAX_ELEMENT;            // 依然是纯随机流量矩阵生成，不能这样
                         workload_sz += mat[i * dim + j];
                     }
                 }
-                uint max_cross_node_send_sz = 0, max_cross_node_recv_sz = 0;
+                uint max_cross_node_send_sz = 0, max_cross_node_recv_sz = 0;        // 代表什么？最大跨 server 收发数据 size
                 for (uint i = 0; i < s_n; i++){
                     uint cross_node_send_sz = 0;
                     uint cross_node_recv_sz = 0;
@@ -212,6 +214,7 @@ void FastAll2AllTester::server_gpu_number_benchmark(INTRA_LINK_TYPE _intra_type,
                 auto t1 = high_resolution_clock::now();
                 struct pipeline_result_t fastall2all_r = global_scheduler.pipeline2();
                 auto t2 = high_resolution_clock::now();
+                // 如果这不是异步执行的话，t2-t1 就应该是包含整个调度算法仿真计算通信结果的时间而不是纯调度？
                 auto duration = duration_cast<microseconds>(t2 - t1).count();
                 cur_time.push_back(duration);
 

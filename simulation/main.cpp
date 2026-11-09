@@ -5,9 +5,71 @@
 #include "global.h"
 #include "test.h"
 #include "config.h"
+#include "topology/model.h"
+#include <iomanip>
+#include <memory>
+#include <sstream>
+#include <stdexcept>
+#include <cmath>
+#include <climits>
 
 
 using namespace std;
+
+// Optional single-case entry; no arguments still run the original benchmark below.
+static int topology_run(int argc,char** argv) {
+    if(argc!=11)throw invalid_argument("--topology N G native|bandwidth|time WAN_US SERVER_BW GATEWAY_BW WAN_BW MBpu DC_CSV");
+    auto integer=[](const string& s) {
+        if(s.empty()||s.find_first_not_of("0123456789")!=string::npos)throw invalid_argument("unsigned integer required");
+        return stoull(s);
+    };
+    auto number=[](const string& s,bool zero=false) {
+        size_t used=0;double x=stod(s,&used);
+        if(used!=s.size()||!isfinite(x)||x<0||(!zero&&x==0))throw invalid_argument("finite parameter range");
+        return x;
+    };
+    auto nn=integer(argv[2]),gg=integer(argv[3]);
+    if(!nn||nn>64||!gg||gg>16)throw invalid_argument("N/G range");
+    uint n=nn,g=gg,r=n*g;string name=argv[4];ScheduleMode mode=ScheduleMode::Native;
+    if(name=="bandwidth")mode=ScheduleMode::BandwidthAware;
+    else if(name=="time")mode=ScheduleMode::CompletionTimeAware;
+    else if(name!="native")throw invalid_argument("unknown schedule");
+    vector<int> dc;stringstream csv(argv[10]);string token;
+    while(getline(csv,token,',')){auto d=integer(token);if(d>=n)throw invalid_argument("DC label");dc.push_back(d);}
+    auto top=native_topology::Topology(n,g,dc,number(argv[6]),number(argv[7]),number(argv[8]),number(argv[5],true));
+    // argv[9] is MB per native unit, explicitly separating matrix units from bytes.
+    double MBpu=number(argv[9]);vector<uint> data(r*r);
+    for(auto& x:data){if(!(cin>>token))throw invalid_argument("truncated matrix");auto v=integer(token);if(v>INT_MAX)throw invalid_argument("matrix range");x=v;}
+    if(cin>>token)throw invalid_argument("trailing matrix values");
+    for(uint s=0;s<r;++s)if(data[s*r+s])throw invalid_argument("nonzero GPU diagonal");
+    for(uint s=0;s<n;++s) {
+        uint64_t out=0,in=0;
+        for(uint u=0;u<g;++u)for(uint d=0;d<r;++d){out+=data[(s*g+u)*r+d];in+=data[d*r+s*g+u];}
+        if(out>UINT32_MAX-r||in>UINT32_MAX-r)throw invalid_argument("native aggregate range");
+    }
+    vector<unique_ptr<LocalScheduler>> owners;vector<LocalScheduler*> locals;
+    for(uint s=0;s<n;++s){owners.emplace_back(new LocalScheduler(data.data()+s*g*r,g,n,s,H100));locals.push_back(owners.back().get());}
+    GlobalScheduler scheduler(n,g,locals,ETHER400,H100,false,MBpu);scheduler.set_schedule(mode,&top);
+    pipeline_hooks_t trace;auto result=scheduler.pipeline2(MBpu,&balance_alpha_beta,&trace);
+    if(!isfinite(result.t))throw overflow_error("nonfinite total time");
+    cout<<setprecision(17)<<"{\"total_us\":"<<result.t<<",\"balance_us\":"<<trace.balance_us
+        <<",\"intrinsic_us\":"<<trace.intrinsic_us<<",\"dispatch_us\":[";
+    for(size_t k=0;k<trace.dispatch_us.size();++k){if(k)cout<<",";cout<<trace.dispatch_us[k];}
+    cout<<"],\"stages\":[";
+    for(size_t k=0;k<trace.stages.size();++k) {
+        if(k)cout<<",";const auto& p=trace.stages[k];vector<native_topology::GpuTransfer> flows;
+        for(uint s=0;s<n;++s)if(s!=p.mp.at(s))for(uint u=0;u<g;++u)
+            flows.push_back({s*g+u,p.mp.at(s)*g+u,double(trace.payload_units[k][s*g+u])*MBpu*1e6});
+        auto cost=top.evaluate_gpu(flows);
+        cout<<"{\"freq\":"<<p.get_freq()<<",\"map\":[";
+        for(uint s=0;s<n;++s){if(s)cout<<",";cout<<p.mp.at(s);}
+        cout<<"],\"payload\":[";
+        for(size_t i=0;i<trace.payload_units[k].size();++i){if(i)cout<<",";cout<<trace.payload_units[k][i];}
+        cout<<"],\"alpha_us\":"<<cost.alpha_us<<",\"serial_us\":"<<cost.serial_us
+            <<",\"communication_us\":"<<cost.total_us<<"}";
+    }
+    cout<<"]}\n";return 0;
+}
 
 // ============================================================================
 // FAST 仿真器入口。
@@ -28,7 +90,13 @@ using namespace std;
 // 其余注释块是保留的小样例/调试代码，也可以当作 API 用法示例。
 // ============================================================================
 
-int main(){
+int main(int argc,char** argv){
+    if(argc>1) {
+        try {
+            if(string(argv[1])!="--topology")throw invalid_argument("unknown option");
+            return topology_run(argc,argv);
+        } catch(const exception& e){cerr<<e.what()<<"\n";return 2;}
+    }
 
     // uint mat_a[] = {
     //     100,100,100,
@@ -58,7 +126,7 @@ int main(){
     // l.load_balance();
     // l.print();
 
-    // 构造实验对象：2 个 server、每 server 16 GPU、重复 20 次、关闭 scaling，
+    // 构造实验对象：2 个 server、每 server 16 GPU、重复 20 次、关闭 scaling，scaling 指的矩阵缩放是什么？
     // 默认链路为 400G 以太网 + H100 级 server 内互连。
     FastAll2AllTester simulator(2, 16, 20, false, ETHER400, H100);
     // simulator.run();

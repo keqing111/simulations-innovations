@@ -3,8 +3,12 @@
 #include "define.h"
 #include <iomanip>
 #include <pthread.h>
+#include "../topology/model.h"
+#include <algorithm>
+#include <cmath>
+#include <limits>
+#include <stdexcept>
 using namespace std;
-
 // ============================================================================
 // FastAll2All 的实现：把 server 级流量矩阵拆成若干"置换 × 权重"。
 //
@@ -100,6 +104,189 @@ void FastAll2All::decompose(){
     decompose_with({});
 }
 
+// 正式拓扑入口：只改变每轮匹配选择，矩阵补齐、扣除和结果仍由原生流程完成。
+void FastAll2All::decompose(ScheduleMode mode,const native_topology::Topology& top,
+                          const vector<uint64_t>& pending) {
+    uint n=SDS_mat.get_dim();
+    if((mode!=ScheduleMode::Native&&mode!=ScheduleMode::BandwidthAware&&mode!=ScheduleMode::CompletionTimeAware)
+       ||top.n!=n||top.g!=gpu_n||pending.size()!=size_t(n)*n*gpu_n)
+        throw invalid_argument("schedule dimensions or mode");
+    if(!isfinite(MB_per_unit)||MB_per_unit<=0)throw invalid_argument("invalid data unit");
+    // Validate active physical channels before entering native dispatch.
+    for(uint s=0;s<n;++s)for(uint d=0;d<n;++d)for(uint u=0;u<gpu_n;++u) {
+        auto v=pending[(s*n+d)*gpu_n+u];
+        if(v>UINT32_MAX)throw invalid_argument("pending unit range");
+        if(s!=d&&v) {
+            uint src=s*gpu_n+u,dst=d*gpu_n+u;
+            const auto& path=top.gpu_path(src,dst);
+            if(path.resource_ids.empty())throw invalid_argument("missing active GPU route");
+            double bytes=double(v)*MB_per_unit*1e6;
+            double cost=path.propagation_us+.008*bytes/top.path_min_bandwidth_gbps(src,dst);
+            if(!isfinite(bytes)||!isfinite(cost))throw overflow_error("flow cost overflow");
+        }
+    }
+    remaining_units_=pending;
+    uint stages=0;
+    decompose_with([&](Matrix&,hungarian_info_t&) {
+        if(++stages>n*n)throw runtime_error("finite support bound");
+        adjust_matching(mode,top);
+    });
+    for(uint s=0;s<n;++s)for(uint d=0;d<n;++d)if(s!=d)
+        for(uint u=0;u<gpu_n;++u)if(remaining_units_[(s*n+d)*gpu_n+u])
+            throw runtime_error("undelivered real inter-server units");
+}
+uint FastAll2All::original_units(uint q)const {
+    uint64_t v=uint64_t(q)*(is_scaled?scaling_factor:1);
+    if(v>UINT32_MAX)throw overflow_error("stage coefficient overflow");
+    return uint(v);
+}
+void FastAll2All::build_transfers(const vector<int>& m,uint q,vector<native_topology::GpuTransfer>& out)const {
+    uint n=m.size(),units=original_units(q);out.clear();
+    for(uint s=0;s<n;++s)if(s!=uint(m[s]))for(uint u=0;u<gpu_n;++u) {
+        uint64_t x=min<uint64_t>(units,remaining_units_[(s*n+m[s])*gpu_n+u]);
+        if(x)out.push_back({s*gpu_n+u,uint(m[s])*gpu_n+u,double(x)*MB_per_unit*1e6});
+    }
+}
+void FastAll2All::consume_pending(const vector<int>& m,uint q) {
+    uint n=m.size(),units=original_units(q);
+    for(uint s=0;s<n;++s)for(uint u=0;u<gpu_n;++u) {
+        auto& v=remaining_units_[(s*n+m[s])*gpu_n+u];v-=min<uint64_t>(v,units);
+    }
+}
+// Cache this stage's sparse resource contributions once per server pair.
+void FastAll2All::prepare_topology_stage(const native_topology::Topology& top,uint q) {
+    auto& h=hungarian_info;uint n=SDS_mat.get_dim(),units=original_units(q),r=top.resource_count();
+    h.edge_loads.resize(n*n);h.edge_cost_us.assign(n*n,0);
+    h.resource_load_bytes.assign(r,0);
+    vector<uint> touched;
+    for(uint s=0;s<n;++s)for(uint d=0;d<n;++d) {
+        auto& edge=h.edge_loads[s*n+d];edge.clear();
+        if(s==d||SDS_mat.get(s,d)<q)continue;
+        double alpha=0;
+        for(uint u=0;u<gpu_n;++u) {
+            auto x=min<uint64_t>(units,remaining_units_[(s*n+d)*gpu_n+u]);if(!x)continue;
+            double bytes=double(x)*MB_per_unit*1e6;
+            const auto& p=top.gpu_path(s*gpu_n+u,d*gpu_n+u);
+            alpha=max(alpha,p.propagation_us);
+            for(uint e:p.resource_ids) {
+                if(!h.resource_load_bytes[e])touched.push_back(e);
+                h.resource_load_bytes[e]+=bytes;
+            }
+        }
+        double serial=0;
+        for(uint e:touched) {
+            double bytes=h.resource_load_bytes[e];edge.push_back({e,bytes});
+            serial=max(serial,.008*bytes/top.resource(e).bandwidth_gbps);h.resource_load_bytes[e]=0;
+        }
+        touched.clear();h.edge_cost_us[s*n+d]=alpha+serial;
+        if(!isfinite(h.edge_cost_us[s*n+d]))throw overflow_error("edge cost overflow");
+    }
+}
+bool FastAll2All::match_bandwidth(const native_topology::Topology& top,uint q,vector<int>& m) {
+    // Incremental augmenting matching. Candidate ordering uses the partial
+    // shared-resource peak, then its squared-load increment; ties keep native order.
+    auto& h=hungarian_info;uint n=SDS_mat.get_dim(),r=top.resource_count();
+    m.assign(n,-1);h.inverse_matching.assign(n,-1);h.candidate_visit.resize(n);
+    h.reduced_loads.resize(n);h.candidates.resize(n);
+    for(uint s=0;s<n;++s){h.reduced_loads[s].resize(r);h.candidates[s].reserve(n);}
+    fill(h.resource_load_bytes.begin(),h.resource_load_bytes.end(),0);
+    function<bool(uint)> dfs=[&](uint s) {
+        auto& loads=h.reduced_loads[s];copy(h.resource_load_bytes.begin(),h.resource_load_bytes.end(),loads.begin());
+        if(m[s]>=0)for(const auto& v:h.edge_loads[s*n+m[s]])loads[v.first]-=v.second;
+        double base=0;for(uint e=0;e<r;++e)base=max(base,loads[e]/top.resource(e).bandwidth_gbps);
+        auto& candidates=h.candidates[s];candidates.clear();
+        for(uint col:h.row_to_col[s]) {
+            uint d=col-n;if(h.candidate_visit[d]||SDS_mat.get(s,d)<q)continue;
+            double peak=base,square=0;
+            for(const auto& v:h.edge_loads[s*n+d]) {
+                double bw=top.resource(v.first).bandwidth_gbps;
+                double old=loads[v.first]/bw,next=(loads[v.first]+v.second)/bw;
+                peak=max(peak,next);square+=(next-old)*(next+old);
+            }
+            if(!isfinite(peak)||!isfinite(square))throw overflow_error("resource score overflow");
+            candidates.push_back({d,uint(candidates.size()),peak,square});
+        }
+        sort(candidates.begin(),candidates.end(),[](const hungarian_info_t::Candidate& a,const hungarian_info_t::Candidate& b) {
+            return a.peak!=b.peak?a.peak<b.peak:a.square!=b.square?a.square<b.square:a.ordinal<b.ordinal;
+        });
+        for(const auto& c:candidates) {
+            uint d=c.dest;if(h.candidate_visit[d])continue;h.candidate_visit[d]=true;
+            if(h.inverse_matching[d]<0||dfs(h.inverse_matching[d])) {
+                if(m[s]>=0)for(const auto& v:h.edge_loads[s*n+m[s]])h.resource_load_bytes[v.first]-=v.second;
+                for(const auto& v:h.edge_loads[s*n+d])h.resource_load_bytes[v.first]+=v.second;
+                m[s]=d;h.inverse_matching[d]=s;return true;
+            }
+        }
+        return false;
+    };
+    for(uint s=0;s<n;++s){fill(h.candidate_visit.begin(),h.candidate_visit.end(),0);if(!dfs(s))return false;}
+    return true;
+}
+bool FastAll2All::match_completion_time(const native_topology::Topology&,uint q,vector<int>& m) {
+    // A threshold admits an edge only if its stand-alone pair cost fits.
+    // Binary search the smallest threshold still permitting a perfect matching.
+    auto& h=hungarian_info;uint n=SDS_mat.get_dim();auto& costs=h.cost_thresholds_us;costs.clear();
+    for(uint s=0;s<n;++s)for(uint col:h.row_to_col[s])if(SDS_mat.get(s,col-n)>=q)costs.push_back(h.edge_cost_us[s*n+col-n]);
+    sort(costs.begin(),costs.end());costs.erase(unique(costs.begin(),costs.end()),costs.end());
+    auto feasible=[&](double bound,vector<int>& trial) {
+        trial.assign(n,-1);h.inverse_matching.assign(n,-1);h.candidate_visit.resize(n);
+        function<bool(uint)> dfs=[&](uint s) {
+            for(uint col:h.row_to_col[s]) {
+                uint d=col-n;
+                if(SDS_mat.get(s,d)<q||h.edge_cost_us[s*n+d]>bound||h.candidate_visit[d])continue;
+                h.candidate_visit[d]=true;
+                if(h.inverse_matching[d]<0||dfs(h.inverse_matching[d])){trial[s]=d;h.inverse_matching[d]=s;return true;}
+            }
+            return false;
+        };
+        for(uint s=0;s<n;++s){fill(h.candidate_visit.begin(),h.candidate_visit.end(),0);if(!dfs(s))return false;}
+        return true;
+    };
+    int lo=0,hi=int(costs.size())-1;vector<int> trial;
+    while(lo<=hi) {
+        int mid=(lo+hi)/2;
+        if(feasible(costs[mid],trial)){m=trial;hi=mid-1;}else lo=mid+1;
+    }
+    return !m.empty();
+}
+bool FastAll2All::accept_candidate(ScheduleMode mode,const native_topology::Topology& top,uint q) {
+    auto& h=hungarian_info;uint n=SDS_mat.get_dim();uint minimum=UINT32_MAX;
+    for(uint s=0;s<n;++s)minimum=min(minimum,SDS_mat.get(s,h.candidate_matching[s]));
+    if(minimum!=q)return false;
+    // Exact volume guard stays in native integer units, never rounded bytes.
+    auto volume=[&](const vector<int>& m) {
+        uint64_t sum=0;uint units=original_units(q);
+        for(uint s=0;s<n;++s)if(s!=uint(m[s]))for(uint u=0;u<gpu_n;++u)
+            sum+=min<uint64_t>(units,remaining_units_[(s*n+m[s])*gpu_n+u]);
+        return sum;
+    };
+    if(volume(h.candidate_matching)<volume(h.seed_matching))return false;
+    double before=0,after=0;
+    if(mode==ScheduleMode::BandwidthAware) {
+        vector<native_topology::GpuTransfer> seed,trial;
+        build_transfers(h.seed_matching,q,seed);build_transfers(h.candidate_matching,q,trial);
+        before=top.evaluate_gpu(seed).serial_us;after=top.evaluate_gpu(trial).serial_us;
+    }
+    else {
+        before=after=0;
+        for(uint s=0;s<n;++s){before=max(before,h.edge_cost_us[s*n+h.seed_matching[s]]);after=max(after,h.edge_cost_us[s*n+h.candidate_matching[s]]);}
+    }
+    return after<before-1e-12*max(1.,abs(before));
+}
+void FastAll2All::adjust_matching(ScheduleMode mode,const native_topology::Topology& top) {
+    auto& h=hungarian_info;uint n=SDS_mat.get_dim(),q=UINT32_MAX;h.seed_matching.resize(n);
+    for(uint s=0;s<n;++s){h.seed_matching[s]=h.matching[s]-n;q=min(q,SDS_mat.get(s,h.seed_matching[s]));}
+    if(mode!=ScheduleMode::Native) {
+        prepare_topology_stage(top,q);h.candidate_matching.clear();
+        bool ok=mode==ScheduleMode::BandwidthAware?match_bandwidth(top,q,h.candidate_matching)
+                                                 :match_completion_time(top,q,h.candidate_matching);
+        if(!ok)throw runtime_error("topology matching lost feasibility");
+        if(accept_candidate(mode,top,q))h.seed_matching.swap(h.candidate_matching);
+        for(uint s=0;s<n;++s){h.matching[s]=n+h.seed_matching[s];h.matching[n+h.seed_matching[s]]=s;}
+    }
+    consume_pending(h.seed_matching,q);
+}
+
 // Birkhoff 分解主循环。
 // 目标：把 SDS_mat 表示成 ∑ frequency_k × P_k，其中 P_k 是置换矩阵。
 // 每一轮：
@@ -143,16 +330,18 @@ uint FastAll2All::hungarian(){
     return match_num;
 }
 
-
 // 从行顶点 u 出发找一条增广路。
 // 列顶点的编号是 dim..2*dim-1，matching 在两个方向都存了配对关系，
 // 所以可以用 matching[col] 跳到与它匹配的行，再继续递归。
+// 所以 hungarian 算法仅实现了不同服务器之间的匹配，而没有决定它们之间到底传输多少数据？更新数据应该作用在 SDS 矩阵上
 bool FastAll2All::hungarian_dfs(uint u){
+    // 这个 for 循环应该也可以换成 int 这么写是为了方便直接传 hash set
     for (unordered_set<uint>::iterator col_idx = hungarian_info.row_to_col[u].begin(); col_idx != hungarian_info.row_to_col[u].end(); col_idx ++){
-        if (!hungarian_info.visit[*col_idx]){
+        if (!hungarian_info.visit[*col_idx]){       // 那么到这里的 *col_idx 代表什么？这是什么语法了呢？其实应该还是看这个位置的 visit 是否为 true
             hungarian_info.visit[*col_idx] = true;
-            if (hungarian_info.matching[*col_idx] == -1 || hungarian_dfs(hungarian_info.matching[*col_idx])){
+            if (hungarian_info.matching[*col_idx] == -1 || hungarian_dfs(hungarian_info.matching[*col_idx])){       // ==-1 代表尚未匹配，
                 // 列顶点空闲，或者它的当前匹配行可以改配到别的列 -> 重新配对
+                // 当前列的匹配行可以改配到其它列则将它改掉，把这个列分配给当前行，但这么写总觉得会浪费很多额外的时间？
                 hungarian_info.matching[*col_idx] = u;
                 hungarian_info.matching[u] = *col_idx;
                 return true;
@@ -164,13 +353,14 @@ bool FastAll2All::hungarian_dfs(uint u){
 
 // 根据当前 SDS_mat 的残量刷新邻接表：>0 才有边，==0 的边要删掉。
 // 行顶点 i 只连到非零元素所在的列，这样匈牙利算法只会沿"还有流量"的边匹配。
+// 保存的结构是一个有向无环图而不是矩阵，所以是将无关的边移出去，而不是行或列
 void FastAll2All::update_edges(){
     uint dim = SDS_mat.get_dim();
     // row vertices id: 0 - dim-1, col vertices id: dim - 2*dim-1
     for (uint i = 0; i < dim; i++){
         for (uint j = 0; j < dim; j++){
-            uint col_id = j + dim;
-            if (SDS_mat.get(i, j) > 0 ){
+            uint col_id = j + dim;          // 这一步是为什么？ 为了让行和列的顶点不冲突，因为 hungarian.matching 是一个一维数组，而 hungarian 是一个二向图
+            if (SDS_mat.get(i, j) > 0 ){        // get 函数 return mat[i][j]
                 hungarian_info.row_to_col[i].insert(col_id);
             }else if (SDS_mat.get(i, j) == 0){
                 hungarian_info.row_to_col[i].erase(col_id);
@@ -182,24 +372,49 @@ void FastAll2All::update_edges(){
 // 把当前匹配转换成一个 PermutationSet，并从矩阵中扣掉该阶段的流量。
 // 阶段频率 = 匹配边上的最小残量（瓶颈）；所有匹配边减去它之后，
 // 至少有一条边变成 0，下一轮邻接表就会少一条边，循环单调推进。
+//
+// 调用前提：decompose_with() 刚刚调用过 hungarian()，得到的是完美匹配，
+// 所以每个行顶点 i 的 matching[i] 都是有效列顶点编号（dim..2*dim-1），不会为 -1。
+//
+// 函数分三步：
+//   1. 第一遍扫描匹配边 (i, matching[i]-dim)：取所有边残量的最小值作为本阶段
+//      频率 min_freq，同时把置换关系 i -> col_id 记入 r.mp；
+//   2. 第二遍再扫描一遍匹配边，把每条边的残量减去 min_freq，
+//      表示这些流量已经在本阶段发送完毕；
+//   3. 把 r（置换 + 频率）追加到分解结果 p_sets，并返回 min_freq，
+//      供 decompose_with() 累加，判断总流量是否已分解完。
 uint FastAll2All::update_permutation_sets(){
     uint dim = SDS_mat.get_dim();
-    // row vertices id: 0 - dim-1, col vertices id: 0 - dim-1
+    // matching 中列顶点的编号是 j+dim，减掉 dim 才是矩阵的列下标 j（0..dim-1）。
+    // 构造一个占位置换：frequency 先给 1（下面 set_freq 会覆盖），
+    // scaling_factor 用于 get_freq() 把"缩放后单位"的频率换算回原始单位
+    // （未缩放时就是 1），dim 决定打印置换矩阵时的阶数。
     PermutationSet r(1, is_scaled ? scaling_factor : 1, dim);
+    // 用第一条匹配边的残量初始化瓶颈频率
     uint min_freq = SDS_mat.get(0, hungarian_info.matching[0] - dim);
+    // 第一遍：遍历所有匹配边，求瓶颈流量 min_freq，并记录置换关系。
+    // r.mp 是 map，按行号有序，后面 verify_decomposition() 直接用 mp[i] 取值。
     for(uint i = 0; i < dim; i++){
         uint col_id = hungarian_info.matching[i] - dim;
         min_freq = MIN(SDS_mat.get(i, col_id), min_freq);
         r.mp.insert(make_pair(i, col_id));
     }
 
+    // 第二遍：每条匹配边都扣掉 min_freq（即本阶段每块发送 GPU 的发送量）。
+    // 因为 min_freq 是所有匹配边残量的最小值，扣减后不会出现负数；
+    // 且至少有一条边恰好变成 0，下一轮 update_edges() 会把它从邻接表删掉，
+    // 保证分解循环严格向前推进（阶段数不超过 max_row_col_sum）。
+    // 由于是完美匹配，每行每列各被扣一次，残量矩阵的双随机性得以保持。
     for(uint i = 0; i < dim; i++){
         uint col_id = hungarian_info.matching[i] - dim;
         SDS_mat.subtract(min_freq, i, col_id);
     }
 
+    // 写入本阶段频率（缩放后单位；对外通过 get_freq() 乘回 scaling_factor）。
+    // p_sets 的先后顺序就是各阶段的执行顺序，后续 GlobalScheduler 会按此展开传输。
     r.set_freq(min_freq);
     p_sets.push_back(r);
+    // 返回本阶段消耗的流量，decompose_with() 把它累加进 freq_sum
     return min_freq;
 }
 

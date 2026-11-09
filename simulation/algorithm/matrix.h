@@ -44,7 +44,7 @@ struct sdsm_info_t{
     vector<struct row_col_info_t> non_max_col;  // 列和小于最大值的列
 };
 
-
+// matrix 感觉像是 python tensor
 class Matrix {
 private:
     uint ** data;   // 二维数组，data[i][j] 表示第 i 行第 j 列的元素

@@ -103,3 +103,10 @@ bvn-build: $(BUILD_DIR)/bvn_simulator
 
 bvn-check: bvn-build $(BUILD_DIR)/test_bvn_schedule
 	$(BUILD_DIR)/test_bvn_schedule --cli
+
+# Complete padded BvN strategies, using the unchanged FAST pipeline components.
+.PHONY: bvn-decompose-build
+$(BUILD_DIR)/bvn_decompose_simulator: bvn_decompose_main.cpp algorithm/all2all.h scheduler/global.h $(filter-out $(BUILD_DIR)/test.o,$(OBJS))
+	$(CC) $(CFLAGS) $(INCLUDES) bvn_decompose_main.cpp $(filter-out $(BUILD_DIR)/test.o,$(OBJS)) -o $@ $(LD)
+
+bvn-decompose-build: $(BUILD_DIR)/bvn_decompose_simulator

@@ -1,0 +1,114 @@
+{
+  "mode": "matrix",
+  "strategy": 0,
+  "budget": 8,
+  "n": 3,
+  "g": 1,
+  "unit_mb": 0.001024,
+  "topology": false,
+  "cpu_us": 10,
+  "cpu_tick_us": 1,
+  "stage_count": 4,
+  "threshold_probes": 0,
+  "weighted_calls": 0,
+  "steps": [
+    {
+      "alpha": 1,
+      "alpha_scaled": 1,
+      "eliminated": 2,
+      "degree_before": 3,
+      "degree_after": 3,
+      "selected_threshold": 1,
+      "degree_fallback": false,
+      "cpu_us": 4,
+      "threshold_probes": 0,
+      "weighted_calls": 0,
+      "sampled_thresholds": [],
+      "sampled_eliminations": []
+    },
+    {
+      "alpha": 1,
+      "alpha_scaled": 1,
+      "eliminated": 2,
+      "degree_before": 3,
+      "degree_after": 2,
+      "selected_threshold": 1,
+      "degree_fallback": false,
+      "cpu_us": 1,
+      "threshold_probes": 0,
+      "weighted_calls": 0,
+      "sampled_thresholds": [],
+      "sampled_eliminations": []
+    },
+    {
+      "alpha": 1,
+      "alpha_scaled": 1,
+      "eliminated": 2,
+      "degree_before": 2,
+      "degree_after": 1,
+      "selected_threshold": 1,
+      "degree_fallback": false,
+      "cpu_us": 1,
+      "threshold_probes": 0,
+      "weighted_calls": 0,
+      "sampled_thresholds": [],
+      "sampled_eliminations": []
+    },
+    {
+      "alpha": 1,
+      "alpha_scaled": 1,
+      "eliminated": 3,
+      "degree_before": 1,
+      "degree_after": 0,
+      "selected_threshold": 1,
+      "degree_fallback": false,
+      "cpu_us": 0,
+      "threshold_probes": 0,
+      "weighted_calls": 0,
+      "sampled_thresholds": [],
+      "sampled_eliminations": []
+    }
+  ],
+  "cpu_samples_us": [
+    10,
+    4,
+    4
+  ],
+  "setup_and_execution_wall_samples_us": [
+    18.605,
+    5.051,
+    4.243
+  ],
+  "permutations": [
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      2,
+      0,
+      1
+    ],
+    [
+      1,
+      2,
+      0
+    ],
+    [
+      2,
+      1,
+      0
+    ]
+  ],
+  "padding_wall_samples_us": [
+    1.428,
+    0.196,
+    0.169
+  ],
+  "planning_wall_samples_us": [
+    18.605,
+    5.051,
+    4.243
+  ]
+}

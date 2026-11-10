@@ -1,0 +1,6 @@
+# Development runs; only results-20261111-release is the authoritative
+# dataset referenced by REPORT.md.
+/results-20261111/
+/results-20261111-audited/
+/results-20261111-final/
+__pycache__/

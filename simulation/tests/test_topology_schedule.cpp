@@ -9,6 +9,10 @@
 #include <memory>
 #include <cstdlib>
 #include <new>
+#include <random>
+#include <numeric>
+#include <set>
+#include <algorithm>
 
 // Count raw array lifetimes only; snapshots exclude pre-existing Local ownership.
 static size_t live_arrays=0;
@@ -320,7 +324,381 @@ static void model_boundary_tests() {
     // This reference is26us, not a claim that the current fluid approximation is exact.
     near(1.+20.+5,26);
 }
+static void complete_matching_example_test() {
+    const std::vector<uint> values = {1, 1, 2, 1, 2, 1, 2, 1, 1};
+    for (auto strategy :
+         {DecompositionStrategy::MaximumBottleneck, DecompositionStrategy::MaximumElimination,
+          DecompositionStrategy::ResidualDegree}) {
+        Matrix matrix(const_cast<uint *>(values.data()), 3);
+        FastAll2All app(&matrix, 1);
+        app.to_scaled_doubly_stochastic_matrix();
+        DecompositionOptions options;
+        options.strategy = strategy;
+        DecompositionStats stats;
+        app.decompose(options, &stats);
+        assert(app.p_sets.size() == 3);
+        assert(stats.decomposition_steps == 3 && stats.steps.size() == 3);
+        assert(stats.steps.front().q == 2 && stats.steps.front().eliminated == 3);
+        assert(stats.steps.front().degree_before == 3 && stats.steps.front().degree_after == 2);
+        assert(stats.cpu_us >= 0 && stats.cpu_tick_us > 0);
+        assert(app.verify_decomposition());
+    }
+    Matrix matrix(const_cast<uint *>(values.data()), 3);
+    FastAll2All forced(&matrix, 1);
+    forced.to_scaled_doubly_stochastic_matrix();
+    unsigned call = 0;
+    forced.decompose_with([&](Matrix &, hungarian_info_t &state) {
+        if (call++ == 0)
+            for (unsigned s = 0; s < 3; ++s) {
+                state.matching[s] = 3 + s;
+                state.matching[3 + s] = s;
+            }
+    });
+    assert(forced.p_sets.size() == 4 && forced.verify_decomposition());
+}
+struct MatchingOracle {
+    uint bottleneck = 0;
+    int eliminations = -1;
+    bool restricted = false;
+};
+static unsigned maximum_degree(const std::vector<uint> &residual, unsigned n) {
+    unsigned maximum = 0;
+    for (unsigned s = 0; s < n; ++s) {
+        unsigned row = 0, col = 0;
+        for (unsigned d = 0; d < n; ++d) {
+            row += residual[s * n + d] > 0;
+            col += residual[d * n + s] > 0;
+        }
+        maximum = std::max(maximum, std::max(row, col));
+    }
+    return maximum;
+}
+static MatchingOracle matching_oracle(const std::vector<uint> &residual, unsigned n,
+                                      uint threshold) {
+    // Exhaustive permutations are TEST ONLY, n<=5; never used by the online solver.
+    std::vector<unsigned> perm(n), rows(n, 0), cols(n, 0);
+    std::iota(perm.begin(), perm.end(), 0);
+    unsigned delta = maximum_degree(residual, n);
+    for (unsigned s = 0; s < n; ++s)
+        for (unsigned d = 0; d < n; ++d)
+            if (residual[s * n + d]) {
+                ++rows[s];
+                ++cols[d];
+            }
+    MatchingOracle result;
+    do {
+        uint q = UINT32_MAX;
+        int count = 0;
+        bool restricted = true;
+        for (unsigned s = 0; s < n; ++s) {
+            uint value = residual[s * n + perm[s]];
+            q = std::min(q, value);
+            count += value == threshold;
+            if ((rows[s] == delta || cols[perm[s]] == delta) && value != threshold)
+                restricted = false;
+        }
+        result.bottleneck = std::max(result.bottleneck, q);
+        if (q >= threshold) {
+            result.eliminations = std::max(result.eliminations, count);
+            result.restricted = result.restricted || restricted;
+        }
+    } while (std::next_permutation(perm.begin(), perm.end()));
+    return result;
+}
+static void audit_complete_matching(std::vector<uint> residual, unsigned n, const FastAll2All &app,
+                                    const DecompositionOptions &options,
+                                    const DecompositionStats &stats) {
+    assert(stats.steps.size() == app.p_sets.size());
+    assert(stats.decomposition_steps == app.p_sets.size());
+    uint64_t probes = 0, weighted = 0;
+    for (size_t k = 0; k < app.p_sets.size(); ++k) {
+        const auto &stage = app.p_sets[k];
+        const auto &step = stats.steps[k];
+        assert(stage.mp.size() == n);
+        std::set<unsigned> used;
+        uint q = UINT32_MAX;
+        unsigned eliminated = 0;
+        for (unsigned s = 0; s < n; ++s) {
+            auto d = stage.mp.at(s);
+            assert(d < n && used.insert(d).second);
+            q = std::min(q, residual[s * n + d]);
+        }
+        assert(q > 0 && q == step.q_scaled && q == stage.get_freq());
+        assert(step.q == stage.get_freq() && step.degree_before == maximum_degree(residual, n));
+        auto oracle = matching_oracle(residual, n, 1);
+        if (options.strategy == DecompositionStrategy::MaximumBottleneck)
+            assert(q == oracle.bottleneck);
+        if (options.strategy == DecompositionStrategy::MaximumElimination) {
+            assert(step.weighted_calls == step.sampled_thresholds.size());
+            assert(step.weighted_calls <= options.threshold_budget);
+            assert(step.sampled_eliminations.size() == step.sampled_thresholds.size());
+            int best = -1;
+            uint best_q = 0;
+            for (size_t i = 0; i < step.sampled_thresholds.size(); ++i) {
+                uint t = step.sampled_thresholds[i];
+                assert(t > 0 && t <= oracle.bottleneck);
+                int count = matching_oracle(residual, n, t).eliminations;
+                assert(count >= 0 && step.sampled_eliminations[i] == unsigned(count));
+                if (count > 0 && (count > best || (count == best && t > best_q))) {
+                    best = count;
+                    best_q = t;
+                }
+            }
+            assert(q == best_q && step.selected_threshold == best_q);
+        }
+        if (options.strategy == DecompositionStrategy::ResidualDegree) {
+            uint selected = 0;
+            for (uint t : step.sampled_thresholds) {
+                assert(t > 0 && t <= oracle.bottleneck);
+                if (matching_oracle(residual, n, t).restricted)
+                    selected = std::max(selected, t);
+            }
+            assert(step.weighted_calls == 0 &&
+                   step.sampled_thresholds.size() <= options.threshold_budget);
+            assert(step.degree_fallback == (selected == 0));
+            assert(q == (selected ? selected : oracle.bottleneck));
+        }
+        if (options.strategy == DecompositionStrategy::MaximumElimination ||
+            options.strategy == DecompositionStrategy::ResidualDegree) {
+            std::set<uint> samples(step.sampled_thresholds.begin(), step.sampled_thresholds.end());
+            assert(samples.size() == step.sampled_thresholds.size());
+            assert(samples.count(oracle.bottleneck));
+            if (options.threshold_budget > 1) {
+                uint minimum = UINT32_MAX;
+                for (uint value : residual)
+                    if (value)
+                        minimum = std::min(minimum, value);
+                assert(samples.count(minimum));
+            }
+        }
+        for (unsigned s = 0; s < n; ++s) {
+            auto &value = residual[s * n + stage.mp.at(s)];
+            eliminated += value == q;
+            value -= q;
+        }
+        assert(step.eliminated == eliminated && eliminated > 0);
+        assert(step.degree_after == maximum_degree(residual, n));
+        assert(step.degree_after <= step.degree_before);
+        if (options.strategy == DecompositionStrategy::ResidualDegree && !step.degree_fallback)
+            assert(step.degree_after + 1 == step.degree_before);
+        if (options.strategy == DecompositionStrategy::MaximumElimination) {
+            unsigned best = *std::max_element(step.sampled_eliminations.begin(),
+                                              step.sampled_eliminations.end());
+            assert(step.eliminated == best);
+        }
+        assert(step.cpu_us >= 0);
+        probes += step.threshold_probes;
+        weighted += step.weighted_calls;
+    }
+    for (auto value : residual)
+        assert(value == 0);
+    assert(stats.threshold_probes == probes && stats.weighted_calls == weighted);
+}
+static void complete_matching_oracle_tests() {
+    std::mt19937 random(20261111);
+    for (unsigned n = 1; n <= 5; ++n)
+        for (unsigned repeat = 0; repeat < 12; ++repeat) {
+            std::vector<uint> values(n * n, 0), permutation(n);
+            std::iota(permutation.begin(), permutation.end(), 0);
+            for (unsigned r = 0; r < 7; ++r) {
+                std::shuffle(permutation.begin(), permutation.end(), random);
+                uint weight = 1 + random() % 4;
+                for (unsigned s = 0; s < n; ++s)
+                    values[s * n + permutation[s]] += weight;
+            }
+            for (auto strategy :
+                 {DecompositionStrategy::Kuhn, DecompositionStrategy::MaximumBottleneck,
+                  DecompositionStrategy::MaximumElimination, DecompositionStrategy::ResidualDegree})
+                for (unsigned budget : {1u, 4u, 8u}) {
+                    Matrix matrix(values.data(), n);
+                    FastAll2All app(&matrix, 1);
+                    app.to_scaled_doubly_stochastic_matrix();
+                    DecompositionOptions options;
+                    options.strategy = strategy;
+                    options.threshold_budget = budget;
+                    DecompositionStats stats;
+                    app.decompose(options, &stats);
+                    audit_complete_matching(values, n, app, options, stats);
+                    assert(app.verify_decomposition());
+                }
+        }
+}
+static void complete_matching_pipeline_test() {
+    const unsigned n = 4, g = 2, ranks = n * g;
+    std::vector<uint> data(ranks * ranks, 0);
+    for (unsigned s = 0; s < n; ++s)
+        for (unsigned d = 0; d < n; ++d)
+            if (s != d)
+                for (unsigned u = 0; u < g; ++u)
+                    data[(s * g + u) * ranks + d * g + (1 - u)] = 1 + (s * 3 + d) % 5;
+    auto run = [&](DecompositionStrategy strategy, bool topology, bool configure) {
+        std::vector<std::unique_ptr<LocalScheduler>> owners;
+        std::vector<LocalScheduler *> locals;
+        for (unsigned s = 0; s < n; ++s) {
+            owners.emplace_back(new LocalScheduler(data.data() + s * g * ranks, g, n, s, H100));
+            locals.push_back(owners.back().get());
+        }
+        GlobalScheduler scheduler(n, g, locals, ETHER400, H100, false, 1e-6);
+        Topology top(n, g, {0, 0, 1, 1});
+        if (topology)
+            scheduler.set_schedule(ScheduleMode::Native, &top);
+        if (configure) {
+            DecompositionOptions options;
+            options.strategy = strategy;
+            scheduler.set_decomposition(options);
+        }
+        pipeline_hooks_t hooks;
+        scheduler.pipeline2(1e-6, &balance_alpha_beta, &hooks);
+        uint64_t sent = 0;
+        for (const auto &row : hooks.payload_units)
+            for (auto value : row)
+                sent += value;
+        uint64_t wanted = 0;
+        for (auto value : data)
+            wanted += value;
+        assert(sent == wanted);
+        for (unsigned s = 0; s < n; ++s)
+            for (unsigned d = 0; d < n; ++d)
+                if (s != d)
+                    for (unsigned u = 0; u < g; ++u)
+                        assert(locals[s]->pending_units(d, u) == 0);
+        if (configure) {
+            const auto &stats = scheduler.decomposition_stats();
+            assert(stats.decomposition_steps == hooks.stages.size());
+            assert(hooks.decomposition_stats.steps.size() == stats.steps.size());
+            assert(stats.cpu_us >= 0 && stats.cpu_tick_us > 0);
+        }
+        return hooks;
+    };
+    for (bool topology : {false, true}) {
+        auto legacy = run(DecompositionStrategy::Kuhn, topology, false);
+        for (auto strategy :
+             {DecompositionStrategy::Kuhn, DecompositionStrategy::MaximumBottleneck,
+              DecompositionStrategy::MaximumElimination, DecompositionStrategy::ResidualDegree}) {
+            auto actual = run(strategy, topology, true);
+            if (strategy == DecompositionStrategy::Kuhn) {
+                assert(actual.stages.size() == legacy.stages.size());
+                assert(actual.payload_units == legacy.payload_units);
+                assert(actual.dispatch_us == legacy.dispatch_us);
+                for (size_t k = 0; k < actual.stages.size(); ++k) {
+                    assert(actual.stages[k].mp == legacy.stages[k].mp);
+                    assert(actual.stages[k].get_freq() == legacy.stages[k].get_freq());
+                }
+            }
+        }
+    }
+    std::vector<std::unique_ptr<LocalScheduler>> owners;
+    std::vector<LocalScheduler *> locals;
+    for (unsigned s = 0; s < n; ++s) {
+        owners.emplace_back(new LocalScheduler(data.data() + s * g * ranks, g, n, s, H100));
+        locals.push_back(owners.back().get());
+    }
+    GlobalScheduler scheduler(n, g, locals, ETHER400, H100, false, 1e-6);
+    Topology top(n, g, {0, 0, 1, 1});
+    DecompositionOptions options;
+    options.strategy = DecompositionStrategy::MaximumElimination;
+    scheduler.set_decomposition(options);
+    rejects([&] { scheduler.set_schedule(ScheduleMode::BandwidthAware, &top); });
+    rejects([&] { scheduler.pipeline(); });
+    rejects([&] { scheduler.pipeline3(); });
+    pipeline_hooks_t overriding;
+    overriding.prepare = [](Matrix &, const std::vector<uint64_t> &, FastAll2All &) {};
+    rejects([&] { scheduler.pipeline2(1e-6, &balance_alpha_beta, &overriding); });
+    overriding.prepare = {};
+    overriding.communication = [](const PermutationSet &, const std::vector<uint64_t> &) {
+        return 0.;
+    };
+    rejects([&] { scheduler.pipeline2(1e-6, &balance_alpha_beta, &overriding); });
+    overriding.communication = {};
+    overriding.defer_decomposition = true;
+    rejects([&] { scheduler.pipeline2(1e-6, &balance_alpha_beta, &overriding); });
+    GlobalScheduler reverse(n, g, locals, ETHER400, H100, false, 1e-6);
+    reverse.set_schedule(ScheduleMode::CompletionTimeAware, &top);
+    rejects([&] { reverse.set_decomposition(options); });
+}
+static void complete_matching_boundaries_test() {
+    const std::vector<std::vector<uint>> fixtures = {
+        {0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 1, 2, 0, 0, 0, 0, 0},
+        {1, 2, 3, 2, 2, 2, 3, 2, 1}, // No all-critical equal-t perfect matching: S3 fallback.
+        {4, 2, 1, 1, 5, 1, 2, 0, 5}
+        // t=2 is feasible, but no t=2 edge lies in an eligible assignment.
+    };
+    for (auto values : fixtures) {
+        Matrix matrix(values.data(), 3);
+        FastAll2All native(&matrix, 1);
+        native.to_scaled_doubly_stochastic_matrix();
+        native.decompose();
+        std::vector<uint> padded(9, 0);
+        for (const auto &stage : native.p_sets)
+            for (const auto &edge : stage.mp)
+                padded[edge.first * 3 + edge.second] += stage.get_freq();
+        for (auto strategy :
+             {DecompositionStrategy::Kuhn, DecompositionStrategy::MaximumBottleneck,
+              DecompositionStrategy::MaximumElimination, DecompositionStrategy::ResidualDegree}) {
+            DecompositionOptions options;
+            options.strategy = strategy;
+            DecompositionStats stats;
+            FastAll2All app(&matrix, 1);
+            app.to_scaled_doubly_stochastic_matrix();
+            app.decompose(options, &stats);
+            audit_complete_matching(padded, 3, app, options, stats);
+            if (strategy == DecompositionStrategy::Kuhn) {
+                assert(app.p_sets.size() == native.p_sets.size());
+                for (size_t k = 0; k < app.p_sets.size(); ++k) {
+                    assert(app.p_sets[k].mp == native.p_sets[k].mp);
+                    assert(app.p_sets[k].get_freq() == native.p_sets[k].get_freq());
+                }
+            }
+            if (values == fixtures[2] && strategy == DecompositionStrategy::ResidualDegree)
+                assert(stats.steps.front().degree_fallback);
+            if (values == fixtures[3] && strategy == DecompositionStrategy::MaximumElimination) {
+                const auto &step = stats.steps.front();
+                auto it =
+                    std::find(step.sampled_thresholds.begin(), step.sampled_thresholds.end(), 2);
+                assert(it != step.sampled_thresholds.end());
+                assert(step.sampled_eliminations[it - step.sampled_thresholds.begin()] == 0);
+                assert(step.selected_threshold != 2);
+            }
+            FastAll2All no_stats(&matrix, 1);
+            no_stats.to_scaled_doubly_stochastic_matrix();
+            no_stats.decompose(options);
+            assert(no_stats.verify_decomposition());
+        }
+    }
+    std::vector<uint> values = {0, 8, 11, 0};
+    Matrix matrix(values.data(), 2);
+    for (auto strategy :
+         {DecompositionStrategy::Kuhn, DecompositionStrategy::MaximumBottleneck,
+          DecompositionStrategy::MaximumElimination, DecompositionStrategy::ResidualDegree}) {
+        FastAll2All app(&matrix, 1);
+        app.to_scaled_matrix(&factor_three);
+        app.to_scaled_doubly_stochastic_matrix();
+        DecompositionOptions options;
+        options.strategy = strategy;
+        DecompositionStats stats;
+        app.decompose(options, &stats);
+        for (size_t k = 0; k < app.p_sets.size(); ++k) {
+            assert(stats.steps[k].q == app.p_sets[k].get_freq());
+            assert(stats.steps[k].q == 3 * stats.steps[k].q_scaled);
+        }
+        assert(app.verify_decomposition());
+    }
+    FastAll2All invalid(&matrix, 1);
+    DecompositionOptions options;
+    rejects([&] { invalid.decompose(options); });
+    invalid.to_scaled_doubly_stochastic_matrix();
+    options.threshold_budget = 0;
+    rejects([&] { invalid.decompose(options); });
+    options.threshold_budget = 8;
+    options.strategy = static_cast<DecompositionStrategy>(99);
+    rejects([&] { invalid.decompose(options); });
+}
 int main() {
+    complete_matching_example_test();
+    complete_matching_oracle_tests();
+    complete_matching_pipeline_test();
+    complete_matching_boundaries_test();
     model_boundary_tests();
     bandwidth_only_semantics_test();
     mixed_intrinsic_self_loop_test();

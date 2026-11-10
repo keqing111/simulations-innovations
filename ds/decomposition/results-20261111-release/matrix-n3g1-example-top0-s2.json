@@ -1,0 +1,109 @@
+{
+  "mode": "matrix",
+  "strategy": 2,
+  "budget": 8,
+  "n": 3,
+  "g": 1,
+  "unit_mb": 0.001024,
+  "topology": false,
+  "cpu_us": 11,
+  "cpu_tick_us": 1,
+  "stage_count": 3,
+  "threshold_probes": 3,
+  "weighted_calls": 4,
+  "steps": [
+    {
+      "alpha": 2,
+      "alpha_scaled": 2,
+      "eliminated": 3,
+      "degree_before": 3,
+      "degree_after": 2,
+      "selected_threshold": 2,
+      "degree_fallback": false,
+      "cpu_us": 5,
+      "threshold_probes": 1,
+      "weighted_calls": 2,
+      "sampled_thresholds": [
+        1,
+        2
+      ],
+      "sampled_eliminations": [
+        3,
+        3
+      ]
+    },
+    {
+      "alpha": 1,
+      "alpha_scaled": 1,
+      "eliminated": 3,
+      "degree_before": 2,
+      "degree_after": 1,
+      "selected_threshold": 1,
+      "degree_fallback": false,
+      "cpu_us": 2,
+      "threshold_probes": 1,
+      "weighted_calls": 1,
+      "sampled_thresholds": [
+        1
+      ],
+      "sampled_eliminations": [
+        3
+      ]
+    },
+    {
+      "alpha": 1,
+      "alpha_scaled": 1,
+      "eliminated": 3,
+      "degree_before": 1,
+      "degree_after": 0,
+      "selected_threshold": 1,
+      "degree_fallback": false,
+      "cpu_us": 2,
+      "threshold_probes": 1,
+      "weighted_calls": 1,
+      "sampled_thresholds": [
+        1
+      ],
+      "sampled_eliminations": [
+        3
+      ]
+    }
+  ],
+  "cpu_samples_us": [
+    11,
+    5,
+    4
+  ],
+  "setup_and_execution_wall_samples_us": [
+    17.638,
+    6.131,
+    5.572
+  ],
+  "permutations": [
+    [
+      2,
+      1,
+      0
+    ],
+    [
+      1,
+      0,
+      2
+    ],
+    [
+      0,
+      2,
+      1
+    ]
+  ],
+  "padding_wall_samples_us": [
+    1.149,
+    0.221,
+    0.194
+  ],
+  "planning_wall_samples_us": [
+    17.638,
+    6.131,
+    5.572
+  ]
+}

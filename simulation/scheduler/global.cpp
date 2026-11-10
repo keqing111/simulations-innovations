@@ -130,6 +130,8 @@ GlobalScheduler::~GlobalScheduler(){
 }
 
 void GlobalScheduler::set_schedule(ScheduleMode mode,const native_topology::Topology* topology) {
+    if(decomposition_configured_&&mode!=ScheduleMode::Native)
+        throw invalid_argument("complete decomposition conflicts with topology matching override");
     if((mode!=ScheduleMode::Native&&mode!=ScheduleMode::BandwidthAware&&mode!=ScheduleMode::CompletionTimeAware)
        ||(!topology&&mode!=ScheduleMode::Native))throw invalid_argument("schedule requires a topology and valid mode");
     if(topology) {
@@ -139,6 +141,32 @@ void GlobalScheduler::set_schedule(ScheduleMode mode,const native_topology::Topo
             throw invalid_argument("locals must be ordered by server id");
     }
     schedule_mode_=mode;topology_=topology;
+}
+// 显式选择一种完整 BvN 匹配策略；只影响 pipeline2 中“补齐 + 分解”这一段，
+// 后续的 Local balance、逐阶段 dispatch、重叠递推和 Native 拓扑计价都不变。
+// 约束：
+//   - 未调用本函数时，pipeline2 仍走原生 decompose()，行为与旧路径一致。
+//   - 配置后只允许 Native 调度模式；BandwidthAware/CompletionTimeAware 会用
+//     adjust_matching() 改写每轮匹配，与本策略“自己选匹配”冲突。
+//   - 仍可用 set_schedule(Native, &topology) 让后续阶段按真实资源计价，但四种
+//     策略本身不读取拓扑奖励，只在补齐后的整数残量上选择匹配。
+//   - 与 prepare/communication/defer_decomposition 等覆盖型 hooks 互斥；
+//     纯观测 hooks 仍可用。pipeline()/pipeline3() 不接入本配置。
+void GlobalScheduler::set_decomposition(const DecompositionOptions &options) {
+    // 与 FastAll2All::decompose 的入口校验保持一致；放在 setter 里是为了让
+    // 配置错误在流水线开始前就失败，而不是等到局部需求已被修改后才抛出。
+    if (options.strategy != DecompositionStrategy::Kuhn &&
+        options.strategy != DecompositionStrategy::MaximumBottleneck &&
+        options.strategy != DecompositionStrategy::MaximumElimination &&
+        options.strategy != DecompositionStrategy::ResidualDegree)
+        throw invalid_argument("unsupported decomposition strategy");
+    if (!options.threshold_budget)
+        throw invalid_argument("threshold budget must be positive");
+    if (schedule_mode_ != ScheduleMode::Native)
+        throw invalid_argument("complete decomposition conflicts with topology matching override");
+    decomposition_options_ = options;
+    decomposition_configured_ = true;
+    decomposition_stats_ = DecompositionStats();
 }
 vector<uint64_t> GlobalScheduler::collect_pending_units()const {
     vector<uint64_t> pending(server_n*server_n*gpu_n);
@@ -164,6 +192,7 @@ native_topology::GpuStageCost GlobalScheduler::topology_stage_cost(const Permuta
 // 这样可以在 topology_benchmark 里评估全互联、双环等不同拓扑对 FAST 的影响。
 // 注意：pipeline3 不做 scaling（即使构造时 enable_scaling=true），也不支持 hooks。
 struct pipeline_result_t GlobalScheduler::pipeline3(double MBpu, intra_transfer_topo_fn fn){
+    if(decomposition_configured_)throw logic_error("complete decomposition is supported by pipeline2 only");
     if(topology_)throw logic_error("configured topology is supported by pipeline2 only");
     // 1) server 级分解：得到置换集合 p_sets
     FastAll2All all2all(&mat, gpu_n, inter_type, intra_type, MBpu);
@@ -402,14 +431,19 @@ struct pipeline_result_t GlobalScheduler::pipeline3(double MBpu, intra_transfer_
 // 公平比较不同算法时需要从相同原始矩阵重新创建 LocalScheduler。
 // ============================================================================
 struct pipeline_result_t GlobalScheduler::pipeline2(double MBpu, scaling_success_condition fn, pipeline_hooks_t* hooks){
+    if(decomposition_configured_&&hooks&&(hooks->defer_decomposition||hooks->prepare||hooks->communication))
+        throw invalid_argument("complete decomposition conflicts with overriding hooks");
     if(topology_&&(!isfinite(MBpu)||MBpu<=0))throw invalid_argument("invalid data unit");
     if(topology_&&hooks&&(hooks->defer_decomposition||hooks->prepare||hooks->communication))
         throw invalid_argument("topology schedule conflicts with overriding hooks");
     // 第 0 步：记录规划起点。steady_clock 测本机经过的墙钟时间，不是通信时间，
     // 也不是进程实际占用 CPU 的时间；系统抢占等会影响它。只有 hooks 非空才输出。
     auto planning_start = steady_clock::now();
+    decomposition_stats_=DecompositionStats();
     if (hooks) {
+        hooks->decomposition_stats=DecompositionStats();
         hooks->native_decompose_us = 0;
+        hooks->padding_wall_us = 0;
         hooks->planning_us = 0;
         if (hooks->defer_decomposition && !hooks->prepare)
             throw invalid_argument("deferred decomposition requires prepare callback");
@@ -437,6 +471,7 @@ struct pipeline_result_t GlobalScheduler::pipeline2(double MBpu, scaling_success
         // 第 2 步：默认原生路径。计时仅覆盖下面“补齐+分解”，不含上面的 scaling。
         auto decomposition_start = steady_clock::now();
         all2all.to_scaled_doubly_stochastic_matrix();       // 这应该就是原生的 fast 分解矩阵的算法了
+        if(hooks)hooks->padding_wall_us=duration<double,std::micro>(steady_clock::now()-decomposition_start).count();
         // 答：这是原生流程的“补齐前处理”，真正的 Birkhoff 分解是下一行 decompose。
         // matrix.cpp::get_sdsm_info 先求所有行和/列和的最大值 M；all2all.cpp
         // 再在行/列缺口处添加虚拟容量，使每行和、每列和都为 M。
@@ -444,7 +479,10 @@ struct pipeline_result_t GlobalScheduler::pipeline2(double MBpu, scaling_success
         // 补齐是为了保证正残余支持图上存在 perfect matching，不是生成真实业务流；
         // 可能补出 src==dst 的配对，它在物理含义上也不是新增的跨机通信；
         // 但原生 dispatch 对这种配对的处理并不特殊，边界问题见下方调用处。
-        all2all.decompose();
+        // 只有显式 set_decomposition() 时才替换分解器；否则仍调用无参数的原生
+        // 入口。两条分支之后的 balance/dispatch/重叠递推完全相同。
+        if(decomposition_configured_)all2all.decompose(decomposition_options_,&decomposition_stats_);
+        else all2all.decompose();
         // all2all.cpp 调用链：decompose -> decompose_with(空回调) -> 循环：
         //   update_edges：仅保留残余值>0的行->列边（含补齐容量）；
         //   hungarian/hungarian_dfs：Kuhn 增广路匹配，给每个源 server 分配唯一目的
@@ -525,10 +563,20 @@ struct pipeline_result_t GlobalScheduler::pipeline2(double MBpu, scaling_success
     // 之后 stages/payload_units 会记录最终采用的阶段和实际搬运量。
     // 正式策略在原生balance后接入；不需要调用者提供prepare回调。
     if(topology_) {
+        auto decomposition_start=steady_clock::now();
         all2all.to_scaled_doubly_stochastic_matrix();
-        all2all.decompose(schedule_mode_,*topology_,collect_pending_units());
+        if(hooks)hooks->padding_wall_us=duration<double,std::micro>(steady_clock::now()-decomposition_start).count();
+        if(decomposition_configured_) {
+            // 完整分解策略只替换“选匹配”；这里不调用
+            // decompose(mode, topology, pending) 的拓扑匹配覆盖。topology_ 仍会
+            // 在后续阶段计价中使用，因此这不是“忽略拓扑”，而是不把拓扑奖励
+            // 混进四种 BvN 策略的匹配选择。
+            all2all.decompose(decomposition_options_,&decomposition_stats_);
+            if(hooks)hooks->native_decompose_us=duration<double,std::micro>(steady_clock::now()-decomposition_start).count();
+        } else all2all.decompose(schedule_mode_,*topology_,collect_pending_units());
         pset_sz=all2all.p_sets.size();
     }
+    if(hooks&&decomposition_configured_)hooks->decomposition_stats=decomposition_stats_;
     vector<vector<uint64_t>> topology_payload;
     if(topology_&&!hooks)topology_payload.assign(pset_sz,vector<uint64_t>(server_n*gpu_n));
     if (hooks) {
@@ -759,6 +807,7 @@ struct pipeline_result_t GlobalScheduler::pipeline2(double MBpu, scaling_success
 //     server 间传输"放在同一个流水级里求 max。
 // 因为每个阶段都平衡，server 内总工作量更大，通常不如 pipeline2 高效。
 struct pipeline_result_t GlobalScheduler::pipeline(double MBpu){
+    if(decomposition_configured_)throw logic_error("complete decomposition is supported by pipeline2 only");
     if(topology_)throw logic_error("configured topology is supported by pipeline2 only");
     // return the algorithm time cost for the traffic demand matrix
     // server-level scheudling

@@ -1,0 +1,234 @@
+{
+  "mode": "matrix",
+  "strategy": 2,
+  "budget": 8,
+  "n": 8,
+  "g": 1,
+  "unit_mb": 0.001024,
+  "topology": false,
+  "cpu_us": 38,
+  "cpu_tick_us": 1,
+  "stage_count": 7,
+  "threshold_probes": 7,
+  "weighted_calls": 7,
+  "steps": [
+    {
+      "alpha": 256,
+      "alpha_scaled": 256,
+      "eliminated": 8,
+      "degree_before": 7,
+      "degree_after": 6,
+      "selected_threshold": 256,
+      "degree_fallback": false,
+      "cpu_us": 8,
+      "threshold_probes": 1,
+      "weighted_calls": 1,
+      "sampled_thresholds": [
+        256
+      ],
+      "sampled_eliminations": [
+        8
+      ]
+    },
+    {
+      "alpha": 256,
+      "alpha_scaled": 256,
+      "eliminated": 8,
+      "degree_before": 6,
+      "degree_after": 5,
+      "selected_threshold": 256,
+      "degree_fallback": false,
+      "cpu_us": 5,
+      "threshold_probes": 1,
+      "weighted_calls": 1,
+      "sampled_thresholds": [
+        256
+      ],
+      "sampled_eliminations": [
+        8
+      ]
+    },
+    {
+      "alpha": 256,
+      "alpha_scaled": 256,
+      "eliminated": 8,
+      "degree_before": 5,
+      "degree_after": 4,
+      "selected_threshold": 256,
+      "degree_fallback": false,
+      "cpu_us": 5,
+      "threshold_probes": 1,
+      "weighted_calls": 1,
+      "sampled_thresholds": [
+        256
+      ],
+      "sampled_eliminations": [
+        8
+      ]
+    },
+    {
+      "alpha": 256,
+      "alpha_scaled": 256,
+      "eliminated": 8,
+      "degree_before": 4,
+      "degree_after": 3,
+      "selected_threshold": 256,
+      "degree_fallback": false,
+      "cpu_us": 5,
+      "threshold_probes": 1,
+      "weighted_calls": 1,
+      "sampled_thresholds": [
+        256
+      ],
+      "sampled_eliminations": [
+        8
+      ]
+    },
+    {
+      "alpha": 256,
+      "alpha_scaled": 256,
+      "eliminated": 8,
+      "degree_before": 3,
+      "degree_after": 2,
+      "selected_threshold": 256,
+      "degree_fallback": false,
+      "cpu_us": 6,
+      "threshold_probes": 1,
+      "weighted_calls": 1,
+      "sampled_thresholds": [
+        256
+      ],
+      "sampled_eliminations": [
+        8
+      ]
+    },
+    {
+      "alpha": 256,
+      "alpha_scaled": 256,
+      "eliminated": 8,
+      "degree_before": 2,
+      "degree_after": 1,
+      "selected_threshold": 256,
+      "degree_fallback": false,
+      "cpu_us": 4,
+      "threshold_probes": 1,
+      "weighted_calls": 1,
+      "sampled_thresholds": [
+        256
+      ],
+      "sampled_eliminations": [
+        8
+      ]
+    },
+    {
+      "alpha": 256,
+      "alpha_scaled": 256,
+      "eliminated": 8,
+      "degree_before": 1,
+      "degree_after": 0,
+      "selected_threshold": 256,
+      "degree_fallback": false,
+      "cpu_us": 1,
+      "threshold_probes": 1,
+      "weighted_calls": 1,
+      "sampled_thresholds": [
+        256
+      ],
+      "sampled_eliminations": [
+        8
+      ]
+    }
+  ],
+  "cpu_samples_us": [
+    38,
+    24,
+    47
+  ],
+  "setup_and_execution_wall_samples_us": [
+    46.289,
+    26.345,
+    49.746
+  ],
+  "permutations": [
+    [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      0
+    ],
+    [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      0,
+      1
+    ],
+    [
+      3,
+      4,
+      5,
+      6,
+      7,
+      0,
+      1,
+      2
+    ],
+    [
+      4,
+      5,
+      6,
+      7,
+      0,
+      1,
+      2,
+      3
+    ],
+    [
+      5,
+      6,
+      7,
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    [
+      6,
+      7,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    [
+      7,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  ],
+  "padding_wall_samples_us": [
+    1.536,
+    0.394,
+    0.389
+  ],
+  "planning_wall_samples_us": [
+    46.289,
+    26.345,
+    49.746
+  ]
+}

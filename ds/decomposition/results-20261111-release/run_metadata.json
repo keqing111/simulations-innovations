@@ -1,0 +1,19 @@
+{
+  "repeat": 3,
+  "budget": 8,
+  "complete": true,
+  "revision": "94949a1c858bf438b5e7f20a64c70dc1f21c068e",
+  "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+  "source_sha256": {
+    "simulation/algorithm/all2all.cpp": "8611fa2b3d6e684351bb638fc78f8b42442c0b1c0b95abfd034142276d8790b2",
+    "simulation/algorithm/all2all.h": "a153ca464576f6fa02f8dd8114f800f77de0f543196eefce514f279d1a6a8a70",
+    "simulation/scheduler/global.cpp": "1129c03584db7d9996543b00cd889457e888d7ab05ad113619af9c4fce4352b0",
+    "simulation/scheduler/global.h": "a6df56145af99dad906a95cca35f3f6d2e62e24913a6f30d9755ed57e6f5f1f3",
+    "simulation/bvn_decompose_main.cpp": "98a218bed520b025dbc7432ee5a70946ec787006d93c6984f044a1f06178ea15",
+    "simulation/topology/model.cpp": "c6c37e7a99578519d9c7c02353098b2ee69a033d4fd4e81829c50e8af84bc9e2",
+    "simulation/scheduler/local.cpp": "35b343e172f7e0b49acb1523d4088e17abc457c9b840af9394548ff2e6a426ab",
+    "ds/decomposition/study.py": "7f599bf81742f5201c6d8845dea41ed827849ba17b53bef848387a14f83bc37c"
+  },
+  "binary_sha256": "1635b32047db8cb458ffd6c8d95ff6c932fcc0385326e1536b728b6b6a071299",
+  "outputs": 84
+}

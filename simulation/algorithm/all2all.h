@@ -19,6 +19,15 @@
 // p_sets 中每一项是一个置换集合：它告诉每个源 server 当前阶段应该把数据
 // 发往哪个目的 server，以及这一阶段每块发送 GPU 的发送量 freq。
 // GlobalScheduler 会把 p_sets 展开成真正的 server 间传输顺序。
+//
+// 四种完整匹配策略（decompose(options, stats)）共享同一份补齐矩阵、同一个
+// “匹配 -> 取最小残量 -> 扣减”循环和同一个 update_permutation_sets() 入口；
+// 它们只改变每轮如何选完美匹配：
+//   S0 Kuhn              ：原生无权 Kuhn 增广，保留 unordered 遍历顺序；
+//   S1 MaximumBottleneck ：二分搜索最大可行瓶颈阈值，取该阈值下的完美匹配；
+//   S2 MaximumElimination：在采样阈值上做 0/1 费用 Hungarian，最大化等于阈值的边数；
+//   S3 ResidualDegree    ：要求最大度行/列关联的匹配边等于阈值，优先降低支持图最大度。
+// 因此四种策略的守恒、终止和精确重构语义一致，差异只在“选哪一个完美匹配”。
 // ============================================================================
 
 #include <iostream>
@@ -34,16 +43,55 @@ using namespace std;
 namespace native_topology {class Topology; struct GpuTransfer;}
 enum class ScheduleMode {Native, BandwidthAware, CompletionTimeAware};
 
+// 完整 BvN 匹配策略：只读取同一份原生补齐整数残余，不使用拓扑奖励或部分匹配。
+// 四种策略的差异只在本轮匹配选择；扣减、守恒和重构都由下方 decompose() 统一完成。
+enum class DecompositionStrategy {
+    Kuhn,               // S0：原生无权 Kuhn 增广，保留 unordered 的访问顺序。
+    MaximumBottleneck,  // S1：最大可行瓶颈阈值 + 该阈值下的完美匹配。
+    MaximumElimination, // S2：有限阈值池上的最大等阈值边数指派。
+    ResidualDegree      // S3：最大度端点必须走等于阈值的边，优先降最大度。
+};
+struct DecompositionOptions {
+    DecompositionStrategy strategy = DecompositionStrategy::Kuhn;
+    // S2/S3 每条残量轮最多尝试的候选阈值数；S0/S1 忽略。必须 >=1。
+    unsigned threshold_budget = 8;
+};
+struct DecompositionStepStats {
+    // eliminated/degree 均计补齐残余的正项（含虚拟容量），不是物理网络流完成数。
+    // q/q_scaled：本轮实际最小残量（原始单位 / 缩放单位）。
+    // selected_threshold：策略选中的候选阈值；S0 就是 q_scaled，S1 是最大瓶颈，
+    // S2 是取得最大消边数的阈值，S3 是受限匹配阈值（回退时为 S1 的瓶颈）。
+    uint q = 0, q_scaled = 0, selected_threshold = 0;
+    // eliminated：本轮被扣到 0 的匹配边数；degree_*：正残量支持图的最大度。
+    unsigned eliminated = 0, degree_before = 0, degree_after = 0;
+    // threshold_probes：阈值可行性探测次数；weighted_calls：S2 Hungarian 调用次数。
+    uint64_t threshold_probes = 0, weighted_calls = 0;
+    // 本轮的进程 CPU 时间（不含 Local/网络模型）；S3 全部候选失败时为 true。
+    double cpu_us = 0;
+    bool degree_fallback = false;
+    // S2/S3 使用的阈值池；S2 还记录每个池项的“等阈值边数”目标值。
+    vector<uint> sampled_thresholds;
+    vector<unsigned> sampled_eliminations;
+};
+struct DecompositionStats {
+    // steps 是逐轮 trace；output 为 nullptr 时不保存，计数与 CPU 仍可累计。
+    uint64_t decomposition_steps = 0, threshold_probes = 0, weighted_calls = 0;
+    double cpu_us = 0, cpu_tick_us = 0;
+    vector<DecompositionStepStats> steps;
+};
 
 // 匈牙利算法（求二分图最大匹配）的运行时状态。
 // 行顶点编号 0..dim-1，列顶点编号 dim..2*dim-1。
 // matching/visit 需要覆盖 2*dim 个顶点，row_to_col 只需每个行顶点一项。
-struct hungarian_info_t{
+struct hungarian_info_t {
     // 拓扑匹配工作区：同一次分解复用，不复制到PermutationSet。
-    struct Candidate {uint dest,ordinal; double peak,square;};
-    vector<int> seed_matching,candidate_matching,inverse_matching;
+    struct Candidate {
+        uint dest, ordinal;
+        double peak, square;
+    };
+    vector<int> seed_matching, candidate_matching, inverse_matching;
     vector<unsigned char> candidate_visit;
-    vector<double> resource_load_bytes,edge_cost_us,cost_thresholds_us;
+    vector<double> resource_load_bytes, edge_cost_us, cost_thresholds_us;
     vector<vector<pair<uint,double>>> edge_loads;
     vector<vector<double>> reduced_loads;
     vector<vector<Candidate>> candidates;
@@ -51,7 +99,6 @@ struct hungarian_info_t{
     vector<bool> visit;                         // 长度 2*dim，DFS 过程中的访问标记，防止重复访问
     vector<unordered_set<uint> > row_to_col;    // 长度 dim。邻接表：每个行顶点可以连接到哪些列顶点（只保留矩阵中 >0 的边）
 };
-
 
 // 一个置换集合 = 一个置换矩阵 + 权重。
 // mp 表示 "行 i -> 列 mp[i]" 的置换关系；frequency 是这个置换矩阵的流量权重。
@@ -129,6 +176,10 @@ public:
     uint update_permutation_sets();
     // Birkhoff 分解主循环：反复"找完美匹配 -> 取瓶颈 -> 减去"直到流量耗尽。
     void decompose();
+    // 带策略的完整分解：S0-S3 共享原生补齐、提取和终止条件，只改变每轮匹配选择。
+    // q 是原始计数单位，阈值/q_scaled 是缩放后整数；stats 为空时仍计算但不保存
+    // 逐轮 trace。CPU 计时使用 std::clock，与外层墙钟分开。
+    void decompose(const DecompositionOptions&, DecompositionStats* stats=nullptr);
     // pending按(src_server,dst_server,src_gpu)展平，单位与原始矩阵相同。
     void decompose(ScheduleMode,const native_topology::Topology&,const vector<uint64_t>& pending_units);
     // 与 decompose 相同，但允许在每次匹配后回调 adjust 来修改矩阵/匹配（研究用扩展点）。

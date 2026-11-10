@@ -8,6 +8,7 @@
 #include <cmath>
 #include <limits>
 #include <stdexcept>
+#include <ctime>
 using namespace std;
 // ============================================================================
 // FastAll2All 的实现：把 server 级流量矩阵拆成若干"置换 × 权重"。
@@ -100,8 +101,408 @@ void FastAll2All::to_scaled_doubly_stochastic_matrix(){
     }
 }
 
+// 旧的无参数入口：等价于 S0 原生 Kuhn 分解，不产生逐轮统计。
+// 需要统计或选择 S1-S3 时使用下面的 decompose(options, stats)。
 void FastAll2All::decompose(){
     decompose_with({});
+}
+
+namespace {
+// 四种策略共享的每轮工作区。为了避免在匹配递归里反复访问 Matrix，
+// collect() 对当前残余做一次 O(n^2) 稠密扫描，并同时维护：
+//   values[s*n+d]：当前残量的快照，供 S2 的 Hungarian 随机访问；
+//   neighbors[s] ：残量 > 0 的列，供 S1/S3 的 Kuhn 只遍历正边；
+//   row_degree/col_degree：正残量支持图上的行/列度，S3 和统计使用；
+//   thresholds   ：所有正残量去重后的升序阈值表，供 S1 二分和 S2/S3 采样。
+// 注意 S0 不需要阈值和邻接表；need_thresholds=false 时只做稠密 values/度数扫描。
+// 空间是 O(n^2)，单轮时间也包含 O(n^2)；不要把“匹配只遍历正边”
+// 误写成整个算法是 O(m) 或 O(nm)。
+struct CompleteMatchingWorkspace {
+    unsigned n;
+    vector<uint> values, thresholds;
+    vector<vector<unsigned>> neighbors;
+    vector<unsigned> row_degree, col_degree;
+    vector<int> inverse;
+    vector<unsigned char> visited;
+    unsigned maximum_degree = 0;
+    explicit CompleteMatchingWorkspace(unsigned dim)
+        : n(dim), values(size_t(dim) * dim), neighbors(dim), row_degree(dim), col_degree(dim),
+          inverse(dim), visited(dim) {
+    }
+    void collect(Matrix &matrix, bool need_thresholds) {
+        thresholds.clear();
+        maximum_degree = 0;
+        fill(row_degree.begin(), row_degree.end(), 0);
+        fill(col_degree.begin(), col_degree.end(), 0);
+        for (unsigned s = 0; s < n; ++s) {
+            neighbors[s].clear();
+            for (unsigned d = 0; d < n; ++d) {
+                uint value = matrix.get(s, d);
+                values[size_t(s) * n + d] = value;
+                if (value) {
+                    if (need_thresholds) {
+                        neighbors[s].push_back(d);
+                        thresholds.push_back(value);
+                    }
+                    ++row_degree[s];
+                    ++col_degree[d];
+                }
+            }
+        }
+        for (unsigned s = 0; s < n; ++s)
+            maximum_degree = max(maximum_degree, max(row_degree[s], col_degree[s]));
+        sort(thresholds.begin(), thresholds.end());
+        thresholds.erase(unique(thresholds.begin(), thresholds.end()), thresholds.end());
+    }
+};
+// 在给定阈值 threshold 下判断是否存在完整（完美）匹配，并把结果写入 result。
+// 可用的边必须满足 value >= threshold；当 restrict_degree=true（S3）时，
+// 只要行或列已经是当前支持图的最大度端点，该边还必须恰好等于 threshold。
+// 这里用 Kuhn 增广路，只遍历 collect() 缓存的邻居；最坏时间为 O(n*m)，
+// 其中 m 是正残量边数，而不是整张 n*n 矩阵。result[s] 是源行 s 的目的列。
+bool complete_threshold_matching(CompleteMatchingWorkspace &work, uint threshold,
+                                 bool restrict_degree, vector<int> &result) {
+    fill(work.inverse.begin(), work.inverse.end(), -1);
+    function<bool(unsigned)> augment = [&](unsigned s) {
+        for (unsigned d : work.neighbors[s]) {
+            uint value = work.values[size_t(s) * work.n + d];
+            if (value < threshold || work.visited[d])
+                continue;
+            if (restrict_degree &&
+                (work.row_degree[s] == work.maximum_degree ||
+                 work.col_degree[d] == work.maximum_degree) &&
+                value != threshold)
+                continue;
+            work.visited[d] = 1;
+            if (work.inverse[d] < 0 || augment(unsigned(work.inverse[d]))) {
+                work.inverse[d] = s;
+                return true;
+            }
+        }
+        return false;
+    };
+    for (unsigned s = 0; s < work.n; ++s) {
+        fill(work.visited.begin(), work.visited.end(), 0);
+        if (!augment(s))
+            return false;
+    }
+    result.assign(work.n, -1);
+    for (unsigned d = 0; d < work.n; ++d)
+        result[work.inverse[d]] = d;
+    return true;
+}
+// S1 的核心：在升序阈值表上二分“最大可行瓶颈”。
+// 对固定完美匹配 P，本轮瓶颈是 min{(s,P(s)) 的残量}；阈值越低，可用边越多，
+// “存在完美匹配”这一性质单调，因此可以二分。最终 best 是最大可行阈值，
+// result 取该阈值下的一次可行匹配。由于 best 是最大可行阈值，匹配中至少
+// 有一条边的残量恰好等于 best；否则更高的阈值仍然可行，和 best 的最大性矛盾。
+// 返回 0 表示正残量支持图没有完美匹配（调用方会抛出内部错误）。
+uint maximum_bottleneck_matching(CompleteMatchingWorkspace &work, vector<int> &result,
+                                 DecompositionStepStats &trace) {
+    size_t lo = 0, hi = work.thresholds.size();
+    uint best = 0;
+    vector<int> trial;
+    while (lo < hi) {
+        size_t mid = lo + (hi - lo) / 2;
+        ++trace.threshold_probes;
+        if (complete_threshold_matching(work, work.thresholds[mid], false, trial)) {
+            best = work.thresholds[mid];
+            result = trial;
+            lo = mid + 1;
+        } else
+            hi = mid;
+    }
+    if (!best)
+        throw runtime_error("positive residual lost perfect matching");
+    return best;
+}
+// 从 <= bottleneck 的正残量中，按排序后的索引均匀取最多 budget 个阈值。
+// 这里不是按数值等距，而是按“不同残量值”的序号取分位点：
+//   - budget >= 2 时一定包含最小正残量和最大可行瓶颈 bottleneck；
+//   - budget == 1 时只取 bottleneck；
+//   - 候选数少于 budget 时全部取用。
+// 该池子供 S2 做最大消边指派、S3 做受限消度匹配；它是有限预算的启发式，
+// 不枚举所有可能阈值，也不保证全局最少阶段。
+vector<uint> sampled_complete_thresholds(const vector<uint> &distinct, uint bottleneck,
+                                         unsigned budget) {
+    size_t available = upper_bound(distinct.begin(), distinct.end(), bottleneck) - distinct.begin();
+    size_t count = min(size_t(budget), available);
+    vector<uint> result;
+    if (count == 1)
+        result.push_back(bottleneck);
+    else
+        for (size_t i = 0; i < count; ++i)
+            result.push_back(distinct[i * (available - 1) / (count - 1)]);
+    return result;
+}
+// S2 的核心：给定阈值 t，求一个完整匹配，使所有选中边都满足 value >= t，
+// 并让“恰好等于 t”的边数最多（这些边在扣减后会变成 0，因此称为消边）。
+//
+// 把等于 t 的边费用设为 0，把严格大于 t 的边费用设为 1，小于 t 的边完全不
+// 进入松弛（禁止边不能被有限罚值“放宽”）。于是最小费用 = n - 等 t 边数，
+// 最小化费用等价于最大化等 t 边数。这里使用标准 O(n^3) 最短增广路
+// Hungarian（行列都按 1-based 编号）；若当前行到某列是禁边，该列不会从
+// 当前行获得新的松弛，但树中其它行此前建立的松弛仍然有效。
+// 前置条件：threshold <= maximum_bottleneck_matching 的结果，因此至少存在
+// 一个可行完整匹配。函数最后重新检查每条选中边，并统计等于 t 的边数。
+// 注意：这是“固定阈值下的最大消边指派”，不是枚举所有置换，也不是把
+// 贪心挑出的 t 边再补全冒充最大权匹配。
+bool maximum_elimination_assignment(const CompleteMatchingWorkspace &work, uint threshold,
+                                    vector<int> &result, unsigned &eliminated) {
+    const int infinity = numeric_limits<int>::max() / 4;
+    unsigned n = work.n;
+    // 标准最短增广路 Hungarian 的 1-based 状态：
+    //   assigned[d]：当前与列 d 匹配的行；assigned[0] 是本轮新加入的行；
+    //   row_potential/col_potential：行列对偶势，用来维护非负的 reduced cost；
+    //   previous[d]：交替树中列 d 的前驱列，用于最后翻转增广路。
+    vector<int> row_potential(n + 1, 0), col_potential(n + 1, 0), assigned(n + 1, 0),
+        previous(n + 1, 0);
+    for (unsigned row = 1; row <= n; ++row) {
+        // 把新行挂到虚拟列 0，随后在等号图中找一条到空闲列的增广路。
+        assigned[0] = row;
+        unsigned col = 0;
+        // slack[d] 是“当前交替树到列 d”的最小 reduced cost；只有合法边
+        // (value >= threshold) 才会被松弛，禁边保持 infinity。
+        vector<int> slack(n + 1, infinity);
+        vector<unsigned char> used(n + 1, 0);
+        do {
+            used[col] = 1;
+            unsigned active_row = assigned[col];
+            int delta = infinity;
+            unsigned next = 0;
+            for (unsigned d = 1; d <= n; ++d)
+                if (!used[d]) {
+                    uint value = work.values[size_t(active_row - 1) * n + d - 1];
+                    if (value >= threshold) {
+                        // 费用 0 表示“本条边等于阈值”，费用 1 表示“严格大于阈值”。
+                        int cost = (value == threshold ? 0 : 1) - row_potential[active_row] -
+                                   col_potential[d];
+                        if (cost < slack[d]) {
+                            slack[d] = cost;
+                            previous[d] = col;
+                        }
+                    }
+                    // 其它树内行已建立的松弛仍有效，即使当前行到 d 是禁边。
+                    if (slack[d] < delta) {
+                        delta = slack[d];
+                        next = d;
+                    }
+                }
+            if (delta == infinity)
+                return false;
+            // 对偶更新：树内行势加 delta、树内列势减 delta，非树列 slack 同步减少。
+            for (unsigned d = 0; d <= n; ++d) {
+                if (used[d]) {
+                    row_potential[assigned[d]] += delta;
+                    col_potential[d] -= delta;
+                } else if (slack[d] != infinity)
+                    slack[d] -= delta;
+            }
+            col = next;
+        } while (assigned[col] != 0);
+        // 沿 previous 反向翻转增广路，把新行接入匹配。
+        do {
+            unsigned prior = previous[col];
+            assigned[col] = assigned[prior];
+            col = prior;
+        } while (col != 0);
+    }
+    result.assign(n, -1);
+    eliminated = 0;
+    for (unsigned d = 1; d <= n; ++d) {
+        // 标准 Hungarian 应给出每个行号恰好一次；这里显式检查，避免实现退化时
+        // 用 assigned[d]-1 访问越界，也避免重复行被静默当成不同边。
+        int row_index = assigned[d];
+        if (row_index <= 0 || unsigned(row_index) > n || result[row_index - 1] != -1)
+            throw runtime_error("weighted assignment is not a permutation");
+        unsigned s = unsigned(row_index) - 1;
+        uint value = work.values[size_t(s) * n + d - 1];
+        if (value < threshold)
+            throw runtime_error("weighted assignment selected forbidden edge");
+        result[s] = d - 1;
+        eliminated += value == threshold;
+    }
+    return true;
+}
+// 只测进程 CPU 时间（std::clock），不是墙钟，也不包含网络模型计算。
+// 小步长可能因时钟精度读成 0；调用方通过 cpu_tick_us 了解标称精度。
+// clock() 失败或回绕时显式报错，不把负时间静默当成有效样本。
+double decomposition_cpu_elapsed(clock_t start) {
+    clock_t finish = std::clock();
+    if (start == clock_t(-1) || finish == clock_t(-1) || finish < start)
+        throw runtime_error("process CPU clock unavailable or wrapped");
+    return 1e6 * double(finish - start) / CLOCKS_PER_SEC;
+}
+// 所有完整分解入口共用同一组校验；GlobalScheduler::set_decomposition 为了
+// 尽早失败会再调用一次同样的检查（见 scheduler/global.cpp）。
+void validate_decomposition_options(const DecompositionOptions &options) {
+    if (options.strategy != DecompositionStrategy::Kuhn &&
+        options.strategy != DecompositionStrategy::MaximumBottleneck &&
+        options.strategy != DecompositionStrategy::MaximumElimination &&
+        options.strategy != DecompositionStrategy::ResidualDegree)
+        throw invalid_argument("unsupported decomposition strategy");
+    if (!options.threshold_budget)
+        throw invalid_argument("threshold budget must be positive");
+}
+} // namespace
+
+// 带策略的完整分解入口。四种策略共享同一份 SDS_mat（原生补齐后的整数残量）、
+// 同一个“匹配 -> 取最小残量 -> 扣减”循环，以及同一个
+// update_permutation_sets() 扣减入口；每轮只替换“选哪个完美匹配”：
+//   S0 Kuhn              ：原生无权 Kuhn 增广，保留 unordered 访问顺序；
+//   S1 MaximumBottleneck ：二分最大可行瓶颈 t*，在 t* 下取一个完美匹配；
+//   S2 MaximumElimination：在有限阈值池上做 0/1 费用 Hungarian，优先最大化
+//                           “等于阈值”的匹配边数，再按阈值高者打平；
+//   S3 ResidualDegree    ：同一阈值池降序试，要求最大度行/列关联的匹配边恰为
+//                           阈值，优先让支持图最大度下降；全部失败回退 S1。
+//
+// 统一不变量：
+//   1. selected 必须是 n 个源到 n 个目的的一个完整置换；
+//   2. actual = 选中边的最小残量，必须 > 0；
+//   3. 只通过 update_permutation_sets() 扣减，保持与原生提取语义一致；
+//   4. 每轮至少消掉一条正边，frequency_sum 单调增加，最终达到 maximum_sum。
+//
+// output==nullptr 时，S0 直接走旧 decompose()（不产生逐轮 trace）；其它策略
+// 仍完整运行，只是不保存逐轮 stats。CPU 计时使用 std::clock()，是进程 CPU
+// 时间，不是墙钟，也不包含 Local 工作或网络模型计算。
+void FastAll2All::decompose(const DecompositionOptions &options, DecompositionStats *output) {
+    validate_decomposition_options(options);
+    if (!SDS_mat.valid_sdsm())
+        throw invalid_argument("decomposition requires native padded matrix");
+    if (options.strategy == DecompositionStrategy::Kuhn && !output) {
+        decompose();
+        return;
+    }
+    const clock_t start = std::clock();
+    DecompositionStats stats;
+    stats.cpu_tick_us = 1e6 / CLOCKS_PER_SEC;
+    p_sets.clear();
+    unsigned n = SDS_mat.get_dim();
+    CompleteMatchingWorkspace work(n);
+    uint64_t frequency_sum = 0;
+    uint maximum_sum = SDS_mat.sdsm_info.max_row_col_sum;
+    while (frequency_sum < maximum_sum) {
+        const clock_t step_start = std::clock();
+        DecompositionStepStats step;
+        // 每轮重新读取当前残量。S0 不需要阈值/邻接表；S1-S3 需要正边邻接
+        // 和升序阈值表，所以 need_thresholds=true。
+        work.collect(SDS_mat, options.strategy != DecompositionStrategy::Kuhn);
+        step.degree_before = work.maximum_degree;
+        vector<int> selected;
+        if (options.strategy == DecompositionStrategy::Kuhn) {
+            // S0：原生邻接表更新和 unordered 遍历逐字保留；这里只在外侧观测，
+            // 把 matching 中 dim..2*dim-1 的列编号转换成 selected 的列下标。
+            update_edges();
+            if (hungarian() != n)
+                throw runtime_error("native matching is not perfect");
+            selected.resize(n);
+            for (unsigned s = 0; s < n; ++s)
+                selected[s] = hungarian_info.matching[s] - n;
+        } else {
+            // S1 是 S2/S3 的共同基准：先求最大可行瓶颈，并保留该阈值下的
+            // 一个可行完美匹配。若 S3 的所有受限尝试都失败，会直接使用它。
+            uint bottleneck = maximum_bottleneck_matching(work, selected, step);
+            step.selected_threshold = bottleneck;
+            if (options.strategy == DecompositionStrategy::MaximumElimination) {
+                // S2：候选阈值只取到 bottleneck 为止；每个阈值做一次真正的
+                // 0/1 费用 Hungarian。目标先比等阈值边数（消边数），再比阈值；
+                // 等阈值边数为 0 的候选只记录、不选。
+                step.sampled_thresholds = sampled_complete_thresholds(work.thresholds, bottleneck,
+                                                                      options.threshold_budget);
+                unsigned best_eliminated = 0;
+                uint best_q = 0;
+                vector<int> best;
+                for (uint threshold : step.sampled_thresholds) {
+                    vector<int> trial;
+                    unsigned eliminated = 0;
+                    ++step.weighted_calls;
+                    if (!maximum_elimination_assignment(work, threshold, trial, eliminated))
+                        throw runtime_error("feasible threshold lost weighted assignment");
+                    step.sampled_eliminations.push_back(eliminated);
+                    if (eliminated && (eliminated > best_eliminated ||
+                                       (eliminated == best_eliminated && threshold > best_q))) {
+                        best_eliminated = eliminated;
+                        best_q = threshold;
+                        best = trial;
+                    }
+                }
+                if (best.empty())
+                    throw runtime_error("weighted candidates have no positive elimination");
+                selected.swap(best);
+                step.selected_threshold = best_q;
+            } else if (options.strategy == DecompositionStrategy::ResidualDegree) {
+                // S3：从高阈值向低阈值试。受限匹配要求“最大度行或列”关联的
+                // 选中边恰好等于当前阈值；成功时这些端点各消掉一条边，最大度
+                // 恰好下降 1。若整个池子都失败，标记 fallback，继续用 S1 匹配。
+                step.sampled_thresholds = sampled_complete_thresholds(work.thresholds, bottleneck,
+                                                                      options.threshold_budget);
+                reverse(step.sampled_thresholds.begin(), step.sampled_thresholds.end());
+                step.degree_fallback = true;
+                for (uint threshold : step.sampled_thresholds) {
+                    vector<int> trial;
+                    ++step.threshold_probes;
+                    if (complete_threshold_matching(work, threshold, true, trial)) {
+                        selected.swap(trial);
+                        step.selected_threshold = threshold;
+                        step.degree_fallback = false;
+                        break;
+                    }
+                }
+            }
+            // 把非原生策略的结果写回统一的 hungarian_info.matching，供下面的
+            // update_permutation_sets() 使用；列顶点编号是 n + 目的列。
+            for (unsigned s = 0; s < n; ++s) {
+                hungarian_info.matching[s] = n + selected[s];
+                hungarian_info.matching[n + selected[s]] = s;
+            }
+        }
+        // 统一校验置换完整性，并从选中匹配重算实际最小残量 actual。
+        // 注意 actual 可能小于 S2/S3 的候选阈值只在实现 bug 时发生；正常路径下
+        // 所有选中边都 >= 阈值，且至少一条等于阈值。
+        uint actual = UINT32_MAX;
+        vector<unsigned char> used(n, 0);
+        for (unsigned s = 0; s < n; ++s) {
+            if (selected[s] < 0 || unsigned(selected[s]) >= n || used[selected[s]])
+                throw runtime_error("decomposition produced incomplete matching");
+            used[selected[s]] = 1;
+            actual = min(actual, work.values[size_t(s) * n + selected[s]]);
+        }
+        if (!actual)
+            throw runtime_error("decomposition made no positive progress");
+        step.q_scaled = actual;
+        step.q = original_units(actual);
+        if (options.strategy == DecompositionStrategy::Kuhn)
+            step.selected_threshold = actual;
+        // 只对值为 actual 的匹配边扣度；这些边在 update_permutation_sets() 后
+        // 会变成 0，并从下一轮的正边支持图中消失。
+        for (unsigned s = 0; s < n; ++s)
+            if (work.values[size_t(s) * n + selected[s]] == actual) {
+                ++step.eliminated;
+                --work.row_degree[s];
+                --work.col_degree[selected[s]];
+            }
+        for (unsigned s = 0; s < n; ++s)
+            step.degree_after = max(step.degree_after, max(work.row_degree[s], work.col_degree[s]));
+        // 与原生共用唯一扣减入口：update_permutation_sets() 会重新读取当前
+        // matching、取匹配边最小残量、从 SDS_mat 扣除并写入 p_sets。
+        // 这里不沿用上一候选 q，也不删除任何匹配端点；extracted 必须等于
+        // 前面用 work.values 算出的 actual，否则说明匹配和矩阵已经不同步。
+        uint extracted = update_permutation_sets();
+        if (extracted != actual || !step.eliminated)
+            throw runtime_error("decomposition extraction mismatch");
+        frequency_sum += actual;
+        if (frequency_sum > maximum_sum)
+            throw runtime_error("decomposition exceeded padded row sum");
+        step.cpu_us = decomposition_cpu_elapsed(step_start);
+        ++stats.decomposition_steps;
+        stats.threshold_probes += step.threshold_probes;
+        stats.weighted_calls += step.weighted_calls;
+        if (output)
+            stats.steps.push_back(std::move(step));
+    }
+    stats.cpu_us = decomposition_cpu_elapsed(start);
+    if (output)
+        *output = std::move(stats);
 }
 
 // 正式拓扑入口：只改变每轮匹配选择，矩阵补齐、扣除和结果仍由原生流程完成。

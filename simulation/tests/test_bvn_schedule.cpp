@@ -51,6 +51,17 @@ void conserved(const Demand &d, const Topology &t, Options o = Options()) {
     CHECK(p.edit_attempts <= p.decomposition_steps * o.edit_attempt_budget);
     CHECK(std::isfinite(evaluate_schedule(t, p).communication_us));
 }
+void noop_configuration_test() {
+    Demand demand{2, {0, 1, 2, 0}};
+    auto top = topology(2);
+    for (unsigned budget : {1u, 8u}) {
+        Options options;
+        options.global = GlobalRule::Pressure;
+        options.local = LocalRule::StageTime;
+        options.candidate_budget = budget;
+        rejects([&] { plan(demand, top, options); });
+    }
+}
 void basic() {
     Demand d{3, {0, 0, 1, 2, 0, 0, 0, 0, 0}};
     auto t = topology(3);
@@ -254,6 +265,33 @@ void invalid() {
     rejects([&] { plan(d, t, o); });
 }
 void objectives() {
+    // Equal independent flows have the same stage time together or separately;
+    // a tie must not discard half the service and create another identical stage.
+    Demand equal{4, std::vector<uint64_t>(16, 0)};
+    equal.bytes[1] = equal.bytes[11] = 1000;
+    Options equal_options;
+    equal_options.local = LocalRule::StageTime;
+    equal_options.local_edits = true;
+    equal_options.candidate_budget = 8;
+    equal_options.edit_attempt_budget = 32;
+    equal_options.min_seed_service_ratio = .5;
+    Plan equal_plan = plan(equal, topology(4), equal_options);
+    CHECK(equal_plan.stages.size() == 1);
+    CHECK(equal_plan.stages[0].flows.size() == 2);
+    CHECK(std::abs(evaluate_schedule(topology(4), equal_plan).communication_us - 5.08) < 1e-12);
+    // Service dominance is exact, not a double-relative score tie: losing one byte
+    // from a 1e15-byte candidate must not become a lexicographic "improvement".
+    Demand unbalanced{4, std::vector<uint64_t>(16, 0)};
+    unbalanced.bytes[1] = 1000000000000000ULL;
+    unbalanced.bytes[11] = 1;
+    std::vector<native_topology::ResourceInfo> dominance_resources = {{"fast", 1e15}, {"slow", 1}};
+    std::vector<native_topology::PathInfo> dominance_paths(16);
+    for (unsigned s=0;s<4;++s)for(unsigned d=0;d<4;++d)if(s!=d)
+        dominance_paths[s*4+d] = native_topology::PathInfo({0},5,10);
+    dominance_paths[11] = native_topology::PathInfo({1},5,10);
+    auto dominance_topology = Topology::from_fixed_routes(4,1,dominance_resources,dominance_paths);
+    equal_options.space = Space::SerializationTime;
+    CHECK(plan(unbalanced, dominance_topology, equal_options).stages.size() == 1);
     Demand d{4, {0, 17, 9, 31, 11, 0, 23, 4, 5, 19, 0, 7, 29, 3, 13, 0}};
     auto t = topology(4, true, 73, 1e-9);
     for (int space = 0; space < 3; ++space)
@@ -333,7 +371,7 @@ void objectives() {
     for (LocalRule rule : {LocalRule::StageTime, LocalRule::SquaredWork, LocalRule::MaxPathTime}) {
         o.local = rule;
         del = plan(deletion, topology(4, true), o);
-        CHECK(del.stages[0].flows.size() == 1);
+        CHECK(del.stages[0].flows.size() == (rule == LocalRule::MaxPathTime ? 2 : 1));
         CHECK(del.stages[0].flows[0].bytes == 1);
     }
     o.local = LocalRule::StageTime;
@@ -433,6 +471,61 @@ void smooth_numeric_scales() {
         paths[1] = native_topology::PathInfo({0}, 5, 10);
     }
 }
+void review_characterization_tests() {
+    Demand equal{4, std::vector<uint64_t>(16, 0)};
+    equal.bytes[1] = equal.bytes[11] = 1000;
+    auto independent = topology(4);
+    Options options;
+    options.local = LocalRule::SquaredWork;
+    options.local_edits = true;
+    options.candidate_budget = 8;
+    options.edit_attempt_budget = 32;
+    options.min_seed_service_ratio = .5;
+    auto squared = plan(equal, independent, options);
+    CHECK(squared.stages.size() == 2);
+    CHECK(std::abs(evaluate_schedule(independent, squared).communication_us - 10.16) < 1e-12);
+
+    // Strict global gain/time can improve this stage but worsen the complete schedule.
+    Demand horizon = equal;
+    horizon.bytes[1] = 1u << 20;
+    horizon.bytes[11] = 100u << 20;
+    auto horizon_topology = topology(4, false, 100, 5000);
+    auto seed = plan(horizon, horizon_topology, Options());
+    options.global = GlobalRule::Pressure;
+    options.local = LocalRule::StageTime;
+    auto greedy = plan(horizon, horizon_topology, options);
+    CHECK(seed.stages[0].coefficient == (1u << 20));
+    CHECK(greedy.stages[0].coefficient == (100u << 20));
+    CHECK(std::abs(evaluate_schedule(horizon_topology, seed).communication_us - 18388.608) < 1e-9);
+    CHECK(std::abs(evaluate_schedule(horizon_topology, greedy).communication_us - 18472.49408) < 1e-9);
+    CHECK(8388.608 / 13388.608 > 84.7249408 / 5083.88608);
+
+    std::vector<native_topology::ResourceInfo> resources = {{"fast", 1000}, {"slow", 1}};
+    std::vector<native_topology::PathInfo> paths(16);
+    for (unsigned s = 0; s < 4; ++s)
+        for (unsigned d = 0; d < 4; ++d)
+            if (s != d) paths[s * 4 + d] = native_topology::PathInfo({0}, 0, 0);
+    paths[11] = native_topology::PathInfo({1}, 0, 0);
+    auto mixed = Topology::from_fixed_routes(4, 1, resources, paths);
+    auto bytes = plan(equal, mixed, Options());
+    options = Options();options.space = Space::SerializationTime;
+    auto time = plan(equal, mixed, options);
+    CHECK(bytes.stages[0].coefficient == 1000);
+    CHECK(std::abs(time.stages[0].coefficient - .008L) < 1e-15);
+    for (unsigned f = 0; f < 2; ++f) {
+        CHECK(bytes.stages[0].flows[f].src_gpu == time.stages[0].flows[f].src_gpu);
+        CHECK(bytes.stages[0].flows[f].dst_gpu == time.stages[0].flows[f].dst_gpu);
+    }
+    CHECK(validate_schedule(equal, time).ok);
+    resources[0].bandwidth_gbps = 1e300;resources[1].bandwidth_gbps = 1e-300;
+    auto extreme = Topology::from_fixed_routes(4, 1, resources, paths);
+    bool controlled = false;
+    try {plan(equal, extreme, options);}
+    catch(const std::invalid_argument& error) {
+        controlled = std::string(error.what()) == "nonpositive or nonfinite output flow";
+    }
+    CHECK(controlled);
+}
 void cli() {
     char name[] = "/tmp/bvn-cli-XXXXXX";
     int fd = mkstemp(name);
@@ -497,10 +590,12 @@ void cli() {
 }
 int main(int argc, char **) {
     try {
+        noop_configuration_test();
         basic();
         invalid();
         objectives();
         smooth_numeric_scales();
+        review_characterization_tests();
         if (argc > 1)
             cli();
         std::cout << "bvn schedule: " << assertions << " checks passed\n";

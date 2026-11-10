@@ -1,0 +1,9 @@
+# Large local experiment artifacts. The smoke/full raw outputs and the
+# independent audit files are reproducible from the tracked cases, manifests
+# and scripts, but are too large for the repository.
+/experiments/raw/
+/experiments/audit/
+
+# Compiled diagnostic binaries; the .cpp sources are tracked.
+/repro_all2all_diag
+/repro_global_diag

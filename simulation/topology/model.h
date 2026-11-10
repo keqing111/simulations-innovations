@@ -26,7 +26,7 @@
 
 namespace native_topology {
 struct ResourceInfo {std::string name; double bandwidth_gbps;};
-struct PathInfo {
+struct PathInfo {     //path 表示一个通信对的路径？包含路径上的链路、传播时间、往返时间
   std::vector<unsigned> resource_ids;
   double propagation_us, rtt_us;
   PathInfo(std::vector<unsigned> ids={},double propagation=0,double rtt=0)

@@ -149,7 +149,7 @@ void FastAll2All::build_transfers(const vector<int>& m,uint q,vector<native_topo
 }
 void FastAll2All::consume_pending(const vector<int>& m,uint q) {
     uint n=m.size(),units=original_units(q);
-    for(uint s=0;s<n;++s)for(uint u=0;u<gpu_n;++u) {
+    for(uint s=0;s<n;++s)if(s!=uint(m[s]))for(uint u=0;u<gpu_n;++u) {
         auto& v=remaining_units_[(s*n+m[s])*gpu_n+u];v-=min<uint64_t>(v,units);
     }
 }
@@ -261,16 +261,12 @@ bool FastAll2All::accept_candidate(ScheduleMode mode,const native_topology::Topo
         return sum;
     };
     if(volume(h.candidate_matching)<volume(h.seed_matching))return false;
-    double before=0,after=0;
-    if(mode==ScheduleMode::BandwidthAware) {
-        vector<native_topology::GpuTransfer> seed,trial;
-        build_transfers(h.seed_matching,q,seed);build_transfers(h.candidate_matching,q,trial);
-        before=top.evaluate_gpu(seed).serial_us;after=top.evaluate_gpu(trial).serial_us;
-    }
-    else {
-        before=after=0;
-        for(uint s=0;s<n;++s){before=max(before,h.edge_cost_us[s*n+h.seed_matching[s]]);after=max(after,h.edge_cost_us[s*n+h.candidate_matching[s]]);}
-    }
+    vector<native_topology::GpuTransfer> seed,trial;
+    build_transfers(h.seed_matching,q,seed);build_transfers(h.candidate_matching,q,trial);
+    const auto seed_cost=top.evaluate_gpu(seed),trial_cost=top.evaluate_gpu(trial);
+    // 带宽模式仍只优化serial；完成时间模式的阈值仅生成候选，接受时计入真实共享负载。
+    double before=mode==ScheduleMode::BandwidthAware?seed_cost.serial_us:seed_cost.total_us;
+    double after=mode==ScheduleMode::BandwidthAware?trial_cost.serial_us:trial_cost.total_us;
     return after<before-1e-12*max(1.,abs(before));
 }
 void FastAll2All::adjust_matching(ScheduleMode mode,const native_topology::Topology& top) {

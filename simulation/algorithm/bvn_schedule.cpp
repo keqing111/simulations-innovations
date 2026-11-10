@@ -348,7 +348,12 @@ bool better(const Candidate &a, const Candidate &b, const Options &o) {
     if (g)
         return g > 0;
     int l = o.local == LocalRule::None ? 0 : compare(a.local, b.local);
-    return l ? l < 0 : a.dst < b.dst;
+    if (l)
+        return l < 0;
+    // 物理目标均打平时先保留更多真实服务，避免无收益删除把等时阶段拆开。
+    if (a.real_bytes != b.real_bytes)
+        return a.real_bytes > b.real_bytes;
+    return a.dst < b.dst;
 }
 bool legal(const std::vector<int> &dst, const Workspace &w) {
     std::vector<bool> used(w.n, false);
@@ -514,6 +519,9 @@ void validate_options(const Demand &d, const Topology &t, const Options &o) {
     if (o.global == GlobalRule::None && o.local == LocalRule::None)
         require(!o.pressure_candidate && !o.local_edits && o.candidate_budget == 1,
                 "endpoint baseline accepts only seed");
+    else
+        require(o.pressure_candidate || o.local_edits,
+                "enabled objectives require a candidate generator");
     require(o.native_unit_bytes > 0, "native unit must be positive");
     if (o.engine == Engine::FastNative) {
         require(o.space == Space::Bytes && o.global == GlobalRule::None &&

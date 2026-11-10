@@ -207,7 +207,124 @@ static void exception_cleanup_tests() {
         assert(live_arrays==before);
     }
 }
+static void completion_shared_acceptance_test() {
+    const unsigned n=4;
+    std::vector<uint> values(n*n,0);
+    for(unsigned s=0;s<n;++s) {
+        values[s*n+(s+1)%n]=1000;
+        values[s*n+(s+2)%n]=1000;
+    }
+    Matrix matrix(values.data(),n);
+    FastAll2All native(&matrix,1,ETHER400,H100,1e-6);
+    native.to_scaled_doubly_stochastic_matrix();native.decompose();
+    const auto seed=native.p_sets.front().mp;
+    std::vector<ResourceInfo> resources={{"candidate-shared",16}};
+    for(unsigned s=0;s<n;++s)resources.push_back({"seed-private-"+std::to_string(s),8});
+    std::vector<PathInfo> paths(n*n);
+    for(unsigned s=0;s<n;++s)for(unsigned d=0;d<n;++d)if(s!=d)
+        paths[s*n+d]={{seed.at(s)==d?s+1:0},0,0};
+    auto top=Topology::from_fixed_routes(n,1,resources,paths);
+    FastAll2All aware(&matrix,1,ETHER400,H100,1e-6);
+    aware.to_scaled_doubly_stochastic_matrix();
+    aware.decompose(ScheduleMode::CompletionTimeAware,top,std::vector<uint64_t>(values.begin(),values.end()));
+    std::vector<GpuTransfer> flows;
+    for(unsigned s=0;s<n;++s)flows.push_back({s,aware.p_sets.front().mp.at(s),1000});
+    double actual=top.evaluate_gpu(flows).total_us;
+    std::cout<<"completion shared acceptance: seed=1us selected="<<actual<<"us\n";
+    // Candidate pair proxy is .5us, but its four shared flows take 2us, worse than seed1us.
+    near(actual,1);
+    assert(aware.p_sets.front().mp==seed);
+}
+static void mixed_intrinsic_self_loop_test() {
+    const unsigned n=3,g=2,ranks=n*g;
+    std::vector<uint> data(ranks*ranks,0);
+    for(unsigned u=0;u<g;++u) {
+        data[u*ranks+g+u]=200000000;
+        data[(g+u)*ranks+u]=200000000;
+    }
+    data[(2*g)*ranks+2*g+1]=100000000;
+    for(bool cross_dispatch:{false,true})for(auto mode:{ScheduleMode::Native,ScheduleMode::BandwidthAware,ScheduleMode::CompletionTimeAware}) {
+        data[g]=cross_dispatch?0:200000000;
+        data[g+1]=cross_dispatch?200000000:0;
+        std::vector<std::unique_ptr<LocalScheduler>> owners;
+        std::vector<LocalScheduler*> locals;
+        for(unsigned s=0;s<n;++s) {
+            owners.emplace_back(new LocalScheduler(data.data()+s*g*ranks,g,n,s,H100));
+            locals.push_back(owners.back().get());
+        }
+        GlobalScheduler scheduler(n,g,locals,ETHER400,H100,false,1e-6);
+        Topology top(n,g,{0,1,2});scheduler.set_schedule(mode,&top);
+        pipeline_hooks_t hooks;scheduler.pipeline2(1e-6,&balance_alpha_beta,&hooks);
+        assert(hooks.stages.size()==1);
+        near(hooks.intrinsic_us,230.1);
+        std::cout<<"mixed intrinsic: intrinsic="<<hooks.intrinsic_us
+                 <<" dispatch="<<hooks.dispatch_us[0]
+                 <<" self-payload="<<hooks.payload_units[0][4]<<"\n";
+        near(hooks.dispatch_us[0],cross_dispatch?460.1:0);
+        assert(hooks.payload_units[0][4]==0&&hooks.payload_units[0][5]==0);
+        assert(locals[2]->pending_units(2,0)==100000000);
+        assert(locals[2]->get_intrinsic_all2all()[1]==100000000);
+        // approx读取row_sum；若self-dispatch曾从零槽位减去intrinsic会得到UINT下溢值。
+        locals[2]->server2server_approx(2);
+        assert(locals[2]->server2server_data[2]==0);
+    }
+}
+static void bandwidth_only_semantics_test() {
+    const unsigned n=4;
+    std::vector<uint> values(n*n,0);
+    for(unsigned s=0;s<n;++s) {
+        values[s*n+(s+1)%n]=1000;values[s*n+(s+2)%n]=1000;
+    }
+    Matrix matrix(values.data(),n);
+    FastAll2All native(&matrix,1,ETHER400,H100,1e-6);
+    native.to_scaled_doubly_stochastic_matrix();native.decompose();
+    auto seed=native.p_sets.front().mp;
+    std::vector<ResourceInfo> resources={{"seed-shared",8}};
+    for(unsigned s=0;s<n;++s)resources.push_back({"candidate-private-"+std::to_string(s),16});
+    std::vector<PathInfo> paths(n*n);
+    for(unsigned s=0;s<n;++s)for(unsigned d=0;d<n;++d)if(s!=d)
+        paths[s*n+d]=seed.at(s)==d?PathInfo({0},0,0):PathInfo({s+1},100,200);
+    auto top=Topology::from_fixed_routes(n,1,resources,paths);
+    FastAll2All aware(&matrix,1,ETHER400,H100,1e-6);
+    aware.to_scaled_doubly_stochastic_matrix();
+    aware.decompose(ScheduleMode::BandwidthAware,top,std::vector<uint64_t>(values.begin(),values.end()));
+    std::vector<GpuTransfer> flows;
+    for(unsigned s=0;s<n;++s)flows.push_back({s,aware.p_sets.front().mp.at(s),1000});
+    auto cost=top.evaluate_gpu(flows);
+    near(cost.serial_us,.5);near(cost.alpha_us,100);near(cost.total_us,100.5);
+    std::cout<<"bandwidth-only semantics: seed total4us, selected serial="<<cost.serial_us
+             <<"us total="<<cost.total_us<<"us\n";
+}
+static void model_boundary_tests() {
+    std::vector<ResourceInfo> resources={{"a-fast",8},{"a-slow",.8},{"b1",1},{"b2",1}};
+    std::vector<PathInfo> paths(16);
+    paths[1]={{0},10,20};paths[11]={{1},1,2};
+    paths[3]={{2},5,10};paths[9]={{3},5,10};
+    auto independent=Topology::from_fixed_routes(4,1,resources,paths);
+    near(independent.evaluate_gpu({{0,1,1000},{2,3,1000}}).total_us,20);
+    near(independent.evaluate_gpu({{0,3,1000},{2,1,1000}}).total_us,13);
+    // Independent true max(path propagation+serialization) is11us for A and13us for B.
+    near(std::max(10.+1,1.+10),11);
+    paths[1].rtt_us=200000;paths[11].rtt_us=700000;
+    auto changed_rtt=Topology::from_fixed_routes(4,1,resources,paths);
+    near(changed_rtt.evaluate_gpu({{0,1,1000},{2,3,1000}}).total_us,20);
+    resources={{"shared",1}};paths.assign(16,PathInfo());
+    paths[1]={{0},5,10};paths[11]={{0},5,10};
+    auto shared=Topology::from_fixed_routes(4,1,resources,paths);
+    near(shared.evaluate_gpu({{0,1,1000},{2,3,1000}}).total_us,21);
+    resources={{"gateway",8},{"wan",.8}};
+    paths[1]={{0,1},5,10};paths[11]={{0,1},5,10};
+    auto multilevel=Topology::from_fixed_routes(4,1,resources,paths);
+    near(multilevel.evaluate_gpu({{0,1,1000},{2,3,1000}}).total_us,25);
+    // Whole-message store-forward reference: first gateway1us + two WAN services20us +5us.
+    // This reference is26us, not a claim that the current fluid approximation is exact.
+    near(1.+20.+5,26);
+}
 int main() {
+    model_boundary_tests();
+    bandwidth_only_semantics_test();
+    mixed_intrinsic_self_loop_test();
+    completion_shared_acceptance_test();
     topology_tests();
     a2a_tests();
     global_tests();

@@ -143,7 +143,8 @@ void GlobalScheduler::set_schedule(ScheduleMode mode,const native_topology::Topo
 vector<uint64_t> GlobalScheduler::collect_pending_units()const {
     vector<uint64_t> pending(server_n*server_n*gpu_n);
     for(uint s=0;s<server_n;++s)for(uint d=0;d<server_n;++d)for(uint u=0;u<gpu_n;++u)
-        pending[(s*server_n+d)*gpu_n+u]=locals[s]->pending_units(d,u);
+        // topology阶段的self-loop仅是补齐容量；intrinsic只由机内路径消费一次。
+        pending[(s*server_n+d)*gpu_n+u]=topology_&&s==d?0:locals[s]->pending_units(d,u);
     return pending;
 }
 native_topology::GpuStageCost GlobalScheduler::topology_stage_cost(const PermutationSet& stage,
@@ -572,6 +573,11 @@ struct pipeline_result_t GlobalScheduler::pipeline2(double MBpu, scaling_success
             }
             uint dst_svr = lookup -> second;
             // cout << "pid: " << pid << " , lid: "<< lid << " , src svr: " << src_svr << " , dst svr: " << dst_svr << endl;
+            // 仅修正显式topology入口；默认FAST/Local balance-dispatch语义保持不变。
+            if (topology_ && dst_svr == src_svr) {
+                ++lid;
+                continue;
+            }
             vector<uint64_t> before;
             if (hooks||topology_) for(uint i=0; i<gpu_n; ++i) before.push_back((*local)->pending_units(dst_svr,i));
             (*local) -> server2server_dispatch(dst_svr, ds[pid][lid], (*pset).get_freq());
@@ -580,12 +586,12 @@ struct pipeline_result_t GlobalScheduler::pipeline2(double MBpu, scaling_success
             // 扣减 balanced_data 和 row_sum，i!=j 时累计 dispatch[i*G+j]。
             // 对 src!=dst，数据不足 freq 时只取真实数据；空余容量不会变成 payload。
             // 本轮正好等于或少于 freq，不意味着每块 GPU 都真发了 freq。
-            // 实现边界：若虚拟补齐产生 dst_svr==src_svr，这里仍调用同一个 helper；
+            // 默认非topology实现边界：若虚拟补齐产生 dst_svr==src_svr，这里仍调用同一个 helper；
             // helper 没有跳过同机块，而 prepare_load_balance 把该块复制到
             // intrinsic_all2all 后并没有从 balanced_data 清掉。因此不能保证这种
             // 槽位不再取到同机数据、生成额外 dispatch；其 row_sum 也未按同机块初始化。
             // 这是当前代码的特殊情况，不应把“补齐是虚拟容量”解释成已做了自环过滤。
-            // 本次只注释现状，没有为此更改实现或重新解释历史结果。
+            // 显式topology入口已在上方过滤；此处保留默认原生流程及历史结果语义。
             if (hooks) for(uint i=0; i<gpu_n; ++i)
                 hooks->payload_units[pid][src_svr * gpu_n + i] = before[i] - (*local)->pending_units(dst_svr,i);
             if(topology_&&!hooks)for(uint i=0;i<gpu_n;++i)

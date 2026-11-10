@@ -5,8 +5,8 @@ NATIVE = ../algorithm/matrix.cpp ../algorithm/all2all.cpp ../scheduler/config.cp
 .PHONY: check
 build:
 	mkdir -p build
-build/entry_test: tests/entry_test.cc $(NATIVE) ../scheduler/global.h | build
-	$(CXX) $(CXXFLAGS) $(INCLUDES) $< $(NATIVE) -o $@
+build/entry_test: tests/entry_test.cc $(NATIVE) ../topology/model.cpp ../scheduler/global.h | build
+	$(CXX) $(CXXFLAGS) $(INCLUDES) $< $(NATIVE) ../topology/model.cpp -o $@
 build/planner_test: tests/planner_test.cc planner.cpp planner.h $(NATIVE) ../topology/model.cpp ../topology/matching.cpp ../bottleneck/cached.cpp | build
 	$(CXX) $(CXXFLAGS) $(INCLUDES) $< planner.cpp ../topology/model.cpp ../topology/matching.cpp ../bottleneck/cached.cpp $(NATIVE) -o $@
 check: build/entry_test build/planner_test

@@ -1,0 +1,429 @@
+{
+  "permutations": [
+    [
+      1,
+      0,
+      3,
+      2,
+      4,
+      5
+    ],
+    [
+      1,
+      5,
+      4,
+      3,
+      0,
+      2
+    ],
+    [
+      1,
+      4,
+      5,
+      3,
+      2,
+      0
+    ],
+    [
+      4,
+      3,
+      1,
+      5,
+      2,
+      0
+    ],
+    [
+      5,
+      2,
+      0,
+      4,
+      1,
+      3
+    ],
+    [
+      1,
+      5,
+      0,
+      2,
+      3,
+      4
+    ],
+    [
+      3,
+      5,
+      1,
+      0,
+      4,
+      2
+    ],
+    [
+      5,
+      0,
+      1,
+      4,
+      2,
+      3
+    ],
+    [
+      1,
+      5,
+      0,
+      3,
+      2,
+      4
+    ],
+    [
+      2,
+      3,
+      0,
+      1,
+      5,
+      4
+    ],
+    [
+      4,
+      0,
+      1,
+      3,
+      5,
+      2
+    ],
+    [
+      1,
+      4,
+      0,
+      3,
+      5,
+      2
+    ],
+    [
+      1,
+      5,
+      0,
+      3,
+      4,
+      2
+    ],
+    [
+      2,
+      5,
+      0,
+      3,
+      4,
+      1
+    ],
+    [
+      2,
+      5,
+      0,
+      1,
+      4,
+      3
+    ],
+    [
+      2,
+      5,
+      1,
+      3,
+      0,
+      4
+    ],
+    [
+      2,
+      5,
+      1,
+      0,
+      4,
+      3
+    ],
+    [
+      1,
+      2,
+      0,
+      3,
+      5,
+      4
+    ],
+    [
+      1,
+      2,
+      0,
+      5,
+      3,
+      4
+    ],
+    [
+      1,
+      2,
+      0,
+      3,
+      4,
+      5
+    ],
+    [
+      2,
+      5,
+      1,
+      0,
+      3,
+      4
+    ],
+    [
+      1,
+      2,
+      0,
+      4,
+      3,
+      5
+    ],
+    [
+      2,
+      0,
+      1,
+      4,
+      3,
+      5
+    ]
+  ],
+  "trace": [
+    {
+      "q": 10643456,
+      "capacity": 10643456,
+      "bytes": 151437312.0,
+      "time_us": 852.87648,
+      "propagation_us": 1.4,
+      "excess_us": 852.87648,
+      "decision_score": 5.631878093557287e-06,
+      "candidate_count": 3
+    },
+    {
+      "q": 6539264,
+      "capacity": 6539264,
+      "bytes": 103415808.0,
+      "time_us": 2145.36448,
+      "propagation_us": 52.8,
+      "excess_us": 2145.36448,
+      "decision_score": 2.074503426013942e-05,
+      "candidate_count": 4
+    },
+    {
+      "q": 6223872,
+      "capacity": 6223872,
+      "bytes": 99581952.0,
+      "time_us": 2044.43904,
+      "propagation_us": 52.8,
+      "excess_us": 2044.43904,
+      "decision_score": 2.0530216559723592e-05,
+      "candidate_count": 4
+    },
+    {
+      "q": 5795840,
+      "capacity": 5795840,
+      "bytes": 139100160.0,
+      "time_us": 3912.1376000000005,
+      "propagation_us": 202.8,
+      "excess_us": 3912.1376000000005,
+      "decision_score": 2.8124608914899887e-05,
+      "candidate_count": 4
+    },
+    {
+      "q": 5978112,
+      "capacity": 5978112,
+      "bytes": 143474688.0,
+      "time_us": 4028.7916800000003,
+      "propagation_us": 202.8,
+      "excess_us": 4028.7916800000003,
+      "decision_score": 2.808015641058582e-05,
+      "candidate_count": 4
+    },
+    {
+      "q": 11462656,
+      "capacity": 11462656,
+      "bytes": 136552448.0,
+      "time_us": 4022.2380800000005,
+      "propagation_us": 202.8,
+      "excess_us": 4022.2380800000005,
+      "decision_score": 2.945562777461156e-05,
+      "candidate_count": 2
+    },
+    {
+      "q": 10485760,
+      "capacity": 10485760,
+      "bytes": 125984768.0,
+      "time_us": 6938.590080000001,
+      "propagation_us": 202.8,
+      "excess_us": 6938.590080000001,
+      "decision_score": 5.5074833173483325e-05,
+      "candidate_count": 2
+    },
+    {
+      "q": 479232,
+      "capacity": 479232,
+      "bytes": 9584640.0,
+      "time_us": 359.50848,
+      "propagation_us": 52.8,
+      "excess_us": 359.50848,
+      "decision_score": 3.75088141025641e-05,
+      "candidate_count": 3
+    },
+    {
+      "q": 9402368,
+      "capacity": 9402368,
+      "bytes": 37609472.0,
+      "time_us": 3061.55776,
+      "propagation_us": 52.8,
+      "excess_us": 3061.55776,
+      "decision_score": 8.140390165541277e-05,
+      "candidate_count": 3
+    },
+    {
+      "q": 4696064,
+      "capacity": 4696064,
+      "bytes": 75137024.0,
+      "time_us": 6213.761920000001,
+      "propagation_us": 202.8,
+      "excess_us": 6213.761920000001,
+      "decision_score": 8.269906883722199e-05,
+      "candidate_count": 4
+    },
+    {
+      "q": 702464,
+      "capacity": 702464,
+      "bytes": 11239424.0,
+      "time_us": 277.58848,
+      "propagation_us": 52.8,
+      "excess_us": 277.58848,
+      "decision_score": 2.4697749635568512e-05,
+      "candidate_count": 4
+    },
+    {
+      "q": 215040,
+      "capacity": 215040,
+      "bytes": 2580480.0,
+      "time_us": 121.6128,
+      "propagation_us": 52.8,
+      "excess_us": 121.6128,
+      "decision_score": 4.712797619047619e-05,
+      "candidate_count": 4
+    },
+    {
+      "q": 3856384,
+      "capacity": 3856384,
+      "bytes": 15425536.0,
+      "time_us": 1286.84288,
+      "propagation_us": 52.8,
+      "excess_us": 1286.84288,
+      "decision_score": 8.342289564524695e-05,
+      "candidate_count": 3
+    },
+    {
+      "q": 5926912,
+      "capacity": 5926912,
+      "bytes": 47415296.0,
+      "time_us": 3996.0236800000002,
+      "propagation_us": 202.8,
+      "excess_us": 3996.0236800000002,
+      "decision_score": 8.427710079042847e-05,
+      "candidate_count": 3
+    },
+    {
+      "q": 1089536,
+      "capacity": 1089536,
+      "bytes": 13074432.0,
+      "time_us": 900.10304,
+      "propagation_us": 202.8,
+      "excess_us": 900.10304,
+      "decision_score": 6.88445234179198e-05,
+      "candidate_count": 3
+    },
+    {
+      "q": 5261312,
+      "capacity": 5261312,
+      "bytes": 42090496.0,
+      "time_us": 3570.0396800000003,
+      "propagation_us": 202.8,
+      "excess_us": 3570.0396800000003,
+      "decision_score": 8.481818983553913e-05,
+      "candidate_count": 3
+    },
+    {
+      "q": 3069952,
+      "capacity": 3069952,
+      "bytes": 30089216.0,
+      "time_us": 2167.56928,
+      "propagation_us": 202.8,
+      "excess_us": 2167.56928,
+      "decision_score": 7.203807769534441e-05,
+      "candidate_count": 2
+    },
+    {
+      "q": 544768,
+      "capacity": 544768,
+      "bytes": 4358144.0,
+      "time_us": 551.4515200000001,
+      "propagation_us": 202.8,
+      "excess_us": 551.4515200000001,
+      "decision_score": 0.0001265335702537594,
+      "candidate_count": 2
+    },
+    {
+      "q": 339968,
+      "capacity": 339968,
+      "bytes": 2719744.0,
+      "time_us": 420.37952,
+      "propagation_us": 202.8,
+      "excess_us": 420.37952,
+      "decision_score": 0.00015456584149096386,
+      "candidate_count": 2
+    },
+    {
+      "q": 15157248,
+      "capacity": 15157248,
+      "bytes": 60628992.0,
+      "time_us": 9903.438719999998,
+      "propagation_us": 202.8,
+      "excess_us": 9903.438719999998,
+      "decision_score": 0.00016334493438386702,
+      "candidate_count": 2
+    },
+    {
+      "q": 1746944,
+      "capacity": 1746944,
+      "bytes": 6987776.0,
+      "time_us": 1320.8441599999999,
+      "propagation_us": 202.8,
+      "excess_us": 1320.8441599999999,
+      "decision_score": 0.0001890221094665885,
+      "candidate_count": 1
+    },
+    {
+      "q": 108544,
+      "capacity": 108544,
+      "bytes": 868352.0,
+      "time_us": 272.26816,
+      "propagation_us": 202.8,
+      "excess_us": 272.26816,
+      "decision_score": 0.0003135458431603774,
+      "candidate_count": 1
+    },
+    {
+      "q": 6144,
+      "capacity": 6144,
+      "bytes": 73728.0,
+      "time_us": 206.73216000000002,
+      "propagation_us": 202.8,
+      "excess_us": 206.73216000000002,
+      "decision_score": 0.0028039843750000005,
+      "candidate_count": 1
+    }
+  ],
+  "network_us": 58574.159680000004,
+  "delivered_bytes": 1259429888,
+  "kappa": 1,
+  "cpu_us": 35117.271999999924,
+  "counts": {
+    "assignments": 330,
+    "evaluations": 268,
+    "refinements": 60
+  }
+}

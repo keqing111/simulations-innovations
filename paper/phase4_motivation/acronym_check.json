@@ -1,0 +1,50 @@
+{
+  "checker": "ars-acronym-check/1.0",
+  "input": "paper/phase4_motivation/draft.md",
+  "input_sha256": "879340350f435acc57431ce30c0594dbea448c91b0ecf9246e65087295e6d619",
+  "status": "checked",
+  "allowlist": {
+    "default": 29,
+    "user": [
+      "DC0",
+      "DC1",
+      "DC2",
+      "FAST",
+      "MB",
+      "WAN1",
+      "WAN2"
+    ]
+  },
+  "coverage": {
+    "body": "checked",
+    "abstract_en": "not_requested",
+    "abstract_zh": "not_requested"
+  },
+  "scope_lines": {
+    "body": [
+      [
+        2,
+        2
+      ],
+      [
+        4,
+        16
+      ],
+      [
+        18,
+        32
+      ],
+      [
+        34,
+        87
+      ],
+      [
+        89,
+        94
+      ]
+    ]
+  },
+  "unread_sections": [],
+  "coverage_limits": [],
+  "findings": []
+}

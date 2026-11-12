@@ -9,6 +9,7 @@
 #include <limits>
 #include <stdexcept>
 #include <ctime>
+#include <array>
 using namespace std;
 // ============================================================================
 // FastAll2All 的实现：把 server 级流量矩阵拆成若干"置换 × 权重"。
@@ -336,6 +337,15 @@ double decomposition_cpu_elapsed(clock_t start) {
 // 所有完整分解入口共用同一组校验；GlobalScheduler::set_decomposition 为了
 // 尽早失败会再调用一次同样的检查（见 scheduler/global.cpp）。
 void validate_decomposition_options(const DecompositionOptions &options) {
+    if((options.resource_cycle&&options.resource_cycle!=2&&options.resource_cycle!=3)||
+       (options.resource_cycle&&options.strategy!=DecompositionStrategy::MaximumBottleneck)||
+       (options.resource_cycle&&options.resource_skip_step!=UINT32_MAX))
+        throw invalid_argument("resource cycle requires S1, length 2|3 and no skip intervention");
+    if(options.resource_skip_step!=UINT32_MAX&&!options.resource_rounds)
+        throw invalid_argument("resource skip requires resource pricing");
+    if(options.resource_rounds>8 || (options.resource_rounds &&
+       options.strategy!=DecompositionStrategy::MaximumBottleneck))
+        throw invalid_argument("resource pricing requires S1 and at most 8 rounds");
     if (options.strategy != DecompositionStrategy::Kuhn &&
         options.strategy != DecompositionStrategy::MaximumBottleneck &&
         options.strategy != DecompositionStrategy::MaximumElimination &&
@@ -365,8 +375,15 @@ void validate_decomposition_options(const DecompositionOptions &options) {
 // output==nullptr 时，S0 直接走旧 decompose()（不产生逐轮 trace）；其它策略
 // 仍完整运行，只是不保存逐轮 stats。CPU 计时使用 std::clock()，是进程 CPU
 // 时间，不是墙钟，也不包含 Local 工作或网络模型计算。
-void FastAll2All::decompose(const DecompositionOptions &options, DecompositionStats *output) {
+void FastAll2All::decompose(const DecompositionOptions &options, DecompositionStats *output,
+                          const native_topology::Topology* topology,const vector<uint64_t>* pending) {
     validate_decomposition_options(options);
+    const bool refine=options.resource_rounds||options.resource_cycle;
+    if(refine && (!topology||!pending||topology->n!=SDS_mat.get_dim()||
+       topology->g!=gpu_n||pending->size()!=size_t(topology->n)*topology->n*gpu_n))
+        throw invalid_argument("resource pricing requires matching topology and pending units");
+    if(refine&&(!isfinite(MB_per_unit)||MB_per_unit<=0))
+        throw invalid_argument("resource pricing requires positive finite data unit");
     if (!SDS_mat.valid_sdsm())
         throw invalid_argument("decomposition requires native padded matrix");
     if (options.strategy == DecompositionStrategy::Kuhn && !output) {
@@ -375,6 +392,7 @@ void FastAll2All::decompose(const DecompositionOptions &options, DecompositionSt
     }
     const clock_t start = std::clock();
     DecompositionStats stats;
+    if(refine)remaining_units_=*pending;
     stats.cpu_tick_us = 1e6 / CLOCKS_PER_SEC;
     p_sets.clear();
     unsigned n = SDS_mat.get_dim();
@@ -403,6 +421,11 @@ void FastAll2All::decompose(const DecompositionOptions &options, DecompositionSt
             // 一个可行完美匹配。若 S3 的所有受限尝试都失败，会直接使用它。
             uint bottleneck = maximum_bottleneck_matching(work, selected, step);
             step.selected_threshold = bottleneck;
+            if(refine)
+                match_resource_priced(*topology,bottleneck,selected,
+                    stats.decomposition_steps==options.resource_skip_step?0:options.resource_rounds,stats,step);
+            if(options.resource_cycle)
+                match_resource_cycles(*topology,bottleneck,selected,options.resource_cycle,stats,step);
             if (options.strategy == DecompositionStrategy::MaximumElimination) {
                 // S2：候选阈值只取到 bottleneck 为止；每个阈值做一次真正的
                 // 0/1 费用 Hungarian。目标先比等阈值边数（消边数），再比阈值；
@@ -473,6 +496,10 @@ void FastAll2All::decompose(const DecompositionOptions &options, DecompositionSt
         step.q = original_units(actual);
         if (options.strategy == DecompositionStrategy::Kuhn)
             step.selected_threshold = actual;
+        if(refine) {
+            if(actual!=step.selected_threshold)throw runtime_error("resource pricing changed bottleneck");
+            consume_pending(selected,actual);
+        }
         // 只对值为 actual 的匹配边扣度；这些边在 update_permutation_sets() 后
         // 会变成 0，并从下一轮的正边支持图中消失。
         for (unsigned s = 0; s < n; ++s)
@@ -501,8 +528,188 @@ void FastAll2All::decompose(const DecompositionOptions &options, DecompositionSt
             stats.steps.push_back(std::move(step));
     }
     stats.cpu_us = decomposition_cpu_elapsed(start);
+    if(refine)
+        for(unsigned s=0;s<n;++s)for(unsigned d=0;d<n;++d)if(s!=d)
+            for(unsigned u=0;u<gpu_n;++u)
+                if(remaining_units_[(s*n+d)*gpu_n+u])throw runtime_error("resource pricing left real demand");
     if (output)
         *output = std::move(stats);
+}
+
+void FastAll2All::match_resource_priced(const native_topology::Topology& top,uint q,
+                                      vector<int>& selected,unsigned rounds,DecompositionStats& stats,
+                                      DecompositionStepStats& trace) {
+    // Linear assignment is a surrogate for the nonseparable shared-resource
+    // maximum. Forbidden edges are never relaxed; no finite penalty permits them.
+    unsigned n=SDS_mat.get_dim(),resources=top.resource_count();
+    prepare_topology_stage(top,q);
+    vector<native_topology::GpuTransfer> flows;
+    build_transfers(selected,q,flows);
+    auto current=top.evaluate_gpu(flows);
+    double best=current.total_us;
+    trace.resource_seed=selected;
+    trace.resource_seed_us=best;
+    vector<double> price(resources,0),cost(size_t(n)*n);
+    const double infinity=numeric_limits<double>::infinity();
+    for(unsigned attempt=0;attempt<rounds;++attempt) {
+        double peak=0;
+        for(unsigned e=0;e<resources;++e)
+            peak=max(peak,.008*current.resource_bytes[e]/top.resource(e).bandwidth_gbps);
+        if(peak==0)break;
+        for(unsigned e=0;e<resources;++e)
+            price[e]+=(.008*current.resource_bytes[e]/top.resource(e).bandwidth_gbps)/peak;
+        fill(cost.begin(),cost.end(),0);
+        for(unsigned s=0;s<n;++s)for(unsigned d=0;d<n;++d)
+            for(const auto& edge:hungarian_info.edge_loads[s*n+d])
+                cost[s*n+d]+=price[edge.first]*.008*edge.second/top.resource(edge.first).bandwidth_gbps;
+        vector<double> row_potential(n+1),col_potential(n+1);
+        vector<unsigned> assigned(n+1),previous(n+1);
+        for(unsigned row=1;row<=n;++row) {
+            assigned[0]=row;unsigned col=0;
+            vector<double> slack(n+1,infinity);vector<unsigned char> used(n+1,0);
+            do {
+                used[col]=1;unsigned active=assigned[col],next=0;double delta=infinity;
+                for(unsigned d=1;d<=n;++d)if(!used[d]) {
+                    if(SDS_mat.get(active-1,d-1)>=q) {
+                        double reduced=cost[(active-1)*n+d-1]-row_potential[active]-col_potential[d];
+                        if(reduced<slack[d]){slack[d]=reduced;previous[d]=col;}
+                    }
+                    if(slack[d]<delta){delta=slack[d];next=d;}
+                }
+                if(!isfinite(delta))throw runtime_error("resource assignment lost feasible matching");
+                for(unsigned d=0;d<=n;++d) {
+                    if(used[d]){row_potential[assigned[d]]+=delta;col_potential[d]-=delta;}
+                    else if(isfinite(slack[d]))slack[d]-=delta;
+                }
+                col=next;
+            } while(assigned[col]);
+            do {unsigned prior=previous[col];assigned[col]=assigned[prior];col=prior;}while(col);
+        }
+        vector<int> trial(n,-1);
+        for(unsigned d=1;d<=n;++d) {
+            unsigned s=assigned[d]-1;
+            if(s>=n||trial[s]!=-1||SDS_mat.get(s,d-1)<q)
+                throw runtime_error("resource assignment selected illegal edge");
+            trial[s]=d-1;
+        }
+        ++stats.resource_proposals;
+        build_transfers(trial,q,flows);current=top.evaluate_gpu(flows);
+        double tolerance=64*numeric_limits<double>::epsilon()*max(1.,max(best,current.total_us));
+        if(current.total_us<best-tolerance) {
+            best=current.total_us;selected=trial;++stats.resource_accepts;
+        }
+    }
+    trace.resource_chosen_us=best;
+}
+
+void FastAll2All::match_resource_cycles(const native_topology::Topology& top,uint q,
+                                      vector<int>& selected,unsigned length,DecompositionStats& stats,
+                                      DecompositionStepStats& trace) {
+    // A cycle rotates existing destinations, preserving one send/receive per
+    // endpoint. Only R>=q edges are allowed. Sparse deltas score the SAME real
+    // stage objective as evaluate_gpu(), including removing the old maxima.
+    const unsigned n=selected.size(),r=top.resource_count();auto& h=hungarian_info;
+    vector<double> work(r),delta(r),added(r);vector<uint64_t> stamp(r,0);uint64_t generation=0;
+    vector<unsigned> resource_order(r),source_order(n),touched;
+    // Convert each sparse contribution once, preserving canonical operation
+    // order: a reciprocal 0.008/B may overflow even when 0.008*bytes/B is finite.
+    auto edge_work=h.edge_loads;
+    for(auto& edge:edge_work)for(auto& v:edge)v.second=.008*v.second/top.resource(v.first).bandwidth_gbps;
+    for(unsigned e=0;e<r;++e)resource_order[e]=e;
+    for(unsigned s=0;s<n;++s)source_order[s]=s;
+    unsigned base=1;while(base<n)base*=2;const size_t stride=2*size_t(base);
+    vector<double> tree(size_t(r)*stride);
+    vector<native_topology::GpuTransfer> flows;build_transfers(selected,q,flows);
+    double current=top.evaluate_gpu(flows).total_us;
+    trace.cycle_costs_us.push_back(current);
+    const double eps=64*numeric_limits<double>::epsilon();
+    for(;;) {
+        ++stats.cycle_passes;
+        if(current==0)break; // zero is already a certified minimum
+        fill(tree.begin(),tree.end(),0);
+        for(unsigned s=0;s<n;++s)for(const auto& v:edge_work[s*n+selected[s]])
+            tree[v.first*stride+base+s]+=v.second;
+        for(unsigned e=0;e<r;++e) {
+            size_t offset=e*stride;
+            for(unsigned i=base-1;i>0;--i)tree[offset+i]=tree[offset+2*i]+tree[offset+2*i+1];
+            work[e]=tree[offset+1];
+        }
+        auto range_sum=[&](unsigned e,unsigned begin,unsigned end) {
+            double sum=0;size_t offset=e*stride;
+            for(unsigned a=begin+base,b=end+base;a<b;a/=2,b/=2) {
+                if(a&1)sum+=tree[offset+a++];if(b&1)sum+=tree[offset+--b];
+            }
+            return sum;
+        };
+        sort(resource_order.begin(),resource_order.end(),[&](unsigned a,unsigned b){return work[a]>work[b];});
+        sort(source_order.begin(),source_order.end(),[&](unsigned a,unsigned b){
+            return h.edge_alpha_us[a*n+selected[a]]>h.edge_alpha_us[b*n+selected[b]];
+        });
+        array<unsigned,3> best_rows{{0,0,0}};array<int,3> best_dest{{0,0,0}};
+        unsigned best_count=0;double best=current;
+        auto inspect=[&](array<unsigned,3> rows,unsigned count,unsigned shift) {
+            array<int,3> dest{{0,0,0}};
+            for(unsigned i=0;i<count;++i) {
+                dest[i]=selected[rows[(i+shift)%count]];
+                if(SDS_mat.get(rows[i],dest[i])<q)return;
+            }
+            ++stats.cycle_evaluations;
+            if(++generation==0){fill(stamp.begin(),stamp.end(),0);generation=1;}
+            touched.clear();double alpha=0;
+            auto add=[&](unsigned edge,double sign) {
+                for(const auto& v:edge_work[edge]) {
+                    unsigned e=v.first;
+                    if(stamp[e]!=generation){stamp[e]=generation;delta[e]=added[e]=0;touched.push_back(e);}
+                    delta[e]+=sign*v.second;
+                    if(sign>0)added[e]+=v.second;
+                }
+            };
+            for(unsigned i=0;i<count;++i) {
+                unsigned s=rows[i];add(s*n+selected[s],-1);add(s*n+dest[i],1);
+                alpha=max(alpha,h.edge_alpha_us[s*n+dest[i]]);
+            }
+            // At most three source maxima are removed: the first unaffected
+            // source in descending order supplies the unchanged maximum.
+            for(unsigned s:source_order) {
+                bool changed=false;for(unsigned i=0;i<count;++i)changed|=s==rows[i];
+                if(!changed){alpha=max(alpha,h.edge_alpha_us[s*n+selected[s]]);break;}
+            }
+            double serial=0;
+            for(unsigned e:resource_order)if(stamp[e]!=generation){serial=work[e];break;}
+            for(unsigned e:touched) {
+                double next=work[e]+delta[e];
+                if(next<.5*work[e]) {
+                    // Avoid cancellation when a cycle removes most/all of a
+                    // resource's work. Sum only positive unchanged intervals
+                    // and newly added work; rows are already in sorted order.
+                    next=added[e];unsigned first=0;
+                    for(unsigned i=0;i<count;++i){next+=range_sum(e,first,rows[i]);first=rows[i]+1;}
+                    next+=range_sum(e,first,n);
+                }
+                if(next < -eps*max(1.,work[e]))throw runtime_error("negative cycle resource work");
+                serial=max(serial,max(0.,next));
+            }
+            double cost=alpha+serial;
+            if(cost<best-eps*max(1.,max(best,cost))) {
+                best=cost;best_rows=rows;best_dest=dest;best_count=count;
+            }
+        };
+        for(unsigned a=0;a<n;++a)for(unsigned b=a+1;b<n;++b)inspect({{a,b,0}},2,1);
+        if(length==3)for(unsigned a=0;a<n;++a)for(unsigned b=a+1;b<n;++b)for(unsigned c=b+1;c<n;++c) {
+            inspect({{a,b,c}},3,1);inspect({{a,b,c}},3,2);
+        }
+        if(!best_count)break;
+        vector<int> best_matching=selected;
+        for(unsigned i=0;i<best_count;++i)best_matching[best_rows[i]]=best_dest[i];
+        // Canonical evaluation is authoritative, not the incremental estimate.
+        build_transfers(best_matching,q,flows);double exact=top.evaluate_gpu(flows).total_us;
+        if(abs(exact-best)>max(8.,double(n)*gpu_n)*eps*max(1.,max(exact,best))||
+           !(exact<current-eps*max(1.,max(exact,current))))
+            throw runtime_error("cycle estimate or strict descent mismatch");
+        selected.swap(best_matching);current=exact;++stats.cycle_accepts;
+        trace.cycle_costs_us.push_back(current);
+    }
+    trace.resource_chosen_us=current;
 }
 
 // 正式拓扑入口：只改变每轮匹配选择，矩阵补齐、扣除和结果仍由原生流程完成。
@@ -557,7 +764,7 @@ void FastAll2All::consume_pending(const vector<int>& m,uint q) {
 // Cache this stage's sparse resource contributions once per server pair.
 void FastAll2All::prepare_topology_stage(const native_topology::Topology& top,uint q) {
     auto& h=hungarian_info;uint n=SDS_mat.get_dim(),units=original_units(q),r=top.resource_count();
-    h.edge_loads.resize(n*n);h.edge_cost_us.assign(n*n,0);
+    h.edge_loads.resize(n*n);h.edge_cost_us.assign(n*n,0);h.edge_alpha_us.assign(n*n,0);
     h.resource_load_bytes.assign(r,0);
     vector<uint> touched;
     for(uint s=0;s<n;++s)for(uint d=0;d<n;++d) {
@@ -579,7 +786,7 @@ void FastAll2All::prepare_topology_stage(const native_topology::Topology& top,ui
             double bytes=h.resource_load_bytes[e];edge.push_back({e,bytes});
             serial=max(serial,.008*bytes/top.resource(e).bandwidth_gbps);h.resource_load_bytes[e]=0;
         }
-        touched.clear();h.edge_cost_us[s*n+d]=alpha+serial;
+        touched.clear();h.edge_cost_us[s*n+d]=alpha+serial;h.edge_alpha_us[s*n+d]=alpha;
         if(!isfinite(h.edge_cost_us[s*n+d]))throw overflow_error("edge cost overflow");
     }
 }

@@ -1,0 +1,97 @@
+make: Entering directory '/home/julius/fast/FAST/simulation'
+Building FastAll2All
+g++ -g -O3 -std=c++11 -I/home/julius/fast/FAST/simulation -I/home/julius/fast/FAST/simulation/algorithm -I/home/julius/fast/FAST/simulation/scheduler /home/julius/fast/FAST/simulation/build/matrix.o /home/julius/fast/FAST/simulation/build/all2all.o /home/julius/fast/FAST/simulation/build/test.o /home/julius/fast/FAST/simulation/build/config.o /home/julius/fast/FAST/simulation/build/local.o /home/julius/fast/FAST/simulation/build/global.o /home/julius/fast/FAST/simulation/build/topology.o main.cpp -o /home/julius/fast/FAST/simulation/build/all2all_simulator -lpthread
+Building successful
+/home/julius/fast/FAST/simulation/build/test_topology_schedule
+bandwidth-only semantics: seed total4us, selected serial=0.5us total=100.5us
+mixed intrinsic: intrinsic=230.1 dispatch=0 self-payload=0
+mixed intrinsic: intrinsic=230.1 dispatch=0 self-payload=0
+mixed intrinsic: intrinsic=230.1 dispatch=0 self-payload=0
+mixed intrinsic: intrinsic=230.1 dispatch=460.1 self-payload=0
+mixed intrinsic: intrinsic=230.1 dispatch=460.1 self-payload=0
+mixed intrinsic: intrinsic=230.1 dispatch=460.1 self-payload=0
+completion shared acceptance: seed=1us selected=1us
+Topology schedule tests passed
+python3 -m unittest discover -s tests -v
+make[1]: Entering directory '/home/julius/fast/FAST/simulation'
+make[1]: Leaving directory '/home/julius/fast/FAST/simulation'
+test_explicit_off_matches_default (test_bvn_scaling_cli.ScalingCLI) ... ok
+test_invalid_flag_and_matrix_scaling_rejected (test_bvn_scaling_cli.ScalingCLI) ... ok
+test_on_delivers_all_interserver_bytes (test_bvn_scaling_cli.ScalingCLI) ... ok
+test_balanced_control_and_edge_zipf_have_distinct_contracts (test_corrected_study.CorrectedTraffic) ... ok
+test_common_endpoint_model_matches_original_native_profiler (test_corrected_study.CorrectedTraffic) ... ok
+test_physical_reference_plans_bytes_before_native_integer_rounding (test_corrected_study.CorrectedTraffic) ... ok
+test_source_batch_seed_and_affinity_are_explicit (test_corrected_study.CorrectedTraffic) ... ok
+test_token_routing_conserves_assignments_and_keeps_local_work (test_corrected_study.CorrectedTraffic) ... ok
+make[1]: Entering directory '/home/julius/fast/FAST/simulation'
+make[1]: Leaving directory '/home/julius/fast/FAST/simulation'
+test_eight_gpu_nonzero_origin_and_native_profiler (test_corrected_study.NativeHostReference) ... ok
+test_empty_and_eight_gpu_nodes (test_corrected_study.NativeHostReference) ... ok
+test_external_schedule_reconstructs_and_rejects_invalid_capacity (test_corrected_study.NativeHostReference) ... ok
+test_original_scheduler_replay_and_provenance (test_corrected_study.NativeHostReference) ... ok
+test_unsafe_native_integer_domain_rejected_before_decomposition (test_corrected_study.NativeHostReference) ... ok
+test_new_seed_keeps_source_budget_and_no_same_server_flow (test_cycle_control.CycleControl) ... ok
+test_panel_conditions_and_names_are_distinct (test_cycle_control.CycleControl) ... ok
+test_seed101_preserves_existing_zipf_generator (test_cycle_control.CycleControl) ... ok
+test_actual_coefficient_and_real_delivery_not_threshold_or_padding (test_joint_resource.JointResource) ... ok
+test_assignment_optimum_matches_independent_tiny_enumeration (test_joint_resource.JointResource) ... ok
+test_large_finite_costs_do_not_report_false_infeasibility (test_joint_resource.JointResource) ... ok
+test_one_threshold_is_hard_maximum (test_joint_resource.JointResource) ... ok
+test_potential_consistency_and_zero_payload (test_joint_resource.JointResource) ... ok
+test_propagation_degree_is_separate_from_resource_work (test_joint_resource.JointResource) ... ok
+test_resource_guided_assignment_crosses_linear_price_tie (test_joint_resource.JointResource) ... ok
+test_sparse_invalid_auxiliary_and_unknown_objective_rejected (test_joint_resource.JointResource) ... ok
+test_threshold_budget_cannot_exceed_four (test_joint_resource.JointResource) ... ok
+test_threshold_pool_is_bounded_and_lookahead_keeps_delivery (test_joint_resource.JointResource) ... ok
+test_weighted_assignment_handles_negative_and_forbidden_edges (test_joint_resource.JointResource) ... ok
+test_weighted_direction_long_cycle_and_disjoint_components_stay_perfect (test_joint_resource.JointResource) ... ok
+test_native_replay_preserves_full_pipeline_and_payload (test_joint_resource.ReplayPlan) ... ok
+test_reordered_complete_decomposition_is_legal_execution (test_joint_resource.ReplayPlan) ... ok
+test_replay_rejects_duplicates_and_incomplete_plans (test_joint_resource.ReplayPlan) ... ok
+test_replay_with_actual_scaling_disabled_scaling_and_empty_demand (test_joint_resource.ReplayPlan) ... ok
+test_action_uses_real_capacity_not_padded_bytes (test_residual_opportunity.ResidualOpportunity) ... ok
+test_capacity_and_endpoint_bounds_have_physical_units (test_residual_opportunity.ResidualOpportunity) ... ok
+test_consume_preserves_unselected_demand_and_rejects_negative (test_residual_opportunity.ResidualOpportunity) ... ok
+test_exact_independent_network_plan (test_residual_opportunity.ResidualOpportunity) ... ok
+test_first_lan_stage_does_not_destroy_optimal_uniform_suffix (test_residual_opportunity.ResidualOpportunity) ... ok
+test_oracle_rejects_nonuniform_real_and_auxiliary_demand (test_residual_opportunity.ResidualOpportunity) ... ok
+test_two_edge_exchange_can_miss_a_legal_improving_three_cycle (test_residual_opportunity.ResidualOpportunity) ... ok
+make[1]: Entering directory '/home/julius/fast/FAST/simulation'
+make[1]: Leaving directory '/home/julius/fast/FAST/simulation'
+test_cycle_disabled_preserves_existing_plans (test_resource_cycles_cli.ResourceCyclesCLI) ... ok
+test_invalid_cycle_and_skip_combination_are_rejected (test_resource_cycles_cli.ResourceCyclesCLI) ... ok
+test_nonuniform_exact_delivery_and_bottleneck_are_preserved (test_resource_cycles_cli.ResourceCyclesCLI) ... ok
+test_three_cycle_repairs_a_two_swap_local_minimum (test_resource_cycles_cli.ResourceCyclesCLI) ... ok
+test_uniform_descent_and_final_neighborhood_are_valid (test_resource_cycles_cli.ResourceCyclesCLI) ... ok
+make[1]: Entering directory '/home/julius/fast/FAST/simulation'
+make[1]: Leaving directory '/home/julius/fast/FAST/simulation'
+test_disabled_matches_unmodified_s1 (test_resource_matching_cli.ResourceMatchingCLI) ... ok
+test_single_decision_counterfactual_and_same_state_trace (test_resource_matching_cli.ResourceMatchingCLI) ... ok
+test_small_exact_bottleneck_oracle_and_reconstruction (test_resource_matching_cli.ResourceMatchingCLI) ... ok
+test_witness_repaired_without_more_stages (test_resource_matching_cli.ResourceMatchingCLI) ... ok
+test_zipf_conservation_and_invalid_options (test_resource_matching_cli.ResourceMatchingCLI) ... ok
+test_historical_26_cases_corrected_contract (test_schedule_cli.ScheduleCLI) ... ok
+test_invalid_cli_rejected (test_schedule_cli.ScheduleCLI) ... ok
+test_mechanisms_and_actual_payload (test_schedule_cli.ScheduleCLI) ... ok
+make[1]: Entering directory '/home/julius/fast/FAST/simulation'
+make[1]: Leaving directory '/home/julius/fast/FAST/simulation'
+test_empty_and_legacy_independent_pair_reference (test_spreadout_cli.SpreadoutCLI) ... ok
+test_fractional_mb_conversion_keeps_integer_byte_audit (test_spreadout_cli.SpreadoutCLI) ... ok
+test_heterogeneous_wan_profile (test_spreadout_cli.SpreadoutCLI) ... ok
+test_independent_wan_routes_overlap (test_spreadout_cli.SpreadoutCLI) ... ok
+test_local_only_and_mixed_local_network_round (test_spreadout_cli.SpreadoutCLI) ... ok
+test_same_dc_shared_nic (test_spreadout_cli.SpreadoutCLI) ... ok
+test_shared_gateway_profile (test_spreadout_cli.SpreadoutCLI) ... ok
+test_shared_wan_and_full_duplex (test_spreadout_cli.SpreadoutCLI) ... ok
+
+----------------------------------------------------------------------
+Ran 60 tests in 7.962s
+
+OK
+archive contract: 52 strict native/bandwidth plan+network comparisons; 26 corrected time replays (6 changed plans); 508 intrinsic-contaminated dispatch slots independently replayed
+g++ -O3 -std=c++11 -I/home/julius/fast/FAST/simulation -I/home/julius/fast/FAST/simulation/algorithm -I/home/julius/fast/FAST/simulation/scheduler -DBVN_GIT_REVISION='"6abbb31"' -DBVN_GIT_DIRTY='"true"' bvn_main.cpp /home/julius/fast/FAST/simulation/build/bvn_schedule.o /home/julius/fast/FAST/simulation/build/matrix.o /home/julius/fast/FAST/simulation/build/all2all.o /home/julius/fast/FAST/simulation/build/config.o /home/julius/fast/FAST/simulation/build/topology.o -o /home/julius/fast/FAST/simulation/build/bvn_simulator -lpthread
+/home/julius/fast/FAST/simulation/build/test_bvn_schedule --cli
+bvn schedule: 5443 checks passed
+make: Nothing to be done for 'runtime-host-build'.
+make: Nothing to be done for 'bvn-decompose-build'.
+make: Leaving directory '/home/julius/fast/FAST/simulation'

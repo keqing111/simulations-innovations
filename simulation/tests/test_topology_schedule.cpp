@@ -694,7 +694,36 @@ static void complete_matching_boundaries_test() {
     options.strategy = static_cast<DecompositionStrategy>(99);
     rejects([&] { invalid.decompose(options); });
 }
+static bool cycle_large_scaling(uint,uint,scale_info_t info,link_info_t,link_info_t,double) {
+    return info.factor>=999999;
+}
+static void resource_cycle_numerical_test() {
+    // A legal native scaling makes large and one-unit real edges share a q.
+    // Removing all large contributors must not subtract nearly equal doubles
+    // and then reject a genuine 1e6-fold improvement against the tiny new cost.
+    for(unsigned fixture=0;fixture<2;++fixture) {
+        const unsigned a=999999;unsigned values[]={0,a,1,1,0,a,a,1,0};
+        double unit=fixture?1e-310:.001024,bandwidth=fixture?1e-312:400;
+        Matrix matrix(values,3);FastAll2All app(&matrix,1,ETHER400,H100,unit);
+        app.to_scaled_matrix(cycle_large_scaling);app.to_scaled_doubly_stochastic_matrix();
+        std::vector<PathInfo> paths(9);
+        for(unsigned s=0;s<3;++s)for(unsigned d=0;d<3;++d)if(s!=d)paths[s*3+d]={{0},0,0};
+        auto top=Topology::from_fixed_routes(3,1,{{"shared",bandwidth}},paths);
+        std::vector<uint64_t> pending(values,values+9);
+        DecompositionOptions options;options.strategy=DecompositionStrategy::MaximumBottleneck;
+        options.resource_cycle=3;DecompositionStats stats;
+        app.decompose(options,&stats,&top,&pending);
+        assert(stats.cycle_accepts>0);
+        const auto& trace=stats.steps.front().cycle_costs_us;
+        assert(trace.front()>trace.back()*100000);
+        double bytes=unit*1e6;
+        near(trace.back(),top.evaluate_gpu({{0,2,bytes},{1,0,bytes},{2,1,bytes}}).total_us);
+        if(!fixture)near(trace.back(),.06144);
+        assert(std::isfinite(trace.back()));
+    }
+}
 int main() {
+    resource_cycle_numerical_test();
     complete_matching_example_test();
     complete_matching_oracle_tests();
     complete_matching_pipeline_test();

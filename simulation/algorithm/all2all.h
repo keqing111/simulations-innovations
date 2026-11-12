@@ -53,10 +53,21 @@ enum class DecompositionStrategy {
 };
 struct DecompositionOptions {
     DecompositionStrategy strategy = DecompositionStrategy::Kuhn;
+    // Opt-in S1 shared-resource pricing; zero preserves every legacy strategy.
+    unsigned resource_rounds = 0; // bounded at 8; requires topology + real pending
+    // Same-q strict stage-cost descent: 0 off, 2 swaps, 3 swaps + three-cycles.
+    // Stops at a local minimum, not after a fixed number of attempts.
+    unsigned resource_cycle = 0;
+    // Research intervention only: skip pricing at one zero-based decomposition
+    // step, then resume the same policy. UINT32_MAX means no intervention.
+    uint32_t resource_skip_step = UINT32_MAX;
     // S2/S3 每条残量轮最多尝试的候选阈值数；S0/S1 忽略。必须 >=1。
     unsigned threshold_budget = 8;
 };
 struct DecompositionStepStats {
+    vector<int> resource_seed; // empty when both pricing and cycles are disabled
+    double resource_seed_us=0, resource_chosen_us=0;
+    vector<double> cycle_costs_us; // initial cost, then each accepted strict decrease
     // eliminated/degree 均计补齐残余的正项（含虚拟容量），不是物理网络流完成数。
     // q/q_scaled：本轮实际最小残量（原始单位 / 缩放单位）。
     // selected_threshold：策略选中的候选阈值；S0 就是 q_scaled，S1 是最大瓶颈，
@@ -74,6 +85,8 @@ struct DecompositionStepStats {
     vector<unsigned> sampled_eliminations;
 };
 struct DecompositionStats {
+    uint64_t resource_proposals=0, resource_accepts=0;
+    uint64_t cycle_evaluations=0, cycle_accepts=0, cycle_passes=0;
     // steps 是逐轮 trace；output 为 nullptr 时不保存，计数与 CPU 仍可累计。
     uint64_t decomposition_steps = 0, threshold_probes = 0, weighted_calls = 0;
     double cpu_us = 0, cpu_tick_us = 0;
@@ -91,7 +104,7 @@ struct hungarian_info_t {
     };
     vector<int> seed_matching, candidate_matching, inverse_matching;
     vector<unsigned char> candidate_visit;
-    vector<double> resource_load_bytes, edge_cost_us, cost_thresholds_us;
+    vector<double> resource_load_bytes, edge_cost_us, edge_alpha_us, cost_thresholds_us;
     vector<vector<pair<uint,double>>> edge_loads;
     vector<vector<double>> reduced_loads;
     vector<vector<Candidate>> candidates;
@@ -156,6 +169,10 @@ private:
     void build_transfers(const vector<int>&,uint q_scaled,vector<native_topology::GpuTransfer>&) const;
     void consume_pending(const vector<int>&,uint q_scaled);
     uint original_units(uint q_scaled) const;
+    void match_resource_priced(const native_topology::Topology&,uint,vector<int>&,
+                               unsigned,DecompositionStats&,DecompositionStepStats&);
+    void match_resource_cycles(const native_topology::Topology&,uint,vector<int>&,
+                               unsigned,DecompositionStats&,DecompositionStepStats&);
 
 public:
     vector<PermutationSet> p_sets; // 分解结果：每个元素是一个"置换 + 权重"阶段
@@ -178,8 +195,11 @@ public:
     void decompose();
     // 带策略的完整分解：S0-S3 共享原生补齐、提取和终止条件，只改变每轮匹配选择。
     // q 是原始计数单位，阈值/q_scaled 是缩放后整数；stats 为空时仍计算但不保存
-    // 逐轮 trace。CPU 计时使用 std::clock，与外层墙钟分开。
-    void decompose(const DecompositionOptions&, DecompositionStats* stats=nullptr);
+    // 逐轮 trace。CPU 计时使用 std::clock，与外层墙钟分开；resource_rounds>0
+    // 时包含资源缓存、价格更新、带权指派与拓扑阶段评分，不只计匹配内核。
+    void decompose(const DecompositionOptions&, DecompositionStats* stats=nullptr,
+                   const native_topology::Topology* topology=nullptr,
+                   const vector<uint64_t>* pending=nullptr);
     // pending按(src_server,dst_server,src_gpu)展平，单位与原始矩阵相同。
     void decompose(ScheduleMode,const native_topology::Topology&,const vector<uint64_t>& pending_units);
     // 与 decompose 相同，但允许在每次匹配后回调 adjust 来修改矩阵/匹配（研究用扩展点）。

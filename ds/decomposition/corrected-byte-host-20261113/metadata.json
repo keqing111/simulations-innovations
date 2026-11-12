@@ -1,0 +1,50 @@
+{
+  "complete": true,
+  "source_sha256": {
+    "ds/decomposition/corrected_study.py": "9ea3e49c3ec15f993a37bcd6f86008ea80806b5fbcb8ae34e93727d4ac583be4",
+    "ds/decomposition/runtime_host.cpp": "c063d25f4f14a7d99ff226f407778404017f2d379d007153daaa0e7fe856253d",
+    "ds/decomposition/joint_resource.py": "68b4639d199edb950ce47ecccc54bbf79e87bddb1c1db0dfffda954c89be68d4",
+    "ds/decomposition/residual_opportunity.py": "1737656eb9c0a4c7ae00e5eb35bbc22a0688d7722c097058426cfb9ce589c9c1",
+    "ds/decomposition/baseline_control.py": "b03c9fb87085a8aadf284f09189b288010aacd224fbf49b762dadf1c6b00f2e8",
+    "simulation/bvn_decompose_main.cpp": "35ca69af53bb6fed22b74434a7b3dba6e6fb7178ded3730768e9b7427559bbd7",
+    "simulation/topology/model.cpp": "c6c37e7a99578519d9c7c02353098b2ee69a033d4fd4e81829c50e8af84bc9e2",
+    "nvidia/src/fast_alltoall/alltoall_global_scheduler.cc": "aa49b7a7862923bced13e8218cd65ca22d0ea2ced7955b538f41ed0852bbf271",
+    "nvidia/src/fast_alltoall/alltoall_matrix.cc": "5671ef494f36ceb1c664307d925bb6171ca44957b8b9b181af4b40d1dcae088e",
+    "nvidia/src/fast_alltoall/alltoall_algorithm.cc": "9b355f76f377f29e33c82d0a5122bbf390ef5ed28e604f1202a2cb72c089883d",
+    "nvidia/src/fast_alltoall/alltoall_local_scheduler.cc": "3ba460ebc162ef9d01c7f0c979c7275b6b802d2f3175865866cec715cc609d7d",
+    "nvidia/src/include/fast_alltoall/alltoall_matrix.h": "729e684ab8fa036b7c58c08bf28668b8e818595e7e5859651119f0d1ece5382f",
+    "nvidia/src/include/fast_alltoall/flash_alltoall_nvshmem.h": "4e49c2555c10d8a9f20783fb5822ffd3bd236875da3acc853f518ee463e0b458",
+    "nvidia/src/include/fast_alltoall/alltoall_define.h": "e992cb70df347ebceb5d75a01d0fe68d5572a2076f9ad735b3e187978aac25f7",
+    "nvidia/src/include/fast_alltoall/alltoall_local_scheduler.h": "b3132fe879887c085448d9ff579d84ea434cb3ae42d840c652eae7013cfcf7a4",
+    "nvidia/src/include/fast_alltoall/alltoall_global_scheduler.h": "86a5b4b10f744cb07046a0f9e68448a69d7830b546075eaceb274369e69ff3e9",
+    "nvidia/src/include/fast_alltoall/alltoall_algorithm.h": "6af47ffb288ec65155cf5792887772534e5ed5d38f4220c5debff62ad0105593",
+    "simulation/build/runtime_host_reference": "6599beee0c641a9129cdbab82cd848f010ee9ba630cba4f1ba6ccb067b9c6591",
+    "simulation/build/bvn_decompose_simulator": "e37b529e7c6ac6ca58d3895e1a2792437cdcfb1198aed166fdcc317c4e91f928"
+  },
+  "n": 6,
+  "g": 4,
+  "unit_bytes": 8192,
+  "planner_unit_bytes": 1,
+  "native_input": "original vector counts multiplied by8192 before native initialization",
+  "batches": [
+    480,
+    3840
+  ],
+  "seeds": [
+    1101,
+    1102,
+    1103
+  ],
+  "profiles": [
+    0,
+    1,
+    2
+  ],
+  "scope": "synthetic, native NVIDIA CPU volume plans, shared analytical pricing; not CUDA runtime",
+  "algorithm_frozen": true,
+  "threshold_budget": 4,
+  "conditions_planned": 78,
+  "outputs_planned": 390,
+  "outputs": 390,
+  "conditions": 78
+}

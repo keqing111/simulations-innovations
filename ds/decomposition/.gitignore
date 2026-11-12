@@ -1,6 +1,8 @@
-# Development runs; only results-20261111-release is the authoritative
-# dataset referenced by REPORT.md.
+# Historical release remains tracked, but is superseded for current claims by
+# corrected-byte-host-20261113. Intermediate token-grid runs stay local.
 /results-20261111/
 /results-20261111-audited/
 /results-20261111-final/
 __pycache__/
+/corrected-host-20261113/
+/corrected-host-reviewed-20261113/

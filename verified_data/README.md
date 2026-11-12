@@ -1,5 +1,13 @@
 # 已审计数据发布包
 
+## 2026-11-13当前BvN主线
+
+最新[字节级78条件/390结果](../ds/decomposition/corrected-byte-host-20261113/metadata.json)直接发布在`ds/decomposition/`，不在下面17个历史包中。结果边界和恢复步骤见[当前发布说明](../ds/decomposition/PUBLISHED_DATA.md)。
+
+新增[bvn-current-audit-dependencies-20261113.json](bvn-current-audit-dependencies-20261113.json)及同名`.tar.gz`，仅包含本轮两个冻结CPU运行器和可选历史回归fixture；不是新的GPU实测数据。检查SHA256后，仅在新克隆或确认可覆盖的目录恢复。
+
+## 首次历史同步
+
 本目录发布经记录校验的研究数据，不把“性能退化”当作无效实验删除。
 首次同步包含17份已完成研究/诊断归档，压缩数据合计约516.5MiB；没有将约9GB原始树直接塞入Git。
 每份包的用途、原目录、文件清单、内容 SHA256、分块 SHA256 和限制列在

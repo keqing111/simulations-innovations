@@ -89,10 +89,39 @@ def audit_pipeline(data, n, g, raw):
     assert math.isfinite(raw['total_us']) and raw['total_us'] >= 0
 
 
+def fixed_load_matrix(n, g, kind, mode):
+    """Fixed per-source volume across sizes; exact uniformity without rounding."""
+    count = n if mode == 'matrix' else n*g
+    budget = 9765 if mode == 'matrix' else 39060  # KiB; divisible by relevant degrees
+    degree = n-1 if mode == 'matrix' else (n-1)*g
+    if kind in ('balanced', 'perturbed'):
+        assert budget % degree == 0
+        a = [0 if (s == d if mode == 'matrix' else s//g == d//g)
+             else budget//degree for s in range(count) for d in range(count)]
+        if kind == 'perturbed':
+            offset = 1 if mode == 'matrix' else g
+            for s in range(count):
+                a[s*count+(s+offset) % count] += 1
+        return a
+    rng = random.Random(101); order = list(range(count)); rng.shuffle(order)
+    rank = {d: i+1 for i, d in enumerate(order)}
+    a = []
+    for s in range(count):
+        weights = [0 if (s == d if mode == 'matrix' else s//g == d//g)
+                   else rank[d]**(-.9) for d in range(count)]
+        exact = [budget*w/sum(weights) for w in weights]
+        row = list(map(math.floor, exact))
+        for d in sorted(range(count), key=lambda d: (-(exact[d]-row[d]), d))[:budget-sum(row)]:
+            row[d] += 1
+        a += row
+    return a
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--out', required=True)
     parser.add_argument('--repeat', type=int, default=3)
+    parser.add_argument('--expanded', action='store_true', help='N8/16/32/64, fixed source volume')
     args = parser.parse_args()
     out = pathlib.Path(args.out)
     out.mkdir(parents=True, exist_ok=False)
@@ -100,7 +129,7 @@ def main():
                'simulation/scheduler/global.cpp', 'simulation/scheduler/global.h',
                'simulation/bvn_decompose_main.cpp', 'simulation/topology/model.cpp',
                'simulation/scheduler/local.cpp', 'ds/decomposition/study.py']
-    metadata = dict(repeat=args.repeat, budget=8, complete=False,
+    metadata = dict(repeat=args.repeat, budget=8, complete=False, expanded=args.expanded,
                     revision=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
                     compiler=subprocess.check_output(['g++', '--version'], text=True).splitlines()[0],
                     source_sha256={s: hashlib.sha256((ROOT/s).read_bytes()).hexdigest() for s in sources},
@@ -112,8 +141,13 @@ def main():
              for kind in ('balanced', 'perturbed', 'zipf', 'random-regular')]
     jobs += [('pipeline', n, 4, kind, topo) for n in (8, 16)
              for kind in ('balanced', 'zipf') for topo in (0, 1)]
+    if args.expanded:
+        jobs = [('matrix', n, 1, kind, 0) for n in (8, 16, 32, 64)
+                for kind in ('balanced', 'perturbed', 'zipf')]
+        jobs += [('pipeline', n, 4, kind, topo) for n in (8, 16, 32, 64)
+                 for kind in ('balanced', 'zipf') for topo in (0, 1)]
     for mode, n, g, kind, topo in jobs:
-        data = matrix(n if mode == 'matrix' else n*g, kind)
+        data = fixed_load_matrix(n, g, kind, mode) if args.expanded else matrix(n if mode == 'matrix' else n*g, kind)
         if mode == 'pipeline':
             # Avoid the preserved legacy self-loop/intrinsic ambiguity: this study
             # measures inter-server A2A with balance/dispatch, not same-server data.

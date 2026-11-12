@@ -153,6 +153,14 @@ void GlobalScheduler::set_schedule(ScheduleMode mode,const native_topology::Topo
 //   - 与 prepare/communication/defer_decomposition 等覆盖型 hooks 互斥；
 //     纯观测 hooks 仍可用。pipeline()/pipeline3() 不接入本配置。
 void GlobalScheduler::set_decomposition(const DecompositionOptions &options) {
+    if((options.resource_cycle&&options.resource_cycle!=2&&options.resource_cycle!=3)||
+       (options.resource_cycle&&options.strategy!=DecompositionStrategy::MaximumBottleneck)||
+       (options.resource_cycle&&options.resource_skip_step!=UINT32_MAX))
+        throw invalid_argument("resource cycle requires S1, length 2|3 and no skip intervention");
+    if(options.resource_skip_step!=UINT32_MAX&&!options.resource_rounds)
+        throw invalid_argument("resource skip requires resource pricing");
+    if(options.resource_rounds>8||(options.resource_rounds&&options.strategy!=DecompositionStrategy::MaximumBottleneck))
+        throw invalid_argument("resource pricing requires S1 and at most 8 rounds");
     // 与 FastAll2All::decompose 的入口校验保持一致；放在 setter 里是为了让
     // 配置错误在流水线开始前就失败，而不是等到局部需求已被修改后才抛出。
     if (options.strategy != DecompositionStrategy::Kuhn &&
@@ -431,6 +439,8 @@ struct pipeline_result_t GlobalScheduler::pipeline3(double MBpu, intra_transfer_
 // 公平比较不同算法时需要从相同原始矩阵重新创建 LocalScheduler。
 // ============================================================================
 struct pipeline_result_t GlobalScheduler::pipeline2(double MBpu, scaling_success_condition fn, pipeline_hooks_t* hooks){
+    if(decomposition_configured_&&(decomposition_options_.resource_rounds||decomposition_options_.resource_cycle)&&!topology_)
+        throw invalid_argument("resource pricing requires topology");
     if(decomposition_configured_&&hooks&&(hooks->defer_decomposition||hooks->prepare||hooks->communication))
         throw invalid_argument("complete decomposition conflicts with overriding hooks");
     if(topology_&&(!isfinite(MBpu)||MBpu<=0))throw invalid_argument("invalid data unit");
@@ -571,7 +581,10 @@ struct pipeline_result_t GlobalScheduler::pipeline2(double MBpu, scaling_success
             // decompose(mode, topology, pending) 的拓扑匹配覆盖。topology_ 仍会
             // 在后续阶段计价中使用，因此这不是“忽略拓扑”，而是不把拓扑奖励
             // 混进四种 BvN 策略的匹配选择。
-            all2all.decompose(decomposition_options_,&decomposition_stats_);
+            if(decomposition_options_.resource_rounds||decomposition_options_.resource_cycle) {
+                auto pending=collect_pending_units();
+                all2all.decompose(decomposition_options_,&decomposition_stats_,topology_,&pending);
+            } else all2all.decompose(decomposition_options_,&decomposition_stats_);
             if(hooks)hooks->native_decompose_us=duration<double,std::micro>(steady_clock::now()-decomposition_start).count();
         } else all2all.decompose(schedule_mode_,*topology_,collect_pending_units());
         pset_sz=all2all.p_sets.size();

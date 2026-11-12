@@ -110,3 +110,13 @@ $(BUILD_DIR)/bvn_decompose_simulator: bvn_decompose_main.cpp algorithm/all2all.h
 	$(CC) $(CFLAGS) $(INCLUDES) bvn_decompose_main.cpp $(filter-out $(BUILD_DIR)/test.o,$(OBJS)) -o $@ $(LD)
 
 bvn-decompose-build: $(BUILD_DIR)/bvn_decompose_simulator
+
+# Unmodified NVIDIA CPU volume planner, not the simulation GlobalScheduler.
+CUDA_INCLUDE ?= /usr/local/cuda/include
+NATIVE_DIR = ../nvidia/src
+NATIVE_CPU = $(addprefix $(NATIVE_DIR)/fast_alltoall/,alltoall_matrix.cc alltoall_algorithm.cc alltoall_local_scheduler.cc alltoall_global_scheduler.cc)
+.PHONY: runtime-host-build
+$(BUILD_DIR)/runtime_host_reference: ../ds/decomposition/runtime_host.cpp $(NATIVE_CPU) $(wildcard $(NATIVE_DIR)/include/fast_alltoall/*.h) | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -DNOLOG -ffunction-sections -fdata-sections -I$(NATIVE_DIR)/include -I$(CUDA_INCLUDE) $< $(NATIVE_CPU) -Wl,--gc-sections -o $@
+
+runtime-host-build: $(BUILD_DIR)/runtime_host_reference

@@ -1,0 +1,190 @@
+{
+  "date": "2026-11-13",
+  "purpose": "Frozen CPU audit runners plus historical regression fixtures; not current performance evidence",
+  "archive": "bvn-current-audit-dependencies-20261113.tar.gz",
+  "bytes": 1629431,
+  "sha256": "f45d9cedb886e9d272b1b73ad891a4c91c10e93119511a17c2ff28becf40fdc3",
+  "members": [
+    {
+      "path": "simulation/build/runtime_host_reference",
+      "bytes": 94824,
+      "sha256": "6599beee0c641a9129cdbab82cd848f010ee9ba630cba4f1ba6ccb067b9c6591"
+    },
+    {
+      "path": "simulation/build/bvn_decompose_simulator",
+      "bytes": 311880,
+      "sha256": "e37b529e7c6ac6ca58d3895e1a2792437cdcfb1198aed166fdcc317c4e91f928"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/study.json",
+      "bytes": 15496,
+      "sha256": "83d07896828d82d461faf952878be4c73eef73b7545d853c969785713bab52e8"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n6g4-balanced-s0-shared-w50.json",
+      "bytes": 132969,
+      "sha256": "2f40a6c2913e582a1e502e24f22c73d9e21846ab28fa16e268418da6dad7418f"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n12g4-zipf-s860203-capacity-sufficient-w50.json",
+      "bytes": 2113961,
+      "sha256": "c8ad01e42d48bc6ce6d0de7c7b6504842713f8c0f7c3d0c5b5501e50f244df6c"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n12g4-zipf-s860203-capacity-sufficient-w5000.json",
+      "bytes": 2115304,
+      "sha256": "596ef4b0940c6296ed9e0a3c3ade72819eb8cba095041b3bee692db5c13c5a48"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/mechanism-delay.json",
+      "bytes": 76576,
+      "sha256": "a3ceac5d91d4e65852a1771e438129abe59ecc96c0c85f5ae97cd28d5b9d4feb"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n6g4-zipf-s860201-capacity-sufficient-w5000.json",
+      "bytes": 337942,
+      "sha256": "84bae49afc1dc412d945b0f0f7e045d16c06cb2d73c6c8e61139d61b85f30c55"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n6g4-zipf-s860201-shared-w5000.json",
+      "bytes": 335413,
+      "sha256": "c3d1a1d13b8cf8bac50052d132bf5449884d5e0725ea7d3b5f4014328ac737ac"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n6g4-zipf-s860203-capacity-sufficient-w50.json",
+      "bytes": 350763,
+      "sha256": "19e9d8fd74eaaa0e572a26cbbb675c3afce386310141e599598970a72c265f0d"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n6g4-zipf-s860203-capacity-sufficient-w5000.json",
+      "bytes": 351268,
+      "sha256": "3013fbe523e7c4b0c4fb28aba557a5f3752c16cb3f66e7cf62110ecd68c10648"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n12g4-balanced-s0-shared-w5000.json",
+      "bytes": 434469,
+      "sha256": "2b61b17515905f484a280e123021e7aa3c751e85459a980357f867afd90377cd"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n12g4-zipf-s860201-shared-w5000.json",
+      "bytes": 2067057,
+      "sha256": "81af4ef6faf23a2d122e88cb04164331e1c6c8ee82a5e2461ef19baf9dcecaf0"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n6g4-balanced-s0-shared-w5000.json",
+      "bytes": 132996,
+      "sha256": "f8fbb3fd56aefcd9cddc1007c13809e762ced6c5df2e8c5b1edea7e5bd5c4bef"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n12g4-zipf-s860203-shared-w50.json",
+      "bytes": 2113439,
+      "sha256": "c143e355fe5cbb2c165a8ba456d8c2bdaceb36a96a54b537e390de3ae87df1f6"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n6g4-zipf-s860201-capacity-sufficient-w50.json",
+      "bytes": 337567,
+      "sha256": "008da23cd8dad235cfe8b94ae914a4cf673c69c5156e357988a56717d447e1d9"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n6g4-zipf-s860201-shared-w50.json",
+      "bytes": 335178,
+      "sha256": "1da70f7895500873fd96985c61597fd4d726adcdabef302fda7f5f4bd781f26c"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n6g4-balanced-s0-capacity-sufficient-w50.json",
+      "bytes": 133285,
+      "sha256": "ee4d3ea2c51a704e67234489cf14526917523722d86fa55ffaee34a710d7efd0"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n12g4-zipf-s860203-shared-w5000.json",
+      "bytes": 2114680,
+      "sha256": "fd4a46807fa1e17c31304be4da7d71c7cc791a77838b19c3d2331dad440f5097"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/mechanism-bandwidth.json",
+      "bytes": 76019,
+      "sha256": "fcda56eb4dc9c5350e860f5f7e433deaf697a0521c1914eda0625e5c0d7d31da"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n12g4-balanced-s0-shared-w50.json",
+      "bytes": 434229,
+      "sha256": "928153555dfdfeb56779649cf5c7116b314fccdc4e14f7518f3bdc437e3bca2b"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n12g4-zipf-s860201-capacity-sufficient-w50.json",
+      "bytes": 2071268,
+      "sha256": "ec3d42fcfb298853d4bb229cbb85e0a8044a60d59688bbbc8251e22e5771d291"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n12g4-zipf-s860201-shared-w50.json",
+      "bytes": 2065550,
+      "sha256": "bf6b281684938702ff15b3815db3cf47c1d2a48eb430f109d4a37bc6efd84550"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n12g4-balanced-s0-capacity-sufficient-w50.json",
+      "bytes": 437862,
+      "sha256": "dbba2db8e5ae3217b4924796ae8468f3128243a095cf8706ae4f001cb877b71d"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n12g4-balanced-s0-capacity-sufficient-w5000.json",
+      "bytes": 438255,
+      "sha256": "34d72a9d8fa6d417e7efa7e900b5047481be7832844f0225c4ccb7d4cf99e0ab"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n6g4-balanced-s0-capacity-sufficient-w5000.json",
+      "bytes": 133640,
+      "sha256": "a5ef3b786fab0631508af7ce5e3e1cc2ac53df264a9d5eae78e66e32b6c3c738"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n6g4-zipf-s860203-shared-w5000.json",
+      "bytes": 349493,
+      "sha256": "4e695a41ce3b05e4158b564d3c5c2dbdecdfaae045a357e6db17176bbfb13838"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n6g4-zipf-s860203-shared-w50.json",
+      "bytes": 349340,
+      "sha256": "0809c27fbe47b2b524349c72bde6f506c5637bb296f363fdaa7a1064ac6644b3"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/raw/n12g4-zipf-s860201-capacity-sufficient-w5000.json",
+      "bytes": 2072425,
+      "sha256": "42d3d92354b4818eb0cabf5f708df50206635e8ff320001b6d6aa55842c7dac6"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/matrices/n12g4-zipf-s860203-m16.json",
+      "bytes": 20892,
+      "sha256": "9a7105d572822b53d61d6246bc79d8808dbf3ce772361284586b6ec588d195d5"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/matrices/n12g4-zipf-s860201-m16.json",
+      "bytes": 20773,
+      "sha256": "082a7bc01587a9bb749a5389b954d59c462b0b52c760bd5fd34cc1d5c3ef152a"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/matrices/n6g4-balanced-s0-m16.json",
+      "bytes": 5643,
+      "sha256": "b19e959313012a8ffe1f9fdeb83e991521121e92df71f4f9895de2b0fb2d23bb"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/matrices/n6g4-zipf-s860203-m16.json",
+      "bytes": 5345,
+      "sha256": "298885635fa63d92c67a40a45c57117593a3d1520a0610f550fade3ed88b20f3"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/matrices/n12g4-balanced-s0-m16.json",
+      "bytes": 22803,
+      "sha256": "3a115b8859f1876986177e0968d888abf1eda199b5b7b8823dbba1ad862c4dfa"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/matrices/n6g1-mechanism-s0-m0.json",
+      "bytes": 423,
+      "sha256": "4ed97183d5562da0e0df92d77048c3b9c66fc1f5e13abfb5459f3a38416ddd76"
+    },
+    {
+      "path": "simulation/independent/results/run-2c90c8145c7d-serial/matrices/n6g4-zipf-s860201-m16.json",
+      "bytes": 5305,
+      "sha256": "0039770b7e7d1d1f66f77f7a8a1f82d92a002b07baea270643dffddc5d90ce25"
+    }
+  ],
+  "restoration": "tar -xzf verified_data/bvn-current-audit-dependencies-20261113.tar.gz -C . (fresh clone only; do not overwrite user changes)"
+}

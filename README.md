@@ -9,6 +9,17 @@
 
 ## 研究入口
 
+### 当前BvN主线（2026-11-13更新）
+
+- [算法、代码路径与全部最新数据](ds/decomposition/ALGORITHM_AND_CODE_GUIDE.md)：解释R/U状态、联合系数匹配、资源势函数、带权指派和原生回放；附78条件完整表。
+- [修正重测报告](ds/decomposition/CORRECTED_RETEST_REPORT.md)：直接编译原始NVIDIA CPU调度器、字节级规划、独立采样负载，78条件/390结果。capacity版本对FAST-Host的GM为1.249×，仅指共同解析模型下通信时间，不是在线净收益。
+- [论文写作准备与缺口](paper/READINESS_20261113.md)：可以开始初稿；在线成本、规模/独立验证和相邻方法对照仍需补齐，不作EI接收承诺。
+- [最新可信数据及复现边界](ds/decomposition/PUBLISHED_DATA.md)。
+
+最新联合方法当前在Python原型中，调用原始FAST CPU helper回放；C++仿真器保留S1/S2/S3和早期修补接口，但尚未迁入最新原型。旧零balance面板及旧仿真器基线不得继续当作当前完整FAST/MoE证据。
+
+### 历史研究入口（不是最新主结果）
+
 - [最新 WAN 优势边界报告](simulation/boundary/REPORT.md)：90 条件、540 结果，含热图、重规划/冻结调度曲线和负例。
 - [A1 规划实现优化与静态路径对照](simulation/planning/REPORT.md)：调度保持不变的实现优化，通信收益与 CPU 开销分别报告。
 - [论文证据大纲](simulation/planning/PAPER_OUTLINE.md)。

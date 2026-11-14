@@ -1,0 +1,126 @@
+#!/usr/bin/env python3
+"""Small, fixed mechanism families; all attempts retained, no automatic retry."""
+import argparse
+import csv
+from dataclasses import replace
+import hashlib
+import json
+from pathlib import Path
+import subprocess
+import sys
+import time
+import types
+import numpy as np
+
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'src'))
+from run_wan_budget_smoke import fixture as original_fixture
+from simai_a2a.model import TrafficMatrix
+from simai_a2a.leafspine import fixed_routes,server_snapshot,write_fabric
+from simai_a2a.schedulers.simai_plan import prepare,reference,materialize
+from simai_a2a.schedulers.resource_budget import plan
+from simai_a2a.schedulers.spreadout import SpreadOutScheduler
+from simai_a2a.delivery import validate_fast_delivery
+from simai_a2a.execution import modeled_scaleup_schedule
+from simai_a2a.artifacts import write_matrix_artifact,write_schedule_artifact
+from simai_a2a.scenario import canonical_sha256,write_micro_workload
+from simai_a2a.runner import run_scenario,backend_shared_libraries
+from simai_a2a.v2_diagnostics import collect
+
+BASE='0ab4a30';MODULE='astra-sim-alibabacloud/experiments/alltoall/src/simai_a2a/schedulers/resource_budget.py'
+METHODS=('fast-simai','spreadout','legacy-v1','resource-full','resource-split')
+
+
+def fixture(name):
+    if name in ('independent-wan','shared-wan','handoff'):return original_fixture(name)
+    matrix,hw,top=original_fixture('handoff')
+    units=[[0,8,0,0],[8,0,0,0],[0,6,0,2],[0,0,8,0]]
+    if name.startswith('chain'):
+        units=[[0,2,0,6],[2,0,6,0],[0,6,0,2],[6,0,2,0]]
+        gw=top.gateway_ids
+        top=replace(top,links=tuple(replace(e,bandwidth_gbps=(150 if name=='chain-tied' and {e.src,e.dst}=={gw[1],gw[2]} else e.bandwidth_gbps))
+            for e in top.links if not(e.src in gw and e.dst in gw) or abs(gw.index(e.src)-gw.index(e.dst))==1))
+    elif name=='handoff-tied':units[2][1]=8
+    elif name=='handoff-small':units=[[v//2 for v in row] for row in units]
+    elif name=='handoff-large':units=[[v*2 for v in row] for row in units]
+    elif name=='handoff-heavy-witness':units[2][3]=6
+    elif name=='handoff-permuted':
+        order=[2,1,0,3];units=[[units[s][d] for d in order] for s in order]
+    else:raise ValueError('unknown mechanism fixture: '+name)
+    values=np.zeros((8,8),dtype=np.int64)
+    for s in range(4):
+        values[s*2,s*2+1]=(s+1)*4096
+        for d in range(4):
+            amount=units[s][d]*262144
+            values[s*2,d*2+(s+d)%2]+=3*amount//2
+            values[s*2+1,d*2+(s+d)%2]+=amount//2
+    return TrafficMatrix(values,dict(generator='literal-iteration-fixture',name=name,units=units)),hw,top
+
+
+def dump(path,value):path.write_text(json.dumps(value,indent=2,ensure_ascii=False)+'\n')
+
+
+def run(out,binary,cases,methods,prepare_only=False):
+    out.mkdir(parents=True,exist_ok=False)
+    legacy_source=subprocess.check_output(['git','show',BASE+':'+MODULE],cwd=ROOT,text=True)
+    legacy=types.ModuleType('frozen_resource_budget');exec(compile(legacy_source,'frozen:'+BASE,'exec'),legacy.__dict__)
+    config=ROOT/'configs/ns3-leafspine.conf'
+    study=dict(complete=False,cases=cases,methods=methods,planned_runs=len(cases)*len(methods),runs=[],
+        legacy_commit=BASE,legacy_sha256=hashlib.sha256(legacy_source.encode()).hexdigest(),
+        planner_sha256=hashlib.sha256((ROOT/'src/simai_a2a/schedulers/resource_budget.py').read_bytes()).hexdigest(),
+        config_sha256=hashlib.sha256(config.read_bytes()).hexdigest(),binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),
+        backend_modules={n:hashlib.sha256(p.read_bytes()).hexdigest() for n,p in backend_shared_libraries(binary).items()},
+        scope='fixed small exploratory cases, not formal performance evidence')
+    for name in cases:
+        directory=out/name;directory.mkdir();matrix,hw,top=fixture(name);routes=fixed_routes(top)
+        tm=write_fabric(top,routes,directory);tm.update(tor_port_capacity_gbps=400,foreground_start_ns=1000000)
+        dc_ids=[s//(2 if name=='shared-wan' else 1) for s in range(4)]
+        snapshot=server_snapshot(top,hw,routes);dump(directory/'planner_topology.json',snapshot)
+        mm=write_matrix_artifact(matrix,directory/'matrix');write_micro_workload(matrix,directory/'workload.csv')
+        hardware=dict(schema_version=1,num_servers=4,gpus_per_server=2,intra_alpha_ns=100,intra_beta_ns_per_byte=.0023,
+            inter_alpha_ns=700,inter_beta_ns_per_byte=.02,topology_id=name,link_bandwidth_gbps=400,oversubscription=1)
+        dump(directory/'hardware.json',hardware);dump(directory/'scenario_manifest.json',dict(schema_version=1,name=name,topology=tm))
+        (directory/'background.csv').write_text('');prepared=prepare(matrix,hw)
+        for method in methods:
+            tick=time.process_time_ns()
+            if method=='spreadout':
+                result={};full=SpreadOutScheduler().schedule(matrix,hw,seed=1)
+                full.metadata.update(delivery_chunks={str(f.flow_id):[[f.src,f.dst,f.size_bytes]] for f in full.flows},server_dc_ids=dc_ids)
+            else:
+                if method=='fast-simai':
+                    result=reference(prepared);ps=result['permutations'];qs=[s['alpha'] for s in result['steps']]
+                else:
+                    result=(legacy.plan if method=='legacy-v1' else plan)(prepared,snapshot,allow_split=method!='resource-full')
+                    ps,qs=result['permutations'],result['coefficients']
+                full=materialize(prepared,ps,qs,hw,method,dict(server_dc_ids=dc_ids))
+                validate_fast_delivery(matrix,full,2)
+            cpu=(time.process_time_ns()-tick)/1000
+            dump(directory/(method+'.plan.json'),result)
+            schedule=modeled_scaleup_schedule(full,hw)
+            write_schedule_artifact(schedule,directory/'schedules'/method,matrix_sha256=mm['matrix_sha256'],hardware_sha256=canonical_sha256(hardware))
+            if prepare_only:continue
+            outcome=run_scenario(directory,method,directory/'topology.txt',binary,config_template=config,
+                timeout_s=90,ns3_threads=0,ns3_env={'NS_ATTRIBUTE_DEFAULT':None,'NS_GLOBAL_VALUE':None})
+            summary=outcome.get('summary',{})
+            row=dict(case=name,method=method,status=outcome['status'],success=outcome['success'],
+                actual_ms=summary.get('actual_makespan_ns',0)/1e6 if outcome['success'] else None,
+                stages=schedule.metadata['n_stages'],planning_cpu_us=cpu,attempt_dir=outcome['attempt_dir'],error=outcome.get('error'),
+                handoffs=sum(s.get('reason')=='handoff' for s in result.get('trace',[])),
+                fallbacks=sum(s.get('fallback',False) for s in result.get('trace',[])))
+            if outcome['success']:row.update(collect(schedule,matrix,Path(outcome['attempt_dir'])))
+            study['runs'].append(row);dump(out/'study.json',study)
+            print(name,method,row['status'],row['actual_ms'],flush=True)
+    study['complete']=not prepare_only and len(study['runs'])==study['planned_runs']
+    dump(out/'study.json',study)
+    if study['runs']:
+        with (out/'summary.csv').open('w') as f:
+            keys=list(dict.fromkeys(k for row in study['runs'] for k in row))
+            writer=csv.DictWriter(f,fieldnames=keys);writer.writeheader();writer.writerows(study['runs'])
+    return study
+
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True)
+    p.add_argument('--binary',type=Path,default=Path('/home/julius/fast/SimAI/bin/SimAI_simulator'))
+    p.add_argument('--cases',nargs='+',default=['independent-wan','shared-wan','handoff'])
+    p.add_argument('--methods',nargs='+',choices=METHODS,default=list(METHODS));p.add_argument('--prepare-only',action='store_true')
+    args=p.parse_args();run(args.out.resolve(),args.binary,args.cases,args.methods,args.prepare_only)

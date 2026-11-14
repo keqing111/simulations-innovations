@@ -244,26 +244,43 @@ def plan(prepared,topology,allow_split=True):
     if len(set(sums))!=1:raise ValueError('auxiliary rows/columns must have equal sums')
     pressure(U,res) # validates zero diagonal real traffic
     bound=sum(v>0 for row in R for v in row)+sum(v>0 for v in U)
-    trace=[];permutations=[];coefficients=[]
+    trace=[];permutations=[];coefficients=[];pending=None
     while any(v for row in R for v in row):
         candidates=[];attempts=[]
-        for anchor in select_anchors(U,res):
+        for anchor in ([] if pending is not None else select_anchors(U,res)):
             for proposal in propose_quanta(R,U,res,anchor):
                 if not allow_split and proposal['reason']=='handoff':continue
                 failure={}
                 action=construct_round(R,U,res,anchor,proposal['q'],proposal['H_us'],proposal['witness'],diagnostics=failure)
+                # A split and its handoff are ONE decision. Prevalidate the
+                # successor against this exact residual and retain it, rather
+                # than letting the next greedy round forget why we split.
+                if action is not None and proposal['next_edge'] is not None:
+                    edge=proposal['next_edge'];nr,nu=action['R_next'],action['U_next']
+                    follow_proposals=propose_quanta(nr,nu,res,edge)
+                    f=follow_proposals[0] if follow_proposals else None
+                    follow=construct_round(nr,nu,res,edge,f['q'],f['H_us']) if f else None
+                    if follow is None:
+                        action=None;failure.update(code='no_progressing_handoff_completion')
+                    else:
+                        follow.update(anchor=edge,H_us=f['H_us'],reason='handoff_followup',
+                            witness=None,next_edge=None,accepted=True,failure=None)
+                        action['continuation']=follow
                 info=dict(anchor=anchor,**proposal,accepted=action is not None,failure=failure or None)
                 attempts.append(info)
                 if action is not None and action['bytes']:
                     action.update(info);candidates.append(action)
-        fallback=not candidates
-        if candidates:
+        fallback=not candidates and pending is None
+        if pending is not None:
+            action=pending;pending=None
+        elif candidates:
             action=min(candidates,key=lambda a:(a['score'],-a['bytes'],a['time_us'],-a['q'],tuple(a['p'])))
         else:
             q,p=anchored_cap(R)
             if p is None:raise ValueError('no legal fallback matching')
             action=evaluate_round(R,U,p,q,res);action.update(anchor=None,H_us=None,reason='fallback',witness=None,next_edge=None)
         if action['Z_R']+action['Z_U']<=0:raise ArithmeticError('round made no discrete progress')
+        pending=action.pop('continuation',None)
         permutations.append(action['p']);coefficients.append(action['q'])
         R=action.pop('R_next');U=action.pop('U_next')
         trace.append(dict(**action,fallback=fallback,attempts=attempts))

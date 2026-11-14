@@ -34,3 +34,17 @@ class SmokePreparationTests(unittest.TestCase):
         first=result['trace'][0];self.assertEqual(first['reason'],'handoff')
         self.assertEqual(first['q'],2*262144);self.assertEqual(first['Z_R'],0);self.assertGreater(first['Z_U'],0)
         self.assertEqual(first['witness'],(2,3))
+
+    def test_split_is_followed_by_its_real_handoff_not_an_identical_matching(self):
+        # Break caught: selecting a split for a successor which is then forgotten.
+        from simai_a2a.schedulers.simai_plan import prepare
+        from simai_a2a.schedulers.resource_budget import plan
+        from simai_a2a.leafspine import fixed_routes,server_snapshot
+        matrix,hw,top=smoke_module().fixture('handoff')
+        result=plan(prepare(matrix,hw),server_snapshot(top,hw,fixed_routes(top)))
+        for first,second in zip(result['trace'],result['trace'][1:]):
+            if first['reason']=='handoff':
+                s,d=first['next_edge']
+                self.assertEqual(second['p'][s],d)
+                self.assertGreater(second['bytes'],0)
+                self.assertNotEqual(first['p'],second['p'])

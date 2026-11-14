@@ -123,4 +123,3 @@ class ResourceBudgetConstructionTests(unittest.TestCase):
             self.assertEqual(rebuilt,R);self.assertFalse(any(result['remaining_U']))
             bound=sum(v>0 for row in R for v in row)+sum(v>0 for v in U)
             self.assertLessEqual(len(result['trace']),bound)
-

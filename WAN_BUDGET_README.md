@@ -27,3 +27,9 @@ projected = modeled_scaleup_schedule(full, hardware)
 `plan`只在副本上更新R/U，原始带来源库存留给materialize真实取数。新计划按生成顺序执行；不得按q再次排序。未改旧调度器注册表，避免改变正在进行的旧实验默认行为。
 
 局限详见报告：结构性交接不保证实际提前换目标，贪心支持图可补全不等于容量可补全，模型评分不是异步ns3完成时间。当前下一步是修正这些已观察到的机制缺口，不是扩大性能扫描。
+
+原始固定回放产物在工作区保留展开版；Git中以`results/wan-budget-smoke-fixed-20261115.tar.gz`归档，另直接保留报告、图和汇总，避免数百个日志文件占据代码审查视图。归档中全部474个文件逐字节核对通过。若以后从Git检出，需要分析完整原始日志时可在实验目录运行：
+
+```bash
+tar -xzf results/wan-budget-smoke-fixed-20261115.tar.gz -C results
+```

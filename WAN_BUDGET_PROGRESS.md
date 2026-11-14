@@ -21,3 +21,4 @@
 - Final: minor deferred: none (rejection-cause diagnostics regraded/fixed as Important). No second review requested; fixes covered RED->GREEN and same-input simulation rerun.
 - Finish choice: user explicitly requested isolation; keep research/wan-budget-v1-20261115 and worktree, no merge/push. Keep ledger/results for reproducibility; do not remove workspace artifacts that exist only locally.
 - Local inherited-source checkpoint3b0d504 (81copiedchangedfiles; not counted as newly developed algorithm). New algorithm remains one274line module+109line smoke tool+tests. Final prototype13tests PASS/0.264s; git diff--check clean.
+- Prototype/evidence checkpointbee9581. Raw474files (6.3MiB) subsequently packaged into854KiB tar.gz for cleaner Git review; expanded originals retained locally, archive checked file-by-file before de-indexing raw duplicates. CSV raw CRLF endings preserved; source/docs whitespace checked separately.

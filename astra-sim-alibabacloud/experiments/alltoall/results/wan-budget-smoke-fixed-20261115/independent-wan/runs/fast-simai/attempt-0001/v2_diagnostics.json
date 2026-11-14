@@ -1,9 +1,0 @@
-{
-  "delivered_bytes": 16818176,
-  "original_source_completion_skew_ns": 4924,
-  "source_q100_max_ns": 505353,
-  "stage_release_skew_mean_ns": 4.0,
-  "background_horizon_valid": true,
-  "frontiers": "send slot prefix derived by ACK/skip-empty rule; receive visibility prefix; actual redistribution; no global barrier",
-  "wan_bin_unit": "FG/BG logical payload excluding tail/header (retransmissions count); other=control wire bytes"
-}

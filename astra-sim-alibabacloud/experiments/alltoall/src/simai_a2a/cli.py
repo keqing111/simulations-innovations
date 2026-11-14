@@ -7,11 +7,12 @@ import json
 import sys
 from pathlib import Path
 
-from .analysis import analyze_fct, write_summary
+from .analysis import add_wan_statistics, analyze_fct, write_summary
 from .campaign import aggregate_campaign, run_campaign
 from .reporting import write_campaign_report
 from .runner import run_scenario
 from .scenario import (
+    SCHEDULERS,
     generate_artifact,
     prepare_scenario,
     resolve_output,
@@ -49,9 +50,13 @@ def build_parser() -> argparse.ArgumentParser:
     schedule.add_argument(
         "--algorithm",
         required=True,
-        choices=("direct-concurrent", "spreadout", "roundrobin", "fast"),
+        choices=SCHEDULERS,
     )
     schedule.add_argument("--seed", type=int, default=0)
+    schedule.add_argument('--fast-options', type=Path, help='JSON pair-class profile for FAST extensions')
+    schedule.add_argument('--execution-model',default='open-loop',choices=(
+        'open-loop','stage-barrier-ideal-scaleup','fast-nvidia-deps-ideal-scaleup',
+        'fast-nvidia-deps-modeled-scaleup'))
     _add_output(schedule)
 
     prepare = commands.add_parser("prepare", help="prepare a complete scenario")
@@ -63,19 +68,24 @@ def build_parser() -> argparse.ArgumentParser:
     run.add_argument(
         "--algorithm",
         required=True,
-        choices=("direct-concurrent", "spreadout", "roundrobin", "fast"),
+        choices=SCHEDULERS,
     )
     run.add_argument("--topology", required=True, type=Path)
     run.add_argument("--binary", required=True, type=Path)
     run.add_argument("--timeout", type=float, default=300.0)
     run.add_argument("--output-root", type=Path)
+    run.add_argument(
+        "--ns3-threads",
+        type=int,
+        help="ns-3 MTP worker count; 0 selects the sequential event scheduler",
+    )
 
     analyze = commands.add_parser("analyze", help="analyze an existing ns-3 attempt")
     analyze.add_argument("--scenario", required=True, type=Path)
     analyze.add_argument(
         "--algorithm",
         required=True,
-        choices=("direct-concurrent", "spreadout", "roundrobin", "fast"),
+        choices=SCHEDULERS,
     )
     analyze.add_argument("--attempt", required=True, type=Path)
     analyze.add_argument("--output", type=Path)
@@ -86,6 +96,12 @@ def build_parser() -> argparse.ArgumentParser:
     campaign.add_argument("--binary", required=True, type=Path)
     campaign.add_argument("--timeout", type=float, default=300.0)
     campaign.add_argument("--max-attempts", type=int, default=2)
+    campaign.add_argument(
+        "--jobs",
+        type=int,
+        default=1,
+        help="maximum independent ns-3 runs to execute concurrently",
+    )
 
     aggregate = commands.add_parser("campaign-aggregate", help="rebuild campaign tables")
     aggregate.add_argument("--output", required=True, type=Path)
@@ -124,6 +140,7 @@ def main(argv: list[str] | None = None) -> int:
                 args.binary,
                 timeout_s=args.timeout,
                 max_attempts=args.max_attempts,
+                jobs=args.jobs,
             )
             print(json.dumps({"result": result}, sort_keys=True))
             return 0
@@ -143,6 +160,7 @@ def main(argv: list[str] | None = None) -> int:
                 args.binary,
                 timeout_s=args.timeout,
                 output_root=args.output_root,
+                ns3_threads=args.ns3_threads,
             )
             print(json.dumps(result, sort_keys=True))
             return 0 if result["success"] else 3
@@ -168,14 +186,30 @@ def main(argv: list[str] | None = None) -> int:
                 attempt / "pfc.txt",
                 attempt / "qlen.txt",
                 attempt / "bw.txt",
+                attempt / "rate.txt",
+                attempt / "cnp.txt",
                 tor_id=scenario_manifest.get("topology", {}).get("tor_id"),
+                tor_ids=scenario_manifest.get("topology", {}).get("tor_ids"),
+                gateway_ids=scenario_manifest.get("topology", {}).get("gateway_ids"),
+                gateway_wan_ports=scenario_manifest.get("topology", {}).get(
+                    "gateway_wan_ports"
+                ),
                 tor_port_capacity_gbps=(
-                    float(hardware["link_bandwidth_gbps"])
-                    * int(hardware["gpus_per_server"])
-                    / float(hardware["oversubscription"])
+                    scenario_manifest.get("topology", {}).get(
+                        "tor_port_capacity_gbps"
+                    )
+                    or (
+                        float(hardware["link_bandwidth_gbps"])
+                        * int(hardware["gpus_per_server"])
+                        / float(hardware["oversubscription"])
+                    )
                 ) if hardware is not None else None,
+                gateway_port_capacity_gbps=scenario_manifest.get("topology", {}).get(
+                    "gateway_wan_port_capacity_gbps"
+                ),
             )
             output = args.output or attempt / "summary.json"
+            add_wan_statistics(result, attempt/'ns3.conf', scenario_manifest.get('topology', {}))
             write_summary(result, output)
             print(json.dumps({"output": str(output), "result": result}, sort_keys=True))
             return 0
@@ -196,6 +230,9 @@ def main(argv: list[str] | None = None) -> int:
                 algorithm=args.algorithm,
                 seed=args.seed,
                 output=output,
+                fast_options=(json.loads(args.fast_options.read_text(encoding='utf-8'))
+                              if args.fast_options is not None else None),
+                execution_model=args.execution_model,
             )
         elif args.command == "prepare":
             result = prepare_scenario(args.config, output)

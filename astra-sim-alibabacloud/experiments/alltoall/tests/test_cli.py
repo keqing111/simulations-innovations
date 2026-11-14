@@ -20,11 +20,11 @@ def run_cli(*args, cwd=None):
     )
 
 
-def write_hardware(path: Path, *, omit=None):
+def write_hardware(path: Path, *, omit=None, servers=2, gpus=2):
     data = {
         "schema_version": 1,
-        "num_servers": 2,
-        "gpus_per_server": 2,
+        "num_servers": servers,
+        "gpus_per_server": gpus,
         "intra_alpha_ns": 100,
         "intra_beta_ns_per_byte": 0.0023,
         "inter_alpha_ns": 700,
@@ -39,6 +39,25 @@ def write_hardware(path: Path, *, omit=None):
 
 
 class CliTests(unittest.TestCase):
+    def test_prepare_propagates_pair_profiles_and_validates_fast_delivery(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_hardware(root / 'hardware.json')
+            config = root / 'scenario.json'
+            config.write_text(json.dumps(dict(
+                schema_version=1, name='wan', hardware='hardware.json', seed=11,
+                traffic=dict(generator='balanced', num_devices=4, pair_bytes=100000),
+                schedulers=['fast', 'fast-wan', 'fast-weighted', 'fast-wan-weighted'],
+                fast_options=dict(server_dc_ids=[0,1], intra_dc_rtt_ns=100,
+                                  inter_dc_rtt_ns=1000, intra_dc_bandwidth_gbps=400,
+                                  inter_dc_bandwidth_gbps=100))), encoding='utf-8')
+            output = root / 'prepared'
+            result = run_cli('prepare', '--config', config, '--output', output)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            for algorithm in ['fast', 'fast-wan', 'fast-weighted', 'fast-wan-weighted']:
+                _, manifest = read_schedule_artifact(output/'schedules'/algorithm)
+                self.assertEqual(manifest['delivery_validation']['logical_bytes_delivered'], 1200000)
+
     def test_generate_and_schedule_write_readable_artifacts(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -155,6 +174,52 @@ class CliTests(unittest.TestCase):
             completed = run_cli("prepare", "--config", config, "--output", root / "out2")
             self.assertNotEqual(completed.returncode, 0)
             self.assertIn("inter_beta_ns_per_byte", completed.stderr)
+
+    def test_prepare_writes_configured_multidc_topology(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            hardware = root / "hardware.json"
+            write_hardware(hardware, servers=6, gpus=4)
+            config = root / "scenario.json"
+            config.write_text(
+                json.dumps(
+                    {
+                        "schema_version": 1,
+                        "name": "multidc-balanced-smoke",
+                        "hardware": "hardware.json",
+                        "seed": 11,
+                        "traffic": {
+                            "generator": "balanced",
+                            "num_devices": 24,
+                            "pair_bytes": 4096,
+                        },
+                        "topology": {
+                            "kind": "multi-dc-full-mesh",
+                            "data_centers": 3,
+                            "servers_per_data_center": 2,
+                            "intra_dc_bandwidth_gbps": 400,
+                            "intra_dc_latency_ns": 700,
+                            "inter_dc_bandwidth_gbps": 100,
+                            "inter_dc_latency_ns": 500000000,
+                        },
+                        "schedulers": ["direct-concurrent"],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            output = root / "prepared"
+
+            completed = run_cli("prepare", "--config", config, "--output", output)
+
+            self.assertEqual(completed.returncode, 0, completed.stderr)
+            manifest = json.loads(
+                (output / "scenario_manifest.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(manifest["topology"]["kind"], "multi-dc-full-mesh")
+            self.assertEqual(manifest["topology"]["tor_ids"], [30, 31, 32])
+            self.assertEqual(manifest["topology"]["gateway_ids"], [33, 34, 35])
+            header = (output / "topology.txt").read_text().splitlines()[0].split()
+            self.assertEqual(header[:5], ["36", "4", "6", "6", "36"])
 
     def test_nonempty_output_requires_new_attempt(self):
         with tempfile.TemporaryDirectory() as tmp:

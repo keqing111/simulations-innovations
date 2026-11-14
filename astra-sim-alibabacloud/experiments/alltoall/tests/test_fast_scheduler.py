@@ -82,7 +82,7 @@ class FastSchedulerTests(unittest.TestCase):
                 ]
                 self.assertEqual({flow.start_ns for flow in dispatch}, {start_ns})
 
-    def test_inter_server_bytes_match_native_transformed_server_matrix(self):
+    def test_inter_server_bytes_match_original_server_pair_demand(self):
         matrix = demand()
         schedule = FastScheduler().schedule(matrix, profile(), seed=5)
         actual = np.zeros((3, 3), dtype=np.int64)
@@ -90,10 +90,19 @@ class FastSchedulerTests(unittest.TestCase):
             if flow.phase == "inter":
                 actual[flow.src // 2, flow.dst // 2] += flow.size_bytes
         expected = np.array(
-            [[0, 19, 23], [33, 0, 41], [57, 61, 0]],
+            [[0, 26, 34], [66, 0, 82], [114, 122, 0]],
             dtype=np.int64,
         )
         np.testing.assert_array_equal(actual, expected)
+
+    def test_each_inter_flow_uses_the_recorded_per_gpu_transfer(self):
+        schedule = FastScheduler().schedule(demand(), profile(), seed=5)
+
+        inter = [flow for flow in schedule.flows if flow.phase == "inter"]
+
+        self.assertTrue(inter)
+        self.assertTrue(all(flow.src % 2 == flow.dst % 2 for flow in inter))
+        self.assertGreater(schedule.physical_bytes, demand().logical_bytes)
 
     def test_schedule_is_deterministic_and_keeps_logical_physical_separate(self):
         first = FastScheduler().schedule(demand(), profile(), seed=5)

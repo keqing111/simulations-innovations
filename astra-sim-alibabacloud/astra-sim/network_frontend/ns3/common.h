@@ -19,7 +19,10 @@
 #undef PGO_TRAINING
 #define PATH_TO_PGO_CONFIG "path_to_pgo_config"
 
+#include <algorithm>
 #include <fstream>
+#include <sstream>
+#include <stdexcept>
 #include <iostream>
 #include <time.h>
 #include <unordered_map>
@@ -49,7 +52,7 @@ using namespace std;
 NS_LOG_COMPONENT_DEFINE("GENERIC_SIMULATION");
 
 uint32_t cc_mode = 1;
-bool enable_qcn = true, use_dynamic_pfc_threshold = true;
+bool enable_qcn = true, enable_pfc = true, use_dynamic_pfc_threshold = true;
 uint32_t packet_payload_size = 1000, l2_chunk_size = 0, l2_ack_interval = 0;
 double pause_time = 5, simulator_stop_time = 3.01;
 std::string data_rate, link_delay, topology_file, flow_file, trace_file,
@@ -86,7 +89,7 @@ uint32_t link_down_A = 0, link_down_B = 0;
 
 uint32_t enable_trace = 1;
 
-uint32_t buffer_size = 16;
+uint64_t buffer_size = 16;
 
 uint32_t node_num, switch_num, link_num, trace_num, nvswitch_num, gpus_per_server;
 GPUType gpu_type;
@@ -312,6 +315,22 @@ void CalculateRoutes(NodeContainer &n) {
 }
 
 void SetRoutingEntries() {
+  const char* fixed=std::getenv("SIMAI_STATIC_ROUTES");
+  if(fixed&&*fixed){
+    std::ifstream input(fixed);std::string row;std::map<std::pair<int,int>,int> selected;
+    while(std::getline(input,row)){
+      std::replace(row.begin(),row.end(),',',' ');std::istringstream line(row);int u,d,v;
+      if(!(line>>u>>d>>v)||u<0||d<0||v<0||u>=int(n.GetN())||d>=int(n.GetN())||v>=int(n.GetN())||
+         !nbr2if[n.Get(u)].count(n.Get(v))||!selected.emplace(std::make_pair(u,d),v).second)
+        throw std::runtime_error("invalid fixed route");
+    }
+    std::ofstream applied(std::string(fixed)+".applied.csv");
+    for(auto& item:nextHop)for(auto& dest:item.second){
+      int u=item.first->GetId(),d=dest.first->GetId();auto it=selected.find({u,d});
+      if(it==selected.end())throw std::runtime_error("fixed route coverage missing");
+      dest.second={n.Get(it->second)};applied<<u<<','<<d<<','<<it->second<<'\n';
+    }
+  }
   for (auto i = nextHop.begin(); i != nextHop.end(); i++) {
     Ptr<Node> node = i->first;
     auto &table = i->second;
@@ -477,6 +496,10 @@ bool ReadConf(string network_topo,string network_conf) {
         uint32_t v;
         conf >> v;
         enable_qcn = v;
+      } else if (key.compare("ENABLE_PFC") == 0) {
+        uint32_t v;
+        conf >> v;
+        enable_pfc = v;
       } else if (key.compare("USE_DYNAMIC_PFC_THRESHOLD") == 0) {
         uint32_t v;
         conf >> v;
@@ -850,6 +873,7 @@ void SetupNetwork(void (*qp_finish)(FILE *, Ptr<RdmaQueuePair>),void (*send_fini
     if (n.Get(i)->GetNodeType() == 1) { 
       Ptr<SwitchNode> sw = DynamicCast<SwitchNode>(n.Get(i));
       uint32_t shift = 3; 
+      bool pfc_enabled = enable_pfc;
 
       for (uint32_t j = 1; j < sw->GetNDevices(); j++) {
         Ptr<QbbNetDevice> dev = DynamicCast<QbbNetDevice>(sw->GetDevice(j));
@@ -865,7 +889,12 @@ void SetupNetwork(void (*qp_finish)(FILE *, Ptr<RdmaQueuePair>),void (*send_fini
         uint64_t delay = DynamicCast<QbbChannel>(dev->GetChannel())
                              ->GetDelay()
                              .GetTimeStep();
-        uint32_t headroom = rate * delay / 8 / 1000000000 * 3;
+        if (delay >= 1000000) // PFC is restricted to sub-millisecond DC links.
+          pfc_enabled = false;
+        uint64_t headroom = (uint64_t)((__uint128_t)rate * delay * 3 /
+                                       8 / 1000000000);
+        headroom = std::max<uint64_t>(headroom,
+                                      2ULL * (packet_payload_size + 64));
         sw->m_mmu->ConfigHdrm(j, headroom);
         sw->m_mmu->pfc_a_shift[j] = shift;
         while (rate > nic_rate && sw->m_mmu->pfc_a_shift[j] > 0) {
@@ -873,8 +902,9 @@ void SetupNetwork(void (*qp_finish)(FILE *, Ptr<RdmaQueuePair>),void (*send_fini
           rate /= 2;
         }
       }
+      sw->m_mmu->ConfigPfcEnabled(pfc_enabled);
       sw->m_mmu->ConfigNPort(sw->GetNDevices() - 1);
-      sw->m_mmu->ConfigBufferSize(buffer_size * 1024 * 1024);
+      sw->m_mmu->ConfigBufferSize(buffer_size * 1024ULL * 1024ULL);
       sw->m_mmu->node_id = sw->GetId();
     } else if(n.Get(i)->GetNodeType() == 2){ 
 			Ptr<NVSwitchNode> sw = DynamicCast<NVSwitchNode>(n.Get(i));
@@ -885,7 +915,10 @@ void SetupNetwork(void (*qp_finish)(FILE *, Ptr<RdmaQueuePair>),void (*send_fini
         uint64_t delay = DynamicCast<QbbChannel>(dev->GetChannel())
                              ->GetDelay()
                              .GetTimeStep();
-        uint32_t headroom = rate * delay / 8 / 1000000000 * 3;
+        uint64_t headroom = (uint64_t)((__uint128_t)rate * delay * 3 /
+                                       8 / 1000000000);
+        headroom = std::max<uint64_t>(headroom,
+                                      2ULL * (packet_payload_size + 64));
         sw->m_mmu->ConfigHdrm(j, headroom);
         sw->m_mmu->pfc_a_shift[j] = shift;
         while (rate > nic_rate && sw->m_mmu->pfc_a_shift[j] > 0) {
@@ -894,7 +927,8 @@ void SetupNetwork(void (*qp_finish)(FILE *, Ptr<RdmaQueuePair>),void (*send_fini
         }
       }
 			sw->m_mmu->ConfigNPort(sw->GetNDevices()-1);
-			sw->m_mmu->ConfigBufferSize(buffer_size* 1024 * 1024);
+			sw->m_mmu->ConfigPfcEnabled(enable_pfc);
+			sw->m_mmu->ConfigBufferSize(buffer_size * 1024ULL * 1024ULL);
 			sw->m_mmu->node_id = sw->GetId();
 		}
   }
@@ -932,6 +966,10 @@ void SetupNetwork(void (*qp_finish)(FILE *, Ptr<RdmaQueuePair>),void (*send_fini
       rdmaHw->SetAttribute("DctcpRateAI",
                            DataRateValue(DataRate(dctcp_rate_ai)));
       rdmaHw->SetAttribute("GPUsPerServer", UintegerValue(gpus_per_server));
+      // Non-rank traffic-generator hosts have separate NICs, not one GPU server.
+      if(const char* foreground=std::getenv("SIMAI_FOREGROUND_GPUS"))
+        if(n.Get(i)->GetNodeType()==0&&i>=std::stoul(foreground))
+          rdmaHw->SetAttribute("GPUsPerServer", UintegerValue(1));
       rdmaHw->SetPintSmplThresh(pint_prob);
       rdmaHw->SetAttribute("TotalPauseTimes",
                            UintegerValue(nic_total_pause_time));

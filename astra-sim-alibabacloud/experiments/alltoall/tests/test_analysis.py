@@ -4,7 +4,13 @@ from pathlib import Path
 
 import numpy as np
 
-from simai_a2a.analysis import analyze_fct, analyze_network_monitors, fast_stage_violations
+from simai_a2a.analysis import (
+    analyze_fct,
+    analyze_congestion_monitors,
+    analyze_network_monitors,
+    analyze_pfc_events,
+    fast_stage_violations,
+)
 from simai_a2a.artifacts import write_matrix_artifact, write_schedule_artifact
 from simai_a2a.model import Schedule, ScheduledFlow, TrafficMatrix
 
@@ -54,6 +60,123 @@ class AnalysisTests(unittest.TestCase):
             self.assertEqual(result["bandwidth"]["tor_peak_gbps"], 200)
             self.assertEqual(result["bandwidth"]["tor_peak_utilization"], 0.5)
 
+    def test_network_monitor_aggregates_all_tors_and_gateways(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            qlen = root / "qlen.txt"
+            qlen.write_text(
+                "time, sw_id, port_id, q_id, q_len, port_len\n"
+                "1000, 8, 1, 3, 200, 300\n"
+                "1000, 9, 1, 3, 500, 700\n"
+                "1000, 10, 2, 3, 600, 800\n",
+                encoding="utf-8",
+            )
+            bw = root / "bw.txt"
+            bw.write_text(
+                "time, node_id, port_id, bandwidth\n"
+                "1000, 8, 1, 100\n"
+                "1000, 9, 1, 200\n"
+                "1000, 10, 2, 90\n",
+                encoding="utf-8",
+            )
+
+            result = analyze_network_monitors(
+                qlen,
+                bw,
+                tor_id=None,
+                tor_ids=(8, 9),
+                gateway_ids=(10,),
+                gateway_wan_ports=((10, 2),),
+                tor_port_capacity_gbps=400,
+                gateway_port_capacity_gbps=100,
+            )
+
+            self.assertEqual(result["queue"]["tor_peak_queue_bytes"], 500)
+            self.assertEqual(result["queue"]["gateway_peak_queue_bytes"], 600)
+            self.assertEqual(result["bandwidth"]["tor_peak_gbps"], 200)
+            self.assertEqual(result["bandwidth"]["gateway_peak_gbps"], 90)
+            self.assertEqual(result["bandwidth"]["gateway_peak_utilization"], 0.9)
+
+    def test_gateway_statistics_exclude_non_wan_ports(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            qlen = root / "qlen.txt"
+            qlen.write_text(
+                "time, sw_id, port_id, q_id, q_len, port_len\n"
+                "1000, 33, 1, 3, 900, 1000\n"
+                "1000, 33, 2, 3, 80, 100\n"
+                "1000, 33, 3, 3, 70, 90\n",
+                encoding="utf-8",
+            )
+            bw = root / "bw.txt"
+            bw.write_text(
+                "time, node_id, port_id, bandwidth\n"
+                "1000, 33, 1, 200\n"
+                "1000, 33, 2, 90\n"
+                "1000, 33, 3, 80\n",
+                encoding="utf-8",
+            )
+
+            result = analyze_network_monitors(
+                qlen,
+                bw,
+                gateway_ids=(33,),
+                gateway_wan_ports=((33, 2), (33, 3)),
+                gateway_port_capacity_gbps=100,
+            )
+
+            self.assertEqual(result["queue"]["gateway_peak_queue_bytes"], 80)
+            self.assertEqual(result["queue"]["gateway_peak_port_bytes"], 100)
+            self.assertEqual(result["bandwidth"]["gateway_peak_gbps"], 90)
+            self.assertEqual(result["bandwidth"]["gateway_peak_utilization"], 0.9)
+
+    def test_pfc_events_split_pause_and_resume(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "pfc.txt"
+            path.write_text(
+                "1000 30 1 2 1\n"
+                "1200 30 1 2 0\n"
+                "1500 33 1 4 1\n",
+                encoding="utf-8",
+            )
+
+            result = analyze_pfc_events(path)
+
+            self.assertEqual(result["event_count"], 3)
+            self.assertEqual(result["pause_count"], 2)
+            self.assertEqual(result["resume_count"], 1)
+            self.assertEqual(result["affected_port_count"], 2)
+            self.assertEqual(result["first_event_ns"], 1000)
+            self.assertEqual(result["last_event_ns"], 1500)
+
+    def test_congestion_monitors_summarize_cnp_and_qp_rates(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            rate = root / "rate.txt"
+            rate.write_text(
+                "time, src, dst, sport, dport, size, curr_rate\n"
+                "1000, 0, 8, 10, 20, 1000, 100000000000\n"
+                "2000, 0, 8, 10, 20, 900, 50000000000\n"
+                "2500, 1, 9, 11, 21, 800, 75000000000\n",
+                encoding="utf-8",
+            )
+            cnp = root / "cnp.txt"
+            cnp.write_text(
+                "time, src, dst, sport, dport, size, cnp_number\n"
+                "1500, 0, 8, 10, 20, 950, 1\n"
+                "2200, 0, 8, 10, 20, 900, 3\n"
+                "2300, 1, 9, 11, 21, 800, 2\n",
+                encoding="utf-8",
+            )
+
+            result = analyze_congestion_monitors(rate, cnp)
+
+            self.assertEqual(result["cnp"]["total_count"], 5)
+            self.assertEqual(result["cnp"]["affected_flow_count"], 2)
+            self.assertEqual(result["qp_rate"]["change_record_count"], 3)
+            self.assertEqual(result["qp_rate"]["min_bps"], 50000000000)
+            self.assertEqual(result["qp_rate"]["max_bps"], 100000000000)
+
     def test_exact_join_and_collective_statistics(self):
         flows = [
             ScheduledFlow(0, 0, 1, 100, 0, "balance", 0),
@@ -69,7 +192,10 @@ class AnalysisTests(unittest.TestCase):
                 encoding="utf-8",
             )
             pfc = root / "pfc.txt"
-            pfc.write_text("pause-a\n\npause-b\n", encoding="utf-8")
+            pfc.write_text(
+                "1000 8 1 1 1\n1100 8 1 1 0\n",
+                encoding="utf-8",
+            )
 
             summary = analyze_fct(matrix_dir, schedule_dir, fct, pfc)
 
@@ -87,8 +213,11 @@ class AnalysisTests(unittest.TestCase):
             self.assertAlmostEqual(summary["fct_ns"]["p99"], 59.8)
             self.assertEqual(summary["fct_ns"]["max"], 60)
             self.assertEqual(summary["pfc_count"], 2)
+            self.assertEqual(summary["pfc"]["pause_count"], 1)
+            self.assertEqual(summary["pfc"]["resume_count"], 1)
             self.assertEqual(summary["predicted_makespan_ns"], 160)
             self.assertEqual(summary["fidelity_ratio"], 1.0)
+            self.assertEqual(summary["stage_violations"]["violation_count"], 0)
 
     def test_missing_duplicate_unknown_and_mismatched_ids_are_rejected(self):
         flows = [

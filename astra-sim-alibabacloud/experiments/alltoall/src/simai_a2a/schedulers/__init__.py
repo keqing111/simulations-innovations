@@ -31,7 +31,28 @@ def _finalize_schedule(
     return Schedule(algorithm, flows, predicted_makespan_ns, metadata)
 
 
-def get_scheduler(name: str):
+SCHEDULER_NAMES = ("direct-concurrent", "spreadout", "roundrobin", "fast",
+                   "fast-wan", "fast-weighted", "fast-wan-weighted", "fast-cost",
+                   "fast-native-nvidia", "fast-native-cost", "fast-native-mixed",
+                   "fast-paper", "fast-paper-wan", "fast-paper-quantum",
+                   "fast-paper-progress", "fast-paper-amortized", "fast-paper-adaptive",
+                   "fast-cpp-native", "fast-cpp-maxmin", "fast-cpp-partition", "fast-cpp-adaptive")
+SCHEDULER_NAMES += tuple(f'fast-joint-{objective}-b{budget}' for objective in ('stage','capacity')
+                         for budget in (1,4))
+
+
+def get_scheduler(name: str, *, fast_options: dict | None = None):
+    if name in SCHEDULER_NAMES and name.startswith('fast-joint-'):
+        from .joint import JointScheduler
+        return JointScheduler(name, fast_options)
+    if name in ('fast-paper','fast-paper-wan','fast-paper-quantum',
+                'fast-paper-progress','fast-paper-amortized','fast-paper-adaptive',
+                'fast-cpp-native','fast-cpp-maxmin','fast-cpp-partition','fast-cpp-adaptive'):
+        from .paper_fast import PaperFastScheduler
+        return PaperFastScheduler(name,fast_options)
+    if name in ('fast-native-nvidia','fast-native-cost','fast-native-mixed'):
+        from .fast_native import NativeFastScheduler
+        return NativeFastScheduler(name,fast_options)
     if name == "direct-concurrent":
         from .direct import DirectConcurrentScheduler
 
@@ -44,13 +65,13 @@ def get_scheduler(name: str):
         from .roundrobin import RoundRobinScheduler
 
         return RoundRobinScheduler()
-    if name == "fast":
+    if name in ("fast", "fast-wan", "fast-weighted", "fast-wan-weighted", "fast-cost"):
         try:
             from .fast import FastScheduler
         except ImportError as exc:
             raise RuntimeError("FAST scheduler is not installed") from exc
-        return FastScheduler()
-    accepted = "direct-concurrent, fast, roundrobin, spreadout"
+        return FastScheduler(algorithm=name, fast_options=fast_options)
+    accepted = ", ".join(sorted(SCHEDULER_NAMES))
     raise ValueError(f"unknown scheduler {name!r}; expected one of: {accepted}")
 
 

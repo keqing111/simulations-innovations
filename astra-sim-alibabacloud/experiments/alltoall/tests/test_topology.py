@@ -3,7 +3,11 @@ import unittest
 from pathlib import Path
 
 from simai_a2a.model import HardwareProfile, LinkModel
-from simai_a2a.topology import build_topology, write_topology
+from simai_a2a.topology import (
+    build_multidc_topology,
+    build_topology,
+    write_topology,
+)
 
 
 def profile(*, servers: int, gpus: int, oversubscription: float = 1.0):
@@ -76,6 +80,101 @@ class TopologyTests(unittest.TestCase):
             HardwareProfile(
                 1, 2, LinkModel(0, 0), LinkModel(0, 0), "bad", 0, 1
             )
+
+    def test_three_data_center_full_mesh_uses_one_way_link_delays(self):
+        hardware = profile(servers=6, gpus=4)
+
+        topology = build_multidc_topology(
+            hardware,
+            data_centers=3,
+            servers_per_data_center=2,
+            intra_dc_bandwidth_gbps=400,
+            intra_dc_latency_ns=700,
+            inter_dc_bandwidth_gbps=100,
+            inter_dc_latency_ns=500_000_000,
+        )
+
+        self.assertEqual(topology.gpu_ids, tuple(range(24)))
+        self.assertEqual(topology.nvswitch_ids, tuple(range(24, 30)))
+        self.assertEqual(topology.tor_ids, (30, 31, 32))
+        self.assertEqual(topology.gateway_ids, (33, 34, 35))
+        self.assertEqual(topology.switch_ids, tuple(range(30, 36)))
+        self.assertEqual(topology.node_count, 36)
+        self.assertEqual(len(topology.links), 36)
+
+        server_uplinks = [
+            link for link in topology.links if link.src in topology.nvswitch_ids
+        ]
+        self.assertEqual(len(server_uplinks), 6)
+        self.assertTrue(
+            all(
+                link.bandwidth_gbps == 400 and link.latency_ns == 700
+                for link in server_uplinks
+            )
+        )
+        dc_uplinks = [
+            link
+            for link in topology.links
+            if link.src in topology.tor_ids and link.dst in topology.gateway_ids
+        ]
+        self.assertEqual(len(dc_uplinks), 3)
+        self.assertTrue(
+            all(
+                link.bandwidth_gbps == 400 and link.latency_ns == 700
+                for link in dc_uplinks
+            )
+        )
+        wan_links = [
+            link
+            for link in topology.links
+            if link.src in topology.gateway_ids and link.dst in topology.gateway_ids
+        ]
+        self.assertEqual(len(wan_links), 3)
+        self.assertTrue(
+            all(
+                link.bandwidth_gbps == 100
+                and link.latency_ns == 500_000_000
+                for link in wan_links
+            )
+        )
+        lines = topology.serialize().splitlines()
+        self.assertEqual(lines[0].split()[:5], ["36", "4", "6", "6", "36"])
+        self.assertEqual(lines[1], "24 25 26 27 28 29 30 31 32 33 34 35")
+        self.assertTrue(any("100Gbps 500ms 0" in line for line in lines[2:]))
+
+    def test_multidc_rejects_server_count_mismatch(self):
+        with self.assertRaisesRegex(ValueError, "data-center layout"):
+            build_multidc_topology(
+                profile(servers=4, gpus=2),
+                data_centers=3,
+                servers_per_data_center=2,
+                intra_dc_bandwidth_gbps=400,
+                intra_dc_latency_ns=700,
+                inter_dc_bandwidth_gbps=100,
+                inter_dc_latency_ns=500_000_000,
+            )
+
+    def test_multidc_manifest_identifies_only_wan_gateway_ports(self):
+        hardware = profile(servers=6, gpus=4)
+        with tempfile.TemporaryDirectory() as tmp:
+            manifest = write_topology(
+                hardware,
+                Path(tmp) / "topology.txt",
+                topology_config={
+                    "kind": "multi-dc-full-mesh",
+                    "data_centers": 3,
+                    "servers_per_data_center": 2,
+                    "intra_dc_bandwidth_gbps": 400,
+                    "intra_dc_latency_ns": 700,
+                    "inter_dc_bandwidth_gbps": 100,
+                    "inter_dc_latency_ns": 5_000_000,
+                },
+            )
+
+        self.assertEqual(
+            sorted(map(tuple, manifest["gateway_wan_ports"])),
+            [(33, 2), (33, 3), (34, 2), (34, 3), (35, 2), (35, 3)],
+        )
 
 
 if __name__ == "__main__":

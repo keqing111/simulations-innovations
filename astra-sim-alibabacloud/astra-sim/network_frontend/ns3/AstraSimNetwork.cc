@@ -73,6 +73,11 @@ public:
   ~ASTRASimNetwork() {}
   int sim_comm_size(AstraSim::sim_comm comm, int *size) { return 0; }
   int sim_finish() {
+    // The external network op can finish before modeled receiver dispatch.
+    // Let the existing local dependency events drain; never poll or add a barrier.
+    if(native_fast_runtime&&!native_fast_runtime->finished()){
+      native_finish_pending=true;return 0;
+    }
     for (auto it = nodeHash.begin(); it != nodeHash.end(); it++) {
       pair<int, int> p = it->first;
       if (p.second == 0) {
@@ -120,7 +125,10 @@ public:
     t.type = 0;
     t.fun_arg = fun_arg;
     t.msg_handler = msg_handler;
-    {
+    // Register the sender callback only when this stage is released. Registering
+    // future-stage callbacks now could overwrite an active (channel,src,dst).
+    AstraSim::sim_request request_copy = *request;
+    auto release = [t, tag, request_copy]() mutable {
       #ifdef NS3_MTP
       MtpInterface::explicitCriticalSection cs;
       #endif
@@ -128,8 +136,22 @@ public:
       #ifdef NS3_MTP
       cs.ExitSection();
       #endif
-    }
-    SendFlow(rank, dst, count, msg_handler, fun_arg, tag, request);
+      if (request_copy.flowTag.external_schedule && external_stage_barrier) {
+        const int id = request_copy.flowTag.current_flow_id;
+        external_stage_events << id << ',' << external_stage_barrier->stage_of(id)
+            << ",release," << Simulator::Now().GetNanoSeconds() << std::endl;
+      }
+      SendFlow(t.src, t.dest, t.count, t.msg_handler, t.fun_arg, tag, &request_copy);
+    };
+    if(request->flowTag.external_schedule && native_fast_runtime){
+      native_fast_runtime->enqueue(request->flowTag.current_flow_id,[release]()mutable{
+        Simulator::ScheduleNow([release]()mutable{release();});});
+      native_start_when_ready();
+    } else if (request->flowTag.external_schedule && external_stage_barrier)
+      release_stage_callbacks(external_stage_barrier->enqueue(
+          request->flowTag.current_flow_id, std::move(release)));
+    else
+      release();
     return 0;
   }
   virtual int sim_recv(void *buffer, uint64_t count, int type, int src, int tag,
@@ -275,19 +297,55 @@ int main(int argc, char *argv[]) {
   if (!user_param.schedule.empty()) {
     MockNccl::MockNcclGroup::set_external_schedule_path(user_param.schedule);
   }
+  const char* stage_file = std::getenv("SIMAI_EXTERNAL_STAGE_FILE");
+  const char* native_file=std::getenv("SIMAI_NATIVE_FAST_FILE");
+  if(native_file&&*native_file){
+    if(user_param.thread!=0||user_param.schedule.empty()||(stage_file&&*stage_file))
+      throw std::runtime_error("native model requires -t0, external schedule, no global barrier");
+    native_initialize(native_file);
+  }
+  if (stage_file && *stage_file) {
+    if (user_param.thread != 0 || user_param.schedule.empty())
+      throw std::runtime_error("stage barriers require -t 0 and an external schedule");
+    const auto stages = ExternalStageBarrier::load(stage_file);
+    std::ifstream schedule_input(user_param.schedule);
+    std::size_t count = 0;
+    std::string row;
+    while (std::getline(schedule_input, row)) ++count;
+    if (stages.empty() || stages.size() != count)
+      throw std::runtime_error("stage sidecar does not cover the external schedule");
+    external_stage_barrier.reset(new ExternalStageBarrier(stages));
+    external_stage_events.open(std::string(stage_file) + ".events.csv");
+    if (!external_stage_events) throw std::runtime_error("cannot write stage events");
+    external_stage_events << "flow_id,stage_id,event,time_ns" << std::endl;
+  }
   #ifdef NS3_MTP
-  MtpInterface::Enable(user_param.thread);
+  // A zero thread count selects ns-3's sequential event scheduler.  This is
+  // useful for topologies where MTP's per-logical-process synchronization
+  // costs more than the events it parallelizes.
+  if (user_param.thread > 0) {
+    MtpInterface::Enable(user_param.thread);
+  }
   #endif
   
   main1(user_param.network_topo,user_param.network_conf);
+  native_attach_traces();
   int nodes_num = node_num - switch_num;
-  int gpu_num = node_num - nvswitch_num - switch_num;
+  const int physical_hosts=node_num-nvswitch_num-switch_num;
+  int gpu_num = physical_hosts;
+  const char* foreground=std::getenv("SIMAI_FOREGROUND_GPUS");
+  if(foreground){gpu_num=std::stoi(foreground);
+    if(gpu_num<=0||gpu_num>physical_hosts||gpu_num%gpus_per_server)
+      throw std::runtime_error("invalid foreground GPU count");
+    nodes_num=gpu_num;
+  }
+  native_start_background();
 
   std::map<int, int> node2nvswitch; 
   for(int i = 0; i < gpu_num; ++ i) {
-    node2nvswitch[i] = gpu_num + i / gpus_per_server;
+    node2nvswitch[i] = physical_hosts + i / gpus_per_server;
   }
-  for(int i = gpu_num; i < gpu_num + nvswitch_num; ++ i){
+  for(int i = physical_hosts; i < physical_hosts + nvswitch_num; ++ i){
     node2nvswitch[i] = i;
     NVswitchs.push_back(i);
   } 
@@ -296,10 +354,12 @@ int main(int argc, char *argv[]) {
   LogComponentEnable("PacketSink", LOG_LEVEL_INFO);
   LogComponentEnable("GENERIC_SIMULATION", LOG_LEVEL_INFO);
 
-  std::vector<ASTRASimNetwork *> networks(nodes_num, nullptr);
-  std::vector<AstraSim::Sys *> systems(nodes_num, nullptr);
+  std::vector<ASTRASimNetwork *> networks(node_num, nullptr);
+  std::vector<AstraSim::Sys *> systems(node_num, nullptr);
+  std::vector<int> compute_nodes;
+  for(int j=0;j<(foreground?gpu_num:nodes_num);++j)compute_nodes.push_back(j);
 
-  for (int j = 0; j < nodes_num; j++) {
+  for (int j : compute_nodes) {
     networks[j] =
         new ASTRASimNetwork(j ,0);
     systems[j ] = new AstraSim::Sys(
@@ -327,9 +387,9 @@ int main(int argc, char *argv[]) {
         gpus_per_server
     );
     systems[j ]->nvswitch_id = node2nvswitch[j];
-    systems[j ]->num_gpus = nodes_num - nvswitch_num;
+    systems[j ]->num_gpus = gpu_num;
   }
-  for (int i = 0; i < nodes_num; i++) {
+  for (int i : compute_nodes) {
     systems[i]->workload->fire();
   }
   std::cout << "simulator run " << std::endl;

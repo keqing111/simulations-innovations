@@ -20,6 +20,8 @@
 #define PATH_TO_PGO_CONFIG "path_to_pgo_config"
 #define _QPS_PER_CONNECTION_  1
 #include "common.h"
+#include "ExternalStageBarrier.h"
+#include <memory>
 #include "ns3/applications-module.h"
 #include "ns3/core-module.h"
 #include "ns3/error-model.h"
@@ -41,6 +43,15 @@
 #include <unordered_map>
 #include <mutex>
 #include <vector>
+#include "NativeFastTransport.h"
+
+std::unique_ptr<ExternalStageBarrier> external_stage_barrier;
+std::ofstream external_stage_events;
+
+void release_stage_callbacks(std::vector<ExternalStageBarrier::Callback> ready) {
+  for (auto& callback : ready)
+    ns3::Simulator::ScheduleNow([callback]() { callback(); });
+}
 #ifdef NS3_MTP
 #include "ns3/mtp-interface.h"
 #endif
@@ -113,6 +124,11 @@ void SendFlow(int src, int dst, uint64_t maxPacketCount,
   uint64_t real_PacketCount = min(PacketCount,leftPacketCount);
   leftPacketCount-=real_PacketCount;
   uint32_t port = portNumber[src][dst]++; 
+  if(native_fast_runtime&&request->flowTag.external_schedule){
+    native_wire_records.emplace(NativeWireKey(src,dst,port),NativeWireRecord{
+      request->flowTag.current_flow_id,real_PacketCount,real_PacketCount+8,false,false});
+    real_PacketCount+=8;
+  }
     {
       #ifdef NS3_MTP
       MtpInterface::explicitCriticalSection cs;
@@ -340,6 +356,25 @@ void notify_sender_packet_arrivered_receiver(int sender_node, int receiver_node,
 
 void qp_finish(FILE *fout, Ptr<RdmaQueuePair> q) {
   uint32_t sid = ip_to_node_id(q->sip), did = ip_to_node_id(q->dip);
+  auto bg=native_background_records.find(NativeWireKey(sid,did,q->sport));
+  if(bg!=native_background_records.end()){
+    native_background_event("ack",bg->second,sid,did,q->m_size);
+    n.Get(did)->GetObject<RdmaDriver>()->m_rdma->DeleteRxQp(q->sip.Get(),q->m_pg,q->sport);
+    native_background_records.erase(bg);return;
+  }
+  uint64_t logical_size=q->m_size;
+  auto native_found=native_wire_records.find(NativeWireKey(sid,did,q->sport));
+  if(native_found!=native_wire_records.end()){
+    auto record=native_found->second;
+    if(record.control){
+      n.Get(did)->GetObject<RdmaDriver>()->m_rdma->DeleteRxQp(q->sip.Get(),q->m_pg,q->sport);
+      native_event("credit_ack",record.id,sid,-1);
+      native_wire_records.erase(native_found);return;
+    }
+    logical_size=record.logical;
+    native_fast_runtime->acknowledged(record.id);
+    native_wire_records.erase(native_found);
+  }
   uint64_t base_rtt = pairRtt[sid][did], b = pairBw[sid][did];
   uint32_t total_bytes =
       q->m_size +
@@ -366,7 +401,7 @@ void qp_finish(FILE *fout, Ptr<RdmaQueuePair> q) {
     flowTag = sender_src_port_map[make_pair(q->sport, make_pair(sid, did))];
     if (flowTag.external_schedule) {
       fprintf(fout, "%08x %08x %u %u %lu %lu %lu %lu %d\n",
-              q->sip.Get(), q->dip.Get(), q->sport, q->dport, q->m_size,
+              q->sip.Get(), q->dip.Get(), q->sport, q->dport, logical_size,
               q->startTime.GetTimeStep(),
               (Simulator::Now() - q->startTime).GetTimeStep(), standalone_fct,
               flowTag.current_flow_id);
@@ -378,7 +413,7 @@ void qp_finish(FILE *fout, Ptr<RdmaQueuePair> q) {
     }
     fflush(fout);
     sender_src_port_map.erase(make_pair(q->sport, make_pair(sid, did)));
-    received_chunksize[std::make_pair(flowTag.current_flow_id,std::make_pair(sid,did))]+=q->m_size;
+    received_chunksize[std::make_pair(flowTag.current_flow_id,std::make_pair(sid,did))]+=logical_size;
     if(!is_receive_finished(sid,did,flowTag)) {
       #ifdef NS3_MTP
       cs.ExitSection();
@@ -390,6 +425,12 @@ void qp_finish(FILE *fout, Ptr<RdmaQueuePair> q) {
     #ifdef NS3_MTP
     cs.ExitSection();
     #endif
+  }
+  if (flowTag.external_schedule && external_stage_barrier) {
+    external_stage_events << flowTag.current_flow_id << ','
+        << external_stage_barrier->stage_of(flowTag.current_flow_id)
+        << ",complete," << Simulator::Now().GetNanoSeconds() << std::endl;
+    release_stage_callbacks(external_stage_barrier->complete(flowTag.current_flow_id));
   }
   notify_receiver_receive_data(sid, did, notify_size, flowTag);
   if (flowTag.external_schedule) {
@@ -404,6 +445,9 @@ void qp_finish(FILE *fout, Ptr<RdmaQueuePair> q) {
 
 void send_finish(FILE *fout, Ptr<RdmaQueuePair> q) {
   uint32_t sid = ip_to_node_id(q->sip), did = ip_to_node_id(q->dip);
+  if(native_background_records.count(NativeWireKey(sid,did,q->sport)))return;
+  auto native_found=native_wire_records.find(NativeWireKey(sid,did,q->sport));
+  if(native_found!=native_wire_records.end()&&native_found->second.control)return;
   AstraSim::ncclFlowTag flowTag;
   MockNcclLog* NcclLog = MockNcclLog::getInstance();
   NcclLog->writeLog(NcclLogLevel::DEBUG,"[Packet sent from NIC] send finish, src:  %d did:  %d port:  %d srcip  %d dstip  %d total bytes:  %llu at the tick:  %d",sid,did,q->sport,q->sip,q->dip,q->m_size,AstraSim::Sys::boostedTick());

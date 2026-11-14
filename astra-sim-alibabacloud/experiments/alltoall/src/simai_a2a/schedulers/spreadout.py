@@ -43,5 +43,10 @@ class SpreadOutScheduler:
                 "logical_bytes": matrix.logical_bytes,
                 "physical_bytes": sum(flow[2] for flow in raw),
                 "stage_starts_ns": stage_starts,
+                "n_stages": matrix.num_devices-1,
+                "stage_records": [dict(rank_mp=[(rank+offset)%matrix.num_devices
+                    for rank in range(matrix.num_devices)]) for offset in range(1,matrix.num_devices)],
+                "native_round_protocol": True,
+                "baseline_scope": "cyclic rank-level spreadout, not an NCCL protocol reproduction",
             },
         )

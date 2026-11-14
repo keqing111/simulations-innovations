@@ -19,13 +19,13 @@ from .artifacts import (
 )
 from .metrics import matrix_skew_metrics
 from .model import HardwareProfile, LinkModel, TrafficMatrix
-from .schedulers import get_scheduler
+from .schedulers import SCHEDULER_NAMES, get_scheduler
 from .traffic import generate_matrix
 from .topology import write_topology
 
 
 SCHEMA_VERSION = 1
-SCHEDULERS = ("direct-concurrent", "spreadout", "roundrobin", "fast")
+SCHEDULERS = SCHEDULER_NAMES
 HARDWARE_FIELDS = {
     "schema_version",
     "num_servers",
@@ -37,6 +37,15 @@ HARDWARE_FIELDS = {
     "topology_id",
     "link_bandwidth_gbps",
     "oversubscription",
+}
+MULTIDC_TOPOLOGY_FIELDS = {
+    "kind",
+    "data_centers",
+    "servers_per_data_center",
+    "intra_dc_bandwidth_gbps",
+    "intra_dc_latency_ns",
+    "inter_dc_bandwidth_gbps",
+    "inter_dc_latency_ns",
 }
 
 
@@ -183,13 +192,30 @@ def schedule_artifact(
     algorithm: str,
     seed: int,
     output: Path,
+    fast_options: dict | None = None,
+    execution_model: str = 'open-loop',
 ) -> dict[str, Any]:
+    if algorithm.startswith('fast-joint-') and execution_model=='open-loop':
+        raise ValueError('joint plans require an explicit completion-event execution model')
     matrix, matrix_manifest = read_matrix_artifact(matrix_dir)
     hardware, _, hardware_sha = load_hardware(hardware_path)
     hardware.validate_matrix(matrix)
     started = time.perf_counter_ns()
-    schedule = get_scheduler(algorithm).schedule(matrix, hardware, seed=seed)
+    schedule = get_scheduler(algorithm, fast_options=fast_options).schedule(matrix, hardware, seed=seed)
     elapsed = time.perf_counter_ns() - started
+    validation = {}
+    if algorithm.startswith('fast'):
+        from .delivery import validate_fast_delivery
+        validation['delivery_validation'] = validate_fast_delivery(
+            matrix, schedule, hardware.gpus_per_server)
+    if execution_model != 'open-loop':
+        from .execution import (STAGE_BARRIER_MODEL, NATIVE_MODEL, MODELED_MODEL,
+            ideal_scaleup_schedule, native_dependency_schedule, modeled_scaleup_schedule)
+        if execution_model not in (STAGE_BARRIER_MODEL,NATIVE_MODEL,MODELED_MODEL):
+            raise ValueError(f'unknown execution model: {execution_model}')
+        schedule = (modeled_scaleup_schedule(schedule,hardware) if execution_model==MODELED_MODEL else
+                    native_dependency_schedule(schedule,hardware) if execution_model==NATIVE_MODEL
+                    else ideal_scaleup_schedule(schedule,hardware))
     return write_schedule_artifact(
         schedule,
         output,
@@ -201,6 +227,7 @@ def schedule_artifact(
             "python_version": platform.python_version(),
             "numpy_version": np.__version__,
             "code_revisions": repository_state(),
+            **validation,
         },
     )
 
@@ -222,10 +249,23 @@ def write_micro_workload(matrix: TrafficMatrix, path: Path) -> None:
 def prepare_scenario(config_path: Path, output: Path) -> dict[str, Any]:
     config_path = Path(config_path).resolve()
     config = _load_json(config_path)
-    allowed = {"schema_version", "name", "hardware", "seed", "traffic", "schedulers"}
-    _validate_keys(config, allowed=allowed, required=allowed, label="scenario config")
+    required = {"schema_version", "name", "hardware", "seed", "traffic", "schedulers"}
+    allowed = {*required, "topology", "fast_options"}
+    _validate_keys(config, allowed=allowed, required=required, label="scenario config")
     if config["schema_version"] != SCHEMA_VERSION:
         raise ValueError("unsupported scenario schema_version")
+    topology_config = config.get("topology")
+    if topology_config is not None:
+        if not isinstance(topology_config, dict):
+            raise ValueError("topology must be a JSON object")
+        _validate_keys(
+            topology_config,
+            allowed=MULTIDC_TOPOLOGY_FIELDS,
+            required=MULTIDC_TOPOLOGY_FIELDS,
+            label="topology",
+        )
+        if topology_config["kind"] != "multi-dc-full-mesh":
+            raise ValueError(f"unknown topology kind: {topology_config['kind']!r}")
     if not isinstance(config["traffic"], dict):
         raise ValueError("traffic must be a JSON object")
     traffic = dict(config["traffic"])
@@ -293,6 +333,7 @@ def prepare_scenario(config_path: Path, output: Path) -> dict[str, Any]:
             algorithm=algorithm,
             seed=int(config["seed"]),
             output=output / "schedules" / algorithm,
+            fast_options=config.get('fast_options'),
         )
         schedule_hashes[algorithm] = manifest["schedule_sha256"]
     write_micro_workload(matrix, output / "workload.csv")
@@ -300,6 +341,7 @@ def prepare_scenario(config_path: Path, output: Path) -> dict[str, Any]:
         hardware,
         output / "topology.txt",
         expected_num_devices=matrix.num_devices,
+        topology_config=topology_config,
     )
     scenario_manifest = {
         "schema_version": SCHEMA_VERSION,
@@ -311,6 +353,7 @@ def prepare_scenario(config_path: Path, output: Path) -> dict[str, Any]:
         "topology": topology_manifest,
         "schedulers": schedulers,
         "code_revisions": repository_state(),
+        "fast_options": config.get('fast_options'),
     }
     (output / "scenario_manifest.json").write_text(
         json.dumps(scenario_manifest, indent=2, sort_keys=True) + "\n",

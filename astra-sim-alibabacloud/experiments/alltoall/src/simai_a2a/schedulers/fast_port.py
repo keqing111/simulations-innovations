@@ -683,6 +683,7 @@ class LocalScheduler(object):
     # local.cpp:285-306
     def server2server_dispatch(self, to_server_id, dispatch, freq):
         gpu_n = self.gpu_n
+        transferred = []
         for i in range(gpu_n):
             row_transfer = 0
             for j in range(gpu_n):
@@ -695,6 +696,8 @@ class LocalScheduler(object):
                     dispatch[i][j] += transfer
                 if row_transfer == freq:
                     break
+            transferred.append(row_transfer)
+        return transferred
 
 
 # ---------------------------------------------------------------------------
@@ -705,11 +708,12 @@ class LocalScheduler(object):
 class GlobalScheduler(object):
     def __init__(self, server_n, gpu_n, locals_, inter_type, intra_type,
                  scaling=False, MBpu=1.0, inter_override=None,
-                 intra_override=None):
+                 intra_override=None, decomposition=None):
         self.server_n = server_n
         self.gpu_n = gpu_n
         self.locals = locals_
         self.enable_scaling = scaling
+        self.decomposition = decomposition
         self.inter_info = inter_override or get_inter_link_info(inter_type)
         self.intra_info = intra_override or get_intra_link_info(intra_type)
         n = len(locals_) * server_n
@@ -758,7 +762,8 @@ class GlobalScheduler(object):
         if scale:
             app.to_scaled_matrix()
         app.to_scaled_doubly_stochastic_matrix()
-        app.decompose()
+        if self.decomposition is None:
+            app.decompose()
         p_sets = app.p_sets
 
         def intra_cost(mat, link):
@@ -786,6 +791,19 @@ class GlobalScheduler(object):
                 if not self.if_approx[lid * server_n + s]:
                     locals_[lid].server2server_balance(s, bs[(lid, s)])
 
+        if self.decomposition is not None:
+            # Opt-in policies need exact rows AFTER the native approximation /
+            # balancing decision; aggregate/gpu_n is wrong when balance is skipped.
+            app.real_gpu_remaining = np.zeros((server_n,gpu_n,server_n),dtype=np.int64)
+            app.real_gpu_contents = np.concatenate([local.balanced_data for local in locals_],axis=0).copy()
+            for src,local in enumerate(locals_):
+                for dst in range(server_n):
+                    if src != dst:
+                        app.real_gpu_remaining[src,:,dst] = local.balanced_data[:,dst*gpu_n:(dst+1)*gpu_n].sum(axis=1)
+            app.p_sets = self.decomposition(app)
+            p_sets = app.p_sets
+            pset_sz = len(p_sets)
+
         # dispatch buffers per (pset, local)
         ds = {}
         for pid in range(pset_sz):
@@ -796,6 +814,7 @@ class GlobalScheduler(object):
         self.last_app = app
         self.last_bs = bs
         self.last_ds = ds
+        self.last_inter_rows = {}
         self.last_intra_mode = intra_mode
         self.last_intra_fn = intra_fn
 
@@ -803,8 +822,12 @@ class GlobalScheduler(object):
             for lid, local in enumerate(locals_):
                 src = local.server_id
                 dst = pset['mp'][src]
-                local.server2server_dispatch(dst, ds[(pid, lid)],
-                                             pset['freq'])
+                transferred = local.server2server_dispatch(
+                    dst, ds[(pid, lid)], pset['freq']
+                )
+                self.last_inter_rows[(pid, lid)] = (
+                    transferred if src != dst else [0] * gpu_n
+                )
 
         # ---- runtime model (global.cpp:321-402) ----
         t = 0.0
@@ -858,7 +881,8 @@ class GlobalScheduler(object):
 
 def run_fast_full(gpu_matrix, server_n, gpu_n, inter_type, intra_type,
                   scaling=False, MBpu=1.0, pipeline='p2', intra_fn='full_mesh',
-                  zero_diag=True, inter_override=None, intra_override=None):
+                  zero_diag=True, inter_override=None, intra_override=None,
+                  decomposition=None):
     """gpu_matrix: dim x dim numpy int matrix (dim = server_n*gpu_n).
     Returns a dict with the full pipeline result, mirroring the C++ tester.
     inter_override/intra_override: optional {'alpha':us,'beta':us/MB} dicts
@@ -876,7 +900,7 @@ def run_fast_full(gpu_matrix, server_n, gpu_n, inter_type, intra_type,
                              server_n, s, intra_info)
         locals_.append(loc)
     gs = GlobalScheduler(server_n, gpu_n, locals_, inter_type, intra_type,
-                         scaling, MBpu, inter_override, intra_override)
+                         scaling, MBpu, inter_override, intra_override, decomposition)
     if pipeline == 'p2':
         r = gs.pipeline2(MBpu)
     else:
@@ -908,12 +932,11 @@ def emit_schedule(r, MBpu=1e-6):
 
       * balance (prep): t=0; within each server the dst-servers are drained
         in ascending order; every nonzero bs cell is one intra flow.
-      * inter stage k: server s sends to p_sets[k]['mp'][s] up to
-        min(outstanding, freq_k) of its real bytes, split evenly across the
-        one-to-one GPU pairs (GPU i of s -> GPU i of the peer; remainder to
-        the low GPUs).  Outstanding bytes start at the off-diagonal server
-        matrix; SDSM "virtual" completion cells never get sent (partial
-        stages send less than freq -- see NOTES_zh.md).
+      * inter stage k: GPU i of server s sends the real bytes consumed from
+        its balanced row to GPU i of p_sets[k]['mp'][s].  The server matrix
+        and permutation frequency are per-GPU quantities, so these recorded
+        row transfers must not be divided by gpu_n.  SDSM virtual completion
+        cells consume zero real bytes.
       * grey tiles: each server's intrinsic intra a2a, starts together with
         inter stage 0 (the model takes the max of the two).
       * dispatch k: intra redistribution for stage k, starts at the beginning
@@ -972,13 +995,6 @@ def emit_schedule(r, MBpu=1e-6):
 
     # -- inter stages + overlapping dispatch (replay holdings) ---------------
     K = len(p_sets)
-    # outstanding real bytes per (s,d) server pair -- starts at the original
-    # off-diagonal server matrix.  Each meeting transfers min(remaining, freq)
-    # (the Birkhoff frequencies can exceed the real demand: the SDSM
-    # completion adds "virtual" cells that carry no traffic -- partial stages
-    # simply send less than freq, see NOTES_zh.md / xcheck).
-    remaining = r['server_mat'].copy()
-    np.fill_diagonal(remaining, 0)
     t = t_bal
     starts = []
     slot_ends = []
@@ -988,20 +1004,18 @@ def emit_schedule(r, MBpu=1e-6):
         freq = pset['freq']
         for lid, local in enumerate(locals_):
             d = pset['mp'][local.server_id]
-            x = min(int(remaining[lid, d]), int(freq))
-            if x > 0:
-                base_s, base_d = lid * gpu_n, d * gpu_n
-                per = x // gpu_n
-                rem = x % gpu_n
-                for i in range(gpu_n):
-                    b = per + (1 if i < rem else 0)
-                    if b > 0:
-                        append_flow(base_s + i, base_d + i, b, t, 'inter', k)
-                remaining[lid, d] -= x
+            base_s, base_d = lid * gpu_n, d * gpu_n
+            for i, amount in enumerate(gs.last_inter_rows[(k, lid)]):
+                if amount > 0:
+                    append_flow(
+                        base_s + i, base_d + i, amount, t, 'inter', k
+                    )
         if k == 0:
             grey = [intra_cost(l.intrinsic_all2all, intra_info)
                     for l in locals_]
-            slot = max(inter_cost(pset['freq']), max(grey))
+            inter = pset.get('inter_duration_ns', None)
+            inter = inter / 1000.0 if inter is not None else inter_cost(pset['freq'])
+            slot = max(inter, max(grey))
             for lid, local in enumerate(locals_):
                 G = local.intrinsic_all2all
                 for i in range(gpu_n):
@@ -1012,16 +1026,24 @@ def emit_schedule(r, MBpu=1e-6):
         else:
             disp = [intra_cost(gs.last_ds[(k - 1, lid)], intra_info)
                     for lid in range(server_n)]
-            slot = max(max(disp), inter_cost(pset['freq']))
+            inter = pset.get('inter_duration_ns', None)
+            inter = inter / 1000.0 if inter is not None else inter_cost(pset['freq'])
+            slot = max(max(disp), inter)
         t += slot
         slot_ends.append(t)
         # dispatch k flows start at the next slot boundary
         for lid, local in enumerate(locals_):
             D = gs.last_ds[(k, lid)]
+            destination = pset['mp'][lid]
+            # ds is indexed by original sender, but redistribution happens at
+            # the receiving server. Self matches contain only padding and must
+            # not replay intrinsic traffic as an additional dispatch.
+            if destination == lid:
+                continue
             for i in range(gpu_n):
                 for j in range(gpu_n):
                     if D[i, j] > 0:
-                        append_flow(lid * gpu_n + i, lid * gpu_n + j,
+                        append_flow(destination * gpu_n + i, destination * gpu_n + j,
                                     D[i, j], t, 'dispatch', k)
 
     return flows, {

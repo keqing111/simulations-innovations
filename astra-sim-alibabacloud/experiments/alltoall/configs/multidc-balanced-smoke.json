@@ -1,0 +1,26 @@
+{
+  "hardware": "hardware/h100_6s4g_multidc.json",
+  "name": "multidc-balanced-smoke",
+  "schedulers": [
+    "direct-concurrent",
+    "spreadout",
+    "roundrobin",
+    "fast"
+  ],
+  "schema_version": 1,
+  "seed": 11,
+  "topology": {
+    "kind": "multi-dc-full-mesh",
+    "data_centers": 3,
+    "servers_per_data_center": 2,
+    "intra_dc_bandwidth_gbps": 400,
+    "intra_dc_latency_ns": 700,
+    "inter_dc_bandwidth_gbps": 100,
+    "inter_dc_latency_ns": 5000000
+  },
+  "traffic": {
+    "generator": "balanced",
+    "num_devices": 24,
+    "pair_bytes": 4096
+  }
+}

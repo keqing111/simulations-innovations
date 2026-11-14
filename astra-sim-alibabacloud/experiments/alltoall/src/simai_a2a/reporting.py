@@ -21,6 +21,21 @@ def write_campaign_report(output: Path) -> Path:
         (output / "campaign_manifest.json").read_text(encoding="utf-8")
     )
     expected = int(manifest["run_count"])
+    if not any(row.get('speedup_vs_spreadout') is not None for row in rows):
+        # FAST ablations need not include the unrelated SpreadOut baseline.
+        lines = [f'# {output.name} results', '', f'Completed runs: {len(rows)}/{expected}', '',
+                 '| Algorithm | Runs | Mean makespan (ms) | Mean speedup vs FAST |',
+                 '|---|---:|---:|---:|']
+        for algorithm in sorted({row['algorithm'] for row in rows}):
+            group = [row for row in rows if row['algorithm']==algorithm]
+            speed = [row['speedup_vs_fast'] for row in group if row.get('speedup_vs_fast') is not None]
+            speed_text = f'{statistics.mean(speed):.3f}' if speed else 'n/a'
+            lines.append(f"| {algorithm} | {len(group)} | "
+                         f"{statistics.mean(row['actual_makespan_ns'] for row in group)/1e6:.3f} | {speed_text} |")
+        lines.extend(['', 'Per-workload figures: run `scripts/render_fast_wan_results.py`.', ''])
+        report = output/'RESULTS.md'
+        report.write_text('\n'.join(lines),encoding='utf-8')
+        return report
     fast = [row for row in rows if row["algorithm"] == "fast"]
     lines = [
         f"# {output.name} results",

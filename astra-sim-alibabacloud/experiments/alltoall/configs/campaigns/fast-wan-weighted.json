@@ -1,0 +1,148 @@
+{
+  "name": "fast-wan-weighted",
+  "ns3_config": "../ns3-multidc.conf",
+  "ns3_threads": 0,
+  "profiles": [
+    {
+      "id": "M0",
+      "hardware": "../hardware/h100_6s4g_multidc.json"
+    }
+  ],
+  "schema_version": 1,
+  "schedulers": [
+    "fast",
+    "fast-wan",
+    "fast-weighted",
+    "fast-wan-weighted"
+  ],
+  "topology": {
+    "kind": "multi-dc-full-mesh",
+    "data_centers": 3,
+    "servers_per_data_center": 2,
+    "intra_dc_bandwidth_gbps": 400,
+    "intra_dc_latency_ns": 700,
+    "inter_dc_bandwidth_gbps": 100,
+    "inter_dc_latency_ns": 5000000
+  },
+  "workloads": [
+    {
+      "id": "balanced-low",
+      "generator": "balanced",
+      "total_bytes_per_device": 16777216,
+      "seeds": [
+        11
+      ]
+    },
+    {
+      "id": "balanced-high",
+      "generator": "balanced",
+      "total_bytes_per_device": 268435456,
+      "seeds": [
+        11
+      ]
+    },
+    {
+      "id": "balanced-oversubscribed",
+      "generator": "balanced",
+      "total_bytes_per_device": 3221225472,
+      "seeds": [
+        11
+      ]
+    },
+    {
+      "id": "zipf09-low",
+      "generator": "fast-zipf",
+      "parameters": {
+        "alpha": 0.9,
+        "bytes_per_unit": 1
+      },
+      "total_bytes_per_device": 16777216,
+      "seeds": [
+        11
+      ]
+    },
+    {
+      "id": "zipf09-high",
+      "generator": "fast-zipf",
+      "parameters": {
+        "alpha": 0.9,
+        "bytes_per_unit": 1
+      },
+      "total_bytes_per_device": 268435456,
+      "seeds": [
+        11
+      ]
+    },
+    {
+      "id": "zipf09-oversubscribed",
+      "generator": "fast-zipf",
+      "parameters": {
+        "alpha": 0.9,
+        "bytes_per_unit": 1
+      },
+      "total_bytes_per_device": 3221225472,
+      "seeds": [
+        11
+      ]
+    },
+    {
+      "id": "zipf09-low",
+      "generator": "fast-zipf",
+      "parameters": {
+        "alpha": 0.9,
+        "bytes_per_unit": 1
+      },
+      "total_bytes_per_device": 16777216,
+      "seeds": [
+        23,
+        37,
+        53,
+        71
+      ]
+    },
+    {
+      "id": "zipf09-high",
+      "generator": "fast-zipf",
+      "parameters": {
+        "alpha": 0.9,
+        "bytes_per_unit": 1
+      },
+      "total_bytes_per_device": 268435456,
+      "seeds": [
+        23,
+        37,
+        53,
+        71
+      ]
+    },
+    {
+      "id": "zipf09-oversubscribed",
+      "generator": "fast-zipf",
+      "parameters": {
+        "alpha": 0.9,
+        "bytes_per_unit": 1
+      },
+      "total_bytes_per_device": 3221225472,
+      "seeds": [
+        23,
+        37,
+        53,
+        71
+      ]
+    }
+  ],
+  "fast_options": {
+    "server_dc_ids": [
+      0,
+      0,
+      1,
+      1,
+      2,
+      2
+    ],
+    "intra_dc_rtt_ns": 3200,
+    "inter_dc_rtt_ns": 10006000,
+    "intra_dc_bandwidth_gbps": 400,
+    "inter_dc_bandwidth_gbps": 100
+  }
+}

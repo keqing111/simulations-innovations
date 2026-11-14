@@ -1,0 +1,39 @@
+{
+  "logical_bytes": 21012480,
+  "matrix_sha256": "4f0d9fd79123456841a13a15a8c406f099085751659e27fbf8440d3c375b0c68",
+  "metadata": {
+    "generator": "literal-functional-fixture",
+    "name": "shared-wan",
+    "not_randomly_searched": true,
+    "server_channel_units": [
+      [
+        0,
+        2,
+        8,
+        0
+      ],
+      [
+        2,
+        0,
+        0,
+        8
+      ],
+      [
+        8,
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        8,
+        2,
+        0
+      ]
+    ],
+    "source_channel_split": "3:1 before real balance",
+    "unit_bytes": 262144
+  },
+  "num_devices": 8,
+  "schema_version": 1
+}

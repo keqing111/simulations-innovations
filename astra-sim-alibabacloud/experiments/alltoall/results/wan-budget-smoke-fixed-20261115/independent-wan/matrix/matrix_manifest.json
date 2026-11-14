@@ -1,0 +1,39 @@
+{
+  "logical_bytes": 16818176,
+  "matrix_sha256": "dc2f16876c2f0f54c45189d02e3748043ed2379b353f77ac9a723bb9b7e490d1",
+  "metadata": {
+    "generator": "literal-functional-fixture",
+    "name": "independent-wan",
+    "not_randomly_searched": true,
+    "server_channel_units": [
+      [
+        0,
+        8,
+        0,
+        0
+      ],
+      [
+        8,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        8
+      ],
+      [
+        0,
+        0,
+        8,
+        0
+      ]
+    ],
+    "source_channel_split": "3:1 before real balance",
+    "unit_bytes": 262144
+  },
+  "num_devices": 8,
+  "schema_version": 1
+}

@@ -1,0 +1,25 @@
+{
+  "scope": "analytic planner counterexample, not an additional ns3 performance case",
+  "anchor": [
+    0,
+    2
+  ],
+  "q": 2097152,
+  "H_us": 388.54432,
+  "feasible_permutation": [
+    2,
+    0,
+    3,
+    1
+  ],
+  "feasible_T_us": 388.54432,
+  "constructor_returned_none": true,
+  "failure": {
+    "code": "budget_completion_dead_end",
+    "pinned": {
+      "0": 2,
+      "2": 0
+    },
+    "H_us": 388.54432
+  }
+}

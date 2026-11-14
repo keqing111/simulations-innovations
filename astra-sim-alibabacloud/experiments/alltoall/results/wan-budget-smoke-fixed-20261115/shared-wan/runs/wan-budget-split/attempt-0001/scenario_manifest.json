@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "name": "shared-wan",
+  "topology": {
+    "kind": "v2-leaf-spine",
+    "gpu_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "nvswitch_ids": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "tor_id": 12,
+    "tor_ids": [
+      12,
+      13
+    ],
+    "spine_ids": [],
+    "gateway_ids": [
+      14,
+      15
+    ],
+    "background_ids": [],
+    "foreground_gpu_count": 8,
+    "gateway_wan_ports": [
+      [
+        14,
+        2
+      ],
+      [
+        15,
+        2
+      ]
+    ],
+    "all_switch_ports": [
+      [
+        12,
+        1
+      ],
+      [
+        12,
+        2
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        13,
+        2
+      ],
+      [
+        12,
+        3
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        13,
+        3
+      ],
+      [
+        15,
+        1
+      ],
+      [
+        14,
+        2
+      ],
+      [
+        15,
+        2
+      ]
+    ],
+    "tor_port_capacity_gbps": 400,
+    "gateway_wan_port_capacity_gbps": 100,
+    "foreground_start_ns": 1000000
+  }
+}

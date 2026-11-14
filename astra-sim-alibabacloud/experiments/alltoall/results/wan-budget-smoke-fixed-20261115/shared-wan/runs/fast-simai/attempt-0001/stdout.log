@@ -1,0 +1,82 @@
+maxRtt=107480 maxBdp=1343500
+Running Simulation.
+The final active chunks per dimension 1 after allocating to queues is: 1
+ring of node 0, id: 0 dimension: local total nodes in ring: 8 index in ring: 0 offset: 1total nodes in ring: 8
+ring of node 0, id: 0 dimension: local total nodes in ring: 8 index in ring: 0 offset: 1total nodes in ring: 8
+ring of node 0, id: 0 dimension: local total nodes in ring: 8 index in ring: 0 offset: 1total nodes in ring: 8
+ring of node 0, id: 0 dimension: local total nodes in ring: 8 index in ring: 0 offset: 1total nodes in ring: 8
+total nodes: 8
+Success in opening workload file
+model_parallel_NPU_group is 1
+pp_commize:0
+id: 0 , depen: 0 , wg_comp_time: 0
+type: MICRO ,num passes: 1 ,lines: 1 compute scale: 1 ,comm scale: 1
+stat path: ./ncclFlowModel_ ,total rows: 1 ,stat row: 0
+CSV path and filename: ./ncclFlowModel_detailed_8.csv
+CSV path and filename: ./ncclFlowModel_EndToEnd.csv
+chunk size is: 3948544 , size is: 3948544 , layer_num is: 0 , node: 0
+info: all-to-all weight grad collective issued for layer: 0 with size: 3948544, involved dimensions:  1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+simulator run 
+***** info: weight gradient collective for layer: 0 is finished************
+workload stats for the job scheduled at NPU offset: 0
+*******************
+Layer id: 0
+Total collectives issued for this layer: 1
+*************************  Workload stats  ************************* 0
+id: 0 ,Total cycles spent on fwd pass compute: 0
+id: 0 ,Total cycles spent on weight grad compute: 0
+id: 0 ,Total cycles spent on input grad compute: 0
+id: 0 ,Total cycles spent idle waiting for fwd finish: 0
+id: 0 ,Total cycles spent idle waiting for weight grad finish: 1912748
+id: 0 ,Total cycles spent idle waiting for input grad finish: 0
+id: 0 ,Total cycles spent on fwd pass comm: 0
+id: 0 ,Total cycles spent on weight grad comm: 1912748
+id: 0 ,Total cycles spent on input grad comm: 0
+*************************
+all passes finished at time: 1912748, id of first layer: 0
+path to create csvs is: ./ncclFlowModel_
+success in openning file
+*****
+Time to exit: Sun Nov 15 06:13:20 2026
+all-reduce Collective implementation: NcclFlowModel
+reduce-scatter Collective implementation: NcclFlowModel
+all-gather Collective implementation: NcclFlowModel
+all-to-all Collective implementation: NcclFlowModel
+Collective optimization: baseline
+Total sim duration: 0:0 hours
+Total streams injected: 1
+Total streams finished: 1
+Percentage of finished streams: 100 %
+*****
+sim_finish on sent,  Thread id: 125271599770944
+All data sent from node 0 is 2621440
+sim_finish on received,  Thread id: 125271599770944
+All data received by node 0 is 2621440
+sim_finish on sent,  Thread id: 125271599770944
+All data sent from node 1 is 2621440
+sim_finish on received,  Thread id: 125271599770944
+All data received by node 1 is 2621440
+sim_finish on sent,  Thread id: 125271599770944
+All data sent from node 2 is 2621440
+sim_finish on received,  Thread id: 125271599770944
+All data received by node 2 is 2621440
+sim_finish on sent,  Thread id: 125271599770944
+All data sent from node 3 is 2621440
+sim_finish on received,  Thread id: 125271599770944
+All data received by node 3 is 2621440
+sim_finish on sent,  Thread id: 125271599770944
+All data sent from node 4 is 2621440
+sim_finish on received,  Thread id: 125271599770944
+All data received by node 4 is 2621440
+sim_finish on sent,  Thread id: 125271599770944
+All data sent from node 5 is 2621440
+sim_finish on received,  Thread id: 125271599770944
+All data received by node 5 is 2621440
+sim_finish on sent,  Thread id: 125271599770944
+All data sent from node 6 is 2621440
+sim_finish on received,  Thread id: 125271599770944
+All data received by node 6 is 2621440
+sim_finish on sent,  Thread id: 125271599770944
+All data sent from node 7 is 2621440
+sim_finish on received,  Thread id: 125271599770944
+All data received by node 7 is 2621440

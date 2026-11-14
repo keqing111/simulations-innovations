@@ -1,0 +1,12 @@
+case,method,stage,q_bytes,H_us,T_proxy_us,real_bytes,Z_R,Z_U,reason,fallback
+independent-wan,wan-budget-full,0,2097152,388.54432,388.54432,16777216,4,8,anchor_full,False
+independent-wan,wan-budget-split,0,2097152,388.54432,388.54432,16777216,4,8,anchor_full,False
+shared-wan,wan-budget-full,0,2097152,,724.08864,16777216,4,8,fallback,True
+shared-wan,wan-budget-full,1,524288,22.571520000000003,22.571520000000003,4194304,4,8,anchor_full,False
+shared-wan,wan-budget-split,0,2097152,,724.08864,16777216,4,8,fallback,True
+shared-wan,wan-budget-split,1,524288,22.571520000000003,22.571520000000003,4194304,4,8,anchor_full,False
+handoff,wan-budget-full,0,2097152,388.54432,388.54432,13631488,4,8,anchor_full,False
+handoff,wan-budget-full,1,1572864,304.65824,304.65824,3145728,4,2,anchor_full,False
+handoff,wan-budget-split,0,524288,136.88608,136.88608,4194304,0,2,handoff,False
+handoff,wan-budget-split,1,1572864,304.65824,304.65824,9437184,4,6,anchor_full,False
+handoff,wan-budget-split,2,1572864,304.65824,304.65824,3145728,4,2,anchor_full,False

@@ -1,0 +1,162 @@
+{
+  "n": 4,
+  "g": 2,
+  "resource_names": [
+    "link:8->12",
+    "link:12->8",
+    "link:9->12",
+    "link:12->9",
+    "link:10->13",
+    "link:13->10",
+    "link:11->13",
+    "link:13->11",
+    "link:12->14",
+    "link:14->12",
+    "link:13->15",
+    "link:15->13",
+    "wan:0->1",
+    "wan:1->0"
+  ],
+  "bandwidth_gbps": [
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    400,
+    100,
+    100
+  ],
+  "server_paths": [
+    {
+      "resource_ids": [],
+      "propagation_us": 0.0
+    },
+    {
+      "resource_ids": [
+        0,
+        3
+      ],
+      "propagation_us": 1.6
+    },
+    {
+      "resource_ids": [
+        0,
+        8,
+        12,
+        11,
+        5
+      ],
+      "propagation_us": 53.0
+    },
+    {
+      "resource_ids": [
+        0,
+        8,
+        12,
+        11,
+        7
+      ],
+      "propagation_us": 53.0
+    },
+    {
+      "resource_ids": [
+        2,
+        1
+      ],
+      "propagation_us": 1.6
+    },
+    {
+      "resource_ids": [],
+      "propagation_us": 0.0
+    },
+    {
+      "resource_ids": [
+        2,
+        8,
+        12,
+        11,
+        5
+      ],
+      "propagation_us": 53.0
+    },
+    {
+      "resource_ids": [
+        2,
+        8,
+        12,
+        11,
+        7
+      ],
+      "propagation_us": 53.0
+    },
+    {
+      "resource_ids": [
+        4,
+        10,
+        13,
+        9,
+        1
+      ],
+      "propagation_us": 53.0
+    },
+    {
+      "resource_ids": [
+        4,
+        10,
+        13,
+        9,
+        3
+      ],
+      "propagation_us": 53.0
+    },
+    {
+      "resource_ids": [],
+      "propagation_us": 0.0
+    },
+    {
+      "resource_ids": [
+        4,
+        7
+      ],
+      "propagation_us": 1.6
+    },
+    {
+      "resource_ids": [
+        6,
+        10,
+        13,
+        9,
+        1
+      ],
+      "propagation_us": 53.0
+    },
+    {
+      "resource_ids": [
+        6,
+        10,
+        13,
+        9,
+        3
+      ],
+      "propagation_us": 53.0
+    },
+    {
+      "resource_ids": [
+        6,
+        5
+      ],
+      "propagation_us": 1.6
+    },
+    {
+      "resource_ids": [],
+      "propagation_us": 0.0
+    }
+  ]
+}

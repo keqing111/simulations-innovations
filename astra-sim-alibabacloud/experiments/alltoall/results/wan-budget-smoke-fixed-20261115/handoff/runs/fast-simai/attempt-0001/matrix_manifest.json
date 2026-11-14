@@ -1,0 +1,39 @@
+{
+  "logical_bytes": 16818176,
+  "matrix_sha256": "5f1543a0371aa9f6ceb4d1ad7996f49f0f0dd1a6cc1151a108ad43e801da47fb",
+  "metadata": {
+    "generator": "literal-functional-fixture",
+    "name": "handoff",
+    "not_randomly_searched": true,
+    "server_channel_units": [
+      [
+        0,
+        8,
+        0,
+        0
+      ],
+      [
+        8,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        6,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        8,
+        0
+      ]
+    ],
+    "source_channel_split": "3:1 before real balance",
+    "unit_bytes": 262144
+  },
+  "num_devices": 8,
+  "schema_version": 1
+}

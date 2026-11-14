@@ -1,0 +1,125 @@
+{
+  "permutations": [
+    [
+      1,
+      0,
+      3,
+      2
+    ]
+  ],
+  "coefficients": [
+    2097152
+  ],
+  "trace": [
+    {
+      "p": [
+        1,
+        0,
+        3,
+        2
+      ],
+      "q": 2097152,
+      "bytes": 16777216,
+      "time_us": 388.54432,
+      "phi_before_us": 335.54432,
+      "phi_after_us": 0.0,
+      "score": 3.159046173095703e-06,
+      "Z_R": 4,
+      "Z_U": 8,
+      "resource_bytes": [
+        4194304,
+        4194304,
+        4194304,
+        4194304,
+        4194304,
+        4194304,
+        4194304,
+        4194304,
+        4194304,
+        4194304,
+        4194304,
+        4194304,
+        4194304,
+        4194304,
+        4194304,
+        4194304,
+        4194304,
+        4194304,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4194304,
+        4194304
+      ],
+      "anchor": [
+        0,
+        1
+      ],
+      "H_us": 388.54432,
+      "reason": "anchor_full",
+      "witness": null,
+      "next_edge": null,
+      "accepted": true,
+      "failure": null,
+      "fallback": false,
+      "attempts": [
+        {
+          "anchor": [
+            0,
+            1
+          ],
+          "q": 2097152,
+          "H_us": 388.54432,
+          "reason": "anchor_full",
+          "witness": null,
+          "next_edge": null,
+          "accepted": true,
+          "failure": null
+        }
+      ]
+    }
+  ],
+  "remaining_U": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "stage_bound": 12,
+  "planner_cpu_us": 431.391,
+  "time_model": "per-resource max propagation + summed serialization; proxy only",
+  "allow_split": false
+}

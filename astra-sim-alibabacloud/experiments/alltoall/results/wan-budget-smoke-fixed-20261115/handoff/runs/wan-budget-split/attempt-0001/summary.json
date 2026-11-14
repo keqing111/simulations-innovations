@@ -1,0 +1,568 @@
+{
+  "actual_makespan_ns": 2571910,
+  "algorithm": "wan-budget-split",
+  "algorithm_bandwidth_gbps": 52.313419987480124,
+  "collective_epoch_ns": 1000000,
+  "congestion_control": {
+    "cnp": {
+      "affected_flow_count": 13,
+      "first_event_ns": 1200000,
+      "last_event_ns": 1960000,
+      "record_count": 59,
+      "total_count": 343
+    },
+    "qp_rate": {
+      "change_record_count": 78,
+      "max_bps": 3478260869570,
+      "min_bps": 100000000
+    }
+  },
+  "execution_model": "fast-nvidia-deps-modeled-scaleup",
+  "fct_ns": {
+    "max": 1912110,
+    "mean": 384321.5625,
+    "p50": 266327.5,
+    "p95": 788100.0,
+    "p99": 1687307.9999999995
+  },
+  "fidelity_ratio": null,
+  "flow_count": 16,
+  "logical_bytes": 16818176,
+  "native_runtime": {
+    "credit_wire_bytes": 128,
+    "dependency_violations": 0,
+    "end_ns": 3571910,
+    "epoch_ns": 1000000,
+    "flows": [
+      {
+        "ack_ns": 1246307,
+        "credit_arrive_ns": 1055520,
+        "credit_send_ns": 1002512,
+        "flow_id": 0,
+        "receive_ns": 1193299,
+        "release_ns": 1055520
+      },
+      {
+        "ack_ns": 1246365,
+        "credit_arrive_ns": 1055524,
+        "credit_send_ns": 1002512,
+        "flow_id": 1,
+        "receive_ns": 1193357,
+        "release_ns": 1055524
+      },
+      {
+        "ack_ns": 1246307,
+        "credit_arrive_ns": 1055520,
+        "credit_send_ns": 1002512,
+        "flow_id": 2,
+        "receive_ns": 1193299,
+        "release_ns": 1055520
+      },
+      {
+        "ack_ns": 1246365,
+        "credit_arrive_ns": 1055524,
+        "credit_send_ns": 1002512,
+        "flow_id": 3,
+        "receive_ns": 1193357,
+        "release_ns": 1055524
+      },
+      {
+        "ack_ns": 1246307,
+        "credit_arrive_ns": 1055520,
+        "credit_send_ns": 1002512,
+        "flow_id": 4,
+        "receive_ns": 1193299,
+        "release_ns": 1055520
+      },
+      {
+        "ack_ns": 1246365,
+        "credit_arrive_ns": 1055524,
+        "credit_send_ns": 1002512,
+        "flow_id": 5,
+        "receive_ns": 1193357,
+        "release_ns": 1055524
+      },
+      {
+        "ack_ns": 1246307,
+        "credit_arrive_ns": 1055520,
+        "credit_send_ns": 1002512,
+        "flow_id": 6,
+        "receive_ns": 1193299,
+        "release_ns": 1055520
+      },
+      {
+        "ack_ns": 1246365,
+        "credit_arrive_ns": 1055524,
+        "credit_send_ns": 1002512,
+        "flow_id": 7,
+        "receive_ns": 1193357,
+        "release_ns": 1055524
+      },
+      {
+        "ack_ns": 1658522,
+        "credit_arrive_ns": 1246311,
+        "credit_send_ns": 1193299,
+        "flow_id": 8,
+        "receive_ns": 1605514,
+        "release_ns": 1246311
+      },
+      {
+        "ack_ns": 1659799,
+        "credit_arrive_ns": 1246369,
+        "credit_send_ns": 1193357,
+        "flow_id": 9,
+        "receive_ns": 1606791,
+        "release_ns": 1246369
+      },
+      {
+        "ack_ns": 1658522,
+        "credit_arrive_ns": 1246311,
+        "credit_send_ns": 1193299,
+        "flow_id": 10,
+        "receive_ns": 1605514,
+        "release_ns": 1246311
+      },
+      {
+        "ack_ns": 1659799,
+        "credit_arrive_ns": 1246369,
+        "credit_send_ns": 1193357,
+        "flow_id": 11,
+        "receive_ns": 1606791,
+        "release_ns": 1246369
+      },
+      {
+        "ack_ns": 1604053,
+        "credit_arrive_ns": 1246311,
+        "credit_send_ns": 1193299,
+        "flow_id": 12,
+        "receive_ns": 1551045,
+        "release_ns": 1246311
+      },
+      {
+        "ack_ns": 1606054,
+        "credit_arrive_ns": 1246369,
+        "credit_send_ns": 1193357,
+        "flow_id": 13,
+        "receive_ns": 1553046,
+        "release_ns": 1246369
+      },
+      {
+        "ack_ns": 2000337,
+        "credit_arrive_ns": 1658523,
+        "credit_send_ns": 1605514,
+        "flow_id": 14,
+        "receive_ns": 1947329,
+        "release_ns": 1658523
+      },
+      {
+        "ack_ns": 3571910,
+        "credit_arrive_ns": 1659800,
+        "credit_send_ns": 1606791,
+        "flow_id": 15,
+        "receive_ns": 3518902,
+        "release_ns": 1659800
+      }
+    ],
+    "last_ack_ns": 3571910,
+    "local_completion_ns": [
+      1610509,
+      3522620,
+      1556764,
+      1194663
+    ],
+    "local_duration_verified": true,
+    "signal_tail_bytes": 128
+  },
+  "native_wan": {
+    "busy_fraction_mean": 0.043977692324640695,
+    "dependency_only_idle_ns": 1194907,
+    "ports": [
+      {
+        "busy_fraction": 0.1319330769739221,
+        "busy_ns": 339320,
+        "dependency_only_idle_ns": 160288,
+        "dst_dc": 1,
+        "eligible_payload_bytes": 4194304,
+        "idle_classification": "source unsent payload; dependency-only is a candidate loss, not a proof",
+        "idle_ns": 2232590,
+        "max_idle_gap_ns": 1963613,
+        "no_source_backlog_idle_ns": 2018070,
+        "node_id": 16,
+        "peak_queue_bytes": 2036760,
+        "port_id": 2,
+        "queued_idle_ns": 0,
+        "src_dc": 0,
+        "transport_or_upstream_idle_ns": 54232
+      },
+      {
+        "busy_fraction": 0.1319330769739221,
+        "busy_ns": 339320,
+        "dependency_only_idle_ns": 160288,
+        "dst_dc": 0,
+        "eligible_payload_bytes": 4194304,
+        "idle_classification": "source unsent payload; dependency-only is a candidate loss, not a proof",
+        "idle_ns": 2232590,
+        "max_idle_gap_ns": 1963613,
+        "no_source_backlog_idle_ns": 2018070,
+        "node_id": 17,
+        "peak_queue_bytes": 2036760,
+        "port_id": 2,
+        "queued_idle_ns": 0,
+        "src_dc": 1,
+        "transport_or_upstream_idle_ns": 54232
+      },
+      {
+        "busy_fraction": 0.0,
+        "busy_ns": 0,
+        "dependency_only_idle_ns": 0,
+        "dst_dc": 2,
+        "eligible_payload_bytes": 0,
+        "idle_classification": "source unsent payload; dependency-only is a candidate loss, not a proof",
+        "idle_ns": 2571910,
+        "max_idle_gap_ns": 2571910,
+        "no_source_backlog_idle_ns": 2571910,
+        "node_id": 16,
+        "peak_queue_bytes": 0,
+        "port_id": 3,
+        "queued_idle_ns": 0,
+        "src_dc": 0,
+        "transport_or_upstream_idle_ns": 0
+      },
+      {
+        "busy_fraction": 0.0,
+        "busy_ns": 0,
+        "dependency_only_idle_ns": 0,
+        "dst_dc": 0,
+        "eligible_payload_bytes": 0,
+        "idle_classification": "source unsent payload; dependency-only is a candidate loss, not a proof",
+        "idle_ns": 2571910,
+        "max_idle_gap_ns": 2571910,
+        "no_source_backlog_idle_ns": 2571910,
+        "node_id": 18,
+        "peak_queue_bytes": 0,
+        "port_id": 2,
+        "queued_idle_ns": 0,
+        "src_dc": 2,
+        "transport_or_upstream_idle_ns": 0
+      },
+      {
+        "busy_fraction": 0.0,
+        "busy_ns": 0,
+        "dependency_only_idle_ns": 0,
+        "dst_dc": 3,
+        "eligible_payload_bytes": 0,
+        "idle_classification": "source unsent payload; dependency-only is a candidate loss, not a proof",
+        "idle_ns": 2571910,
+        "max_idle_gap_ns": 2571910,
+        "no_source_backlog_idle_ns": 2571910,
+        "node_id": 16,
+        "peak_queue_bytes": 0,
+        "port_id": 4,
+        "queued_idle_ns": 0,
+        "src_dc": 0,
+        "transport_or_upstream_idle_ns": 0
+      },
+      {
+        "busy_fraction": 0.0,
+        "busy_ns": 0,
+        "dependency_only_idle_ns": 0,
+        "dst_dc": 0,
+        "eligible_payload_bytes": 0,
+        "idle_classification": "source unsent payload; dependency-only is a candidate loss, not a proof",
+        "idle_ns": 2571910,
+        "max_idle_gap_ns": 2571910,
+        "no_source_backlog_idle_ns": 2571910,
+        "node_id": 19,
+        "peak_queue_bytes": 0,
+        "port_id": 2,
+        "queued_idle_ns": 0,
+        "src_dc": 3,
+        "transport_or_upstream_idle_ns": 0
+      },
+      {
+        "busy_fraction": 0.0005474530601770668,
+        "busy_ns": 1408,
+        "dependency_only_idle_ns": 0,
+        "dst_dc": 2,
+        "eligible_payload_bytes": 0,
+        "idle_classification": "source unsent payload; dependency-only is a candidate loss, not a proof",
+        "idle_ns": 2570502,
+        "max_idle_gap_ns": 724156,
+        "no_source_backlog_idle_ns": 2570502,
+        "node_id": 17,
+        "peak_queue_bytes": 0,
+        "port_id": 3,
+        "queued_idle_ns": 0,
+        "src_dc": 1,
+        "transport_or_upstream_idle_ns": 0
+      },
+      {
+        "busy_fraction": 0.0983961336127625,
+        "busy_ns": 253066,
+        "dependency_only_idle_ns": 658523,
+        "dst_dc": 1,
+        "eligible_payload_bytes": 3145728,
+        "idle_classification": "source unsent payload; dependency-only is a candidate loss, not a proof",
+        "idle_ns": 2318844,
+        "max_idle_gap_ns": 723436,
+        "no_source_backlog_idle_ns": 105887,
+        "node_id": 18,
+        "peak_queue_bytes": 2036700,
+        "port_id": 3,
+        "queued_idle_ns": 0,
+        "src_dc": 2,
+        "transport_or_upstream_idle_ns": 1554434
+      },
+      {
+        "busy_fraction": 0.0,
+        "busy_ns": 0,
+        "dependency_only_idle_ns": 0,
+        "dst_dc": 3,
+        "eligible_payload_bytes": 0,
+        "idle_classification": "source unsent payload; dependency-only is a candidate loss, not a proof",
+        "idle_ns": 2571910,
+        "max_idle_gap_ns": 2571910,
+        "no_source_backlog_idle_ns": 2571910,
+        "node_id": 17,
+        "peak_queue_bytes": 0,
+        "port_id": 4,
+        "queued_idle_ns": 0,
+        "src_dc": 1,
+        "transport_or_upstream_idle_ns": 0
+      },
+      {
+        "busy_fraction": 0.0,
+        "busy_ns": 0,
+        "dependency_only_idle_ns": 0,
+        "dst_dc": 1,
+        "eligible_payload_bytes": 0,
+        "idle_classification": "source unsent payload; dependency-only is a candidate loss, not a proof",
+        "idle_ns": 2571910,
+        "max_idle_gap_ns": 2571910,
+        "no_source_backlog_idle_ns": 2571910,
+        "node_id": 19,
+        "peak_queue_bytes": 0,
+        "port_id": 3,
+        "queued_idle_ns": 0,
+        "src_dc": 3,
+        "transport_or_upstream_idle_ns": 0
+      },
+      {
+        "busy_fraction": 0.0335369433611596,
+        "busy_ns": 86254,
+        "dependency_only_idle_ns": 55512,
+        "dst_dc": 3,
+        "eligible_payload_bytes": 1048576,
+        "idle_classification": "source unsent payload; dependency-only is a candidate loss, not a proof",
+        "idle_ns": 2485656,
+        "max_idle_gap_ns": 2017358,
+        "no_source_backlog_idle_ns": 2428975,
+        "node_id": 18,
+        "peak_queue_bytes": 792220,
+        "port_id": 4,
+        "queued_idle_ns": 0,
+        "src_dc": 2,
+        "transport_or_upstream_idle_ns": 1169
+      },
+      {
+        "busy_fraction": 0.13138562391374503,
+        "busy_ns": 337912,
+        "dependency_only_idle_ns": 160296,
+        "dst_dc": 2,
+        "eligible_payload_bytes": 4194304,
+        "idle_classification": "source unsent payload; dependency-only is a candidate loss, not a proof",
+        "idle_ns": 2233998,
+        "max_idle_gap_ns": 2070655,
+        "no_source_backlog_idle_ns": 2070655,
+        "node_id": 19,
+        "peak_queue_bytes": 2036700,
+        "port_id": 4,
+        "queued_idle_ns": 0,
+        "src_dc": 3,
+        "transport_or_upstream_idle_ns": 3047
+      }
+    ]
+  },
+  "network": {
+    "bandwidth": {
+      "gateway_mean_active_gbps": 57.95796332622556,
+      "gateway_mean_active_utilization": 0.5795796332622556,
+      "gateway_peak_gbps": 112.4608,
+      "gateway_peak_utilization": 1.124608,
+      "mean_active_gbps": 52.64953447703323,
+      "peak_gbps": 2172.576,
+      "row_count": 3614,
+      "tor_mean_active_gbps": 64.41276966824636,
+      "tor_mean_active_utilization": 0.16103192417061588,
+      "tor_peak_gbps": 405.6256,
+      "tor_peak_utilization": 1.014064
+    },
+    "queue": {
+      "gateway_peak_port_bytes": 2027648,
+      "gateway_peak_queue_bytes": 2027648,
+      "peak_port_bytes": 2534560,
+      "peak_queue_bytes": 2534560,
+      "row_count": 2792,
+      "tor_peak_port_bytes": 0,
+      "tor_peak_queue_bytes": 0
+    }
+  },
+  "per_device_algorithm_bandwidth_gbps": 6.5391774984350155,
+  "pfc": {
+    "affected_port_count": 0,
+    "event_count": 0,
+    "first_event_ns": null,
+    "last_event_ns": null,
+    "pause_count": 0,
+    "resume_count": 0
+  },
+  "pfc_count": 0,
+  "physical_bytes": 16777216,
+  "predicted_makespan_ns": null,
+  "schedule_byte_amplification": 0.997564539698003,
+  "scheduled_bytes": 16777216,
+  "schema_version": 1,
+  "wan": {
+    "capacity_gbps": 100,
+    "end_ns": 3571910,
+    "epoch_ns": 1000000,
+    "interval_ns": 5000,
+    "max_sampled_idle_gap_ns": 2571910,
+    "mean_utilization": 0.04403712416064326,
+    "ports": [
+      {
+        "active_window_idle_ns": 115000,
+        "first_active_sample_ns": 1000000,
+        "last_active_sample_ns": 1610000,
+        "max_sampled_idle_gap_ns": 1961910,
+        "mean_utilization": 0.13211137248192978,
+        "node_id": 16,
+        "observed_wire_bytes": 4247232.0,
+        "port_id": 2,
+        "sampled_idle_ns": 2076910
+      },
+      {
+        "active_window_idle_ns": 115000,
+        "first_active_sample_ns": 1000000,
+        "last_active_sample_ns": 1610000,
+        "max_sampled_idle_gap_ns": 1961910,
+        "mean_utilization": 0.13211137248192978,
+        "node_id": 17,
+        "observed_wire_bytes": 4247232.0,
+        "port_id": 2,
+        "sampled_idle_ns": 2076910
+      },
+      {
+        "active_window_idle_ns": 0,
+        "first_active_sample_ns": null,
+        "last_active_sample_ns": null,
+        "max_sampled_idle_gap_ns": 2571910,
+        "mean_utilization": 0.0,
+        "node_id": 16,
+        "observed_wire_bytes": 0.0,
+        "port_id": 3,
+        "sampled_idle_ns": 2571910
+      },
+      {
+        "active_window_idle_ns": 0,
+        "first_active_sample_ns": null,
+        "last_active_sample_ns": null,
+        "max_sampled_idle_gap_ns": 2571910,
+        "mean_utilization": 0.0,
+        "node_id": 18,
+        "observed_wire_bytes": 0.0,
+        "port_id": 2,
+        "sampled_idle_ns": 2571910
+      },
+      {
+        "active_window_idle_ns": 0,
+        "first_active_sample_ns": null,
+        "last_active_sample_ns": null,
+        "max_sampled_idle_gap_ns": 2571910,
+        "mean_utilization": 0.0,
+        "node_id": 16,
+        "observed_wire_bytes": 0.0,
+        "port_id": 4,
+        "sampled_idle_ns": 2571910
+      },
+      {
+        "active_window_idle_ns": 0,
+        "first_active_sample_ns": null,
+        "last_active_sample_ns": null,
+        "max_sampled_idle_gap_ns": 2571910,
+        "mean_utilization": 0.0,
+        "node_id": 19,
+        "observed_wire_bytes": 0.0,
+        "port_id": 2,
+        "sampled_idle_ns": 2571910
+      },
+      {
+        "active_window_idle_ns": 1640000,
+        "first_active_sample_ns": 1605000,
+        "last_active_sample_ns": 3525000,
+        "max_sampled_idle_gap_ns": 720000,
+        "mean_utilization": 0.0006569436722124802,
+        "node_id": 17,
+        "observed_wire_bytes": 21120.0,
+        "port_id": 3,
+        "sampled_idle_ns": 2291910
+      },
+      {
+        "active_window_idle_ns": 1540000,
+        "first_active_sample_ns": 1660000,
+        "last_active_sample_ns": 3470000,
+        "max_sampled_idle_gap_ns": 720000,
+        "mean_utilization": 0.09841912042023243,
+        "node_id": 18,
+        "observed_wire_bytes": 3164064.0,
+        "port_id": 3,
+        "sampled_idle_ns": 2301910
+      },
+      {
+        "active_window_idle_ns": 0,
+        "first_active_sample_ns": null,
+        "last_active_sample_ns": null,
+        "max_sampled_idle_gap_ns": 2571910,
+        "mean_utilization": 0.0,
+        "node_id": 17,
+        "observed_wire_bytes": 0.0,
+        "port_id": 4,
+        "sampled_idle_ns": 2571910
+      },
+      {
+        "active_window_idle_ns": 0,
+        "first_active_sample_ns": null,
+        "last_active_sample_ns": null,
+        "max_sampled_idle_gap_ns": 2571910,
+        "mean_utilization": 0.0,
+        "node_id": 19,
+        "observed_wire_bytes": 0.0,
+        "port_id": 3,
+        "sampled_idle_ns": 2571910
+      },
+      {
+        "active_window_idle_ns": 155000,
+        "first_active_sample_ns": 1000000,
+        "last_active_sample_ns": 1555000,
+        "max_sampled_idle_gap_ns": 2016910,
+        "mean_utilization": 0.03369225206169734,
+        "node_id": 18,
+        "observed_wire_bytes": 1083168.0,
+        "port_id": 4,
+        "sampled_idle_ns": 2171910
+      },
+      {
+        "active_window_idle_ns": 100000,
+        "first_active_sample_ns": 1000000,
+        "last_active_sample_ns": 1505000,
+        "max_sampled_idle_gap_ns": 2066910,
+        "mean_utilization": 0.1314544288097173,
+        "node_id": 19,
+        "observed_wire_bytes": 4226112.0,
+        "port_id": 4,
+        "sampled_idle_ns": 2166910
+      }
+    ],
+    "sampled_idle_ns": 28517920
+  }
+}

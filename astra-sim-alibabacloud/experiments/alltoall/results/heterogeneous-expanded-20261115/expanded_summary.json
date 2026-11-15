@@ -1,0 +1,1486 @@
+{
+  "scope": "fixed exploratory cohort, one synthetic seed; no confidence interval",
+  "overall": {
+    "conditions": 41,
+    "complete_triplets": 40,
+    "fast-simai": {
+      "paired": 40,
+      "unpaired": 1,
+      "geomean_speedup": 1.7577048690899948,
+      "wins": 40,
+      "ties": 0,
+      "losses": 0,
+      "minimum": 1.0122914356131725,
+      "maximum": 5.7705086533683705
+    },
+    "spreadout": {
+      "paired": 41,
+      "unpaired": 0,
+      "geomean_speedup": 1.159816413886041,
+      "wins": 20,
+      "ties": 0,
+      "losses": 21,
+      "minimum": 0.6388190914068904,
+      "maximum": 4.767801758649891
+    }
+  },
+  "status_counts": {
+    "success": 122,
+    "timeout": 1
+  },
+  "blocks": {
+    "primary": {
+      "conditions": 15,
+      "complete_triplets": 15,
+      "fast-simai": {
+        "paired": 15,
+        "unpaired": 0,
+        "geomean_speedup": 1.750888091297079,
+        "wins": 15,
+        "ties": 0,
+        "losses": 0,
+        "minimum": 1.0168316757582738,
+        "maximum": 3.462813944861596
+      },
+      "spreadout": {
+        "paired": 15,
+        "unpaired": 0,
+        "geomean_speedup": 1.1173437477255275,
+        "wins": 5,
+        "ties": 0,
+        "losses": 10,
+        "minimum": 0.6912455641339975,
+        "maximum": 2.6457847165902733
+      }
+    },
+    "volume": {
+      "conditions": 8,
+      "complete_triplets": 8,
+      "fast-simai": {
+        "paired": 8,
+        "unpaired": 0,
+        "geomean_speedup": 1.505440482721504,
+        "wins": 8,
+        "ties": 0,
+        "losses": 0,
+        "minimum": 1.0122914356131725,
+        "maximum": 3.871598335515142
+      },
+      "spreadout": {
+        "paired": 8,
+        "unpaired": 0,
+        "geomean_speedup": 1.294171830491057,
+        "wins": 3,
+        "ties": 0,
+        "losses": 5,
+        "minimum": 0.6550809322078553,
+        "maximum": 4.767801758649891
+      }
+    },
+    "pressure": {
+      "conditions": 8,
+      "complete_triplets": 8,
+      "fast-simai": {
+        "paired": 8,
+        "unpaired": 0,
+        "geomean_speedup": 1.3199526530871943,
+        "wins": 8,
+        "ties": 0,
+        "losses": 0,
+        "minimum": 1.019118740793689,
+        "maximum": 2.4760168311389834
+      },
+      "spreadout": {
+        "paired": 8,
+        "unpaired": 0,
+        "geomean_speedup": 1.0758304308702205,
+        "wins": 4,
+        "ties": 0,
+        "losses": 4,
+        "minimum": 0.7187581535233518,
+        "maximum": 1.9488787676432147
+      }
+    },
+    "scale": {
+      "conditions": 4,
+      "complete_triplets": 3,
+      "fast-simai": {
+        "paired": 3,
+        "unpaired": 1,
+        "geomean_speedup": 1.1592839231376175,
+        "wins": 3,
+        "ties": 0,
+        "losses": 0,
+        "minimum": 1.1051221631441213,
+        "maximum": 1.2018923337032124
+      },
+      "spreadout": {
+        "paired": 4,
+        "unpaired": 0,
+        "geomean_speedup": 1.2148378543435692,
+        "wins": 2,
+        "ties": 0,
+        "losses": 2,
+        "minimum": 0.6388190914068904,
+        "maximum": 2.585458253341367
+      }
+    },
+    "real": {
+      "conditions": 6,
+      "complete_triplets": 6,
+      "fast-simai": {
+        "paired": 6,
+        "unpaired": 0,
+        "geomean_speedup": 3.9364333408260204,
+        "wins": 6,
+        "ties": 0,
+        "losses": 0,
+        "minimum": 2.7574805327714085,
+        "maximum": 5.7705086533683705
+      },
+      "spreadout": {
+        "paired": 6,
+        "unpaired": 0,
+        "geomean_speedup": 1.1790520327194056,
+        "wins": 6,
+        "ties": 0,
+        "losses": 0,
+        "minimum": 1.0993680656762994,
+        "maximum": 1.2454377900754974
+      }
+    }
+  },
+  "primary_by_topology": {
+    "leaf-uniform": {
+      "conditions": 3,
+      "complete_triplets": 3,
+      "fast-simai": {
+        "paired": 3,
+        "unpaired": 0,
+        "geomean_speedup": 2.0062590648765224,
+        "wins": 3,
+        "ties": 0,
+        "losses": 0,
+        "minimum": 1.5798361281607003,
+        "maximum": 2.7294420710836502
+      },
+      "spreadout": {
+        "paired": 3,
+        "unpaired": 0,
+        "geomean_speedup": 1.359932525375746,
+        "wins": 1,
+        "ties": 0,
+        "losses": 2,
+        "minimum": 0.9530805020671506,
+        "maximum": 2.6457847165902733
+      }
+    },
+    "leaf-mixed": {
+      "conditions": 3,
+      "complete_triplets": 3,
+      "fast-simai": {
+        "paired": 3,
+        "unpaired": 0,
+        "geomean_speedup": 1.6694417006592814,
+        "wins": 3,
+        "ties": 0,
+        "losses": 0,
+        "minimum": 1.3131302246384045,
+        "maximum": 2.2624848520214456
+      },
+      "spreadout": {
+        "paired": 3,
+        "unpaired": 0,
+        "geomean_speedup": 1.202515170351839,
+        "wins": 1,
+        "ties": 0,
+        "losses": 2,
+        "minimum": 0.8038623902711199,
+        "maximum": 2.27711974979902
+      }
+    },
+    "leaf-route-asymmetric": {
+      "conditions": 3,
+      "complete_triplets": 3,
+      "fast-simai": {
+        "paired": 3,
+        "unpaired": 0,
+        "geomean_speedup": 1.5508666095617323,
+        "wins": 3,
+        "ties": 0,
+        "losses": 0,
+        "minimum": 1.0453724611974309,
+        "maximum": 2.2815687099627886
+      },
+      "spreadout": {
+        "paired": 3,
+        "unpaired": 0,
+        "geomean_speedup": 0.9801796532150443,
+        "wins": 1,
+        "ties": 0,
+        "losses": 2,
+        "minimum": 0.6912455641339975,
+        "maximum": 1.6671842757233246
+      }
+    },
+    "pod-mixed": {
+      "conditions": 3,
+      "complete_triplets": 3,
+      "fast-simai": {
+        "paired": 3,
+        "unpaired": 0,
+        "geomean_speedup": 2.1694592152387706,
+        "wins": 3,
+        "ties": 0,
+        "losses": 0,
+        "minimum": 1.0358094667818885,
+        "maximum": 3.462813944861596
+      },
+      "spreadout": {
+        "paired": 3,
+        "unpaired": 0,
+        "geomean_speedup": 1.1890653024652962,
+        "wins": 1,
+        "ties": 0,
+        "losses": 2,
+        "minimum": 0.8313931526743653,
+        "maximum": 2.352366846681742
+      }
+    },
+    "multi-cut-mixed": {
+      "conditions": 3,
+      "complete_triplets": 3,
+      "fast-simai": {
+        "paired": 3,
+        "unpaired": 0,
+        "geomean_speedup": 1.460184517291432,
+        "wins": 3,
+        "ties": 0,
+        "losses": 0,
+        "minimum": 1.0168316757582738,
+        "maximum": 1.8325322824590997
+      },
+      "spreadout": {
+        "paired": 3,
+        "unpaired": 0,
+        "geomean_speedup": 0.9137233042348039,
+        "wins": 1,
+        "ties": 0,
+        "losses": 2,
+        "minimum": 0.7965557747489709,
+        "maximum": 1.110922733052971
+      }
+    }
+  },
+  "primary_by_family": {
+    "balanced": {
+      "conditions": 5,
+      "complete_triplets": 5,
+      "fast-simai": {
+        "paired": 5,
+        "unpaired": 0,
+        "geomean_speedup": 1.1796249979637525,
+        "wins": 5,
+        "ties": 0,
+        "losses": 0,
+        "minimum": 1.0168316757582738,
+        "maximum": 1.5798361281607003
+      },
+      "spreadout": {
+        "paired": 5,
+        "unpaired": 0,
+        "geomean_speedup": 1.922306243842261,
+        "wins": 5,
+        "ties": 0,
+        "losses": 0,
+        "minimum": 1.110922733052971,
+        "maximum": 2.6457847165902733
+      }
+    },
+    "zipf08": {
+      "conditions": 5,
+      "complete_triplets": 5,
+      "fast-simai": {
+        "paired": 5,
+        "unpaired": 0,
+        "geomean_speedup": 2.456262518363549,
+        "wins": 5,
+        "ties": 0,
+        "losses": 0,
+        "minimum": 1.8325322824590997,
+        "maximum": 3.462813944861596
+      },
+      "spreadout": {
+        "paired": 5,
+        "unpaired": 0,
+        "geomean_speedup": 0.8749417999073078,
+        "wins": 0,
+        "ties": 0,
+        "losses": 5,
+        "minimum": 0.7965557747489709,
+        "maximum": 0.9973968546250694
+      }
+    },
+    "zipf12": {
+      "conditions": 5,
+      "complete_triplets": 5,
+      "fast-simai": {
+        "paired": 5,
+        "unpaired": 0,
+        "geomean_speedup": 1.8524923285853692,
+        "wins": 5,
+        "ties": 0,
+        "losses": 0,
+        "minimum": 1.5639351103619679,
+        "maximum": 2.8467244821970104
+      },
+      "spreadout": {
+        "paired": 5,
+        "unpaired": 0,
+        "geomean_speedup": 0.8293897573976251,
+        "wins": 0,
+        "ties": 0,
+        "losses": 5,
+        "minimum": 0.6912455641339975,
+        "maximum": 0.9530805020671506
+      }
+    }
+  },
+  "path_features": [
+    {
+      "topology": "leaf-uniform",
+      "gpu_count": 128,
+      "server_pairs": 992,
+      "standalone_bandwidth_gbps": [
+        400
+      ],
+      "propagation_us_min": 1.6,
+      "propagation_us_max": 3.0,
+      "endpoint_asymmetry_fraction": 0.0,
+      "shared_bandwidth_gbps": [
+        400
+      ]
+    },
+    {
+      "topology": "leaf-mixed",
+      "gpu_count": 128,
+      "server_pairs": 992,
+      "standalone_bandwidth_gbps": [
+        100,
+        200,
+        400
+      ],
+      "propagation_us_min": 1.6,
+      "propagation_us_max": 11.6,
+      "endpoint_asymmetry_fraction": 0.0,
+      "shared_bandwidth_gbps": [
+        100,
+        200,
+        400
+      ]
+    },
+    {
+      "topology": "leaf-route-asymmetric",
+      "gpu_count": 128,
+      "server_pairs": 992,
+      "standalone_bandwidth_gbps": [
+        100,
+        200,
+        400
+      ],
+      "propagation_us_min": 1.6,
+      "propagation_us_max": 11.6,
+      "endpoint_asymmetry_fraction": 0.5967741935483871,
+      "shared_bandwidth_gbps": [
+        100,
+        200,
+        400
+      ]
+    },
+    {
+      "topology": "pod-mixed",
+      "gpu_count": 128,
+      "server_pairs": 992,
+      "standalone_bandwidth_gbps": [
+        400
+      ],
+      "propagation_us_min": 1.6,
+      "propagation_us_max": 10.0,
+      "endpoint_asymmetry_fraction": 0.0,
+      "shared_bandwidth_gbps": [
+        400,
+        1600
+      ]
+    },
+    {
+      "topology": "multi-cut-mixed",
+      "gpu_count": 128,
+      "server_pairs": 992,
+      "standalone_bandwidth_gbps": [
+        100,
+        200,
+        400
+      ],
+      "propagation_us_min": 1.6,
+      "propagation_us_max": 19.1,
+      "endpoint_asymmetry_fraction": 0.0,
+      "shared_bandwidth_gbps": [
+        100,
+        200,
+        400
+      ]
+    },
+    {
+      "topology": "leaf-route-asymmetric",
+      "gpu_count": 64,
+      "server_pairs": 240,
+      "standalone_bandwidth_gbps": [
+        100,
+        200,
+        400
+      ],
+      "propagation_us_min": 1.6,
+      "propagation_us_max": 8.6,
+      "endpoint_asymmetry_fraction": 0.5333333333333333,
+      "shared_bandwidth_gbps": [
+        100,
+        200,
+        400
+      ]
+    },
+    {
+      "topology": "leaf-route-asymmetric",
+      "gpu_count": 256,
+      "server_pairs": 4032,
+      "standalone_bandwidth_gbps": [
+        100,
+        200,
+        400
+      ],
+      "propagation_us_min": 1.6,
+      "propagation_us_max": 11.6,
+      "endpoint_asymmetry_fraction": 0.626984126984127,
+      "shared_bandwidth_gbps": [
+        100,
+        200,
+        400
+      ]
+    }
+  ],
+  "timing_ranges": {
+    "fast-simai": {
+      "communication_ms": [
+        0.654448,
+        44.323019
+      ],
+      "planning_seconds": [
+        0.048603942000000004,
+        27.313170116000002
+      ],
+      "core_seconds": null
+    },
+    "spreadout": {
+      "communication_ms": [
+        1.171191,
+        38.008561
+      ],
+      "planning_seconds": [
+        0.009332191,
+        0.23088567000000002
+      ],
+      "core_seconds": null
+    },
+    "resource-maxq": {
+      "communication_ms": [
+        0.442663,
+        38.478173
+      ],
+      "planning_seconds": [
+        0.463268093,
+        225.20649376
+      ],
+      "core_seconds": [
+        0.32670178499999997,
+        222.589651354
+      ]
+    }
+  },
+  "diagnostics": [
+    {
+      "case": "leaf-uniform-gpu128-balanced-s4101-m4-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 30.555,
+      "stage_release_skew_mean_us": 44.80967741935484
+    },
+    {
+      "case": "leaf-uniform-gpu128-balanced-s4101-m4-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 13.223,
+      "stage_release_skew_mean_us": 3.6486299212598423
+    },
+    {
+      "case": "leaf-uniform-gpu128-balanced-s4101-m4-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 0.0,
+      "stage_release_skew_mean_us": 2.7232580645161293
+    },
+    {
+      "case": "leaf-uniform-gpu128-zipf12-s4101-m4-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 272.895,
+      "stage_release_skew_mean_us": 64.65670405982907
+    },
+    {
+      "case": "leaf-uniform-gpu128-zipf12-s4101-m4-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 313.758,
+      "stage_release_skew_mean_us": 174.90169291338583
+    },
+    {
+      "case": "leaf-uniform-gpu128-zipf12-s4101-m4-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 12.423,
+      "stage_release_skew_mean_us": 171.4808153846154
+    },
+    {
+      "case": "leaf-uniform-gpu128-zipf08-s4101-m4-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 375.003,
+      "stage_release_skew_mean_us": 37.3483237791932
+    },
+    {
+      "case": "leaf-uniform-gpu128-zipf08-s4101-m4-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 142.792,
+      "stage_release_skew_mean_us": 85.23328346456694
+    },
+    {
+      "case": "leaf-uniform-gpu128-zipf08-s4101-m4-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 6.345,
+      "stage_release_skew_mean_us": 65.88312280701754
+    },
+    {
+      "case": "leaf-mixed-gpu128-balanced-s4101-m4-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 152.884,
+      "stage_release_skew_mean_us": 227.34970967741936
+    },
+    {
+      "case": "leaf-mixed-gpu128-balanced-s4101-m4-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 139.232,
+      "stage_release_skew_mean_us": 82.5403937007874
+    },
+    {
+      "case": "leaf-mixed-gpu128-balanced-s4101-m4-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 219.757,
+      "stage_release_skew_mean_us": 130.7491935483871
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-balanced-s4101-m4-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 197.844,
+      "stage_release_skew_mean_us": 199.17325806451612
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-balanced-s4101-m4-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 93.698,
+      "stage_release_skew_mean_us": 46.82375590551181
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-balanced-s4101-m4-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 217.026,
+      "stage_release_skew_mean_us": 186.12870967741935
+    },
+    {
+      "case": "leaf-mixed-gpu128-zipf08-s4101-m4-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 1111.533,
+      "stage_release_skew_mean_us": 155.22263269639063
+    },
+    {
+      "case": "leaf-mixed-gpu128-zipf08-s4101-m4-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 415.22,
+      "stage_release_skew_mean_us": 346.4045433070866
+    },
+    {
+      "case": "leaf-mixed-gpu128-zipf08-s4101-m4-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 92.455,
+      "stage_release_skew_mean_us": 334.95429479768785
+    },
+    {
+      "case": "leaf-mixed-gpu128-zipf12-s4101-m4-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 919.632,
+      "stage_release_skew_mean_us": 282.7501730769231
+    },
+    {
+      "case": "leaf-mixed-gpu128-zipf12-s4101-m4-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 727.061,
+      "stage_release_skew_mean_us": 665.494874015748
+    },
+    {
+      "case": "leaf-mixed-gpu128-zipf12-s4101-m4-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 77.884,
+      "stage_release_skew_mean_us": 918.0151846153847
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-zipf08-s4101-m4-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 956.113,
+      "stage_release_skew_mean_us": 96.4511889596603
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-zipf08-s4101-m4-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 230.358,
+      "stage_release_skew_mean_us": 176.09162992125985
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-zipf08-s4101-m4-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 30.97,
+      "stage_release_skew_mean_us": 196.54831395348836
+    },
+    {
+      "case": "pod-mixed-gpu128-balanced-s4101-m4-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 185.684,
+      "stage_release_skew_mean_us": 118.74516129032257
+    },
+    {
+      "case": "pod-mixed-gpu128-balanced-s4101-m4-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 186.287,
+      "stage_release_skew_mean_us": 73.42338582677165
+    },
+    {
+      "case": "pod-mixed-gpu128-balanced-s4101-m4-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 92.798,
+      "stage_release_skew_mean_us": 106.94793548387096
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-zipf12-s4101-m4-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 774.105,
+      "stage_release_skew_mean_us": 157.40794764957266
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-zipf12-s4101-m4-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 412.404,
+      "stage_release_skew_mean_us": 330.9979842519685
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-zipf12-s4101-m4-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 51.504,
+      "stage_release_skew_mean_us": 378.06672020725387
+    },
+    {
+      "case": "pod-mixed-gpu128-zipf12-s4101-m4-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 826.005,
+      "stage_release_skew_mean_us": 131.07134294871796
+    },
+    {
+      "case": "pod-mixed-gpu128-zipf12-s4101-m4-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 295.431,
+      "stage_release_skew_mean_us": 189.85011023622047
+    },
+    {
+      "case": "pod-mixed-gpu128-zipf12-s4101-m4-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 40.399,
+      "stage_release_skew_mean_us": 193.11361855670103
+    },
+    {
+      "case": "pod-mixed-gpu128-zipf08-s4101-m4-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 1125.008,
+      "stage_release_skew_mean_us": 78.59524203821655
+    },
+    {
+      "case": "pod-mixed-gpu128-zipf08-s4101-m4-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 153.531,
+      "stage_release_skew_mean_us": 85.41341732283465
+    },
+    {
+      "case": "pod-mixed-gpu128-zipf08-s4101-m4-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 49.415,
+      "stage_release_skew_mean_us": 88.03101734104047
+    },
+    {
+      "case": "multi-cut-mixed-gpu128-balanced-s4101-m4-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 1004.638,
+      "stage_release_skew_mean_us": 1167.4518709677418
+    },
+    {
+      "case": "multi-cut-mixed-gpu128-balanced-s4101-m4-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 577.257,
+      "stage_release_skew_mean_us": 326.2047559055118
+    },
+    {
+      "case": "multi-cut-mixed-gpu128-balanced-s4101-m4-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 114,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 879.588,
+      "stage_release_skew_mean_us": 1085.5867096774193
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-balanced-s4101-m1-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 46.402,
+      "stage_release_skew_mean_us": 44.58032258064516
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-balanced-s4101-m1-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 67.962,
+      "stage_release_skew_mean_us": 32.08926771653543
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-balanced-s4101-m1-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 41.852,
+      "stage_release_skew_mean_us": 39.70212903225807
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-balanced-s4101-m16-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 1631.845,
+      "stage_release_skew_mean_us": 1536.4620967741935
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-balanced-s4101-m16-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 236.634,
+      "stage_release_skew_mean_us": 112.20763779527559
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-balanced-s4101-m16-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 1208.705,
+      "stage_release_skew_mean_us": 1604.8550967741935
+    },
+    {
+      "case": "multi-cut-mixed-gpu128-zipf12-s4101-m4-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 1739.527,
+      "stage_release_skew_mean_us": 411.21773290598287
+    },
+    {
+      "case": "multi-cut-mixed-gpu128-zipf12-s4101-m4-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 695.072,
+      "stage_release_skew_mean_us": 1003.0649763779527
+    },
+    {
+      "case": "multi-cut-mixed-gpu128-zipf12-s4101-m4-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 152.383,
+      "stage_release_skew_mean_us": 917.2200459183673
+    },
+    {
+      "case": "multi-cut-mixed-gpu128-zipf08-s4101-m4-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 2119.229,
+      "stage_release_skew_mean_us": 252.67611464968152
+    },
+    {
+      "case": "multi-cut-mixed-gpu128-zipf08-s4101-m4-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 561.382,
+      "stage_release_skew_mean_us": 431.2900551181103
+    },
+    {
+      "case": "multi-cut-mixed-gpu128-zipf08-s4101-m4-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 134.695,
+      "stage_release_skew_mean_us": 603.3217134502923
+    },
+    {
+      "case": "pod-mixed-gpu128-balanced-s4101-m1-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 58.963,
+      "stage_release_skew_mean_us": 41.752322580645156
+    },
+    {
+      "case": "pod-mixed-gpu128-balanced-s4101-m1-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 185.544,
+      "stage_release_skew_mean_us": 67.70278740157481
+    },
+    {
+      "case": "pod-mixed-gpu128-balanced-s4101-m1-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 81.779,
+      "stage_release_skew_mean_us": 28.871129032258064
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-zipf12-s4101-m1-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 772.46,
+      "stage_release_skew_mean_us": 89.81515491452993
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-zipf12-s4101-m1-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 151.996,
+      "stage_release_skew_mean_us": 102.32871653543306
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-zipf12-s4101-m1-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 37.82,
+      "stage_release_skew_mean_us": 91.06303626943006
+    },
+    {
+      "case": "pod-mixed-gpu128-balanced-s4101-m16-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 512,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 768.397,
+      "stage_release_skew_mean_us": 509.76896774193546
+    },
+    {
+      "case": "pod-mixed-gpu128-balanced-s4101-m16-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 179.224,
+      "stage_release_skew_mean_us": 117.00588976377954
+    },
+    {
+      "case": "pod-mixed-gpu128-balanced-s4101-m16-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 464,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 440.092,
+      "stage_release_skew_mean_us": 434.0186451612903
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-zipf12-s4101-m16-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 780.578,
+      "stage_release_skew_mean_us": 419.67308974358974
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-zipf12-s4101-m16-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 1998.965,
+      "stage_release_skew_mean_us": 1723.970094488189
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-zipf12-s4101-m16-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 64.906,
+      "stage_release_skew_mean_us": 1507.5267846153847
+    },
+    {
+      "case": "pod-mixed-gpu128-zipf12-s4101-m1-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 825.284,
+      "stage_release_skew_mean_us": 93.33683226495727
+    },
+    {
+      "case": "pod-mixed-gpu128-zipf12-s4101-m1-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 175.335,
+      "stage_release_skew_mean_us": 70.29449606299212
+    },
+    {
+      "case": "pod-mixed-gpu128-zipf12-s4101-m1-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 53.285,
+      "stage_release_skew_mean_us": 62.75809743589743
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-balanced-s4101-m4-rho0.3",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 323.758,
+      "stage_release_skew_mean_us": 256.47467741935486
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-balanced-s4101-m4-rho0.3",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 109.542,
+      "stage_release_skew_mean_us": 57.83757480314961
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-balanced-s4101-m4-rho0.3",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 286.897,
+      "stage_release_skew_mean_us": 252.37625806451612
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-balanced-s4101-m4-rho0.6",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 285.804,
+      "stage_release_skew_mean_us": 375.21825806451614
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-balanced-s4101-m4-rho0.6",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 135.7,
+      "stage_release_skew_mean_us": 78.63518897637795
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-balanced-s4101-m4-rho0.6",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 302.274,
+      "stage_release_skew_mean_us": 367.23506451612906
+    },
+    {
+      "case": "pod-mixed-gpu128-zipf12-s4101-m16-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 828.971,
+      "stage_release_skew_mean_us": 328.017202991453
+    },
+    {
+      "case": "pod-mixed-gpu128-zipf12-s4101-m16-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 1166.865,
+      "stage_release_skew_mean_us": 812.4119763779528
+    },
+    {
+      "case": "pod-mixed-gpu128-zipf12-s4101-m16-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 65.646,
+      "stage_release_skew_mean_us": 887.5796530612245
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-zipf12-s4101-m4-rho0.3",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 809.72,
+      "stage_release_skew_mean_us": 177.83267735042733
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-zipf12-s4101-m4-rho0.3",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 505.899,
+      "stage_release_skew_mean_us": 432.92177165354326
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-zipf12-s4101-m4-rho0.3",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 50.842,
+      "stage_release_skew_mean_us": 530.4625129533679
+    },
+    {
+      "case": "pod-mixed-gpu128-balanced-s4101-m4-rho0.3",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 284.766,
+      "stage_release_skew_mean_us": 183.3968387096774
+    },
+    {
+      "case": "pod-mixed-gpu128-balanced-s4101-m4-rho0.3",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 198.124,
+      "stage_release_skew_mean_us": 78.87541732283465
+    },
+    {
+      "case": "pod-mixed-gpu128-balanced-s4101-m4-rho0.3",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 123.29,
+      "stage_release_skew_mean_us": 141.45138709677417
+    },
+    {
+      "case": "pod-mixed-gpu128-balanced-s4101-m4-rho0.6",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 430.623,
+      "stage_release_skew_mean_us": 288.00051612903223
+    },
+    {
+      "case": "pod-mixed-gpu128-balanced-s4101-m4-rho0.6",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 191.408,
+      "stage_release_skew_mean_us": 92.45755905511811
+    },
+    {
+      "case": "pod-mixed-gpu128-balanced-s4101-m4-rho0.6",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 234.865,
+      "stage_release_skew_mean_us": 241.36774193548388
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-zipf12-s4101-m4-rho0.6",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 835.895,
+      "stage_release_skew_mean_us": 199.41627136752138
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-zipf12-s4101-m4-rho0.6",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 566.402,
+      "stage_release_skew_mean_us": 647.3531732283465
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-zipf12-s4101-m4-rho0.6",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 54.13,
+      "stage_release_skew_mean_us": 749.3178238341969
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu64-balanced-s4101-m4-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 241.123,
+      "stage_release_skew_mean_us": 282.61926666666665
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu64-balanced-s4101-m4-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 118.287,
+      "stage_release_skew_mean_us": 69.30728571428571
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu64-balanced-s4101-m4-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 208.826,
+      "stage_release_skew_mean_us": 162.67806666666667
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu64-zipf12-s4101-m4-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 131.62,
+      "stage_release_skew_mean_us": 187.5894864864865
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu64-zipf12-s4101-m4-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 332.64,
+      "stage_release_skew_mean_us": 270.84915873015876
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu64-zipf12-s4101-m4-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 28.876,
+      "stage_release_skew_mean_us": 417.5720588235294
+    },
+    {
+      "case": "pod-mixed-gpu128-zipf12-s4101-m4-rho0.3",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 8,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 834.698,
+      "stage_release_skew_mean_us": 132.75775106837605
+    },
+    {
+      "case": "pod-mixed-gpu128-zipf12-s4101-m4-rho0.3",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 294.715,
+      "stage_release_skew_mean_us": 213.15211023622047
+    },
+    {
+      "case": "pod-mixed-gpu128-zipf12-s4101-m4-rho0.3",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 40.274,
+      "stage_release_skew_mean_us": 204.67240206185568
+    },
+    {
+      "case": "pod-mixed-gpu128-zipf12-s4101-m4-rho0.6",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 42,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 843.187,
+      "stage_release_skew_mean_us": 163.93701282051282
+    },
+    {
+      "case": "pod-mixed-gpu128-zipf12-s4101-m4-rho0.6",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 293.466,
+      "stage_release_skew_mean_us": 294.09950393700785
+    },
+    {
+      "case": "pod-mixed-gpu128-zipf12-s4101-m4-rho0.6",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 16,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 41.175,
+      "stage_release_skew_mean_us": 369.899324742268
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu256-balanced-s4101-m4-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 101.951,
+      "stage_release_skew_mean_us": 132.43673015873014
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu256-balanced-s4101-m4-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 75.722,
+      "stage_release_skew_mean_us": 37.22340784313725
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu256-balanced-s4101-m4-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 97.801,
+      "stage_release_skew_mean_us": 95.37233333333333
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-llama-w1-lmid-b64-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 331.0,
+      "stage_release_skew_mean_us": 141.81151048951048
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-llama-w1-lmid-b64-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 245.656,
+      "stage_release_skew_mean_us": 135.84022834645668
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-llama-w1-lmid-b64-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 199.714,
+      "stage_release_skew_mean_us": 91.83648412698413
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-deepseek-w1-lmid-b64-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 2325.225,
+      "stage_release_skew_mean_us": 89.60268788249695
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-deepseek-w1-lmid-b64-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 203.107,
+      "stage_release_skew_mean_us": 87.54632283464568
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-deepseek-w1-lmid-b64-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 43.621,
+      "stage_release_skew_mean_us": 142.96838679245283
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-kimi-w1-lmid-b64-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 2507.122,
+      "stage_release_skew_mean_us": 89.47357142857143
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-kimi-w1-lmid-b64-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 127.871,
+      "stage_release_skew_mean_us": 127.39360629921259
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu128-kimi-w1-lmid-b64-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 45.829,
+      "stage_release_skew_mean_us": 152.1062314814815
+    },
+    {
+      "case": "pod-mixed-gpu128-llama-w1-lmid-b64-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 432.166,
+      "stage_release_skew_mean_us": 132.9299463869464
+    },
+    {
+      "case": "pod-mixed-gpu128-llama-w1-lmid-b64-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 334.012,
+      "stage_release_skew_mean_us": 127.22913385826772
+    },
+    {
+      "case": "pod-mixed-gpu128-llama-w1-lmid-b64-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 328.945,
+      "stage_release_skew_mean_us": 90.36415322580646
+    },
+    {
+      "case": "pod-mixed-gpu128-deepseek-w1-lmid-b64-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 2714.704,
+      "stage_release_skew_mean_us": 106.53877356181151
+    },
+    {
+      "case": "pod-mixed-gpu128-deepseek-w1-lmid-b64-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 192.369,
+      "stage_release_skew_mean_us": 72.28643307086614
+    },
+    {
+      "case": "pod-mixed-gpu128-deepseek-w1-lmid-b64-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 56.082,
+      "stage_release_skew_mean_us": 75.70417142857143
+    },
+    {
+      "case": "pod-mixed-gpu128-kimi-w1-lmid-b64-rho0",
+      "method": "fast-simai",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 2760.925,
+      "stage_release_skew_mean_us": 95.95793220338983
+    },
+    {
+      "case": "pod-mixed-gpu128-kimi-w1-lmid-b64-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 198.589,
+      "stage_release_skew_mean_us": 81.89448818897638
+    },
+    {
+      "case": "pod-mixed-gpu128-kimi-w1-lmid-b64-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 42.778,
+      "stage_release_skew_mean_us": 73.84399056603775
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu256-zipf12-s4101-m4-rho0",
+      "method": "spreadout",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 903.413,
+      "stage_release_skew_mean_us": 890.5180745098039
+    },
+    {
+      "case": "leaf-route-asymmetric-gpu256-zipf12-s4101-m4-rho0",
+      "method": "resource-maxq",
+      "pfc_observed_records_in_foreground": 0,
+      "pfc_note": "raw hook observations, not unique pause frames or pause duration",
+      "source_completion_skew_us": 120.167,
+      "stage_release_skew_mean_us": 487.9371044083527
+    }
+  ]
+}

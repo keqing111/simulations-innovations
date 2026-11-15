@@ -3,8 +3,11 @@
 这是当前研究的集中入口，不复制核心算法、不重排历史目录。
 
 - [简版报告：依据、流程、代码路径和已知局限](REPORT.md)
+- [最新扩展结果：41条件、123回放，FAST/Spreadout主对照](EXPANDED_RESULTS.md)
+- [扩展实验预登记：混合异构、不对称路径、规模和压力](EXPANDED_EXPERIMENT.md)
 - [拓扑×负载实验矩阵](experiment_matrix.json)
-- [异构实验入口](experiment.py)：构建拓扑、分布与字节规模，复用现有四方法回放
+- [异构实验入口](experiment.py)：构建拓扑、分布与字节规模，复用现有回放；expanded仅三方法
+- [只读汇总](summarize.py)：逐实验块、分布、路径特征和PFC/错位诊断，不启动仿真
 - [首轮异构×负载结果](PILOT_RESULTS.md)：18条件、72回放，含负结果
 - [完整输入迁移验证](../../HETEROGENEOUS_TOPOLOGY_VALIDATION.md)
 - [前期机制和消融报告](../../WAN_BUDGET_ITERATIONS_REPORT.md)
@@ -49,6 +52,14 @@ python3 research/resource_a2av/experiment.py --phase pilot --prepare-only \
 python3 research/resource_a2av/experiment.py --phase pilot --workers 3 \
   --binary /path/to/SimAI_simulator \
   --out astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot
+
+# 新41条件、123次回放；不要复用已有输出目录，也不因失败重跑该目录
+python3 research/resource_a2av/experiment.py --phase expanded --workers 3 --timeout 300 \
+  --binary /path/to/SimAI_simulator --trace-root /path/to/private/expert-traces \
+  --out /path/to/new-expanded-output
+
+# 完成后的派生汇总，不再启动后端
+python3 research/resource_a2av/summarize.py /path/to/completed-expanded-output
 ```
 
 运行实际回放需要与结果指纹一致的SimAI/ns-3后端。仓库的ns-3子模块固定在`3e0c7c1bfbbe9f77890ddcf5e5b9c79fc6dd7437`，另加本目录导出的[本地运行时补丁](runtime/ns3-local.patch)。在干净子模块根目录中先`git apply --check ../research/resource_a2av/runtime/ns3-local.patch`，核对后才应用；已有修改的子模块不要盲目重复应用。补丁是源码快照，不是“已在新克隆中重新构建通过”的声明。

@@ -1,0 +1,66 @@
+{
+  "planned_conditions": 41,
+  "planned_replays": 123,
+  "actual_backend_runs": 123,
+  "status_counts": {
+    "success": 122,
+    "timeout": 1
+  },
+  "execution_fingerprints_verified": 122,
+  "all_successful_original_pair_delivery_verified": true,
+  "unchanged_registered_source_hashes": true,
+  "backend_applied_routes_verified": 3278144,
+  "failed_run_retries": 0,
+  "paired": {
+    "fast": 40,
+    "spreadout": 41
+  },
+  "tests": {
+    "scoped_passed": 95,
+    "scoped_skipped": 6,
+    "full_passed": 247,
+    "full_skipped": 11,
+    "full_failed": 10,
+    "full_errors": 3,
+    "full_subtests_passed": 128,
+    "inherited_13_issue_set_unchanged": true,
+    "inherited_issue_names": [
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_batch_study.py::BatchStudyTests::test_audit_binds_variant_limits_to_registered_policy",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_batch_study.py::BatchStudyTests::test_direct_pair_misrouting_cannot_pass_just_by_conserving_bytes",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_batch_study.py::BatchStudyTests::test_mutated_registration_is_not_treated_as_frozen_grid",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_batch_study.py::BatchStudyTests::test_real_prepare_and_audit_reject_corrupt_membership",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_ei_study.py::EiStudyTests::test_boundary_plot_labels_only_real_winner_changes",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_ei_study.py::EiStudyTests::test_smoke_outputs_complete_grid_and_rejects_changed_artifact",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_paper_fast.py::StudyDriverTests::test_fingerprint_includes_matching_repair_and_schedule_construction_dependencies",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_paper_fast.py::StudyDriverTests::test_old_packet_scenarios_cannot_be_combined_with_new_analytical_study",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_paper_fast.py::StudyDriverTests::test_small_study_persists_all_policies_and_valid_selected_plan",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_tail_study.py::TailStudyTests::test_another_valid_full_decomposition_cannot_impersonate_registered_partition",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_packet_trace.py::PacketTraceTests::test_actual_cpp_layout_and_wrapped_payload_reconstruction",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_packet_trace.py::PacketTraceTests::test_truncated_headers_records_and_invalid_events_are_rejected",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_packet_trace.py::PacketTraceTests::test_wrong_flow_sequence_or_truncated_payload_is_not_silently_counted"
+    ]
+  },
+  "independent_review": {
+    "critical": 0,
+    "important": 0,
+    "path_projections": 53056,
+    "old_pilot_run_records_unchanged": 72,
+    "minor_deferred": "plot128G means128GPUs; explicit report clarification"
+  },
+  "evidence": {
+    "file": "compact-evidence.tar.gz",
+    "bytes": 20432898,
+    "sha256": "661e6e8cf2259ddb1342d80cce4aca5849a5007232e03bdb167e9d65e9827c3a",
+    "members": 980,
+    "detailed_event_witness_cases": [
+      "leaf-route-asymmetric-gpu128-balanced-s4101-m4-rho0",
+      "leaf-route-asymmetric-gpu128-zipf12-s4101-m4-rho0"
+    ],
+    "other_synthetic_raw_files": "hash references only; full279MB bundle retained locally",
+    "member_hashes_verified": true,
+    "excludes": "raw expert inputs, real matrices/plans/events, full packet traces, executables and credentials"
+  },
+  "note": "Timeouts not converted to speedups. Source-only/archive is not a fresh-clone backend build verification.",
+  "report_primary_rows_verified": 15,
+  "summary_analysis_sha256": "8ca2f54ef9fefcdf333bcb7e8ed7028b9e91b2c99c1e9f037fa1bb5691b8e4cf"
+}

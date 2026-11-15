@@ -20,12 +20,13 @@ def prepare_resources(topology):
     for i,path in enumerate(paths):
         ids=tuple(path['resource_ids']);tau=path['propagation_us'];wan=[r for r in ids if r in wans]
         if (len(set(ids))!=len(ids) or any(not 0<=r<len(rates) for r in ids)
-            or len(wan)>1 or not math.isfinite(tau) or tau<0):raise ValueError('invalid or multi-WAN path')
+            or not math.isfinite(tau) or tau<0):raise ValueError('invalid resource path')
         if i//n!=i%n and not ids:raise ValueError('real server pair must have a resource path')
-        edge=dict(src=i//n,dst=i%n,path=ids,tau=tau,wan=wan[0] if wan else None,
+        edge=dict(src=i//n,dst=i%n,path=ids,tau=tau,wans=tuple(wan),
                   endpoints=() if not ids else (ids[0],ids[-1]))
         edges.append(edge)
-        if i//n!=i%n:groups.setdefault(edge['wan'],[]).append(i)
+        if i//n!=i%n:
+            for r in wan or (None,):groups.setdefault(r,[]).append(i)
     return dict(n=n,g=g,edges=edges,rates=list(rates),names=list(names),wans=wans,groups=groups)
 
 
@@ -150,7 +151,7 @@ def propose_quanta(R,U,res,anchor):
     for i,edge in enumerate(res['edges']):
         s,d=edge['src'],edge['dst']
         full=max(U[i*g:(i+1)*g],default=0)
-        if (not full or s==anchor[0] or d==anchor[1] or edge['wan'] is None or edge['wan']==edge_a['wan']
+        if (not full or s==anchor[0] or d==anchor[1] or not edge['wans'] or set(edge['wans']).intersection(edge_a['wans'])
             or not any(U[(s*n+anchor[1])*g:(s*n+anchor[1]+1)*g])):continue
         target=_solo(U,i,full,res)
         if target>=H-1e-10:continue
@@ -194,7 +195,7 @@ def construct_round(R,U,res,anchor,q,H,required_edge=None,diagnostics=None):
     amount=_amounts(U,q,res);remaining=pressure(U,res);load=[0]*len(remaining);delay=[0.]*len(remaining);covered=set()
     for s,d in pins.items():
         i=s*n+d;load,delay,T=_charge(load,delay,i,amount[i],res)
-        if amount[i] and res['edges'][i]['wan'] is not None:covered.add(res['edges'][i]['wan'])
+        if amount[i]:covered.update(res['edges'][i]['wans'])
         if T>H+1e-9:return reject('pinned_budget_exceeded',time_us=T,H_us=H)
     while len(pins)<n:
         comp,graph=_components(R,q,witness,pins);inverse={d:s for s,d in enumerate(witness)};best=None
@@ -206,7 +207,7 @@ def construct_round(R,U,res,anchor,q,H,required_edge=None,diagnostics=None):
                 i=s*n+d;e=res['edges'][i];x=amount[i]
                 new_load,new_delay,T=_charge(load,delay,i,x,res)
                 if T>H+1e-9:continue
-                new_group=x>0 and e['wan'] is not None and e['wan'] not in covered
+                new_group=x>0 and any(r not in covered for r in e['wans'])
                 residual=max((max(0.,remaining[r]-load[r]*.008/res['rates'][r]) for r in e['path']),default=0.)
                 endpoint=max((max(0.,remaining[r]-load[r]*.008/res['rates'][r]) for r in e['endpoints']),default=0.)
                 key=(-int(new_group),-int(x>0),-residual,-endpoint,T,-x,s,d)
@@ -214,7 +215,7 @@ def construct_round(R,U,res,anchor,q,H,required_edge=None,diagnostics=None):
         if best is None:return reject('budget_completion_dead_end',pinned=dict(pins),H_us=H)
         _,s,d,load,delay=best;witness=_force(witness,s,d,graph);pins[s]=d
         i=s*n+d
-        if amount[i] and res['edges'][i]['wan'] is not None:covered.add(res['edges'][i]['wan'])
+        if amount[i]:covered.update(res['edges'][i]['wans'])
     result=evaluate_round(R,U,witness,q,res)
     if result['time_us']>H+1e-9:return reject('completion_budget_exceeded',time_us=result['time_us'],H_us=H)
     if result['Z_R']+result['Z_U']<=0:return reject('no_discrete_progress')
@@ -225,10 +226,15 @@ def select_anchors(U,res):
     work=pressure(U,res);g=res['g'];active=[i for i in range(res['n']**2) if any(U[i*g:(i+1)*g])]
     if not active:return []
     endpoint=lambda i:max((work[r] for r in res['edges'][i]['endpoints']),default=0.)
-    wan=lambda i:work[res['edges'][i]['wan']] if res['edges'][i]['wan'] is not None else 0.
+    wan=lambda i:max((work[r] for r in res['edges'][i]['wans']),default=0.)
     candidates=[]
-    remote=[i for i in active if res['edges'][i]['wan'] is not None]
-    if remote:candidates.append(min(remote,key=lambda i:(-wan(i),-endpoint(i),i)))
+    # Keep representatives of the critical SET, including shared non-WAN
+    # resources. One path covering several tied links is still one anchor.
+    phi=max(work,default=0.)
+    for r,w in enumerate(work):
+        if w>0 and math.isclose(w,phi,rel_tol=1e-12,abs_tol=1e-12):
+            incident=[i for i in active if r in res['edges'][i]['path']]
+            candidates.append(min(incident,key=lambda i:(-endpoint(i),-wan(i),i)))
     candidates.append(min(active,key=lambda i:(-endpoint(i),-wan(i),i)))
     return [(i//res['n'],i%res['n']) for i in dict.fromkeys(candidates)]
 

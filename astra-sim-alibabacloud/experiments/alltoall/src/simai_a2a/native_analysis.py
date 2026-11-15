@@ -156,13 +156,31 @@ def analyze_native_links(schedule,attempt,topology):
     if not gateways:return {'ports':[]}
     runtime=read_native_runtime(schedule,attempt/'native.csv.events.csv')
     dc=schedule.metadata['server_dc_ids'];g=schedule.metadata['native_gpus_per_server']
-    ports={};next_port=defaultdict(lambda:1)
+    ports={};edge_port={};next_port=defaultdict(lambda:1)
     for line in (attempt/'topology.txt').read_text().splitlines()[2:]:
         fields=line.split();a,b=int(fields[0]),int(fields[1])
         pa,pb=next_port[a],next_port[b];next_port[a]+=1;next_port[b]+=1
+        edge_port[a,b]=(a,pa);edge_port[b,a]=(b,pb)
         if a in gateways and b in gateways:
             ports[a,pa]=(gateways.index(a),gateways.index(b))
             ports[b,pb]=(gateways.index(b),gateways.index(a))
+    # DC endpoints are insufficient when a flow transits other DCs. Follow
+    # the same fixed routing table as the backend, counting every WAN hop.
+    flow_ports={}
+    route_file=attempt/'routes.csv'
+    if route_file.exists():
+        route={}
+        for line in route_file.read_text().splitlines():
+            u,dst,v=map(int,line.split(','));route[u,dst]=v
+        for f in schedule.flows:
+            u=f.src;seen=set();used=set()
+            while u!=f.dst:
+                if u in seen or (u,f.dst) not in route:raise ValueError('incomplete or cyclic fixed route')
+                seen.add(u);v=route[u,f.dst]
+                if (u,v) not in edge_port:raise ValueError('fixed route uses missing physical link')
+                if edge_port[u,v] in ports:used.add(edge_port[u,v])
+                u=v
+            flow_ports[f.flow_id]=used
     packets=rows(attempt/'native_wan.csv');injection=rows(attempt/'native_injection.csv')
     queue_rows=rows(attempt/'native_wan_queue.csv')
     injected=[(r['time_ns'],r['flow_id'],r['injected_bytes']) for r in injection]
@@ -170,7 +188,8 @@ def analyze_native_links(schedule,attempt,topology):
     summaries=[]
     for (node,port),(src_dc,dst_dc) in ports.items():
         selected={f.flow_id:f.size_bytes for f in schedule.flows
-                  if (dc[f.src//g],dc[f.dst//g])==(src_dc,dst_dc)}
+                  if ((node,port) in flow_ports[f.flow_id] if route_file.exists()
+                      else (dc[f.src//g],dc[f.dst//g])==(src_dc,dst_dc))}
         transmissions=[(r['start_ns'],r['start_ns']+r['duration_ns']) for r in packets
                        if (r['node_id'],r['port_id'])==(node,port)]
         queues=[(r['time_ns'],r['queue_bytes']) for r in queue_rows

@@ -6,6 +6,28 @@ from simai_a2a.model import Schedule,ScheduledFlow
 
 
 class NativeAnalysisTests(unittest.TestCase):
+    def test_transit_flow_counts_against_every_fixed_wan_hop(self):
+        from simai_a2a.native_analysis import analyze_native_links
+        schedule=Schedule('test',[ScheduledFlow(0,0,2,100,0,'inter',0)],None,
+            dict(native_rank_count=3,native_gpus_per_server=1,n_stages=1,server_dc_ids=[0,1,2]))
+        with tempfile.TemporaryDirectory() as tmp:
+            p=Path(tmp)
+            (p/'topology.txt').write_text('12 1 0 3 4 H100\n9 10 11\n'
+                '0 9 100Gbps 1ns 0\n9 10 100Gbps 1ns 0\n10 11 100Gbps 1ns 0\n11 2 100Gbps 1ns 0\n')
+            (p/'routes.csv').write_text('0,2,9\n9,2,10\n10,2,11\n11,2,2\n')
+            (p/'native.csv.events.csv').write_text('time_ns,event,flow_id,rank,stage\n'
+                '0,begin,-1,-1,-1\n0,redis_done,-1,0,0\n0,redis_done,-1,1,0\n'
+                '0,credit_send,0,2,0\n5,credit_arrive,0,0,0\n5,data_release,0,0,0\n'
+                '20,data_ready,0,2,0\n20,redis_done,-1,2,0\n25,ack_done,0,0,0\n25,finished,-1,-1,-1\n')
+            (p/'native_wan.csv').write_text('start_ns,node_id,port_id,duration_ns,wire_bytes,kind,flow_id,payload_bytes\n'
+                '5,9,2,4,120,0,0,100\n10,10,2,4,120,0,0,100\n')
+            (p/'native_injection.csv').write_text('time_ns,flow_id,injected_bytes\n5,0,100\n')
+            (p/'native_wan_queue.csv').write_text('time_ns,node_id,port_id,queue_bytes\n')
+            result=analyze_native_links(schedule,p,{'gateway_ids':[9,10,11]})
+            eligible={(x['src_dc'],x['dst_dc']):x['eligible_payload_bytes'] for x in result['ports']}
+            self.assertEqual(eligible[(0,1)],100)
+            self.assertEqual(eligible[(1,2)],100)
+
     def test_background_queue_at_foreground_epoch_is_not_lost(self):
         from simai_a2a.native_analysis import link_idle_statistics
         result=link_idle_statistics(100,200,{}, {},[],[],[(90,1000),(150,0)])

@@ -31,11 +31,40 @@ class ResourceBudgetValuationTests(unittest.TestCase):
         self.assertAlmostEqual(evaluate_round(R,U,[2,3,0,1],1000000,shared)['time_us'],170.)
         self.assertAlmostEqual(evaluate_round(R,U,[2,3,0,1],1000000,independent)['time_us'],90.)
 
-    def test_real_pressure_does_not_count_padding_and_rejects_multiwan(self):
+    def test_real_pressure_does_not_count_padding_and_rejects_duplicate_resources(self):
         from simai_a2a.schedulers.resource_budget import prepare_resources,pressure
         res=prepare_resources(topology(3));self.assertEqual(max(pressure([0]*9,res)),0.)
-        top=topology(3);top['server_paths'][1]['resource_ids'].insert(2,7)
+        top=topology(3);top['server_paths'][1]['resource_ids'].insert(2,6)
         with self.assertRaises(ValueError):prepare_resources(top)
+
+    def test_two_serial_wans_are_charged_once_each_not_added_as_time(self):
+        from simai_a2a.schedulers.resource_budget import prepare_resources,evaluate_round,pressure
+        top=topology(3);top['server_paths'][1]['resource_ids'].insert(2,7)
+        res=prepare_resources(top);R=[[0,1000000,0],[0,0,1000000],[1000000,0,0]]
+        U=[0,1000000,0,0,0,0,0,0,0]
+        work=pressure(U,res)
+        self.assertEqual((work[6],work[7]),(80.,80.))
+        self.assertAlmostEqual(evaluate_round(R,U,[1,2,0],1000000,res)['time_us'],90.)
+
+    def test_paths_with_different_first_wan_still_share_a_later_wan(self):
+        from simai_a2a.schedulers.resource_budget import prepare_resources,evaluate_round,construct_round
+        top=topology(4);shared=len(top['resource_names'])
+        top['resource_names'].append('wan:shared-suffix');top['bandwidth_gbps'].append(100.)
+        for index in (2,7):top['server_paths'][index]['resource_ids'].insert(-1,shared)
+        R=[[0,0,1000000,0],[0,0,0,1000000],[1000000,0,0,0],[0,1000000,0,0]]
+        U=[0,0,1000000,0,0,0,0,1000000]+[0]*8;res=prepare_resources(top)
+        a=evaluate_round(R,U,[2,3,0,1],1000000,res)
+        self.assertEqual(a['resource_bytes'][shared],2000000)
+        self.assertAlmostEqual(a['time_us'],170.)
+        self.assertIsNone(construct_round(R,U,res,(0,2),1000000,90.))
+
+    def test_anchor_representatives_cover_all_tied_bottlenecks(self):
+        from simai_a2a.schedulers.resource_budget import prepare_resources,pressure,select_anchors
+        res=prepare_resources(topology(4));U=[0,8,0,0,8,0,0,0,0,6,0,2,0,0,8,0]
+        work=pressure(U,res);critical={r for r,w in enumerate(work) if w==max(work)}
+        anchors=select_anchors(U,res)
+        represented={r for s,d in anchors for r in res['edges'][s*4+d]['path']}
+        self.assertTrue(critical<=represented)
 
     def test_anchor_cap_is_five_not_its_full_eight_bytes(self):
         from simai_a2a.schedulers.resource_budget import anchored_cap

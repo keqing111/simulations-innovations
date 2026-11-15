@@ -32,17 +32,22 @@ METHODS=('fast-simai','spreadout','legacy-v1','resource-full','resource-split')
 
 def fixture(name):
     if name in ('independent-wan','shared-wan','handoff'):return original_fixture(name)
-    matrix,hw,top=original_fixture('handoff')
+    matrix,hw,top=original_fixture('shared-wan' if name=='shared-dense' else 'handoff')
     units=[[0,8,0,0],[8,0,0,0],[0,6,0,2],[0,0,8,0]]
     if name.startswith('chain'):
         units=[[0,2,0,6],[2,0,6,0],[0,6,0,2],[6,0,2,0]]
+        if name=='chain-tied-supported':units[1][2]=units[2][1]=10
+        if name=='chain-near':units[1][2]=units[2][1]=9
         gw=top.gateway_ids
-        top=replace(top,links=tuple(replace(e,bandwidth_gbps=(150 if name=='chain-tied' and {e.src,e.dst}=={gw[1],gw[2]} else e.bandwidth_gbps))
+        middle=150 if name=='chain-tied' else 200 if name in ('chain-tied-supported','chain-near') else 100
+        top=replace(top,links=tuple(replace(e,bandwidth_gbps=(middle if {e.src,e.dst}=={gw[1],gw[2]} else e.bandwidth_gbps))
             for e in top.links if not(e.src in gw and e.dst in gw) or abs(gw.index(e.src)-gw.index(e.dst))==1))
+    elif name=='shared-dense':units=[[8*int(s!=d) for d in range(4)] for s in range(4)]
     elif name=='handoff-tied':units[2][1]=8
     elif name=='handoff-small':units=[[v//2 for v in row] for row in units]
     elif name=='handoff-large':units=[[v*2 for v in row] for row in units]
     elif name=='handoff-heavy-witness':units[2][3]=6
+    elif name=='handoff-tail':units[2][0]=8
     elif name=='handoff-permuted':
         order=[2,1,0,3];units=[[units[s][d] for d in order] for s in order]
     else:raise ValueError('unknown mechanism fixture: '+name)
@@ -73,7 +78,7 @@ def run(out,binary,cases,methods,prepare_only=False):
     for name in cases:
         directory=out/name;directory.mkdir();matrix,hw,top=fixture(name);routes=fixed_routes(top)
         tm=write_fabric(top,routes,directory);tm.update(tor_port_capacity_gbps=400,foreground_start_ns=1000000)
-        dc_ids=[s//(2 if name=='shared-wan' else 1) for s in range(4)]
+        dc_ids=[s//(2 if name in ('shared-wan','shared-dense') else 1) for s in range(4)]
         snapshot=server_snapshot(top,hw,routes);dump(directory/'planner_topology.json',snapshot)
         mm=write_matrix_artifact(matrix,directory/'matrix');write_micro_workload(matrix,directory/'workload.csv')
         hardware=dict(schema_version=1,num_servers=4,gpus_per_server=2,intra_alpha_ns=100,intra_beta_ns_per_byte=.0023,

@@ -37,4 +37,4 @@
 - [x] Minimal implementation GREEN; no class hierarchy or scheduler duplication.
 - [x] Pre-register18pilot cases,72methods; run with3workers and per-method180s timeout, retain failures without retry.
 - [x] Validate byte delivery/fingerprints and per-case common inputs, summarize all paired speedups, CPU and negative cases. Report actual scope, not unexecuted phases.
-- [ ] Fresh scoped/full tests, preserve inherited13failure set, read-only review, compact data commit and update only new remote branch.
+- [x] Fresh scoped/full tests, preserve inherited13failure set, read-only review, compact data commit and update only new remote branch.

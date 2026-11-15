@@ -25,14 +25,18 @@
 
 ### Task 1: Main comparisons and ledger
 
-- [ ] Add literal tests for three methods, correct baseline/new ratios, factor columns, no fake missing baseline, LF CSV.
-- [ ] Implement optionalmethods and explicitFAST/Spreadout plot refs; add grouped rawtime/speedup figures.
-- [ ] Regenerate main comparison from existingpilot only, verify unchanged FCT and save new figure without deleting historical plot.
+- [x] Add literal tests for three methods, correct baseline/new ratios, factor columns, no fake missing baseline, LF CSV.
+- [x] Implement optionalmethods and explicitFAST/Spreadout plot refs; add grouped rawtime/speedup figures.
+- [x] Regenerate main comparison from existingpilot only, verify unchanged FCT and save new figure without deleting historical plot.
 
 ### Task 2: Mixed physical fabrics and fixed expanded grid
 
-- [ ] Tests RED for known100G/7.3us forward vs400G/3us reverse, allGPU projections, mixedPod256 connectivity, mixedcut paths,41block counts, background routing/normalization and zero-size validation.
-- [ ] Implement minimal matrix/latency support and dynamicPod/cut sizes, optional background route classes preserving legacy GPU routes. Keepold phases exact.
-- [ ] Pre-register grid, source snapshots and conditions, commit code; execute123newruns3workers timeout300s per method, retain all failures.
-- [ ] Verify full contracts/delivery, report all blocks and negatives vsFAST/Spreadout, separate CPU.
-- [ ] Scope/full tests, independent read-only review, archive compact results, update report/current research branch with no rawprivate data.
+- [x] Tests RED for known100G/7.3us forward vs400G/3us reverse, allGPU projections, mixedPod256 connectivity, mixedcut paths,41block counts, background routing/normalization and zero-size validation.
+- [x] Implement minimal matrix/latency support and dynamicPod/cut sizes, optional background route classes preserving legacy GPU routes. Keepold phases exact.
+- [x] Pre-register grid, source snapshots and conditions, commit code; execute123newruns3workers timeout300s per method, retain all failures.
+- [x] Verify full contracts/delivery, report all blocks and negatives vsFAST/Spreadout, separate CPU.
+- [x] Scope/full tests, independent read-only review, archive compact results, update report/current research branch with no rawprivate data.
+
+## Completion receipt
+
+123 attempts ended:122success,1FASTtimeout retained;40FASTpairs(1.757705x),41Spreadoutpairs(1.159816x,20wins21losses).95scopedpass6skip;247fullpass11skip plus13unchangedinheritedissues. All122successfulfingerprints/delivery and3,278,144appliedroutesverified. Compact20,432,898-byte synthetic-onlyevidencebundlememberhashespassed. Resultsandcaveats: `research/resource_a2av/EXPANDED_RESULTS.md`. Read-onlyreview9944797..cbfa0b6 foundnoCritical/Important;minor128Glabelclarifiedindocs,notchangedinlockedsource. No mergeorPR; researchsnapshotonly.

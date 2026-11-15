@@ -175,7 +175,7 @@ def propose_quanta(R,U,res,anchor):
     return proposals
 
 
-def construct_round(R,U,res,anchor,q,H,required_edge=None,diagnostics=None):
+def construct_round(R,U,res,anchor,q,H,required_edge=None,diagnostics=None,*,relax=False):
     """Resource-directed greedy construction with SCC-supported legal completion.
 
     One full support witness is maintained, but its unused edges do not select
@@ -192,6 +192,13 @@ def construct_round(R,U,res,anchor,q,H,required_edge=None,diagnostics=None):
         pins[s]=d
     witness=_support(R,q,pins)
     if witness is None:return reject('no_support_completion')
+    certificate=evaluate_round(R,U,witness,q,res)
+    # Anchor-exclusive time is not a feasible deadline when other selected
+    # flows must share it. The existing support witness certifies a feasible
+    # upper window without another optimizer or abandoning the anchor.
+    if relax:H=max(H,certificate['time_us'])
+    certificate['effective_H_us']=H
+    if certificate['time_us']>H+1e-9 or certificate['Z_R']+certificate['Z_U']<=0:certificate=None
     amount=_amounts(U,q,res);remaining=pressure(U,res);load=[0]*len(remaining);delay=[0.]*len(remaining);covered=set()
     for s,d in pins.items():
         i=s*n+d;load,delay,T=_charge(load,delay,i,amount[i],res)
@@ -212,34 +219,115 @@ def construct_round(R,U,res,anchor,q,H,required_edge=None,diagnostics=None):
                 endpoint=max((max(0.,remaining[r]-load[r]*.008/res['rates'][r]) for r in e['endpoints']),default=0.)
                 key=(-int(new_group),-int(x>0),-residual,-endpoint,T,-x,s,d)
                 if best is None or key<best[0]:best=(key,s,d,new_load,new_delay)
-        if best is None:return reject('budget_completion_dead_end',pinned=dict(pins),H_us=H)
+        if best is None:
+            if certificate is not None:
+                certificate['completion_reused']=True
+                return certificate
+            return reject('budget_completion_dead_end',pinned=dict(pins),H_us=H)
         _,s,d,load,delay=best;witness=_force(witness,s,d,graph);pins[s]=d
         i=s*n+d
         if amount[i]:covered.update(res['edges'][i]['wans'])
     result=evaluate_round(R,U,witness,q,res)
     if result['time_us']>H+1e-9:return reject('completion_budget_exceeded',time_us=result['time_us'],H_us=H)
     if result['Z_R']+result['Z_U']<=0:return reject('no_discrete_progress')
+    result['effective_H_us']=H
     return result
 
 
-def select_anchors(U,res):
+def select_anchors(U,res,*,near=False):
     work=pressure(U,res);g=res['g'];active=[i for i in range(res['n']**2) if any(U[i*g:(i+1)*g])]
     if not active:return []
-    endpoint=lambda i:max((work[r] for r in res['edges'][i]['endpoints']),default=0.)
+    send=[0.]*res['n'];receive=send[:]
+    for i in active:
+        e=res['edges'][i];s,d=e['src'],e['dst']
+        cost=_solo(U,i,max(U[i*g:(i+1)*g]),res)+res['edges'][d*res['n']+s]['tau']
+        send[s]+=cost;receive[d]+=cost
+    endpoint=lambda i:max(send[res['edges'][i]['src']],receive[res['edges'][i]['dst']])
     wan=lambda i:max((work[r] for r in res['edges'][i]['wans']),default=0.)
     candidates=[]
-    # Keep representatives of the critical SET, including shared non-WAN
-    # resources. One path covering several tied links is still one anchor.
+    # Keep critical resources and WANs which can catch the leader within their
+    # representative's full-flow window: L_r + H_r >= Phi. No fixed top-k or
+    # percentage threshold. One path covering several links is one anchor.
     phi=max(work,default=0.)
     for r,w in enumerate(work):
-        if w>0 and math.isclose(w,phi,rel_tol=1e-12,abs_tol=1e-12):
-            incident=[i for i in active if r in res['edges'][i]['path']]
-            candidates.append(min(incident,key=lambda i:(-endpoint(i),-wan(i),i)))
+        critical=w>0 and math.isclose(w,phi,rel_tol=1e-12,abs_tol=1e-12)
+        if w<=0 or not(critical or near and r in res['wans']):continue
+        incident=[i for i in active if r in res['edges'][i]['path']]
+        i=min(incident,key=lambda i:(-endpoint(i),-wan(i),i))
+        H=_solo(U,i,max(U[i*g:(i+1)*g]),res)
+        if critical or w+H>=phi-1e-9:candidates.append(i)
     candidates.append(min(active,key=lambda i:(-endpoint(i),-wan(i),i)))
     return [(i//res['n'],i%res['n']) for i in dict.fromkeys(candidates)]
 
 
-def plan(prepared,topology,allow_split=True):
+def _advance_frontier(U,action,frontier,res):
+    """Small fluid/credit proxy, NOT a runtime timer or congestion simulator."""
+    send,receive=[x[:] for x in frontier];n=res['n'];amount=_amounts(U,action['q'],res)
+    for s,d in enumerate(action['p']):
+        i=s*n+d
+        if not amount[i]:continue
+        edge=res['edges'][i];back=res['edges'][d*n+s]['tau']
+        start=max(frontier[0][s],frontier[1][d]+back)
+        service=max((action['resource_bytes'][r]*.008/res['rates'][r] for r in edge['path']),default=0.)
+        receive[d]=start+edge['tau']+service;send[s]=receive[d]+back
+    return send,receive
+
+
+def _remaining_time(U,frontier,res):
+    """Dependency-frontier + serial peer work heuristic; not an ns-3 bound."""
+    n,g=res['n'],res['g'];send=[0.]*n;receive=send[:]
+    first_send=[math.inf]*n;first_receive=first_send[:];first_resource=[math.inf]*len(res['rates'])
+    for i,e in enumerate(res['edges']):
+        amount=sum(U[i*g:(i+1)*g])
+        if not amount:continue
+        s,d=e['src'],e['dst'];back=res['edges'][d*n+s]['tau']
+        cost=e['tau']+back+max((amount*.008/res['rates'][r] for r in e['path']),default=0.)
+        ready=max(frontier[0][s],frontier[1][d]+back)
+        send[s]+=cost;receive[d]+=cost
+        first_send[s]=min(first_send[s],ready);first_receive[d]=min(first_receive[d],ready)
+        for r in e['path']:first_resource[r]=min(first_resource[r],ready)
+    values=list(frontier[0])+list(frontier[1])
+    values += [a+w for a,w in zip(first_send,send) if w]+[a+w for a,w in zip(first_receive,receive) if w]
+    values += [a+w for a,w in zip(first_resource,pressure(U,res)) if w]
+    return max(values,default=0.)
+
+
+def _full_action(R,U,res,anchor):
+    s,d=anchor;i=s*res['n']+d;g=res['g'];cap,_=anchored_cap(R,anchor)
+    q=min(cap,max(U[i*g:(i+1)*g],default=0))
+    if not q:return None
+    H=_solo(U,i,q,res);action=construct_round(R,U,res,anchor,q,H,relax=True)
+    if action is not None:action.update(anchor=anchor,H_us=H,reason='handoff_followup',witness=None,next_edge=None,accepted=True,failure=None)
+    return action
+
+
+def _interleave(R,U,res,first,proposal,full_q,frontier,diagnostics):
+    """Compare qP;bQ against aP;bQ;(q-a)P: exactly equal terminal R and U."""
+    p=first['p'];q=min(full_q,min(R[s][d] for s,d in enumerate(p)));a=first['q']
+    if q<=a:return None
+    base=evaluate_round(R,U,p,q,res)
+    follow=_full_action(base['R_next'],base['U_next'],res,proposal['next_edge'])
+    if follow is None:return None
+    middle=evaluate_round(first['R_next'],first['U_next'],follow['p'],follow['q'],res)
+    middle.update({k:follow[k] for k in ('anchor','H_us','reason','witness','next_edge','accepted','failure')})
+    tail=evaluate_round(middle['R_next'],middle['U_next'],p,q-a,res)
+    if any(step['Z_R']+step['Z_U']<=0 for step in (middle,tail)):return None
+    if tail['R_next']!=follow['R_next'] or tail['U_next']!=follow['U_next']:raise ArithmeticError('interleaving changed terminal work')
+    def estimate(steps):
+        state=frontier;remaining=U
+        for step in steps:
+            state=_advance_frontier(remaining,step,state,res);remaining=step['U_next']
+        return _remaining_time(remaining,state,res)
+    plain=estimate((base,follow));split=estimate((first,middle,tail))
+    if split>=plain-1e-9:
+        diagnostics.update(code='no_predicted_interleaving_gain',baseline_us=plain,interleave_us=split)
+        return None
+    tail.update(anchor=first['anchor'] if 'anchor' in first else None,H_us=None,reason='interleave_tail',witness=None,next_edge=None)
+    first.update(baseline_block_us=plain,interleave_block_us=split)
+    return [middle,tail]
+
+
+def plan(prepared,topology,allow_split=True,*,split_guard=True,near_anchors=False):
     started=time.process_time_ns();res=prepare_resources(topology);n,g=res['n'],res['g']
     R=[row[:] for row in prepared['R']];U=list(prepared['U'])
     if (prepared['n']!=n or prepared['g']!=g or len(R)!=n or any(len(row)!=n for row in R)
@@ -250,43 +338,51 @@ def plan(prepared,topology,allow_split=True):
     if len(set(sums))!=1:raise ValueError('auxiliary rows/columns must have equal sums')
     pressure(U,res) # validates zero diagonal real traffic
     bound=sum(v>0 for row in R for v in row)+sum(v>0 for v in U)
-    trace=[];permutations=[];coefficients=[];pending=None
+    trace=[];permutations=[];coefficients=[];pending=deque();frontier=([0.]*n,[0.]*n)
     while any(v for row in R for v in row):
         candidates=[];attempts=[]
-        for anchor in ([] if pending is not None else select_anchors(U,res)):
-            for proposal in propose_quanta(R,U,res,anchor):
+        for anchor in ([] if pending else select_anchors(U,res,near=near_anchors)):
+            proposals=propose_quanta(R,U,res,anchor)
+            for proposal in proposals:
                 if not allow_split and proposal['reason']=='handoff':continue
                 failure={}
-                action=construct_round(R,U,res,anchor,proposal['q'],proposal['H_us'],proposal['witness'],diagnostics=failure)
+                action=construct_round(R,U,res,anchor,proposal['q'],proposal['H_us'],proposal['witness'],
+                    diagnostics=failure,relax=proposal['reason']!='handoff')
                 # A split and its handoff are ONE decision. Prevalidate the
                 # successor against this exact residual and retain it, rather
                 # than letting the next greedy round forget why we split.
                 if action is not None and proposal['next_edge'] is not None:
                     edge=proposal['next_edge'];nr,nu=action['R_next'],action['U_next']
-                    follow_proposals=propose_quanta(nr,nu,res,edge)
-                    f=follow_proposals[0] if follow_proposals else None
-                    follow=construct_round(nr,nu,res,edge,f['q'],f['H_us']) if f else None
-                    if follow is None:
-                        action=None;failure.update(code='no_progressing_handoff_completion')
+                    if split_guard:
+                        following=_interleave(R,U,res,action,proposal,proposals[0]['q'],frontier,failure)
                     else:
-                        follow.update(anchor=edge,H_us=f['H_us'],reason='handoff_followup',
-                            witness=None,next_edge=None,accepted=True,failure=None)
-                        action['continuation']=follow
+                        follow=_full_action(nr,nu,res,edge);following=[follow] if follow is not None else None
+                    if following is None:
+                        action=None
+                        if not failure:failure.update(code='no_progressing_handoff_completion')
+                    else:action['continuation']=following
                 info=dict(anchor=anchor,**proposal,accepted=action is not None,failure=failure or None)
                 attempts.append(info)
                 if action is not None and action['bytes']:
+                    state=_advance_frontier(U,action,frontier,res);remaining=action['U_next']
+                    for step in action.get('continuation',[]):
+                        state=_advance_frontier(remaining,step,state,res);remaining=step['U_next']
+                    action['decision_us']=_remaining_time(remaining,state,res)
                     action.update(info);candidates.append(action)
-        fallback=not candidates and pending is None
-        if pending is not None:
-            action=pending;pending=None
+        fallback=not candidates and not pending
+        if pending:
+            action=pending.popleft()
         elif candidates:
-            action=min(candidates,key=lambda a:(a['score'],-a['bytes'],a['time_us'],-a['q'],tuple(a['p'])))
+            key=(lambda a:(round(a['decision_us'],9),a['time_us'],-a['bytes'],-a['q'],tuple(a['p']))) if split_guard else (
+                lambda a:(a['score'],-a['bytes'],a['time_us'],-a['q'],tuple(a['p'])))
+            action=min(candidates,key=key)
         else:
             q,p=anchored_cap(R)
             if p is None:raise ValueError('no legal fallback matching')
             action=evaluate_round(R,U,p,q,res);action.update(anchor=None,H_us=None,reason='fallback',witness=None,next_edge=None)
         if action['Z_R']+action['Z_U']<=0:raise ArithmeticError('round made no discrete progress')
-        pending=action.pop('continuation',None)
+        pending.extend(action.pop('continuation',[]))
+        frontier=_advance_frontier(U,action,frontier,res)
         permutations.append(action['p']);coefficients.append(action['q'])
         R=action.pop('R_next');U=action.pop('U_next')
         trace.append(dict(**action,fallback=fallback,attempts=attempts))
@@ -294,4 +390,5 @@ def plan(prepared,topology,allow_split=True):
     if any(U):raise ArithmeticError('auxiliary drain left real data behind')
     return dict(permutations=permutations,coefficients=coefficients,trace=trace,remaining_U=U,
                 stage_bound=bound,planner_cpu_us=(time.process_time_ns()-started)/1000,
-                time_model='per-resource max propagation + summed serialization; proxy only',allow_split=allow_split)
+                time_model='resource capacity + asynchronous endpoint frontier; proxy only',
+                allow_split=allow_split,split_guard=split_guard,near_anchors=near_anchors)

@@ -3,8 +3,10 @@ from pathlib import Path
 import unittest
 import numpy as np
 
-def smoke_module():
-    path=Path(__file__).resolve().parents[1]/'tools/run_wan_budget_smoke.py'
+def smoke_module(tool='run_wan_budget_smoke.py'):
+    import sys
+    path=Path(__file__).resolve().parents[1]/'tools'/tool
+    if str(path.parent) not in sys.path:sys.path.insert(0,str(path.parent))
     spec=importlib.util.spec_from_file_location('wan_smoke',path);module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
     return module
 
@@ -30,7 +32,7 @@ class SmokePreparationTests(unittest.TestCase):
         from simai_a2a.schedulers.resource_budget import plan
         from simai_a2a.leafspine import fixed_routes,server_snapshot
         matrix,hw,top=smoke_module().fixture('handoff');prepared=prepare(matrix,hw)
-        snapshot=server_snapshot(top,hw,fixed_routes(top));result=plan(prepared,snapshot)
+        snapshot=server_snapshot(top,hw,fixed_routes(top));result=plan(prepared,snapshot,split_guard=False)
         first=result['trace'][0];self.assertEqual(first['reason'],'handoff')
         self.assertEqual(first['q'],2*262144);self.assertEqual(first['Z_R'],0);self.assertGreater(first['Z_U'],0)
         self.assertEqual(first['witness'],(2,3))
@@ -41,10 +43,34 @@ class SmokePreparationTests(unittest.TestCase):
         from simai_a2a.schedulers.resource_budget import plan
         from simai_a2a.leafspine import fixed_routes,server_snapshot
         matrix,hw,top=smoke_module().fixture('handoff')
-        result=plan(prepare(matrix,hw),server_snapshot(top,hw,fixed_routes(top)))
+        result=plan(prepare(matrix,hw),server_snapshot(top,hw,fixed_routes(top)),split_guard=False)
         for first,second in zip(result['trace'],result['trace'][1:]):
             if first['reason']=='handoff':
                 s,d=first['next_edge']
                 self.assertEqual(second['p'][s],d)
                 self.assertGreater(second['bytes'],0)
                 self.assertNotEqual(first['p'],second['p'])
+
+    def test_guard_rejects_split_without_nominal_same_work_improvement(self):
+        from simai_a2a.schedulers.simai_plan import prepare
+        from simai_a2a.schedulers.resource_budget import plan
+        from simai_a2a.leafspine import fixed_routes,server_snapshot
+        matrix,hw,top=smoke_module().fixture('handoff')
+        result=plan(prepare(matrix,hw),server_snapshot(top,hw,fixed_routes(top)))
+        self.assertFalse(any(step['reason']=='handoff' for step in result['trace']))
+
+    def test_equal_finish_estimates_do_not_prefer_a_longer_stage_just_for_bytes(self):
+        from simai_a2a.schedulers.simai_plan import prepare
+        from simai_a2a.schedulers.resource_budget import plan
+        from simai_a2a.leafspine import fixed_routes,server_snapshot
+        matrix,hw,top=smoke_module('run_resource_budget_iterations.py').fixture('chain-near')
+        result=plan(prepare(matrix,hw),server_snapshot(top,hw,fixed_routes(top)))
+        self.assertAlmostEqual(result['trace'][0]['time_us'],136.88608)
+
+    def test_real_work_does_not_lose_its_topology_anchor_to_budget_fallback(self):
+        from simai_a2a.schedulers.simai_plan import prepare
+        from simai_a2a.schedulers.resource_budget import plan
+        from simai_a2a.leafspine import fixed_routes,server_snapshot
+        matrix,hw,top=smoke_module().fixture('shared-wan')
+        result=plan(prepare(matrix,hw),server_snapshot(top,hw,fixed_routes(top)))
+        self.assertFalse(any(step['fallback'] and step['bytes'] for step in result['trace']))

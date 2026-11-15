@@ -66,12 +66,61 @@ class ResourceBudgetValuationTests(unittest.TestCase):
         represented={r for s,d in anchors for r in res['edges'][s*4+d]['path']}
         self.assertTrue(critical<=represented)
 
+    def test_near_critical_wan_is_considered_within_its_own_service_window(self):
+        from simai_a2a.schedulers.resource_budget import prepare_resources,select_anchors
+        res=prepare_resources(topology(4,tau=53.))
+        U=[0,4194304,0,0,4194304,0,0,0,0,3145728,0,1048576,0,0,4194304,0]
+        anchors=select_anchors(U,res,near=True)
+        self.assertIn((2,1),anchors)  # gap83.89us < its own304.66us service window
+        self.assertNotIn((2,3),anchors)  # gap251.66us > its136.89us window
+
     def test_anchor_cap_is_five_not_its_full_eight_bytes(self):
         from simai_a2a.schedulers.resource_budget import anchored_cap
         R=[[0,8,1],[4,0,5],[5,1,3]]
         q,p=anchored_cap(R,(0,1));self.assertEqual(q,5);self.assertEqual(p,[1,2,0])
 
 class ResourceBudgetConstructionTests(unittest.TestCase):
+    def test_complete_matching_can_extend_an_infeasible_anchor_only_window(self):
+        from simai_a2a.schedulers.resource_budget import prepare_resources,construct_round
+        top=topology(4);shared=len(top['resource_names'])
+        top['resource_names'].append('wan:shared-suffix');top['bandwidth_gbps'].append(100.)
+        for index in (2,7):top['server_paths'][index]['resource_ids'].insert(-1,shared)
+        R=[[0,0,1000000,0],[0,0,0,1000000],[1000000,0,0,0],[0,1000000,0,0]]
+        U=[0,0,1000000,0,0,0,0,1000000]+[0]*8;res=prepare_resources(top)
+        action=construct_round(R,U,res,(0,2),1000000,90.,relax=True)
+        self.assertIsNotNone(action)
+        self.assertEqual(action['p'][0],2)
+        self.assertAlmostEqual(action['time_us'],170.)
+        self.assertAlmostEqual(action['effective_H_us'],170.)
+
+    def test_greedy_dead_end_does_not_discard_an_already_feasible_completion(self):
+        from simai_a2a.schedulers.resource_budget import prepare_resources,construct_round
+        q=2097152;R=[[q*int(s!=d) for d in range(4)] for s in range(4)]
+        U=[v for row in R for v in row for _ in range(2)]
+        res=prepare_resources(topology(4,2,group=lambda s,d:None if s//2==d//2 else s//2,tau=53.))
+        action=construct_round(R,U,res,(0,2),q,388.54432)
+        self.assertIsNotNone(action)
+        self.assertEqual(action['p'][0],2)
+        self.assertLessEqual(action['time_us'],388.54432)
+
+    def test_dependency_frontier_preserves_independent_rank_overlap(self):
+        from simai_a2a.schedulers.resource_budget import prepare_resources,evaluate_round,_advance_frontier
+        res=prepare_resources(topology(4));R=[[1000000*int(s!=d) for d in range(4)] for s in range(4)]
+        U=[0]*16;U[1]=1000000;U[11]=100000;U[8]=250000
+        first=evaluate_round(R,U,[1,0,3,2],1000000,res)
+        state=_advance_frontier(U,first,([0.]*4,[0.]*4),res)
+        self.assertAlmostEqual(state[0][0],110.)
+        self.assertAlmostEqual(state[0][2],38.)
+        second=evaluate_round(first['R_next'],first['U_next'],[2,3,0,1],250000,res)
+        state=_advance_frontier(first['U_next'],second,state,res)
+        self.assertAlmostEqual(state[0][2],78.)  # not max(stage0)=110 + next flow
+
+    def test_remaining_estimate_includes_serial_peer_work_not_only_nic_bytes(self):
+        from simai_a2a.schedulers.resource_budget import prepare_resources,_remaining_time
+        res=prepare_resources(topology(3));U=[0,1000000,1000000]+[0]*6
+        self.assertAlmostEqual(_remaining_time(U,([0.]*3,[0.]*3),res),210.)
+        self.assertAlmostEqual(_remaining_time(U,([20.,0.,0.],[0.]*3),res),220.)
+
     def test_scc_force_matches_independent_small_graph_oracle(self):
         from simai_a2a.schedulers.resource_budget import _support,_components,_force
         R=[[0,8,1],[4,0,5],[5,1,3]];p=_support(R,1);pins={}

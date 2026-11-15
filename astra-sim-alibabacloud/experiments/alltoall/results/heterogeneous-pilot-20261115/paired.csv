@@ -1,19 +1,37 @@
-case,group,window,layer,seed,fast-simai_ms,fast-simai_status,fast-simai_stages,fast-simai_pair_eligible,fast-simai_pairing_error,fast-simai_core_cpu_ms,spreadout_ms,spreadout_status,spreadout_stages,spreadout_pair_eligible,spreadout_pairing_error,spreadout_core_cpu_ms,volume-maxq_ms,volume-maxq_status,volume-maxq_stages,volume-maxq_pair_eligible,volume-maxq_pairing_error,volume-maxq_core_cpu_ms,resource-maxq_ms,resource-maxq_status,resource-maxq_stages,resource-maxq_pair_eligible,resource-maxq_pairing_error,resource-maxq_core_cpu_ms
-leaf-uniform-gpu64-balanced-s3101-m1-rho0,leaf-uniform/balanced,0,,3101,0.20631,success,15,True,,,0.497673,success,63,True,,,0.136151,success,15,True,,9.641665999999999,0.136151,success,15,True,,2189.110827
-leaf-uniform-gpu64-balanced-s3101-m4-rho0,leaf-uniform/balanced,0,,3101,0.665932,success,15,True,,,0.753106,success,63,True,,,0.377741,success,15,True,,8.041023000000001,0.377741,success,15,True,,2217.327932
-leaf-uniform-gpu64-zipf08-s3101-m1-rho0,leaf-uniform/zipf08,0,,3101,1.412765,success,220,True,,,0.62727,success,63,True,,,0.613206,success,76,True,,48.791819000000004,0.61866,success,77,True,,269.63545799999997
-leaf-uniform-gpu64-zipf08-s3101-m4-rho0,leaf-uniform/zipf08,0,,3101,1.920639,success,220,True,,,1.32597,success,63,True,,,1.349576,success,76,True,,54.586273999999996,1.353648,success,76,True,,297.658418
-leaf-uniform-gpu64-zipf12-s3101-m1-rho0,leaf-uniform/zipf12,0,,3101,1.493682,success,222,True,,,0.780031,success,63,True,,,0.79797,success,88,True,,67.675921,0.799346,success,88,True,,373.28171100000003
-leaf-uniform-gpu64-zipf12-s3101-m4-rho0,leaf-uniform/zipf12,0,,3101,2.440842,success,222,True,,,2.081851,success,63,True,,,2.009229,success,88,True,,58.416754999999995,1.952914,success,88,True,,423.797015
-leaf-bandwidth-gpu64-balanced-s3101-m1-rho0,leaf-bandwidth/balanced,0,,3101,0.459754,success,15,True,,,0.75157,success,63,True,,,0.32769,success,15,True,,7.914167,0.32769,success,15,True,,590.925236
-leaf-bandwidth-gpu64-balanced-s3101-m4-rho0,leaf-bandwidth/balanced,0,,3101,1.857383,success,15,True,,,1.806425,success,63,True,,,1.149361,success,15,True,,9.590571,1.149361,success,15,True,,561.06115
-leaf-bandwidth-gpu64-zipf08-s3101-m1-rho0,leaf-bandwidth/zipf08,0,,3101,1.590263,success,220,True,,,0.992379,success,63,True,,,0.95956,success,76,True,,47.676419,0.960804,success,76,True,,327.87368699999996
-leaf-bandwidth-gpu64-zipf08-s3101-m4-rho0,leaf-bandwidth/zipf08,0,,3101,3.172429,success,220,True,,,2.770047,success,63,True,,,2.873895,success,76,True,,46.887871,2.795471,success,76,True,,283.698779
-leaf-bandwidth-gpu64-zipf12-s3101-m1-rho0,leaf-bandwidth/zipf12,0,,3101,1.786906,success,222,True,,,1.265469,success,63,True,,,1.385555,success,88,True,,62.019093999999996,1.368514,success,87,True,,350.11684399999996
-leaf-bandwidth-gpu64-zipf12-s3101-m4-rho0,leaf-bandwidth/zipf12,0,,3101,4.390858,success,222,True,,,4.014124,success,63,True,,,5.007518,success,88,True,,55.547871,4.951645,success,89,True,,427.02209600000003
-leaf-delay-gpu64-balanced-s3101-m1-rho0,leaf-delay/balanced,0,,3101,0.313788,success,15,True,,,1.194167,success,63,True,,,0.245736,success,15,True,,8.337741,0.245736,success,15,True,,2116.399855
-leaf-delay-gpu64-balanced-s3101-m4-rho0,leaf-delay/balanced,0,,3101,0.672994,success,15,True,,,1.442957,success,63,True,,,0.446229,success,15,True,,7.8534049999999995,0.446229,success,15,True,,2015.295186
-leaf-delay-gpu64-zipf08-s3101-m1-rho0,leaf-delay/zipf08,0,,3101,2.657299,success,220,True,,,1.18863,success,63,True,,,1.205659,success,76,True,,48.444229,1.209401,success,77,True,,319.763139
-leaf-delay-gpu64-zipf08-s3101-m4-rho0,leaf-delay/zipf08,0,,3101,3.060376,success,220,True,,,1.584853,success,63,True,,,1.747726,success,76,True,,46.897544,1.759495,success,77,True,,329.425446
-leaf-delay-gpu64-zipf12-s3101-m1-rho0,leaf-delay/zipf12,0,,3101,2.819762,success,222,True,,,1.227968,success,63,True,,,1.494235,success,88,True,,56.381108,1.44314,success,87,True,,326.97605200000004
-leaf-delay-gpu64-zipf12-s3101-m4-rho0,leaf-delay/zipf12,0,,3101,3.656219,success,222,True,,,2.155304,success,63,True,,,2.52763,success,88,True,,54.342859,2.513281,success,89,True,,339.780993
+case,group,window,layer,seed,topology,gpu_count,family,mib,rho,model,plot_label,fast-simai_ms,fast-simai_status,fast-simai_stages,fast-simai_pair_eligible,fast-simai_pairing_error,fast-simai_core_cpu_ms,spreadout_ms,spreadout_status,spreadout_stages,spreadout_pair_eligible,spreadout_pairing_error,spreadout_core_cpu_ms,volume-maxq_ms,volume-maxq_status,volume-maxq_stages,volume-maxq_pair_eligible,volume-maxq_pairing_error,volume-maxq_core_cpu_ms,resource-maxq_ms,resource-maxq_status,resource-maxq_stages,resource-maxq_pair_eligible,resource-maxq_pairing_error,resource-maxq_core_cpu_ms,fast-simai_speedup,spreadout_speedup,volume-maxq_speedup
+leaf-uniform-gpu64-balanced-s3101-m1-rho0,leaf-uniform/balanced,0,,3101,leaf-uniform,64,balanced,1,0,,"U / balanced
+1 MiB/rank",0.20631,success,15,True,,,0.497673,success,63,True,,,0.136151,success,15,True,,9.641665999999999,0.136151,success,15,True,,2189.110827,1.5153028622632225,3.65530183399314,1.0
+leaf-uniform-gpu64-balanced-s3101-m4-rho0,leaf-uniform/balanced,0,,3101,leaf-uniform,64,balanced,4,0,,"U / balanced
+4 MiB/rank",0.665932,success,15,True,,,0.753106,success,63,True,,,0.377741,success,15,True,,8.041023000000001,0.377741,success,15,True,,2217.327932,1.7629328031640727,1.9937099758829464,1.0
+leaf-uniform-gpu64-zipf08-s3101-m1-rho0,leaf-uniform/zipf08,0,,3101,leaf-uniform,64,zipf08,1,0,,"U / zipf08
+1 MiB/rank",1.412765,success,220,True,,,0.62727,success,63,True,,,0.613206,success,76,True,,48.791819000000004,0.61866,success,77,True,,269.63545799999997,2.2835887240164228,1.013917175831636,0.9911841722432354
+leaf-uniform-gpu64-zipf08-s3101-m4-rho0,leaf-uniform/zipf08,0,,3101,leaf-uniform,64,zipf08,4,0,,"U / zipf08
+4 MiB/rank",1.920639,success,220,True,,,1.32597,success,63,True,,,1.349576,success,76,True,,54.586273999999996,1.353648,success,76,True,,297.658418,1.4188614765433851,0.9795530300343961,0.9969918324409301
+leaf-uniform-gpu64-zipf12-s3101-m1-rho0,leaf-uniform/zipf12,0,,3101,leaf-uniform,64,zipf12,1,0,,"U / zipf12
+1 MiB/rank",1.493682,success,222,True,,,0.780031,success,63,True,,,0.79797,success,88,True,,67.675921,0.799346,success,88,True,,373.28171100000003,1.8686301051109282,0.9758364963357545,0.9982785927495728
+leaf-uniform-gpu64-zipf12-s3101-m4-rho0,leaf-uniform/zipf12,0,,3101,leaf-uniform,64,zipf12,4,0,,"U / zipf12
+4 MiB/rank",2.440842,success,222,True,,,2.081851,success,63,True,,,2.009229,success,88,True,,58.416754999999995,1.952914,success,88,True,,423.797015,1.2498461273768326,1.066022876583403,1.028836395253452
+leaf-bandwidth-gpu64-balanced-s3101-m1-rho0,leaf-bandwidth/balanced,0,,3101,leaf-bandwidth,64,balanced,1,0,,"BW / balanced
+1 MiB/rank",0.459754,success,15,True,,,0.75157,success,63,True,,,0.32769,success,15,True,,7.914167,0.32769,success,15,True,,590.925236,1.4030150447068876,2.2935396258659098,1.0
+leaf-bandwidth-gpu64-balanced-s3101-m4-rho0,leaf-bandwidth/balanced,0,,3101,leaf-bandwidth,64,balanced,4,0,,"BW / balanced
+4 MiB/rank",1.857383,success,15,True,,,1.806425,success,63,True,,,1.149361,success,15,True,,9.590571,1.149361,success,15,True,,561.06115,1.6160135936402922,1.5716776539311843,1.0
+leaf-bandwidth-gpu64-zipf08-s3101-m1-rho0,leaf-bandwidth/zipf08,0,,3101,leaf-bandwidth,64,zipf08,1,0,,"BW / zipf08
+1 MiB/rank",1.590263,success,220,True,,,0.992379,success,63,True,,,0.95956,success,76,True,,47.676419,0.960804,success,76,True,,327.87368699999996,1.655137780442213,1.0328631021519477,0.9987052510189383
+leaf-bandwidth-gpu64-zipf08-s3101-m4-rho0,leaf-bandwidth/zipf08,0,,3101,leaf-bandwidth,64,zipf08,4,0,,"BW / zipf08
+4 MiB/rank",3.172429,success,220,True,,,2.770047,success,63,True,,,2.873895,success,76,True,,46.887871,2.795471,success,76,True,,283.698779,1.1348459705001412,0.9909052893054515,1.0280539486905784
+leaf-bandwidth-gpu64-zipf12-s3101-m1-rho0,leaf-bandwidth/zipf12,0,,3101,leaf-bandwidth,64,zipf12,1,0,,"BW / zipf12
+1 MiB/rank",1.786906,success,222,True,,,1.265469,success,63,True,,,1.385555,success,88,True,,62.019093999999996,1.368514,success,87,True,,350.11684399999996,1.3057272340655632,0.9247029990193742,1.0124521926702978
+leaf-bandwidth-gpu64-zipf12-s3101-m4-rho0,leaf-bandwidth/zipf12,0,,3101,leaf-bandwidth,64,zipf12,4,0,,"BW / zipf12
+4 MiB/rank",4.390858,success,222,True,,,4.014124,success,63,True,,,5.007518,success,88,True,,55.547871,4.951645,success,89,True,,427.02209600000003,0.88674733346191,0.8106647386878502,1.0112837249035422
+leaf-delay-gpu64-balanced-s3101-m1-rho0,leaf-delay/balanced,0,,3101,leaf-delay,64,balanced,1,0,,"D / balanced
+1 MiB/rank",0.313788,success,15,True,,,1.194167,success,63,True,,,0.245736,success,15,True,,8.337741,0.245736,success,15,True,,2116.399855,1.2769313409512648,4.859552527916137,1.0
+leaf-delay-gpu64-balanced-s3101-m4-rho0,leaf-delay/balanced,0,,3101,leaf-delay,64,balanced,4,0,,"D / balanced
+4 MiB/rank",0.672994,success,15,True,,,1.442957,success,63,True,,,0.446229,success,15,True,,7.8534049999999995,0.446229,success,15,True,,2015.295186,1.5081807771346103,3.2336692595057697,1.0
+leaf-delay-gpu64-zipf08-s3101-m1-rho0,leaf-delay/zipf08,0,,3101,leaf-delay,64,zipf08,1,0,,"D / zipf08
+1 MiB/rank",2.657299,success,220,True,,,1.18863,success,63,True,,,1.205659,success,76,True,,48.444229,1.209401,success,77,True,,319.763139,2.197202582104695,0.982825382151991,0.9969059063122985
+leaf-delay-gpu64-zipf08-s3101-m4-rho0,leaf-delay/zipf08,0,,3101,leaf-delay,64,zipf08,4,0,,"D / zipf08
+4 MiB/rank",3.060376,success,220,True,,,1.584853,success,63,True,,,1.747726,success,76,True,,46.897544,1.759495,success,77,True,,329.425446,1.7393490745924258,0.9007431109494486,0.9933111489376212
+leaf-delay-gpu64-zipf12-s3101-m1-rho0,leaf-delay/zipf12,0,,3101,leaf-delay,64,zipf12,1,0,,"D / zipf12
+1 MiB/rank",2.819762,success,222,True,,,1.227968,success,63,True,,,1.494235,success,88,True,,56.381108,1.44314,success,87,True,,326.97605200000004,1.9539074518064774,0.8509001205704227,1.0354054353700957
+leaf-delay-gpu64-zipf12-s3101-m4-rho0,leaf-delay/zipf12,0,,3101,leaf-delay,64,zipf12,4,0,,"D / zipf12
+4 MiB/rank",3.656219,success,222,True,,,2.155304,success,63,True,,,2.52763,success,88,True,,54.342859,2.513281,success,89,True,,339.780993,1.4547593365007734,0.8575658670876835,1.0057092700736605

@@ -113,13 +113,14 @@ def recover_worker(out,case,methods,error):
     return result
 
 
-def paired_summary(rows):
+def paired_summary(rows,methods=METHODS):
     result={}
     for group in ['all']+sorted({r['group'] for r in rows}):
         subset=[r for r in rows if group=='all' or r['group']==group]
         cases={r['case'] for r in subset};lookup={(r['case'],r['method']):r for r in subset}
         result[group]={}
-        for method in METHODS[:-1]:
+        for method in methods:
+            if method=='resource-maxq':continue
             values=[]
             for case in sorted(cases):
                 a=lookup.get((case,'resource-maxq'),{});b=lookup.get((case,method),{})
@@ -148,23 +149,29 @@ def execute(job):
 
 def save_csv(path,rows):
     keys=list(dict.fromkeys(k for row in rows for k in row))
-    with path.open('w') as stream:
-        writer=csv.DictWriter(stream,fieldnames=keys);writer.writeheader();writer.writerows(rows)
+    with path.open('w',newline='') as stream:
+        writer=csv.DictWriter(stream,fieldnames=keys,lineterminator='\n');writer.writeheader();writer.writerows(rows)
 
 
 def finish(out,study):
-    rows=study['runs'];paired=[]
+    rows=study['runs'];paired=[];methods=study.get('methods',METHODS)
     for case in study['cases']:
         group=[r for r in rows if r['case']==case['name']]
         mark_pair_eligibility(group)
         record=dict(case=case['name'],group=case['group'],window=case['window'],layer=case['layer'],seed=case['seed'])
-        for method in METHODS:
+        record.update({k:case[k] for k in ('topology','gpu_count','family','mib','rho','model','block') if k in case})
+        record['plot_label']=case.get('plot_label',case['name'])
+        for method in methods:
             matches=[r for r in group if r['method']==method]
             if len(matches)!=1:raise ValueError('planned method missing or duplicate: '+case['name']+' '+method)
             row=matches[0];record[method+'_ms']=row.get('actual_ms') if row['pair_eligible'] else None
             record[method+'_status']=row['status'];record[method+'_stages']=row.get('stages')
             record[method+'_pair_eligible']=row['pair_eligible'];record[method+'_pairing_error']=row['pairing_error']
             record[method+'_core_cpu_ms']=row['planner_cpu_us']/1000 if row.get('planner_cpu_us') is not None else None
+        for method in methods:
+            if method=='resource-maxq':continue
+            a,b=record.get(method+'_ms'),record.get('resource-maxq_ms')
+            record[method+'_speedup']=a/b if a is not None and b is not None and b>0 else None
         paired.append(record)
     matrices={}
     for case in study['cases']:
@@ -172,26 +179,38 @@ def finish(out,study):
     study.update(complete=len(rows)==study['planned_records'],all_success=all(r['success'] and r['pair_eligible'] for r in rows),
         new_attempts=sum(not r['reused'] and r.get('backend_attempted') is True for r in rows),
         new_attempts_unknown=sum(not r['reused'] and r.get('backend_attempted') is None for r in rows),
-        new_method_records=sum(not r['reused'] for r in rows),summary=paired_summary(rows),
+        new_method_records=sum(not r['reused'] for r in rows),summary=paired_summary(rows,methods),
         duplicate_matrices=[v for v in matrices.values() if len(v)>1])
-    study['previously_unreported_summary']=paired_summary([r for r in rows if r['case'] not in REFERENCE_CASES])['all']
+    study['previously_unreported_summary']=paired_summary([r for r in rows if r['case'] not in REFERENCE_CASES],methods)['all']
     study['reference_conditions']=sorted(REFERENCE_CASES)
     dump(out/'study.json',study);save_csv(out/'paired.csv',paired)
     save_csv(out/'all_runs.csv',[{k:v for k,v in r.items() if k!='input_contract'} for r in rows])
     dump(out/'summary.json',study['summary'])
+    dump(out/'main_summary.json',paired_summary(rows,['fast-simai','spreadout','resource-maxq']))
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
-    fig,axes=plt.subplots(2,1,figsize=(13,8),layout='constrained')
-    labels=[p['case'].replace('-b64-rho0','').replace('-m4-rho0','') for p in paired]
-    for ax,method in zip(axes,['volume-maxq','spreadout']):
-        ratios=[p[method+'_ms']/p['resource-maxq_ms'] if p[method+'_ms'] and p['resource-maxq_ms'] else float('nan') for p in paired]
-        ax.bar(range(len(paired)),ratios,color=['#0891b2' if v>=1 else '#e07b39' for v in ratios])
-        ax.axhline(1,color='#334155',linewidth=1)
-        ax.set(title=f'Reference: {method}; above 1 = Resource-MaxQ faster',ylabel='Speedup (baseline / new)',
-               ylim=(0,max([1]+[v for v in ratios if math.isfinite(v)])*1.12))
-        ax.set_xticks(range(len(labels)),labels,rotation=75,ha='right',fontsize=7)
-    fig.savefig(out/'heldout_speedup.png',dpi=160);plt.close(fig)
+    figures=[]
+    for block in dict.fromkeys(p.get('block','all') for p in paired):
+        subset=[p for p in paired if p.get('block','all')==block];x=list(range(len(subset)))
+        fig,axes=plt.subplots(2,1,figsize=(max(11,len(subset)*.78),8),layout='constrained')
+        labels=[p['plot_label'] for p in subset]
+        for k,(method,label,color) in enumerate([('fast-simai','FAST-SimAI','#94a3b8'),('spreadout','Spreadout','#f59e0b'),('resource-maxq','Resource-aware BvN','#0891b2')]):
+            values=[p.get(method+'_ms') if p.get(method+'_ms') is not None else float('nan') for p in subset]
+            bars=axes[0].bar([i+(k-1)*.25 for i in x],values,width=.25,label=label,color=color)
+            axes[0].bar_label(bars,fmt='%.3f',fontsize=6,padding=2,rotation=60)
+        axes[0].set(ylabel='Complete operation time (ms)',title=f'{block}: lower time is better',ylim=(0,None));axes[0].margins(y=.28);axes[0].legend(fontsize=8)
+        for k,(method,label,color) in enumerate([('fast-simai','over FAST-SimAI','#64748b'),('spreadout','over Spreadout','#d97706')]):
+            values=[p.get(method+'_speedup') if p.get(method+'_speedup') is not None else float('nan') for p in subset]
+            bars=axes[1].bar([i+(k-.5)*.35 for i in x],values,width=.35,label=label,color=color)
+            axes[1].bar_label(bars,fmt='%.3f',fontsize=7,padding=2,rotation=45)
+        axes[1].axhline(1,color='#334155',linestyle='--',linewidth=1)
+        axes[1].set(ylabel='Speedup = baseline time / new time',title='Above 1 = faster; below 1 = slower',ylim=(0,None));axes[1].margins(y=.25);axes[1].legend(fontsize=8)
+        for ax in axes:ax.set_xticks(x,labels,rotation=45,ha='right',fontsize=7)
+        filename='comparison_'+str(block).replace('/','_')+'.png';fig.savefig(out/filename,dpi=160)
+        if not figures:fig.savefig(out/'heldout_speedup.png',dpi=160)
+        figures.append(filename);plt.close(fig)
+    study['main_figures']=figures;dump(out/'study.json',study)
 
 
 def main():

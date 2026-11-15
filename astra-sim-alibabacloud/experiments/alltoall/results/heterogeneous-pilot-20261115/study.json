@@ -14,7 +14,8 @@
       "window": 0,
       "layer": null,
       "model": null,
-      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-uniform-gpu64-balanced-s3101-m1-rho0"
+      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-uniform-gpu64-balanced-s3101-m1-rho0",
+      "plot_label": "U / balanced\n1 MiB/rank"
     },
     {
       "name": "leaf-uniform-gpu64-balanced-s3101-m4-rho0",
@@ -28,7 +29,8 @@
       "window": 0,
       "layer": null,
       "model": null,
-      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-uniform-gpu64-balanced-s3101-m4-rho0"
+      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-uniform-gpu64-balanced-s3101-m4-rho0",
+      "plot_label": "U / balanced\n4 MiB/rank"
     },
     {
       "name": "leaf-uniform-gpu64-zipf08-s3101-m1-rho0",
@@ -42,7 +44,8 @@
       "window": 0,
       "layer": null,
       "model": null,
-      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-uniform-gpu64-zipf08-s3101-m1-rho0"
+      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-uniform-gpu64-zipf08-s3101-m1-rho0",
+      "plot_label": "U / zipf08\n1 MiB/rank"
     },
     {
       "name": "leaf-uniform-gpu64-zipf08-s3101-m4-rho0",
@@ -56,7 +59,8 @@
       "window": 0,
       "layer": null,
       "model": null,
-      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-uniform-gpu64-zipf08-s3101-m4-rho0"
+      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-uniform-gpu64-zipf08-s3101-m4-rho0",
+      "plot_label": "U / zipf08\n4 MiB/rank"
     },
     {
       "name": "leaf-uniform-gpu64-zipf12-s3101-m1-rho0",
@@ -70,7 +74,8 @@
       "window": 0,
       "layer": null,
       "model": null,
-      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-uniform-gpu64-zipf12-s3101-m1-rho0"
+      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-uniform-gpu64-zipf12-s3101-m1-rho0",
+      "plot_label": "U / zipf12\n1 MiB/rank"
     },
     {
       "name": "leaf-uniform-gpu64-zipf12-s3101-m4-rho0",
@@ -84,7 +89,8 @@
       "window": 0,
       "layer": null,
       "model": null,
-      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-uniform-gpu64-zipf12-s3101-m4-rho0"
+      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-uniform-gpu64-zipf12-s3101-m4-rho0",
+      "plot_label": "U / zipf12\n4 MiB/rank"
     },
     {
       "name": "leaf-bandwidth-gpu64-balanced-s3101-m1-rho0",
@@ -98,7 +104,8 @@
       "window": 0,
       "layer": null,
       "model": null,
-      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-bandwidth-gpu64-balanced-s3101-m1-rho0"
+      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-bandwidth-gpu64-balanced-s3101-m1-rho0",
+      "plot_label": "BW / balanced\n1 MiB/rank"
     },
     {
       "name": "leaf-bandwidth-gpu64-balanced-s3101-m4-rho0",
@@ -112,7 +119,8 @@
       "window": 0,
       "layer": null,
       "model": null,
-      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-bandwidth-gpu64-balanced-s3101-m4-rho0"
+      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-bandwidth-gpu64-balanced-s3101-m4-rho0",
+      "plot_label": "BW / balanced\n4 MiB/rank"
     },
     {
       "name": "leaf-bandwidth-gpu64-zipf08-s3101-m1-rho0",
@@ -126,7 +134,8 @@
       "window": 0,
       "layer": null,
       "model": null,
-      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-bandwidth-gpu64-zipf08-s3101-m1-rho0"
+      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-bandwidth-gpu64-zipf08-s3101-m1-rho0",
+      "plot_label": "BW / zipf08\n1 MiB/rank"
     },
     {
       "name": "leaf-bandwidth-gpu64-zipf08-s3101-m4-rho0",
@@ -140,7 +149,8 @@
       "window": 0,
       "layer": null,
       "model": null,
-      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-bandwidth-gpu64-zipf08-s3101-m4-rho0"
+      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-bandwidth-gpu64-zipf08-s3101-m4-rho0",
+      "plot_label": "BW / zipf08\n4 MiB/rank"
     },
     {
       "name": "leaf-bandwidth-gpu64-zipf12-s3101-m1-rho0",
@@ -154,7 +164,8 @@
       "window": 0,
       "layer": null,
       "model": null,
-      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-bandwidth-gpu64-zipf12-s3101-m1-rho0"
+      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-bandwidth-gpu64-zipf12-s3101-m1-rho0",
+      "plot_label": "BW / zipf12\n1 MiB/rank"
     },
     {
       "name": "leaf-bandwidth-gpu64-zipf12-s3101-m4-rho0",
@@ -168,7 +179,8 @@
       "window": 0,
       "layer": null,
       "model": null,
-      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-bandwidth-gpu64-zipf12-s3101-m4-rho0"
+      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-bandwidth-gpu64-zipf12-s3101-m4-rho0",
+      "plot_label": "BW / zipf12\n4 MiB/rank"
     },
     {
       "name": "leaf-delay-gpu64-balanced-s3101-m1-rho0",
@@ -182,7 +194,8 @@
       "window": 0,
       "layer": null,
       "model": null,
-      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-delay-gpu64-balanced-s3101-m1-rho0"
+      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-delay-gpu64-balanced-s3101-m1-rho0",
+      "plot_label": "D / balanced\n1 MiB/rank"
     },
     {
       "name": "leaf-delay-gpu64-balanced-s3101-m4-rho0",
@@ -196,7 +209,8 @@
       "window": 0,
       "layer": null,
       "model": null,
-      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-delay-gpu64-balanced-s3101-m4-rho0"
+      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-delay-gpu64-balanced-s3101-m4-rho0",
+      "plot_label": "D / balanced\n4 MiB/rank"
     },
     {
       "name": "leaf-delay-gpu64-zipf08-s3101-m1-rho0",
@@ -210,7 +224,8 @@
       "window": 0,
       "layer": null,
       "model": null,
-      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-delay-gpu64-zipf08-s3101-m1-rho0"
+      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-delay-gpu64-zipf08-s3101-m1-rho0",
+      "plot_label": "D / zipf08\n1 MiB/rank"
     },
     {
       "name": "leaf-delay-gpu64-zipf08-s3101-m4-rho0",
@@ -224,7 +239,8 @@
       "window": 0,
       "layer": null,
       "model": null,
-      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-delay-gpu64-zipf08-s3101-m4-rho0"
+      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-delay-gpu64-zipf08-s3101-m4-rho0",
+      "plot_label": "D / zipf08\n4 MiB/rank"
     },
     {
       "name": "leaf-delay-gpu64-zipf12-s3101-m1-rho0",
@@ -238,7 +254,8 @@
       "window": 0,
       "layer": null,
       "model": null,
-      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-delay-gpu64-zipf12-s3101-m1-rho0"
+      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-delay-gpu64-zipf12-s3101-m1-rho0",
+      "plot_label": "D / zipf12\n1 MiB/rank"
     },
     {
       "name": "leaf-delay-gpu64-zipf12-s3101-m4-rho0",
@@ -252,7 +269,8 @@
       "window": 0,
       "layer": null,
       "model": null,
-      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-delay-gpu64-zipf12-s3101-m4-rho0"
+      "source": "/home/julius/fast/wan-budget-v1/astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/inputs/leaf-delay-gpu64-zipf12-s3101-m4-rho0",
+      "plot_label": "D / zipf12\n4 MiB/rank"
     }
   ],
   "runs": [
@@ -10965,5 +10983,16 @@
   "analysis_sha256": "f935bb1105e5890ad3c5d6f8d0ea29f935abde40c104a319da3c068a7ced98bf",
   "backend_identity": {
     "sha256": "7f582fc01dba9b9b1c16f8686eca13f3331350a9fd80dc729874c86fb1d4b1ea"
-  }
+  },
+  "main_plot_update": {
+    "baselines": [
+      "fast-simai",
+      "spreadout"
+    ],
+    "audit_source_sha256": "43670c4e36562ad8aa3707f2831bc728a25ed3c64a777ed7fc84d6247b850a07",
+    "simulation_rerun": false
+  },
+  "main_figures": [
+    "comparison_all.png"
+  ]
 }

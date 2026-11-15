@@ -39,7 +39,9 @@
 
 `m1/m4`表示每rank约1/4MiB，不是每个通信对1/4MiB。实际字节与整数块粒度在输入矩阵manifest中保存。
 
-![逐条件通信加速比，线性坐标](../../astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/pilot_speedup.png)
+![主对照：三方法原始ms与相对FAST、Spreadout加速比](../../astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot-20261115/comparison_all.png)
+
+主图已改为FAST/Spreadout，两项速度比都是“基线时间÷新方法时间”，保留三位小数；不是将新方法除以自身。原`pilot_speedup.png`保留为历史内部消融图，其中第一栏相对纯MaxQ，六个均衡条件确实等于1。改变图表没有重跑仿真、修改FCT或更换样本。
 
 ## 能支持的结论
 

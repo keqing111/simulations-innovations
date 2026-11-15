@@ -86,7 +86,7 @@ def fixture(name):
 def dump(path,value):path.write_text(json.dumps(value,indent=2,ensure_ascii=False)+'\n')
 
 
-def run(out,binary,cases,methods,prepare_only=False,source_scenario=None,timeout=90):
+def run(out,binary,cases,methods,prepare_only=False,source_scenario=None,timeout=90,source_topology=None):
     out.mkdir(parents=True,exist_ok=False)
     shutil.copyfile(ROOT/'src/simai_a2a/schedulers/resource_budget.py',out/'planner_snapshot.py')
     shutil.copyfile(Path(__file__),out/'experiment_snapshot.py')
@@ -108,15 +108,22 @@ def run(out,binary,cases,methods,prepare_only=False,source_scenario=None,timeout
         if source_scenario:
             hw,hardware,_=load_hardware(source_scenario/'hardware.json')
             matrix=TrafficMatrix(np.load(source_scenario/'matrix/matrix.npy'),{'source_scenario':str(source_scenario)})
-            top=build_leafspine(hw,hw.num_servers//8)
+            top=source_topology or build_leafspine(hw,hw.num_servers//8)
             if top.serialize()!=(source_scenario/'topology.txt').read_text():raise ValueError('source topology differs from fixed v2 fabric')
             routes={(int(u),int(d)):int(v) for u,d,v in csv.reader((source_scenario/'routes.csv').open())}
         else:matrix,hw,top=fixture(name);routes=fixed_routes(top)
         tm=write_fabric(top,routes,directory);tm.update(tor_port_capacity_gbps=400,foreground_start_ns=1000000)
         if source_scenario:
             tm.update(json.loads((source_scenario/'scenario_manifest.json').read_text())['topology'])
-        dc_ids=[s//(hw.num_servers//len(top.gateway_ids)) for s in range(hw.num_servers)]
-        snapshot=server_snapshot(top,hw,routes);dump(directory/'planner_topology.json',snapshot)
+        dc_ids=tm.get('server_group_ids',[s//(hw.num_servers//max(1,len(top.gateway_ids))) for s in range(hw.num_servers)])
+        snapshot=server_snapshot(top,hw,routes)
+        if source_scenario and (source_scenario/'planner_topology.json').exists():
+            supplied=json.loads((source_scenario/'planner_topology.json').read_text())
+            if 'shared_resource_ids' in supplied:
+                if any(supplied[k]!=snapshot[k] for k in ('n','g','resource_names','bandwidth_gbps','server_paths')):
+                    raise ValueError('source planner topology differs from physical routes')
+                snapshot['shared_resource_ids']=supplied['shared_resource_ids']
+        dump(directory/'planner_topology.json',snapshot)
         mm=write_matrix_artifact(matrix,directory/'matrix');write_micro_workload(matrix,directory/'workload.csv')
         if not source_scenario:
             hardware=dict(schema_version=1,num_servers=4,gpus_per_server=2,intra_alpha_ns=100,intra_beta_ns_per_byte=.0023,

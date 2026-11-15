@@ -16,6 +16,27 @@ def driver():
 
 
 class IterationLedgerTests(unittest.TestCase):
+    def test_reused_scenario_preserves_foreground_epoch_and_background_contract(self):
+        import json
+        import numpy as np
+        from simai_a2a.model import HardwareProfile,LinkModel,TrafficMatrix
+        module=driver()
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);source=root/'source';source.mkdir();binary=root/'not-executed';binary.write_bytes(b'unit fixture')
+            hw=HardwareProfile(16,4,LinkModel(100,.0023),LinkModel(700,.02),'v2-leafspine',400,1)
+            top=module.build_leafspine(hw,2);meta=module.write_fabric(top,module.fixed_routes(top),source)
+            meta.update(foreground_start_ns=2176000,background_horizon_ns=9999999)
+            module.dump(source/'scenario_manifest.json',dict(schema_version=1,topology=meta))
+            hardware=dict(schema_version=1,num_servers=16,gpus_per_server=4,intra_alpha_ns=100,intra_beta_ns_per_byte=.0023,
+                inter_alpha_ns=700,inter_beta_ns_per_byte=.02,topology_id='v2-leafspine',link_bandwidth_gbps=400,oversubscription=1)
+            module.dump(source/'hardware.json',hardware)
+            values=np.zeros((64,64),dtype=np.int64);values[0,32]=100;values[32,0]=100
+            module.write_matrix_artifact(TrafficMatrix(values),source/'matrix');(source/'background.csv').write_text('')
+            module.run(root/'out',binary,['copied'],['resource-maxq'],prepare_only=True,source_scenario=source)
+            copied=json.loads((root/'out/copied/scenario_manifest.json').read_text())['topology']
+            self.assertEqual(copied['foreground_start_ns'],2176000)
+            self.assertEqual(copied['background_horizon_ns'],9999999)
+
     def test_volume_only_baseline_reconstructs_without_topology_selection(self):
         module=driver()
         from test_resource_budget import topology

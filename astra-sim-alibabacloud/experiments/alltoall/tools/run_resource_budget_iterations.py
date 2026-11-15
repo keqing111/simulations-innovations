@@ -113,6 +113,8 @@ def run(out,binary,cases,methods,prepare_only=False,source_scenario=None,timeout
             routes={(int(u),int(d)):int(v) for u,d,v in csv.reader((source_scenario/'routes.csv').open())}
         else:matrix,hw,top=fixture(name);routes=fixed_routes(top)
         tm=write_fabric(top,routes,directory);tm.update(tor_port_capacity_gbps=400,foreground_start_ns=1000000)
+        if source_scenario:
+            tm.update(json.loads((source_scenario/'scenario_manifest.json').read_text())['topology'])
         dc_ids=[s//(hw.num_servers//len(top.gateway_ids)) for s in range(hw.num_servers)]
         snapshot=server_snapshot(top,hw,routes);dump(directory/'planner_topology.json',snapshot)
         mm=write_matrix_artifact(matrix,directory/'matrix');write_micro_workload(matrix,directory/'workload.csv')

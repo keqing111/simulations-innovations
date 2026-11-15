@@ -12,6 +12,14 @@ def topology(n,g=1,group=None,tau=10.,wan_bw=100.):
             propagation_us=0. if s==d else tau) for s in range(n) for d in range(n)])
 
 class ResourceBudgetValuationTests(unittest.TestCase):
+    def test_incremental_budget_keeps_unrelated_peak_and_charges_shared_paths(self):
+        from simai_a2a.schedulers.resource_budget import prepare_resources,_charge_time
+        res=prepare_resources(topology(3));load=[0]*len(res['rates']);delay=[0.]*len(load)
+        # Candidate0->1 uses WAN6. WAN7, unrelated to it, already costs200us.
+        load[7]=2500000
+        self.assertAlmostEqual(_charge_time(load,delay,200.,1,1000000,res),200.)
+        load[7]=0;load[6]=1000000;delay[6]=10.
+        self.assertAlmostEqual(_charge_time(load,delay,90.,1,1000000,res),170.)
     def test_small_q_can_clear_true_work_without_clearing_auxiliary_edge(self):
         from simai_a2a.schedulers.resource_budget import prepare_resources,evaluate_round
         R=[[0,8,1],[4,0,5],[5,1,3]];U=[0,8,1,4,0,2,5,1,0]
@@ -148,6 +156,15 @@ class ResourceBudgetConstructionTests(unittest.TestCase):
             self.assertEqual(q,oracle)
             for s,d in enumerate(p):residual[s][d]-=q
         self.assertFalse(any(result['remaining_U']))
+
+    def test_tied_time_objectives_keep_reference_instead_of_optimizing_bytes(self):
+        from simai_a2a.schedulers.resource_budget import plan
+        R=[[0,0,98304,24576],[8192,81920,0,32768],[81920,0,8192,32768],[32768,40960,16384,32768]]
+        U=[0,0,66593,4451,1926,0,0,6609,9494,0,0,13705,3318,14255,6475,0]
+        top=topology(4,group=lambda s,d:None if s//2==d//2 else s//2,tau=53.)
+        result=plan(dict(n=4,g=1,R=R,U=U),top,maximum_quantum=True)
+        self.assertEqual(result['permutations'][0],[2,1,0,3])
+        self.assertEqual(result['trace'][0]['reason'],'maximum_reference')
 
     def test_scc_force_matches_independent_small_graph_oracle(self):
         from simai_a2a.schedulers.resource_budget import _support,_components,_force

@@ -80,6 +80,14 @@ def _charge(load,delay,i,amount,res):
     return load,delay,time
 
 
+def _charge_time(load,delay,current,i,amount,res):
+    """Only resources on the added path can increase the current maximum."""
+    if not amount:return current
+    edge=res['edges'][i]
+    return max(current,max((max(delay[r],edge['tau'])+(load[r]+amount)*.008/res['rates'][r]
+                            for r in edge['path']),default=0.))
+
+
 def evaluate_round(R,U,p,q,res):
     n,g=res['n'],res['g']
     if (len(R)!=n or any(len(row)!=n for row in R) or len(U)!=n*n*g or
@@ -207,9 +215,9 @@ def construct_round(R,U,res,anchor,q,H,required_edge=None,diagnostics=None,*,rel
     if certificate['time_us']>H+1e-9 or certificate['Z_R']+certificate['Z_U']<=0:certificate=None
     amount=_amounts(U,q,res);remaining=pressure(U,res);load=[0]*len(remaining);delay=[0.]*len(remaining);covered=set()
     for s,d in pins.items():
-        i=s*n+d;load,delay,T=_charge(load,delay,i,amount[i],res)
+        i=s*n+d;load,delay,current=_charge(load,delay,i,amount[i],res)
         if amount[i]:covered.update(res['edges'][i]['wans'])
-        if T>H+1e-9:return reject('pinned_budget_exceeded',time_us=T,H_us=H)
+        if current>H+1e-9:return reject('pinned_budget_exceeded',time_us=current,H_us=H)
     while len(pins)<n:
         comp,graph=_components(R,q,witness,pins);inverse={d:s for s,d in enumerate(witness)};best=None
         occupied=set(pins.values())
@@ -218,19 +226,20 @@ def construct_round(R,U,res,anchor,q,H,required_edge=None,diagnostics=None,*,rel
             for d in range(n):
                 if d in occupied or R[s][d]<q or comp[s]!=comp[inverse[d]]:continue
                 i=s*n+d;e=res['edges'][i];x=amount[i]
-                new_load,new_delay,T=_charge(load,delay,i,x,res)
+                T=_charge_time(load,delay,current,i,x,res)
                 if T>H+1e-9:continue
                 new_group=x>0 and any(r not in covered for r in e['wans'])
                 residual=max((max(0.,remaining[r]-load[r]*.008/res['rates'][r]) for r in e['path']),default=0.)
                 endpoint=max((max(0.,remaining[r]-load[r]*.008/res['rates'][r]) for r in e['endpoints']),default=0.)
                 key=(-int(new_group),-int(x>0),-residual,-endpoint,T,-x,s,d)
-                if best is None or key<best[0]:best=(key,s,d,new_load,new_delay)
+                if best is None or key<best[0]:best=(key,s,d)
         if best is None:
             if certificate is not None:
                 certificate['completion_reused']=True
                 return certificate
             return reject('budget_completion_dead_end',pinned=dict(pins),H_us=H)
-        _,s,d,load,delay=best;witness=_force(witness,s,d,graph);pins[s]=d
+        _,s,d=best;load,delay,current=_charge(load,delay,s*n+d,amount[s*n+d],res)
+        witness=_force(witness,s,d,graph);pins[s]=d
         i=s*n+d
         if amount[i]:covered.update(res['edges'][i]['wans'])
     result=evaluate_round(R,U,witness,q,res)
@@ -395,7 +404,10 @@ def plan(prepared,topology,allow_split=True,*,split_guard=True,near_anchors=Fals
         if pending:
             action=pending.popleft()
         elif candidates:
-            key=(lambda a:(round(a['decision_us'],9),a['time_us'],-a['bytes'],-a['q'],tuple(a['p']))) if split_guard else (
+            # If neither time objective distinguishes a candidate from the
+            # reference, do not perturb the residual just to send more bytes.
+            key=(lambda a:(round(a['decision_us'],9),round(a['time_us'],9),a['reason']!='maximum_reference',
+                           -a['bytes'],-a['q'],tuple(a['p']))) if split_guard else (
                 lambda a:(a['score'],-a['bytes'],a['time_us'],-a['q'],tuple(a['p'])))
             action=min(candidates,key=key)
         else:

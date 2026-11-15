@@ -25,16 +25,16 @@
 
 ### Task 1: Publish baseline, report and experiment matrix
 
-- [ ] Add concentrated report/index/config and existing ns-3 source patch; check patch against actual dirty submodule without applying.
-- [ ] Run scoped tests, scan tracked current/history for credentials and oversized Git blobs.
-- [ ] Commit and push new branch, verify remote HEAD. No merge/PR/main rewrite.
+- [x] Add concentrated report/index/config and existing ns-3 source patch; check patch against actual dirty submodule without applying.
+- [x] Run scoped tests, scan tracked current/history for credentials and oversized Git blobs.
+- [x] Commit and push new branch, verify remote HEAD. No merge/PR/main rewrite.
 
 ### Task 2: Generic shared resources and heterogeneous pilot
 
 **Interfaces:** `prepare_resources(topology)` accepts optional `shared_resource_ids`, legacy default remains WAN IDs. `iterations.run(...,source_topology=None)` accepts a prepared fixed fabric without inferring DC layout. `research/resource_a2av/experiment.py` produces fixed cases and consumes existing four-method replay.
 
-- [ ] Tests RED: legacy compatibility, explicit shared coverage, invalid resource IDs, no-gateway scenario preparation, physical capacities/delays/routes, pilot count/no duplicate balanced seeds, background normalization.
-- [ ] Minimal implementation GREEN; no class hierarchy or scheduler duplication.
-- [ ] Pre-register18pilot cases,72methods; run with3workers and per-method180s timeout, retain failures without retry.
-- [ ] Validate byte delivery/fingerprints and per-case common inputs, summarize all paired speedups, CPU and negative cases. Report actual scope, not unexecuted phases.
+- [x] Tests RED: legacy compatibility, explicit shared coverage, invalid resource IDs, no-gateway scenario preparation, physical capacities/delays/routes, pilot count/no duplicate balanced seeds, background normalization.
+- [x] Minimal implementation GREEN; no class hierarchy or scheduler duplication.
+- [x] Pre-register18pilot cases,72methods; run with3workers and per-method180s timeout, retain failures without retry.
+- [x] Validate byte delivery/fingerprints and per-case common inputs, summarize all paired speedups, CPU and negative cases. Report actual scope, not unexecuted phases.
 - [ ] Fresh scoped/full tests, preserve inherited13failure set, read-only review, compact data commit and update only new remote branch.

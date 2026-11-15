@@ -1,0 +1,46 @@
+{
+  "scope": "pilot: 64GPU, three Leaf-Spine fabrics, three synthetic distributions, two byte scales, one fixed seed, no background",
+  "algorithm_revision": "ef4249e",
+  "planned_conditions": 18,
+  "actual_backend_runs": 72,
+  "successful_backend_runs": 72,
+  "valid_four_method_pairs": 18,
+  "exact_execution_fingerprints_verified": 72,
+  "report_rows_verified_against_csv": 18,
+  "failed_run_retries": 0,
+  "backend_or_congestion_configuration_changed": false,
+  "shared_resources": "explicit physical directed switch-switch resource IDs; no WAN renaming",
+  "legacy_default_full_plan_equivalence_cases": 36,
+  "balanced_cases_with_identical_volume_and_resource_plans": 6,
+  "independent_review": {
+    "physical_path_topology_size_variants_checked": 8,
+    "reconstructed_resource_plans": 16,
+    "reconstructed_stages": 911,
+    "critical_findings": 0,
+    "source_only_prepare_issue": "fixed, RED-to-GREEN CLI regression",
+    "phase_label_issue": "fixed, RED-to-GREEN pressure-preparation regression",
+    "fresh_clone_backend_build_verified": false
+  },
+  "tests": {
+    "scoped_passed": 85,
+    "scoped_skipped": 6,
+    "full_passed": 237,
+    "full_skipped": 11,
+    "full_failed": 10,
+    "full_errors": 3,
+    "full_subtests_passed": 128,
+    "inherited_13_issue_set_unchanged": true,
+    "inherited_issue_names": "../resource-heldout-20261115/verification.json"
+  },
+  "evidence_archive": {
+    "file": "paired-evidence.tar.gz",
+    "bytes": 30248673,
+    "sha256": "398167a4ce4a63d78672c12117e3909d08f3cc4b6e91ed72261e4df95dde1862",
+    "members": 667,
+    "member_hashes_verified": true,
+    "includes": "synthetic inputs, plans, FCT, timing events, delivery records, member SHA manifest",
+    "excludes": "raw model datasets, credentials, executables, full packet traces"
+  },
+  "unexecuted_phases": ["topology expansion", "volume expansion", "pressure", "real"],
+  "interpretation": "descriptive only; controlled matrices repeated across topologies, not independent samples; planning CPU excluded from communication time; no online-readiness or universal superiority claim"
+}

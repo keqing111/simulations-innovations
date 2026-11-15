@@ -5,6 +5,7 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+import subprocess
 
 from simai_a2a.schedulers.resource_budget import prepare_resources,plan
 from test_resource_budget import topology
@@ -91,3 +92,27 @@ class HeterogeneousExperimentTests(unittest.TestCase):
             snapshot=json.loads((root/'out'/case['name']/'planner_topology.json').read_text())
             self.assertTrue(snapshot['shared_resource_ids'])
             self.assertEqual(prepare_resources(snapshot)['wans'],set())
+
+    def test_source_only_cli_does_not_require_a_backend_binary(self):
+        module=driver()
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);out=root/'out'
+            result=subprocess.run([sys.executable,module.__file__,'--phase','pilot','--prepare-only',
+                '--out',str(out),'--binary',str(root/'does-not-exist')],capture_output=True,text=True)
+            self.assertEqual(result.returncode,0,result.stderr)
+            study=json.loads((out/'study.json').read_text())
+            self.assertEqual(len(study['cases']),18)
+            self.assertEqual(study['runs'],[])
+            self.assertIsNone(study['backend_identity'])
+
+    def test_pressure_preparation_is_not_labeled_as_a_no_background_pilot(self):
+        module=driver()
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);binary=root/'unused';binary.write_bytes(b'never executed')
+            result=subprocess.run([sys.executable,module.__file__,'--phase','pressure','--prepare-only',
+                '--out',str(root/'out'),'--binary',str(binary)],capture_output=True,text=True)
+            self.assertEqual(result.returncode,0,result.stderr)
+            study=json.loads((root/'out/study.json').read_text())
+            self.assertTrue(any(c['rho']>0 for c in study['cases']))
+            self.assertNotIn('no background',study['scope'])
+            self.assertEqual(study['result_figure'],'pressure_speedup.png')

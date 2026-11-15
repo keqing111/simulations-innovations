@@ -158,13 +158,21 @@ def main():
         study=json.loads((out/'study.json').read_text())
         for row in study['runs']:
             row.pop('input_contract',None);row.pop('contract_error',None);audit.attach_contract(row)
-        audit.finish(out,study);(out/'heldout_speedup.png').replace(out/'pilot_speedup.png');return
+        phase=study['phase'];study.update(result_figure=f'{phase}_speedup.png',
+            scope=f"fixed factorial; phase={phase}; configured background rho={sorted({c['rho'] for c in study['cases']})}; no online or general superiority claim",
+            analysis_sha256=audit.digest(Path(__file__)))
+        identities={r['input_contract']['binary_sha256'] for r in study['runs'] if r.get('input_contract')}
+        study['backend_identity']=dict(sha256=next(iter(identities))) if len(identities)==1 else None
+        shutil.copyfile(Path(__file__),out/'analysis_snapshot.py')
+        audit.finish(out,study);(out/'heldout_speedup.png').replace(out/study['result_figure']);return
     out.mkdir(parents=True,exist_ok=False);cases=case_specs(args.phase)
     binary=args.binary.resolve()
     paths=[Path(__file__),CONFIG_PATH,EXPERIMENTS/'src/simai_a2a/schedulers/resource_budget.py',
            EXPERIMENTS/'configs/ns3-leafspine.conf',
            EXPERIMENTS/'tools/run_resource_budget_iterations.py',EXPERIMENTS/'tools/run_resource_budget_validation.py']
-    hashes={str(p):audit.digest(p) for p in paths};hashes[str(binary)]=audit.digest(binary);dump(out/'source_hashes.json',hashes)
+    hashes={str(p):audit.digest(p) for p in paths}
+    if not args.prepare_only:hashes[str(binary)]=audit.digest(binary)
+    dump(out/'source_hashes.json',hashes)
     for p in paths:shutil.copyfile(p,out/p.name)
     jobs=[]
     for case in cases:
@@ -172,7 +180,9 @@ def main():
         jobs.append((str(out/'replays'/case['name']),str(source),case,args.timeout,hashes,str(binary)))
     study=dict(complete=False,all_success=False,cases=cases,runs=[],phase=args.phase,planned_records=len(cases)*4,
         source_hashes=hashes,planned_new_attempts=len(cases)*4,workers=args.workers,
-        scope='fixed topology/distribution/volume factorial; no background in pilot; no online or general superiority claim')
+        backend_identity=None if args.prepare_only else dict(path=str(binary),sha256=hashes[str(binary)]),
+        result_figure=f'{args.phase}_speedup.png',
+        scope=f"fixed factorial; phase={args.phase}; configured background rho={sorted({c['rho'] for c in cases})}; no online or general superiority claim")
     dump(out/'study.json',study);print('REGISTERED',len(cases),'conditions;',len(cases)*4,'methods',flush=True)
     if args.prepare_only:return
     with ProcessPoolExecutor(max_workers=args.workers) as pool:
@@ -185,7 +195,7 @@ def main():
                 for row in rows:row['group']=case['group']
             study['runs'].extend(rows);dump(out/'study.json',study)
             print('REGISTERED RESULTS',len(study['runs']),'/',study['planned_records'],flush=True)
-    audit.finish(out,study);(out/'heldout_speedup.png').replace(out/'pilot_speedup.png')
+    audit.finish(out,study);(out/'heldout_speedup.png').replace(out/study['result_figure'])
     print(json.dumps(study['summary'],indent=2),flush=True)
 
 

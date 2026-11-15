@@ -5,6 +5,7 @@
 - [简版报告：依据、流程、代码路径和已知局限](REPORT.md)
 - [拓扑×负载实验矩阵](experiment_matrix.json)
 - [异构实验入口](experiment.py)：构建拓扑、分布与字节规模，复用现有四方法回放
+- [首轮异构×负载结果](PILOT_RESULTS.md)：18条件、72回放，含负结果
 - [完整输入迁移验证](../../HETEROGENEOUS_TOPOLOGY_VALIDATION.md)
 - [前期机制和消融报告](../../WAN_BUDGET_ITERATIONS_REPORT.md)
 - [27条件完整配对表](../../astra-sim-alibabacloud/experiments/alltoall/results/resource-heldout-20261115/paired.csv)
@@ -32,6 +33,8 @@ astra-sim-alibabacloud/experiments/alltoall/
 
 命令在仓库根目录执行。新检出不需要先运行仿真即可阅读所有已提交汇总。旧验证的`--analyze-only`仍引用本机完整产物路径；只检出CSV/图不等于拥有全部原始轨迹。专家选择原数据不随公开分支发布，完整包轨迹与可执行文件也不放Git。
 
+实际四方法回放入口会读取历史原型提交，请正常克隆本研究分支的Git历史，不使用仅含最新树的ZIP或浅克隆；仅生成合成输入不需要历史原型或后端文件。
+
 ```bash
 PYTHONPATH=astra-sim-alibabacloud/experiments/alltoall/src \
 python3 -m pytest -q astra-sim-alibabacloud/experiments/alltoall/prototype_tests
@@ -48,6 +51,6 @@ python3 research/resource_a2av/experiment.py --phase pilot --workers 3 \
   --out astra-sim-alibabacloud/experiments/alltoall/results/heterogeneous-pilot
 ```
 
-运行实际回放需要与结果指纹一致的SimAI/ns-3后端。仓库的ns-3子模块固定在`3e0c7c1bfbbe9f77890ddcf5e5b9c79fc6dd7437`，另加本目录导出的[本地运行时补丁](runtime/ns3-local.patch)。在干净子模块中先`git apply --check ../../research/resource_a2av/runtime/ns3-local.patch`，核对后才应用；已有修改的子模块不要盲目重复应用。补丁是源码快照，不是“已在新克隆中重新构建通过”的声明。
+运行实际回放需要与结果指纹一致的SimAI/ns-3后端。仓库的ns-3子模块固定在`3e0c7c1bfbbe9f77890ddcf5e5b9c79fc6dd7437`，另加本目录导出的[本地运行时补丁](runtime/ns3-local.patch)。在干净子模块根目录中先`git apply --check ../research/resource_a2av/runtime/ns3-local.patch`，核对后才应用；已有修改的子模块不要盲目重复应用。补丁是源码快照，不是“已在新克隆中重新构建通过”的声明。
 
 前端运行时源码随本仓库保存于`astra-sim-alibabacloud/astra-sim/network_frontend/ns3/NativeFastRuntime.h`、`NativeFastTransport.h`和`AstraSimNetwork.cc`。初始化其他子模块与编译步骤参考原项目README。

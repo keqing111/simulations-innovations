@@ -18,7 +18,7 @@ from run_wan_budget_smoke import fixture as original_fixture
 from simai_a2a.model import TrafficMatrix
 from simai_a2a.leafspine import build_leafspine,fixed_routes,server_snapshot,write_fabric
 from simai_a2a.schedulers.simai_plan import prepare,reference,materialize
-from simai_a2a.schedulers.resource_budget import plan
+from simai_a2a.schedulers.resource_budget import plan,prepare_resources,anchored_cap,evaluate_round
 from simai_a2a.schedulers.spreadout import SpreadOutScheduler
 from simai_a2a.delivery import validate_fast_delivery
 from simai_a2a.execution import modeled_scaleup_schedule
@@ -28,7 +28,20 @@ from simai_a2a.runner import run_scenario,backend_shared_libraries
 from simai_a2a.v2_diagnostics import collect
 
 BASE='0ab4a30';MODULE='astra-sim-alibabacloud/experiments/alltoall/src/simai_a2a/schedulers/resource_budget.py'
-METHODS=('fast-simai','spreadout','legacy-v1','prior-v2','resource-eager','resource-near','resource-full','resource-split')
+METHODS=('fast-simai','spreadout','legacy-v1','prior-v2','resource-eager','resource-near','resource-full','resource-split','resource-maxq','volume-maxq')
+
+
+def volume_plan(prepared,topology):
+    """Same maximum coefficient and transport, no topology-based choice."""
+    started=time.process_time_ns();res=prepare_resources(topology)
+    R=[r[:] for r in prepared['R']];U=prepared['U'][:];trace=[]
+    while any(v for row in R for v in row):
+        q,p=anchored_cap(R);step=evaluate_round(R,U,p,q,res)
+        R,U=step.pop('R_next'),step.pop('U_next');step.update(reason='volume_only',fallback=False)
+        trace.append(step)
+    if any(U):raise ArithmeticError('volume baseline left real bytes')
+    return dict(permutations=[s['p'] for s in trace],coefficients=[s['q'] for s in trace],
+                trace=trace,remaining_U=U,planner_cpu_us=(time.process_time_ns()-started)/1000)
 
 
 def fixture(name):
@@ -110,37 +123,51 @@ def run(out,binary,cases,methods,prepare_only=False,source_scenario=None,timeout
         (directory/'background.csv').write_text('');prepared=prepare(matrix,hw)
         if source_scenario and (source_scenario/'background.csv').exists():shutil.copyfile(source_scenario/'background.csv',directory/'background.csv')
         for method in methods:
-            tick=time.process_time_ns()
-            if method=='spreadout':
-                result={};full=SpreadOutScheduler().schedule(matrix,hw,seed=1)
-                full.metadata.update(delivery_chunks={str(f.flow_id):[[f.src,f.dst,f.size_bytes]] for f in full.flows},server_dc_ids=dc_ids)
-            else:
-                if method=='fast-simai':
-                    result=reference(prepared);ps=result['permutations'];qs=[s['alpha'] for s in result['steps']]
+            tick=time.process_time_ns();phase='preparation'
+            row=dict(case=name,method=method,status='preparation_failed',success=False,actual_ms=None,
+                stages=None,planning_cpu_us=None,planner_cpu_us=None,attempt_dir=None,error=None,
+                handoffs=0,fallbacks=0,reference_stages=0,relaxed_stages=0)
+            try:
+                if method=='spreadout':
+                    result={};full=SpreadOutScheduler().schedule(matrix,hw,seed=1)
+                    full.metadata.update(delivery_chunks={str(f.flow_id):[[f.src,f.dst,f.size_bytes]] for f in full.flows},server_dc_ids=dc_ids)
                 else:
-                    planner=legacy.plan if method=='legacy-v1' else prior.plan if method=='prior-v2' else plan
-                    extra={'split_guard':False} if method=='resource-eager' else {'near_anchors':True} if method=='resource-near' else {}
-                    result=planner(prepared,snapshot,allow_split=method!='resource-full',**extra)
-                    ps,qs=result['permutations'],result['coefficients']
-                full=materialize(prepared,ps,qs,hw,method,dict(server_dc_ids=dc_ids))
-                validate_fast_delivery(matrix,full,hw.gpus_per_server)
-            cpu=(time.process_time_ns()-tick)/1000
-            dump(directory/(method+'.plan.json'),result)
-            schedule=modeled_scaleup_schedule(full,hw)
-            write_schedule_artifact(schedule,directory/'schedules'/method,matrix_sha256=mm['matrix_sha256'],hardware_sha256=canonical_sha256(hardware))
-            if prepare_only:continue
-            outcome=run_scenario(directory,method,directory/'topology.txt',binary,config_template=config,
-                timeout_s=timeout,ns3_threads=0,ns3_env={'NS_ATTRIBUTE_DEFAULT':None,'NS_GLOBAL_VALUE':None})
-            summary=outcome.get('summary',{})
-            row=dict(case=name,method=method,status=outcome['status'],success=outcome['success'],
-                actual_ms=summary.get('actual_makespan_ns',0)/1e6 if outcome['success'] else None,
-                stages=schedule.metadata['n_stages'],planning_cpu_us=cpu,attempt_dir=outcome['attempt_dir'],error=outcome.get('error'),
-                handoffs=sum(s.get('reason')=='handoff' for s in result.get('trace',[])),
-                fallbacks=sum(s.get('fallback',False) for s in result.get('trace',[])))
-            if outcome['success']:row.update(collect(schedule,matrix,Path(outcome['attempt_dir'])))
+                    if method=='fast-simai':
+                        result=reference(prepared);ps=result['permutations'];qs=[s['alpha'] for s in result['steps']]
+                    else:
+                        planner=legacy.plan if method=='legacy-v1' else prior.plan if method=='prior-v2' else plan
+                        extra={'split_guard':False} if method=='resource-eager' else {'near_anchors':True} if method=='resource-near' else {'maximum_quantum':True} if method=='resource-maxq' else {}
+                        result=volume_plan(prepared,snapshot) if method=='volume-maxq' else planner(prepared,snapshot,allow_split=method!='resource-full',**extra)
+                        ps,qs=result['permutations'],result['coefficients']
+                    full=materialize(prepared,ps,qs,hw,method,dict(server_dc_ids=dc_ids))
+                    validate_fast_delivery(matrix,full,hw.gpus_per_server)
+                row.update(planning_cpu_us=(time.process_time_ns()-tick)/1000,planner_cpu_us=result.get('planner_cpu_us'),
+                    handoffs=sum(s.get('reason')=='handoff' for s in result.get('trace',[])),
+                    fallbacks=sum(s.get('fallback',False) for s in result.get('trace',[])),
+                    reference_stages=sum(s.get('reason')=='maximum_reference' for s in result.get('trace',[])),
+                    relaxed_stages=sum(s.get('effective_H_us',0)>(s.get('H_us') or 0)+1e-9 for s in result.get('trace',[])))
+                dump(directory/(method+'.plan.json'),result)
+                schedule=modeled_scaleup_schedule(full,hw);row['stages']=schedule.metadata['n_stages']
+                write_schedule_artifact(schedule,directory/'schedules'/method,matrix_sha256=mm['matrix_sha256'],hardware_sha256=canonical_sha256(hardware))
+                if prepare_only:row.update(status='prepared',success=True)
+                else:
+                    phase='execution'
+                    outcome=run_scenario(directory,method,directory/'topology.txt',binary,config_template=config,
+                        timeout_s=timeout,ns3_threads=0,ns3_env={'NS_ATTRIBUTE_DEFAULT':None,'NS_GLOBAL_VALUE':None})
+                    summary=outcome.get('summary',{})
+                    row.update(status=outcome['status'],success=outcome['success'],backend_success=outcome['success'],
+                        actual_ms=summary.get('actual_makespan_ns',0)/1e6 if outcome['success'] else None,
+                        attempt_dir=outcome['attempt_dir'],error=outcome.get('error'))
+                    if outcome['success']:
+                        phase='validation';row.update(collect(schedule,matrix,Path(outcome['attempt_dir'])))
+            except Exception as error:
+                unsupported=method=='legacy-v1' and isinstance(error,ValueError) and 'multi-WAN path' in str(error)
+                row.update(status='unsupported' if unsupported else phase+'_failed',success=False,
+                    actual_ms=None,error=type(error).__name__+': '+str(error))
             study['runs'].append(row);dump(out/'study.json',study)
             print(name,method,row['status'],row['actual_ms'],flush=True)
     study['complete']=not prepare_only and len(study['runs'])==study['planned_runs']
+    study['all_success']=all(r['success'] for r in study['runs']) if study['runs'] else False
     dump(out/'study.json',study)
     if study['runs']:
         with (out/'summary.csv').open('w') as f:

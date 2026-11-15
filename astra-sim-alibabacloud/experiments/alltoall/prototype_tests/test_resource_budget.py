@@ -121,6 +121,34 @@ class ResourceBudgetConstructionTests(unittest.TestCase):
         self.assertAlmostEqual(_remaining_time(U,([0.]*3,[0.]*3),res),210.)
         self.assertAlmostEqual(_remaining_time(U,([20.,0.,0.],[0.]*3),res),220.)
 
+    def test_future_coefficients_bound_the_number_of_remaining_messages(self):
+        from simai_a2a.schedulers.resource_budget import prepare_resources,_remaining_time
+        res=prepare_resources(topology(3));R=[[0,6,0],[2,0,4],[4,0,2]];U=[0,6,0,0,0,0,0,0,0]
+        # All margins are6, but the largest possible future coefficient <=4.
+        # Six bytes need >=2 messages: first credit10 + 2*(forward10+ACK10).
+        self.assertAlmostEqual(_remaining_time(U,([0.]*3,[0.]*3),res,R),50.00048)
+
+    def test_small_real_inventory_does_not_force_needless_auxiliary_fragments(self):
+        from simai_a2a.schedulers.resource_budget import plan
+        R=[[8*int(s!=d) for d in range(3)] for s in range(3)]
+        U=[int(s!=d) for s in range(3) for d in range(3)]
+        result=plan(dict(n=3,g=1,R=R,U=U),topology(3),allow_split=False)
+        self.assertEqual(result['coefficients'],[8,8])
+        self.assertEqual(len(result['trace']),2)
+
+    def test_fixed_maximum_quantum_uses_the_actual_bottleneck_not_anchor_bytes(self):
+        from simai_a2a.schedulers.resource_budget import plan
+        R=[[6,8,0,0],[8,0,6,0],[0,6,0,8],[0,0,8,6]]
+        U=[0,8,0,0,8,0,0,0,0,6,0,2,0,0,8,0]
+        result=plan(dict(n=4,g=1,R=R,U=U),topology(4),maximum_quantum=True)
+        residual=[r[:] for r in R]
+        for p,q in zip(result['permutations'],result['coefficients']):
+            oracle=max(min(residual[s][d] for s,d in enumerate(candidate))
+                for candidate in itertools.permutations(range(4)))
+            self.assertEqual(q,oracle)
+            for s,d in enumerate(p):residual[s][d]-=q
+        self.assertFalse(any(result['remaining_U']))
+
     def test_scc_force_matches_independent_small_graph_oracle(self):
         from simai_a2a.schedulers.resource_budget import _support,_components,_force
         R=[[0,8,1],[4,0,5],[5,1,3]];p=_support(R,1);pins={}

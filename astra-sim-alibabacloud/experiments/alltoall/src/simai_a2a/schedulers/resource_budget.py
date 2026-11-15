@@ -141,12 +141,18 @@ def _solo(U,i,q,res):
     return edge['tau']+max((amount*.008/res['rates'][r] for r in edge['path']),default=0.) if amount else 0.
 
 
-def propose_quanta(R,U,res,anchor):
-    n,g=res['n'],res['g'];a=anchor[0]*n+anchor[1];cap,_=anchored_cap(R,anchor)
-    whole=max(U[a*g:(a+1)*g],default=0);q=min(cap,whole)
+def propose_quanta(R,U,res,anchor,*,coefficient=None):
+    n,g=res['n'],res['g'];a=anchor[0]*n+anchor[1]
+    whole=max(U[a*g:(a+1)*g],default=0)
+    if coefficient is None:
+        cap,_=anchored_cap(R,anchor);q=min(cap,whole)
+    else:q=coefficient if whole and R[anchor[0]][anchor[1]]>=coefficient else 0
     if not q:return []
     H=_solo(U,a,q,res)
     proposals=[dict(q=q,H_us=H,reason='anchor_full' if q==whole else 'anchor_capped',witness=None,next_edge=None)]
+    if coefficient is not None:
+        proposals[0]['reason']='maximum_quantum'
+        return proposals
     work=pressure(U,res);opportunities=[];edge_a=res['edges'][a]
     for i,edge in enumerate(res['edges']):
         s,d=edge['src'],edge['dst']
@@ -273,15 +279,20 @@ def _advance_frontier(U,action,frontier,res):
     return send,receive
 
 
-def _remaining_time(U,frontier,res):
+def _remaining_time(U,frontier,res,R=None):
     """Dependency-frontier + serial peer work heuristic; not an ns-3 bound."""
     n,g=res['n'],res['g'];send=[0.]*n;receive=send[:]
+    # Any future coefficient <= min(row maxima, column maxima): R only
+    # decreases. This cheap upper bound exposes inevitable repeated messages
+    # without performing another decomposition or matching search.
+    ceiling=min([max(row) for row in R]+[max(col) for col in zip(*R)]) if R is not None else None
     first_send=[math.inf]*n;first_receive=first_send[:];first_resource=[math.inf]*len(res['rates'])
     for i,e in enumerate(res['edges']):
         amount=sum(U[i*g:(i+1)*g])
         if not amount:continue
         s,d=e['src'],e['dst'];back=res['edges'][d*n+s]['tau']
-        cost=e['tau']+back+max((amount*.008/res['rates'][r] for r in e['path']),default=0.)
+        pieces=max((v+ceiling-1)//ceiling for v in U[i*g:(i+1)*g]) if ceiling else 1
+        cost=pieces*(e['tau']+back)+max((amount*.008/res['rates'][r] for r in e['path']),default=0.)
         ready=max(frontier[0][s],frontier[1][d]+back)
         send[s]+=cost;receive[d]+=cost
         first_send[s]=min(first_send[s],ready);first_receive[d]=min(first_receive[d],ready)
@@ -317,7 +328,7 @@ def _interleave(R,U,res,first,proposal,full_q,frontier,diagnostics):
         state=frontier;remaining=U
         for step in steps:
             state=_advance_frontier(remaining,step,state,res);remaining=step['U_next']
-        return _remaining_time(remaining,state,res)
+        return _remaining_time(remaining,state,res,steps[-1]['R_next'])
     plain=estimate((base,follow));split=estimate((first,middle,tail))
     if split>=plain-1e-9:
         diagnostics.update(code='no_predicted_interleaving_gain',baseline_us=plain,interleave_us=split)
@@ -327,7 +338,7 @@ def _interleave(R,U,res,first,proposal,full_q,frontier,diagnostics):
     return [middle,tail]
 
 
-def plan(prepared,topology,allow_split=True,*,split_guard=True,near_anchors=False):
+def plan(prepared,topology,allow_split=True,*,split_guard=True,near_anchors=False,maximum_quantum=False):
     started=time.process_time_ns();res=prepare_resources(topology);n,g=res['n'],res['g']
     R=[row[:] for row in prepared['R']];U=list(prepared['U'])
     if (prepared['n']!=n or prepared['g']!=g or len(R)!=n or any(len(row)!=n for row in R)
@@ -341,8 +352,18 @@ def plan(prepared,topology,allow_split=True,*,split_guard=True,near_anchors=Fals
     trace=[];permutations=[];coefficients=[];pending=deque();frontier=([0.]*n,[0.]*n)
     while any(v for row in R for v in row):
         candidates=[];attempts=[]
+        # The maximum-bottleneck decomposition is an explicit competing
+        # action, not only a last resort after all topology candidates fail.
+        if not pending:
+            q,p=anchored_cap(R)
+            if p is None:raise ValueError('no legal reference matching')
+            reference=evaluate_round(R,U,p,q,res)
+            reference.update(anchor=None,H_us=None,reason='maximum_reference',witness=None,next_edge=None)
+            state=_advance_frontier(U,reference,frontier,res)
+            reference['decision_us']=_remaining_time(reference['U_next'],state,res,reference['R_next'])
+            if reference['bytes']:candidates.append(reference)
         for anchor in ([] if pending else select_anchors(U,res,near=near_anchors)):
-            proposals=propose_quanta(R,U,res,anchor)
+            proposals=propose_quanta(R,U,res,anchor,coefficient=reference['q'] if maximum_quantum else None)
             for proposal in proposals:
                 if not allow_split and proposal['reason']=='handoff':continue
                 failure={}
@@ -367,7 +388,8 @@ def plan(prepared,topology,allow_split=True,*,split_guard=True,near_anchors=Fals
                     state=_advance_frontier(U,action,frontier,res);remaining=action['U_next']
                     for step in action.get('continuation',[]):
                         state=_advance_frontier(remaining,step,state,res);remaining=step['U_next']
-                    action['decision_us']=_remaining_time(remaining,state,res)
+                    terminal=action.get('continuation',[action])[-1]
+                    action['decision_us']=_remaining_time(remaining,state,res,terminal['R_next'])
                     action.update(info);candidates.append(action)
         fallback=not candidates and not pending
         if pending:
@@ -377,9 +399,7 @@ def plan(prepared,topology,allow_split=True,*,split_guard=True,near_anchors=Fals
                 lambda a:(a['score'],-a['bytes'],a['time_us'],-a['q'],tuple(a['p'])))
             action=min(candidates,key=key)
         else:
-            q,p=anchored_cap(R)
-            if p is None:raise ValueError('no legal fallback matching')
-            action=evaluate_round(R,U,p,q,res);action.update(anchor=None,H_us=None,reason='fallback',witness=None,next_edge=None)
+            action=reference;action['reason']='fallback'
         if action['Z_R']+action['Z_U']<=0:raise ArithmeticError('round made no discrete progress')
         pending.extend(action.pop('continuation',[]))
         frontier=_advance_frontier(U,action,frontier,res)
@@ -391,4 +411,4 @@ def plan(prepared,topology,allow_split=True,*,split_guard=True,near_anchors=Fals
     return dict(permutations=permutations,coefficients=coefficients,trace=trace,remaining_U=U,
                 stage_bound=bound,planner_cpu_us=(time.process_time_ns()-started)/1000,
                 time_model='resource capacity + asynchronous endpoint frontier; proxy only',
-                allow_split=allow_split,split_guard=split_guard,near_anchors=near_anchors)
+                allow_split=allow_split,split_guard=split_guard,near_anchors=near_anchors,maximum_quantum=maximum_quantum)

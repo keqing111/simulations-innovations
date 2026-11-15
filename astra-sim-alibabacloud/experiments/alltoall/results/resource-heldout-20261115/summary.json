@@ -1,0 +1,194 @@
+{
+  "all": {
+    "fast-simai": {
+      "paired": 27,
+      "unpaired": 0,
+      "geomean_speedup": 2.9856838930314846,
+      "wins": 27,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 1.5451909656050948,
+      "best_speedup": 4.847989916977827
+    },
+    "spreadout": {
+      "paired": 27,
+      "unpaired": 0,
+      "geomean_speedup": 1.0846544601990884,
+      "wins": 21,
+      "ties": 0,
+      "losses": 6,
+      "worst_speedup": 0.8458344632408411,
+      "best_speedup": 1.3898881038581592
+    },
+    "volume-maxq": {
+      "paired": 27,
+      "unpaired": 0,
+      "geomean_speedup": 0.999928070080642,
+      "wins": 12,
+      "ties": 0,
+      "losses": 15,
+      "worst_speedup": 0.944311791445746,
+      "best_speedup": 1.0462452189459461
+    }
+  },
+  "deepseek": {
+    "fast-simai": {
+      "paired": 9,
+      "unpaired": 0,
+      "geomean_speedup": 2.3039397033814137,
+      "wins": 9,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 2.1684961520494257,
+      "best_speedup": 2.4871349761605512
+    },
+    "spreadout": {
+      "paired": 9,
+      "unpaired": 0,
+      "geomean_speedup": 1.0831852144785283,
+      "wins": 9,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 1.047297750055866,
+      "best_speedup": 1.1195230247650014
+    },
+    "volume-maxq": {
+      "paired": 9,
+      "unpaired": 0,
+      "geomean_speedup": 0.9952491941752867,
+      "wins": 4,
+      "ties": 0,
+      "losses": 5,
+      "worst_speedup": 0.944311791445746,
+      "best_speedup": 1.0462452189459461
+    }
+  },
+  "kimi": {
+    "fast-simai": {
+      "paired": 3,
+      "unpaired": 0,
+      "geomean_speedup": 4.464043734236031,
+      "wins": 3,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 4.1190883470812345,
+      "best_speedup": 4.847989916977827
+    },
+    "spreadout": {
+      "paired": 3,
+      "unpaired": 0,
+      "geomean_speedup": 1.11307012408412,
+      "wins": 3,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 1.0848374738508684,
+      "best_speedup": 1.1510285645213854
+    },
+    "volume-maxq": {
+      "paired": 3,
+      "unpaired": 0,
+      "geomean_speedup": 1.0077605411936126,
+      "wins": 3,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 1.0013406554405297,
+      "best_speedup": 1.0207108606525823
+    }
+  },
+  "llama": {
+    "fast-simai": {
+      "paired": 9,
+      "unpaired": 0,
+      "geomean_speedup": 3.86954463762605,
+      "wins": 9,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 3.0051611683248294,
+      "best_speedup": 4.789231612466908
+    },
+    "spreadout": {
+      "paired": 9,
+      "unpaired": 0,
+      "geomean_speedup": 1.2040335548181866,
+      "wins": 9,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 1.0823037972099516,
+      "best_speedup": 1.3898881038581592
+    },
+    "volume-maxq": {
+      "paired": 9,
+      "unpaired": 0,
+      "geomean_speedup": 0.9987182472570699,
+      "wins": 2,
+      "ties": 0,
+      "losses": 7,
+      "worst_speedup": 0.9911594084712039,
+      "best_speedup": 1.0328486326783084
+    }
+  },
+  "zipf-dc2": {
+    "fast-simai": {
+      "paired": 3,
+      "unpaired": 0,
+      "geomean_speedup": 1.6214323458743476,
+      "wins": 3,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 1.5451909656050948,
+      "best_speedup": 1.7447611406182706
+    },
+    "spreadout": {
+      "paired": 3,
+      "unpaired": 0,
+      "geomean_speedup": 0.8876258435259876,
+      "wins": 0,
+      "ties": 0,
+      "losses": 3,
+      "worst_speedup": 0.8458344632408411,
+      "best_speedup": 0.9254254921817849
+    },
+    "volume-maxq": {
+      "paired": 3,
+      "unpaired": 0,
+      "geomean_speedup": 1.0052798362961834,
+      "wins": 2,
+      "ties": 0,
+      "losses": 1,
+      "worst_speedup": 0.9785860194377395,
+      "best_speedup": 1.0227397962914706
+    }
+  },
+  "zipf-dc4": {
+    "fast-simai": {
+      "paired": 3,
+      "unpaired": 0,
+      "geomean_speedup": 3.6759893491910884,
+      "wins": 3,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 3.61598849239362,
+      "best_speedup": 3.707740194340178
+    },
+    "spreadout": {
+      "paired": 3,
+      "unpaired": 0,
+      "geomean_speedup": 0.9480827679449035,
+      "wins": 0,
+      "ties": 0,
+      "losses": 3,
+      "worst_speedup": 0.9329077391395261,
+      "best_speedup": 0.9623619398462006
+    },
+    "volume-maxq": {
+      "paired": 3,
+      "unpaired": 0,
+      "geomean_speedup": 1.0045002784900856,
+      "wins": 1,
+      "ties": 0,
+      "losses": 2,
+      "worst_speedup": 0.9974174389964452,
+      "best_speedup": 1.0169265032364851
+    }
+  }
+}

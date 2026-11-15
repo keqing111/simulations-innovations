@@ -1,0 +1,50 @@
+[
+  {
+    "case": "dc2-balanced-s1101-m4-rho0",
+    "first_matching_difference": 0,
+    "first_coefficient_difference": null,
+    "equal_coefficient_sum": true
+  },
+  {
+    "case": "dc2-zipf12-s1101-m4-rho0",
+    "first_matching_difference": 25,
+    "first_coefficient_difference": 41,
+    "equal_coefficient_sum": true
+  },
+  {
+    "case": "dc2-deepseek-w0-l3-b64-rho0",
+    "first_matching_difference": 4,
+    "first_coefficient_difference": 14,
+    "equal_coefficient_sum": true
+  },
+  {
+    "case": "dc2-llama-w0-l25-b64-rho0",
+    "first_matching_difference": 5,
+    "first_coefficient_difference": 11,
+    "equal_coefficient_sum": true
+  },
+  {
+    "case": "dc3-kimi-w0-l31-b64-rho0",
+    "first_matching_difference": 14,
+    "first_coefficient_difference": 16,
+    "equal_coefficient_sum": true
+  },
+  {
+    "case": "dc4-balanced-s1101-m4-rho0",
+    "first_matching_difference": 7,
+    "first_coefficient_difference": null,
+    "equal_coefficient_sum": true
+  },
+  {
+    "case": "dc4-llama-w0-l25-b64-rho0",
+    "first_matching_difference": 54,
+    "first_coefficient_difference": 65,
+    "equal_coefficient_sum": true
+  },
+  {
+    "case": "dc4-balanced-s1101-m4-rho0.3",
+    "first_matching_difference": 7,
+    "first_coefficient_difference": null,
+    "equal_coefficient_sum": true
+  }
+]

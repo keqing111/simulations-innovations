@@ -1,0 +1,7 @@
+{
+  "seed": 20261115,
+  "input_cases": 60,
+  "policy_comparisons": 180,
+  "baseline": "5748f1c",
+  "exact_plans_and_resource_times": true
+}

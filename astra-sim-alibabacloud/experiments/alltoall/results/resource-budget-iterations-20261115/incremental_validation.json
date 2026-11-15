@@ -1,0 +1,7 @@
+{
+  "bit_identical_plans": true,
+  "old_cpu_us": 17108541.867,
+  "new_cpu_us": 6793177.19,
+  "policy_status": "isolated incremental implementation optimization before final stable-tie change",
+  "baseline_commit": "5748f1c"
+}

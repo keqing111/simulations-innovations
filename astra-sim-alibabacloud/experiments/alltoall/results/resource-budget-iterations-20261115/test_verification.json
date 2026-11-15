@@ -1,0 +1,23 @@
+{
+  "full_suite_summary": "10 failed, 216 passed, 11 skipped, 3 errors, 128 subtests passed in 18.00s",
+  "inherited_issues_unchanged": true,
+  "issues": [
+    "tests.test_batch_study.BatchStudyTests.test_audit_binds_variant_limits_to_registered_policy",
+    "tests.test_batch_study.BatchStudyTests.test_direct_pair_misrouting_cannot_pass_just_by_conserving_bytes",
+    "tests.test_batch_study.BatchStudyTests.test_mutated_registration_is_not_treated_as_frozen_grid",
+    "tests.test_batch_study.BatchStudyTests.test_real_prepare_and_audit_reject_corrupt_membership",
+    "tests.test_ei_study.EiStudyTests.test_boundary_plot_labels_only_real_winner_changes",
+    "tests.test_ei_study.EiStudyTests.test_smoke_outputs_complete_grid_and_rejects_changed_artifact",
+    "tests.test_packet_trace.PacketTraceTests.test_actual_cpp_layout_and_wrapped_payload_reconstruction",
+    "tests.test_packet_trace.PacketTraceTests.test_truncated_headers_records_and_invalid_events_are_rejected",
+    "tests.test_packet_trace.PacketTraceTests.test_wrong_flow_sequence_or_truncated_payload_is_not_silently_counted",
+    "tests.test_paper_fast.StudyDriverTests.test_fingerprint_includes_matching_repair_and_schedule_construction_dependencies",
+    "tests.test_paper_fast.StudyDriverTests.test_old_packet_scenarios_cannot_be_combined_with_new_analytical_study",
+    "tests.test_paper_fast.StudyDriverTests.test_small_study_persists_all_policies_and_valid_selected_plan",
+    "tests.test_tail_study.TailStudyTests.test_another_valid_full_decomposition_cannot_impersonate_registered_partition"
+  ],
+  "scoped_suite": "64 passed, 6 skipped",
+  "independent_review_revision": "5748f1c",
+  "incremental_equivalence_policy_comparisons": 180,
+  "final_policy_changes": "stable reference on tied time objectives; same legal action set"
+}

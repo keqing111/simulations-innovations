@@ -1,0 +1,34 @@
+{
+  "case": "dc4-llama-w0-l25-b64-rho0",
+  "first_matching_difference": 1,
+  "first_coefficient_difference": 5,
+  "actions": [
+    {
+      "method": "volume-maxq",
+      "stage": 1,
+      "q": 61440,
+      "stage_proxy_us": 74.0608,
+      "phi_after_us": 571.4739200000001,
+      "real_bytes": 901120,
+      "Z_R": 1,
+      "Z_U": 20,
+      "predicted_finish_us": 3459.05664,
+      "total_stages": 113,
+      "real_stages": 113
+    },
+    {
+      "method": "resource-maxq",
+      "stage": 1,
+      "q": 61440,
+      "stage_proxy_us": 74.0608,
+      "phi_after_us": 551.81312,
+      "real_bytes": 1474560,
+      "Z_R": 1,
+      "Z_U": 68,
+      "predicted_finish_us": 3459.05664,
+      "total_stages": 114,
+      "real_stages": 114
+    }
+  ],
+  "policy_status": "historical pre-stable-tie policy; see primary.csv for final results"
+}

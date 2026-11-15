@@ -1,0 +1,117 @@
+{
+  "unique_recorded_runs": 329,
+  "status_counts": {
+    "success": 325,
+    "failed": 4
+  },
+  "studies": 50,
+  "all_studies_registered": true,
+  "paired_primary_conditions": 8,
+  "validation": [
+    {
+      "case": "dc2-balanced-s1101-m4-rho0",
+      "exact_common_input": true,
+      "common_runtime_and_config": true
+    },
+    {
+      "case": "dc2-zipf12-s1101-m4-rho0",
+      "exact_common_input": true,
+      "common_runtime_and_config": true
+    },
+    {
+      "case": "dc2-deepseek-w0-l3-b64-rho0",
+      "exact_common_input": true,
+      "common_runtime_and_config": true
+    },
+    {
+      "case": "dc2-llama-w0-l25-b64-rho0",
+      "exact_common_input": true,
+      "common_runtime_and_config": true
+    },
+    {
+      "case": "dc3-kimi-w0-l31-b64-rho0",
+      "exact_common_input": true,
+      "common_runtime_and_config": true
+    },
+    {
+      "case": "dc4-balanced-s1101-m4-rho0",
+      "exact_common_input": true,
+      "common_runtime_and_config": true
+    },
+    {
+      "case": "dc4-llama-w0-l25-b64-rho0",
+      "exact_common_input": true,
+      "common_runtime_and_config": true
+    },
+    {
+      "case": "dc4-balanced-s1101-m4-rho0.3",
+      "exact_common_input": true,
+      "common_runtime_and_config": true
+    },
+    {
+      "case": "dc2-balanced-s1101-m4-rho0",
+      "wan_expected_payload_bytes": 136314880,
+      "observed_payload_bytes": 136314880,
+      "delivery_and_dependencies_valid": true
+    },
+    {
+      "case": "dc2-zipf12-s1101-m4-rho0",
+      "wan_expected_payload_bytes": 136420960,
+      "observed_payload_bytes": 136420960,
+      "delivery_and_dependencies_valid": true
+    },
+    {
+      "case": "dc2-deepseek-w0-l3-b64-rho0",
+      "wan_expected_payload_bytes": 134856704,
+      "observed_payload_bytes": 134856704,
+      "delivery_and_dependencies_valid": true
+    },
+    {
+      "case": "dc2-llama-w0-l25-b64-rho0",
+      "wan_expected_payload_bytes": 17326080,
+      "observed_payload_bytes": 17326080,
+      "delivery_and_dependencies_valid": true
+    },
+    {
+      "case": "dc3-kimi-w0-l31-b64-rho0",
+      "wan_expected_payload_bytes": 270737408,
+      "observed_payload_bytes": 270737408,
+      "delivery_and_dependencies_valid": true
+    },
+    {
+      "case": "dc4-balanced-s1101-m4-rho0",
+      "wan_expected_payload_bytes": 405798912,
+      "observed_payload_bytes": 405798912,
+      "delivery_and_dependencies_valid": true
+    },
+    {
+      "case": "dc4-llama-w0-l25-b64-rho0",
+      "wan_expected_payload_bytes": 50331648,
+      "observed_payload_bytes": 50331648,
+      "delivery_and_dependencies_valid": true
+    },
+    {
+      "case": "dc4-balanced-s1101-m4-rho0.3",
+      "wan_expected_payload_bytes": 405798912,
+      "observed_payload_bytes": 405798912,
+      "delivery_and_dependencies_valid": true
+    }
+  ],
+  "old_campaign": {
+    "complete": false,
+    "recorded": 766,
+    "planned": 804,
+    "statuses": {
+      "success": 730,
+      "incomplete": 12,
+      "timeout": 24
+    },
+    "complete_six_method_conditions": 101,
+    "restart_policy": "killed by system restart; no restart or failed-run retry"
+  },
+  "excluded_metrics": [
+    "legacy scalar-capacity utilization for heterogeneous50/100/200Gbps WANs"
+  ],
+  "historical_successes_with_unmatched_source_epoch": 26,
+  "scope": "descriptive exploratory simulations, no population inference or significance testing"
+}

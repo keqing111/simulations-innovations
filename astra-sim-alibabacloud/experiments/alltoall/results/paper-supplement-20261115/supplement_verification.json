@@ -1,0 +1,14 @@
+{
+  "total": 260,
+  "success": 260,
+  "verified_contracts": 260,
+  "eligible": 260,
+  "failed": [],
+  "exact_pair_delivery_checked": 260,
+  "byte_delivery_errors": [],
+  "changed_registered_inputs": [],
+  "plan_pairs_checked": 52,
+  "changed_plan_cases": 52,
+  "same_coefficient_sequence_cases": 18,
+  "same_q_star_first_divergences": 52
+}

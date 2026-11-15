@@ -1,0 +1,20 @@
+{
+  "volume-maxq": {
+    "complete_us": 360.836,
+    "outer_cut_foreground_overlap_us": 0.0,
+    "pending_idle_us": {
+      "88->89": 182.765,
+      "89->90": 80.173,
+      "90->91": 11.317
+    }
+  },
+  "resource-maxq": {
+    "complete_us": 198.967,
+    "outer_cut_foreground_overlap_us": 156.869,
+    "pending_idle_us": {
+      "88->89": 16.39,
+      "89->90": 99.038,
+      "90->91": 22.613
+    }
+  }
+}

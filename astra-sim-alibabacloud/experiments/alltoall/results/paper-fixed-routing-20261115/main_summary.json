@@ -1,0 +1,156 @@
+{
+  "all": {
+    "fast-simai": {
+      "paired": 24,
+      "unpaired": 0,
+      "geomean_speedup": 1.4103819353763027,
+      "wins": 22,
+      "ties": 0,
+      "losses": 2,
+      "worst_speedup": 0.9002128525825052,
+      "best_speedup": 2.2835887240164228
+    },
+    "spreadout": {
+      "paired": 24,
+      "unpaired": 0,
+      "geomean_speedup": 1.1107749550427803,
+      "wins": 9,
+      "ties": 0,
+      "losses": 15,
+      "worst_speedup": 0.7830430215511768,
+      "best_speedup": 3.65530183399314
+    }
+  },
+  "leaf-bandwidth/balanced": {
+    "fast-simai": {
+      "paired": 2,
+      "unpaired": 0,
+      "geomean_speedup": 1.5057527633473473,
+      "wins": 2,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 1.4030150447068876,
+      "best_speedup": 1.6160135936402922
+    },
+    "spreadout": {
+      "paired": 2,
+      "unpaired": 0,
+      "geomean_speedup": 1.898606061925206,
+      "wins": 2,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 1.5716776539311843,
+      "best_speedup": 2.2935396258659098
+    }
+  },
+  "leaf-bandwidth/zipf08": {
+    "fast-simai": {
+      "paired": 6,
+      "unpaired": 0,
+      "geomean_speedup": 1.3267159676735076,
+      "wins": 5,
+      "ties": 0,
+      "losses": 1,
+      "worst_speedup": 0.9002128525825052,
+      "best_speedup": 1.655137780442213
+    },
+    "spreadout": {
+      "paired": 6,
+      "unpaired": 0,
+      "geomean_speedup": 0.9302515055853064,
+      "wins": 2,
+      "ties": 0,
+      "losses": 4,
+      "worst_speedup": 0.7830430215511768,
+      "best_speedup": 1.0328631021519477
+    }
+  },
+  "leaf-uniform/balanced": {
+    "fast-simai": {
+      "paired": 2,
+      "unpaired": 0,
+      "geomean_speedup": 1.6344348021907285,
+      "wins": 2,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 1.5153028622632225,
+      "best_speedup": 1.7629328031640727
+    },
+    "spreadout": {
+      "paired": 2,
+      "unpaired": 0,
+      "geomean_speedup": 2.6995576917886663,
+      "wins": 2,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 1.9937099758829464,
+      "best_speedup": 3.65530183399314
+    }
+  },
+  "leaf-uniform/zipf08": {
+    "fast-simai": {
+      "paired": 6,
+      "unpaired": 0,
+      "geomean_speedup": 1.7759737385640797,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 1.3721630565089584,
+      "best_speedup": 2.2835887240164228
+    },
+    "spreadout": {
+      "paired": 6,
+      "unpaired": 0,
+      "geomean_speedup": 0.969555171803033,
+      "wins": 1,
+      "ties": 0,
+      "losses": 5,
+      "worst_speedup": 0.9331429720985992,
+      "best_speedup": 1.013917175831636
+    }
+  },
+  "multi-cut/balanced": {
+    "fast-simai": {
+      "paired": 2,
+      "unpaired": 0,
+      "geomean_speedup": 1.1198527264714278,
+      "wins": 2,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 1.0931344526050721,
+      "best_speedup": 1.147224045493113
+    },
+    "spreadout": {
+      "paired": 2,
+      "unpaired": 0,
+      "geomean_speedup": 1.1898014555201362,
+      "wins": 2,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 1.0092417441217838,
+      "best_speedup": 1.4026644377355566
+    }
+  },
+  "multi-cut/zipf08": {
+    "fast-simai": {
+      "paired": 6,
+      "unpaired": 0,
+      "geomean_speedup": 1.197765291466972,
+      "wins": 5,
+      "ties": 0,
+      "losses": 1,
+      "worst_speedup": 0.9439536975617664,
+      "best_speedup": 1.4647186225975537
+    },
+    "spreadout": {
+      "paired": 6,
+      "unpaired": 0,
+      "geomean_speedup": 0.9238413917989169,
+      "wins": 0,
+      "ties": 0,
+      "losses": 6,
+      "worst_speedup": 0.9001574330227141,
+      "best_speedup": 0.9518286382059795
+    }
+  }
+}

@@ -20,6 +20,7 @@ from simai_a2a.leafspine import build_leafspine,fixed_routes,server_snapshot,wri
 from simai_a2a.schedulers.simai_plan import prepare,reference,materialize
 from simai_a2a.schedulers.resource_budget import plan,prepare_resources,anchored_cap,evaluate_round
 from simai_a2a.schedulers.spreadout import SpreadOutScheduler
+from simai_a2a.schedulers.pairwise import PairwiseScheduler
 from simai_a2a.delivery import validate_fast_delivery
 from simai_a2a.execution import modeled_scaleup_schedule
 from simai_a2a.artifacts import write_matrix_artifact,write_schedule_artifact
@@ -28,7 +29,7 @@ from simai_a2a.runner import run_scenario,backend_shared_libraries
 from simai_a2a.v2_diagnostics import collect
 
 BASE='0ab4a30';MODULE='astra-sim-alibabacloud/experiments/alltoall/src/simai_a2a/schedulers/resource_budget.py'
-METHODS=('fast-simai','spreadout','legacy-v1','prior-v2','resource-eager','resource-near','resource-full','resource-split','resource-maxq','volume-maxq')
+METHODS=('fast-simai','spreadout','pairwise','legacy-v1','prior-v2','resource-eager','resource-near','resource-full','resource-split','resource-maxq','volume-maxq')
 
 
 def volume_plan(prepared,topology):
@@ -137,8 +138,9 @@ def run(out,binary,cases,methods,prepare_only=False,source_scenario=None,timeout
                 stages=None,planning_cpu_us=None,planner_cpu_us=None,attempt_dir=None,error=None,
                 handoffs=0,fallbacks=0,reference_stages=0,relaxed_stages=0)
             try:
-                if method=='spreadout':
-                    result={};full=SpreadOutScheduler().schedule(matrix,hw,seed=1)
+                if method in ('spreadout','pairwise'):
+                    scheduler=SpreadOutScheduler() if method=='spreadout' else PairwiseScheduler()
+                    result={};full=scheduler.schedule(matrix,hw,seed=1)
                     full.metadata.update(delivery_chunks={str(f.flow_id):[[f.src,f.dst,f.size_bytes]] for f in full.flows},server_dc_ids=dc_ids)
                 else:
                     if method=='fast-simai':

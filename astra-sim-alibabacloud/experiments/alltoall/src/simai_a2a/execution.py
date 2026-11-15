@@ -26,7 +26,8 @@ def modeled_scaleup_schedule(schedule: Schedule, hardware: HardwareProfile) -> S
     for flow in schedule.flows:
         if flow.src//g!=flow.dst//g:
             continue
-        phase=('dispatch' if schedule.algorithm=='spreadout' and flow.phase=='direct' else flow.phase)
+        phase=('dispatch' if (schedule.algorithm=='spreadout' or schedule.metadata.get('native_round_protocol'))
+               and flow.phase=='direct' else flow.phase)
         if phase not in ('balance','intrinsic','dispatch'):
             raise ValueError('unrecognized local operation for native timing')
         stage=flow.stage_id if phase=='dispatch' else -1

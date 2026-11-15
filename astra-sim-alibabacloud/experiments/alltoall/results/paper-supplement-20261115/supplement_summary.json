@@ -1,0 +1,173 @@
+{
+  "all": {
+    "fast-simai": {
+      "paired": 52,
+      "unpaired": 0,
+      "geomean_speedup": 1.375446449145577,
+      "wins": 47,
+      "ties": 0,
+      "losses": 5,
+      "worst_speedup": 0.7727554875166931,
+      "best_speedup": 2.9395153970896297
+    },
+    "spreadout": {
+      "paired": 52,
+      "unpaired": 0,
+      "geomean_speedup": 1.1628936141979598,
+      "wins": 28,
+      "ties": 0,
+      "losses": 24,
+      "worst_speedup": 0.6508194465586568,
+      "best_speedup": 2.7842706275522473
+    },
+    "pairwise": {
+      "paired": 52,
+      "unpaired": 0,
+      "geomean_speedup": 1.0382506194298107,
+      "wins": 21,
+      "ties": 0,
+      "losses": 31,
+      "worst_speedup": 0.5793915149057716,
+      "best_speedup": 2.2921063218197064
+    },
+    "volume-maxq": {
+      "paired": 52,
+      "unpaired": 0,
+      "geomean_speedup": 1.0529492305296488,
+      "wins": 35,
+      "ties": 0,
+      "losses": 17,
+      "worst_speedup": 0.7319178565968881,
+      "best_speedup": 1.7398983551537
+    }
+  },
+  "real": {
+    "fast-simai": {
+      "paired": 24,
+      "unpaired": 0,
+      "geomean_speedup": 1.5578214723092192,
+      "wins": 24,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 1.0562801210103954,
+      "best_speedup": 2.9395153970896297
+    },
+    "spreadout": {
+      "paired": 24,
+      "unpaired": 0,
+      "geomean_speedup": 1.0698677075709775,
+      "wins": 14,
+      "ties": 0,
+      "losses": 10,
+      "worst_speedup": 0.7857242043884414,
+      "best_speedup": 1.4517955814286396
+    },
+    "pairwise": {
+      "paired": 24,
+      "unpaired": 0,
+      "geomean_speedup": 0.9917799405690755,
+      "wins": 7,
+      "ties": 0,
+      "losses": 17,
+      "worst_speedup": 0.8072774190607269,
+      "best_speedup": 1.3181275945984636
+    },
+    "volume-maxq": {
+      "paired": 24,
+      "unpaired": 0,
+      "geomean_speedup": 1.009780357757538,
+      "wins": 18,
+      "ties": 0,
+      "losses": 6,
+      "worst_speedup": 0.9569293999864507,
+      "best_speedup": 1.0714550226244344
+    }
+  },
+  "synthetic": {
+    "fast-simai": {
+      "paired": 22,
+      "unpaired": 0,
+      "geomean_speedup": 1.1378378678125902,
+      "wins": 17,
+      "ties": 0,
+      "losses": 5,
+      "worst_speedup": 0.7727554875166931,
+      "best_speedup": 1.796619483485887
+    },
+    "spreadout": {
+      "paired": 22,
+      "unpaired": 0,
+      "geomean_speedup": 1.0439481133446513,
+      "wins": 8,
+      "ties": 0,
+      "losses": 14,
+      "worst_speedup": 0.6508194465586568,
+      "best_speedup": 2.7842706275522473
+    },
+    "pairwise": {
+      "paired": 22,
+      "unpaired": 0,
+      "geomean_speedup": 0.9368196236434163,
+      "wins": 8,
+      "ties": 0,
+      "losses": 14,
+      "worst_speedup": 0.5793915149057716,
+      "best_speedup": 2.2921063218197064
+    },
+    "volume-maxq": {
+      "paired": 22,
+      "unpaired": 0,
+      "geomean_speedup": 0.9710039154512685,
+      "wins": 11,
+      "ties": 0,
+      "losses": 11,
+      "worst_speedup": 0.7319178565968881,
+      "best_speedup": 1.1650371571448839
+    }
+  },
+  "mechanism": {
+    "fast-simai": {
+      "paired": 6,
+      "unpaired": 0,
+      "geomean_speedup": 1.6755078557238625,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 1.6135003325205055,
+      "best_speedup": 1.7398983551537
+    },
+    "spreadout": {
+      "paired": 6,
+      "unpaired": 0,
+      "geomean_speedup": 2.4110351514969346,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 2.1672261456123127,
+      "best_speedup": 2.6822664933485587
+    },
+    "pairwise": {
+      "paired": 6,
+      "unpaired": 0,
+      "geomean_speedup": 1.8178268707361402,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 1.7822940748012794,
+      "best_speedup": 1.8540680680536903
+    },
+    "volume-maxq": {
+      "paired": 6,
+      "unpaired": 0,
+      "geomean_speedup": 1.6755078557238625,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "worst_speedup": 1.6135003325205055,
+      "best_speedup": 1.7398983551537
+    }
+  },
+  "status_counts": {
+    "success": 260
+  }
+}

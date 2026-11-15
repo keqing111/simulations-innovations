@@ -2,6 +2,9 @@
 
 这是当前研究的集中入口，不复制核心算法、不重排历史目录。
 
+- [最新代码与数据更新（2026-11-16）](DATA_UPDATE_20261116.md)：52条件、260回放，五方法配对数据和证据；不包含论文写作材料
+- [最新配对数据与结果报告](../../astra-sim-alibabacloud/experiments/alltoall/results/paper-supplement-20261115/REPORT.md)、[冻结配置/运行入口](paper_supplement.py)、[汇总入口](supplement_results.py)
+
 - [简版报告：依据、流程、代码路径和已知局限](REPORT.md)
 - [最新扩展结果：41条件、123回放，FAST/Spreadout主对照](EXPANDED_RESULTS.md)
 - [扩展实验预登记：混合异构、不对称路径、规模和压力](EXPANDED_EXPERIMENT.md)

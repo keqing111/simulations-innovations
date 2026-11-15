@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "methods": ["fast-simai", "spreadout", "volume-maxq", "resource-maxq"],
+  "layout": {"gpus_per_server": 4, "servers_per_tor": 4, "server_uplink_gbps": 400, "local_link_delay_ns": 700, "route_policy": "fixed destination-based; no ECMP"},
+  "topologies": [
+    {"id": "leaf-uniform", "gpu_counts": [64, 128], "spines": 4, "rack_uplink_gbps": [400, 400, 400, 400], "rack_delay_ns": [700, 700, 700, 700]},
+    {"id": "leaf-bandwidth", "gpu_counts": [64, 128], "spines": 4, "rack_uplink_gbps": [400, 200, 100, 400], "rack_delay_ns": [700, 700, 700, 700]},
+    {"id": "leaf-delay", "gpu_counts": [64, 128], "spines": 4, "rack_uplink_gbps": [400, 400, 400, 400], "rack_delay_ns": [700, 2000, 5000, 700]},
+    {"id": "multi-cut", "gpu_counts": [64], "cut_gbps": [100, 200, 100]},
+    {"id": "pod-core", "gpu_counts": [128], "pods": 4, "tors_per_pod": 2, "cores": 2, "pod_uplink_gbps": [400, 1600, 400, 1600]},
+    {"id": "leaf-mixed", "gpu_counts": [128], "spines": 4, "rack_uplink_gbps": [400, 200, 100, 400], "rack_delay_ns": [700, 2000, 5000, 700]},
+    {"id": "leaf-route-asymmetric", "gpu_counts": [64, 128, 256], "spines": 4,
+     "rack_spine_gbps": [[400,100,200,400],[400,400,100,200],[200,400,400,100],[100,200,400,400]],
+     "rack_spine_delay_ns": [[700,5000,2000,700],[700,700,5000,2000],[2000,700,700,5000],[5000,2000,700,700]]},
+    {"id": "pod-mixed", "gpu_counts": [128, 256], "tors_per_pod": 2, "cores": 2, "pod_uplink_gbps": [400,1600,400,1600], "pod_delay_ns": [700,2000,5000,1000]},
+    {"id": "multi-cut-mixed", "gpu_counts": [64, 128], "cut_gbps": [100,200,100], "cut_delay_ns": [700,2000,5000]}
+  ],
+  "loads": {
+    "synthetic_families": ["balanced", "zipf08", "zipf12"],
+    "seeds": [3101, 3102, 3103],
+    "mib_per_rank": [1, 4, 16],
+    "background_rho": [0, 0.3, 0.6],
+    "real_models": ["deepseek", "llama", "kimi"],
+    "real_windows": [0, 1, 2],
+    "real_tokens_per_gpu": 64,
+    "seed_scope": "synthetic destination popularity and multinomial sampling; balanced matrix does not vary by seed",
+    "background_rule": "common periodic RDMA chunks; interval chosen so maximum configured shared-resource offered load equals rho, rounded conservatively to integer ns"
+  },
+  "phases": {
+    "pilot": {"topologies": ["leaf-uniform", "leaf-bandwidth", "leaf-delay"], "gpu_counts": [64], "families": ["balanced", "zipf08", "zipf12"], "mib_per_rank": [1, 4], "seeds": [3101], "rho": [0], "planned_conditions": 18, "planned_new_replays": 72},
+    "topology": {"topologies": ["leaf-uniform", "leaf-bandwidth", "leaf-delay", "multi-cut", "pod-core"], "gpu_counts": [64, 128], "families": ["balanced", "zipf08", "zipf12"], "mib_per_rank": [4], "seeds": [3101, 3102, 3103], "rho": [0]},
+    "volume": {"topologies": ["leaf-bandwidth", "pod-core"], "gpu_counts": [64, 128], "families": ["balanced", "zipf08", "zipf12"], "mib_per_rank": [1, 4, 16], "seeds": [3101, 3102, 3103], "rho": [0]},
+    "pressure": {"topologies": ["leaf-bandwidth", "pod-core"], "gpu_counts": [64, 128], "families": ["balanced", "zipf12"], "mib_per_rank": [4], "seeds": [3101, 3102, 3103], "rho": [0, 0.3, 0.6]},
+    "real": {"topologies": ["leaf-bandwidth", "pod-core"], "gpu_counts": [64, 128], "models": ["deepseek", "llama", "kimi"], "windows": [0, 1, 2], "layer_policy": "fixed middle layer in existing catalog", "tokens_per_gpu": 64, "rho": [0]},
+    "expanded": {
+      "methods": ["fast-simai", "spreadout", "resource-maxq"],
+      "planned_conditions": 41,
+      "planned_new_replays": 123,
+      "blocks": [
+        {"block": "primary", "topologies": ["leaf-uniform","leaf-mixed","leaf-route-asymmetric","pod-mixed","multi-cut-mixed"], "gpu_counts": [128], "families": ["balanced","zipf08","zipf12"], "mib_per_rank": [4], "seeds": [4101], "rho": [0]},
+        {"block": "volume", "topologies": ["leaf-route-asymmetric","pod-mixed"], "gpu_counts": [128], "families": ["balanced","zipf12"], "mib_per_rank": [1,16], "seeds": [4101], "rho": [0]},
+        {"block": "pressure", "topologies": ["leaf-route-asymmetric","pod-mixed"], "gpu_counts": [128], "families": ["balanced","zipf12"], "mib_per_rank": [4], "seeds": [4101], "rho": [0.3,0.6]},
+        {"block": "scale", "topologies": ["leaf-route-asymmetric"], "gpu_counts": [64,256], "families": ["balanced","zipf12"], "mib_per_rank": [4], "seeds": [4101], "rho": [0]},
+        {"block": "real", "topologies": ["leaf-route-asymmetric","pod-mixed"], "gpu_counts": [128], "models": ["deepseek","llama","kimi"], "windows": [1], "rho": [0]}
+      ]
+    }
+  },
+  "protocol": {"execution": "SimAI/ns-3 event-driven credit/ACK; no global barrier", "failed_run_policy": "retain; no automatic retry", "old_campaign_restart": false, "cpu_cost_in_communication_time": false, "legacy_scalar_utilization_excluded": true}
+}

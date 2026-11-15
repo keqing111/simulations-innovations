@@ -1,0 +1,76 @@
+{
+  "main_conditions": 24,
+  "main_records": 96,
+  "main_success": 96,
+  "new_main_attempts": 60,
+  "reused_records": 36,
+  "reused_pilot_records": 32,
+  "reused_natural_mechanism_records": 4,
+  "exact_main_contracts_recomputed": 96,
+  "original_pair_delivery_verified": 96,
+  "applied_routes_verified": 600576,
+  "control_records": 8,
+  "control_success": 7,
+  "control_timeouts": 1,
+  "control_timeout_excluded_from_speedups": true,
+  "unique_records_including_extra_controls": 104,
+  "total_new_backend_attempts": 72,
+  "failed_run_retries": 0,
+  "registered_source_snapshot_hashes_verified": true,
+  "post_review_controller_changes": [
+    "/home/julius/fast/wan-budget-v1/research/resource_a2av/paper_experiment.py"
+  ],
+  "post_review_cached_full_schedule_regenerations": 36,
+  "post_review_backend_replays": 0,
+  "core_balance_dispatch_congestion_configuration_unchanged": true,
+  "actual_resource_matches_hand_full_plan": true,
+  "shared_control_q_per_gpu_bytes": 262144,
+  "shared_control_stages": 2,
+  "tests": {
+    "scoped_passed": 106,
+    "scoped_skipped": 6,
+    "full_passed": 258,
+    "full_skipped": 11,
+    "full_failed": 10,
+    "full_errors": 3,
+    "subtests_passed": 128,
+    "inherited_issue_set_unchanged": true,
+    "inherited_issues": [
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_batch_study.py::BatchStudyTests::test_audit_binds_variant_limits_to_registered_policy",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_batch_study.py::BatchStudyTests::test_direct_pair_misrouting_cannot_pass_just_by_conserving_bytes",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_batch_study.py::BatchStudyTests::test_mutated_registration_is_not_treated_as_frozen_grid",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_batch_study.py::BatchStudyTests::test_real_prepare_and_audit_reject_corrupt_membership",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_ei_study.py::EiStudyTests::test_boundary_plot_labels_only_real_winner_changes",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_ei_study.py::EiStudyTests::test_smoke_outputs_complete_grid_and_rejects_changed_artifact",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_paper_fast.py::StudyDriverTests::test_fingerprint_includes_matching_repair_and_schedule_construction_dependencies",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_paper_fast.py::StudyDriverTests::test_old_packet_scenarios_cannot_be_combined_with_new_analytical_study",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_paper_fast.py::StudyDriverTests::test_small_study_persists_all_policies_and_valid_selected_plan",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_tail_study.py::TailStudyTests::test_another_valid_full_decomposition_cannot_impersonate_registered_partition",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_packet_trace.py::PacketTraceTests::test_actual_cpp_layout_and_wrapped_payload_reconstruction",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_packet_trace.py::PacketTraceTests::test_truncated_headers_records_and_invalid_events_are_rejected",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_packet_trace.py::PacketTraceTests::test_wrong_flow_sequence_or_truncated_payload_is_not_silently_counted"
+    ]
+  },
+  "evidence": {
+    "file": "paired-evidence.tar.gz",
+    "bytes": 6428554,
+    "sha256": "9700da95975600a53cc99ea1f3ec854d5dc1cef61637f5d5a7b7bdfc060ff0e2",
+    "members": 817,
+    "member_hashes_verified": true,
+    "scope": "synthetic inputs/plans/FCT/diagnostics; detailed event and port evidence for both controls; no binary or secrets"
+  },
+  "caution": "Observed controlled1.8135x is exploratory, not representative of main24 neutral conditions. No fresh-clone backend build or whole-project green-test claim.",
+  "independent_review": {
+    "critical_findings": 0,
+    "important_findings": 1,
+    "important_addressed": "full materialized schedule cache guard; real mutated-timer RED to GREEN regression,36read-only current/old schedules exactly equal",
+    "actual_control_and_main_claims_recomputed": true,
+    "post_fix_re_review": false,
+    "declined": [
+      "initial sparse manual timeout root cause",
+      "inherited full-suite problems",
+      "generalization",
+      "acceptance and final page fit"
+    ]
+  }
+}

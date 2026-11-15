@@ -1,0 +1,49 @@
+case,group,window,layer,seed,topology,gpu_count,family,mib,rho,model,block,logical_bytes,send_bytes_min,send_bytes_max,plot_label,fast-simai_ms,fast-simai_status,fast-simai_stages,fast-simai_pair_eligible,fast-simai_pairing_error,fast-simai_core_cpu_ms,spreadout_ms,spreadout_status,spreadout_stages,spreadout_pair_eligible,spreadout_pairing_error,spreadout_core_cpu_ms,volume-maxq_ms,volume-maxq_status,volume-maxq_stages,volume-maxq_pair_eligible,volume-maxq_pairing_error,volume-maxq_core_cpu_ms,resource-maxq_ms,resource-maxq_status,resource-maxq_stages,resource-maxq_pair_eligible,resource-maxq_pairing_error,resource-maxq_core_cpu_ms,fast-simai_speedup,spreadout_speedup,volume-maxq_speedup
+leaf-uniform-gpu64-balanced-s3101-m1-rho0,leaf-uniform/balanced,0,,3101,leaf-uniform,64,balanced,1,0,,paper,67092480,1048320,1048320,"leaf-uniform/64 GPUs balanced
+1MiB s3101",0.20631,success,15,True,,,0.497673,success,63,True,,,0.136151,success,15,True,,9.641665999999999,0.136151,success,15,True,,2189.110827,1.5153028622632225,3.65530183399314,1.0
+leaf-uniform-gpu64-balanced-s3101-m4-rho0,leaf-uniform/balanced,0,,3101,leaf-uniform,64,balanced,4,0,,paper,268369920,4193280,4193280,"leaf-uniform/64 GPUs balanced
+4MiB s3101",0.665932,success,15,True,,,0.753106,success,63,True,,,0.377741,success,15,True,,8.041023000000001,0.377741,success,15,True,,2217.327932,1.7629328031640727,1.9937099758829464,1.0
+leaf-uniform-gpu64-zipf08-s3101-m1-rho0,leaf-uniform/zipf08,0,,3101,leaf-uniform,64,zipf08,1,0,,paper,67092480,1048320,1048320,"leaf-uniform/64 GPUs zipf08
+1MiB s3101",1.412765,success,220,True,,,0.62727,success,63,True,,,0.613206,success,76,True,,48.791819000000004,0.61866,success,77,True,,269.63545799999997,2.2835887240164228,1.013917175831636,0.9911841722432354
+leaf-uniform-gpu64-zipf08-s3102-m1-rho0,leaf-uniform/zipf08,0,,3102,leaf-uniform,64,zipf08,1,0,,paper,67092480,1048320,1048320,"leaf-uniform/64 GPUs zipf08
+1MiB s3102",1.428585,success,224,True,,,0.619473,success,63,True,,,0.639365,success,79,True,,55.112291,0.642624,success,80,True,,315.142182,2.2230495593068422,0.9639742680011952,0.9949286052186037
+leaf-uniform-gpu64-zipf08-s3103-m1-rho0,leaf-uniform/zipf08,0,,3103,leaf-uniform,64,zipf08,1,0,,paper,67092480,1048320,1048320,"leaf-uniform/64 GPUs zipf08
+1MiB s3103",1.443927,success,224,True,,,0.62202,success,63,True,,,0.652798,success,80,True,,60.894533,0.646652,success,79,True,,307.148745,2.232927447839023,0.9619084144176466,1.0095043392736742
+leaf-uniform-gpu64-zipf08-s3101-m4-rho0,leaf-uniform/zipf08,0,,3101,leaf-uniform,64,zipf08,4,0,,paper,268369920,4193280,4193280,"leaf-uniform/64 GPUs zipf08
+4MiB s3101",1.920639,success,220,True,,,1.32597,success,63,True,,,1.349576,success,76,True,,54.586273999999996,1.353648,success,76,True,,297.658418,1.4188614765433851,0.9795530300343961,0.9969918324409301
+leaf-uniform-gpu64-zipf08-s3102-m4-rho0,leaf-uniform/zipf08,0,,3102,leaf-uniform,64,zipf08,4,0,,paper,268369920,4193280,4193280,"leaf-uniform/64 GPUs zipf08
+4MiB s3102",1.946059,success,224,True,,,1.323066,success,63,True,,,1.39634,success,79,True,,72.181932,1.36875,success,78,True,,374.43692599999997,1.4217782648401827,0.9666235616438358,1.0201570776255708
+leaf-uniform-gpu64-zipf08-s3103-m4-rho0,leaf-uniform/zipf08,0,,3103,leaf-uniform,64,zipf08,4,0,,paper,268369920,4193280,4193280,"leaf-uniform/64 GPUs zipf08
+4MiB s3103",2.005323,success,224,True,,,1.363725,success,63,True,,,1.439343,success,80,True,,57.872735,1.461432,success,80,True,,474.433723,1.3721630565089584,0.9331429720985992,0.984885372702938
+leaf-bandwidth-gpu64-balanced-s3101-m1-rho0,leaf-bandwidth/balanced,0,,3101,leaf-bandwidth,64,balanced,1,0,,paper,67092480,1048320,1048320,"leaf-bandwidth/64 GPUs balanced
+1MiB s3101",0.459754,success,15,True,,,0.75157,success,63,True,,,0.32769,success,15,True,,7.914167,0.32769,success,15,True,,590.925236,1.4030150447068876,2.2935396258659098,1.0
+leaf-bandwidth-gpu64-balanced-s3101-m4-rho0,leaf-bandwidth/balanced,0,,3101,leaf-bandwidth,64,balanced,4,0,,paper,268369920,4193280,4193280,"leaf-bandwidth/64 GPUs balanced
+4MiB s3101",1.857383,success,15,True,,,1.806425,success,63,True,,,1.149361,success,15,True,,9.590571,1.149361,success,15,True,,561.06115,1.6160135936402922,1.5716776539311843,1.0
+leaf-bandwidth-gpu64-zipf08-s3101-m1-rho0,leaf-bandwidth/zipf08,0,,3101,leaf-bandwidth,64,zipf08,1,0,,paper,67092480,1048320,1048320,"leaf-bandwidth/64 GPUs zipf08
+1MiB s3101",1.590263,success,220,True,,,0.992379,success,63,True,,,0.95956,success,76,True,,47.676419,0.960804,success,76,True,,327.87368699999996,1.655137780442213,1.0328631021519477,0.9987052510189383
+leaf-bandwidth-gpu64-zipf08-s3102-m1-rho0,leaf-bandwidth/zipf08,0,,3102,leaf-bandwidth,64,zipf08,1,0,,paper,67092480,1048320,1048320,"leaf-bandwidth/64 GPUs zipf08
+1MiB s3102",1.620922,success,224,True,,,0.978965,success,63,True,,,0.999728,success,79,True,,46.168074999999995,0.997247,success,77,True,,260.57581,1.625396717162348,0.9816675307120503,1.0024878490484304
+leaf-bandwidth-gpu64-zipf08-s3103-m1-rho0,leaf-bandwidth/zipf08,0,,3103,leaf-bandwidth,64,zipf08,1,0,,paper,67092480,1048320,1048320,"leaf-bandwidth/64 GPUs zipf08
+1MiB s3103",1.767401,success,224,True,,,1.222576,success,63,True,,,1.174054,success,80,True,,50.607468999999995,1.186432,success,79,True,,329.341141,1.489677453069371,1.0304644513971304,0.9895670379760492
+leaf-bandwidth-gpu64-zipf08-s3101-m4-rho0,leaf-bandwidth/zipf08,0,,3101,leaf-bandwidth,64,zipf08,4,0,,paper,268369920,4193280,4193280,"leaf-bandwidth/64 GPUs zipf08
+4MiB s3101",3.172429,success,220,True,,,2.770047,success,63,True,,,2.873895,success,76,True,,46.887871,2.795471,success,76,True,,283.698779,1.1348459705001412,0.9909052893054515,1.0280539486905784
+leaf-bandwidth-gpu64-zipf08-s3102-m4-rho0,leaf-bandwidth/zipf08,0,,3102,leaf-bandwidth,64,zipf08,4,0,,paper,268369920,4193280,4193280,"leaf-bandwidth/64 GPUs zipf08
+4MiB s3102",4.615653,success,224,True,,,2.713432,success,63,True,,,3.431647,success,79,True,,53.308868000000004,3.46524,success,80,True,,369.056642,1.3319865290715793,0.7830430215511768,0.9903057219701954
+leaf-bandwidth-gpu64-zipf08-s3103-m4-rho0,leaf-bandwidth/zipf08,0,,3103,leaf-bandwidth,64,zipf08,4,0,,paper,268369920,4193280,4193280,"leaf-bandwidth/64 GPUs zipf08
+4MiB s3103",4.150191,success,224,True,,,3.685252,success,63,True,,,4.699295,success,80,True,,69.12204799999999,4.610233,success,80,True,,292.457881,0.9002128525825052,0.7993635028858629,1.0193183294640422
+multi-cut-gpu64-balanced-s3101-m1-rho0,multi-cut/balanced,0,,3101,multi-cut,64,balanced,1,0,,paper,67092480,1048320,1048320,"multi-cut/64 GPUs balanced
+1MiB s3101",1.361545,success,15,True,,,1.664706,success,63,True,,,1.215309,success,15,True,,8.305056,1.186817,success,15,True,,164.594577,1.147224045493113,1.4026644377355566,1.024007071014318
+multi-cut-gpu64-balanced-s3101-m4-rho0,multi-cut/balanced,0,,3101,multi-cut,64,balanced,4,0,,paper,268369920,4193280,4193280,"multi-cut/64 GPUs balanced
+4MiB s3101",5.52047,success,15,True,,,5.096801,success,63,True,,,4.70287,success,15,True,,8.25424,5.050129,success,15,True,,292.478273,1.0931344526050721,1.0092417441217838,0.9312375980890785
+multi-cut-gpu64-zipf08-s3101-m1-rho0,multi-cut/zipf08,0,,3101,multi-cut,64,zipf08,1,0,,paper,67092480,1048320,1048320,"multi-cut/64 GPUs zipf08
+1MiB s3101",2.774742,success,220,True,,,1.960881,success,63,True,,,2.087596,success,76,True,,54.969080999999996,2.076551,success,77,True,,280.293634,1.3362262713509083,0.9442970579581239,1.0053189158368854
+multi-cut-gpu64-zipf08-s3102-m1-rho0,multi-cut/zipf08,0,,3102,multi-cut,64,zipf08,1,0,,paper,67092480,1048320,1048320,"multi-cut/64 GPUs zipf08
+1MiB s3102",2.634868,success,224,True,,,1.664769,success,63,True,,,1.834992,success,79,True,,72.478892,1.827522,success,76,True,,263.408094,1.4417708788184218,0.9109433429529165,1.004087502092998
+multi-cut-gpu64-zipf08-s3103-m1-rho0,multi-cut/zipf08,0,,3103,multi-cut,64,zipf08,1,0,,paper,67092480,1048320,1048320,"multi-cut/64 GPUs zipf08
+1MiB s3103",2.57528,success,224,True,,,1.582664,success,63,True,,,1.794623,success,80,True,,53.453205000000004,1.758208,success,79,True,,244.175638,1.4647186225975537,0.9001574330227141,1.020711428909435
+multi-cut-gpu64-zipf08-s3101-m4-rho0,multi-cut/zipf08,0,,3101,multi-cut,64,zipf08,4,0,,paper,268369920,4193280,4193280,"multi-cut/64 GPUs zipf08
+4MiB s3101",7.617611,success,220,True,,,7.509059,success,63,True,,,7.643807,success,76,True,,51.207497000000004,8.069899,success,77,True,,307.47264,0.9439536975617664,0.9305022280948002,0.9471998348430384
+multi-cut-gpu64-zipf08-s3102-m4-rho0,multi-cut/zipf08,0,,3102,multi-cut,64,zipf08,4,0,,paper,268369920,4193280,4193280,"multi-cut/64 GPUs zipf08
+4MiB s3102",6.917175,success,224,True,,,6.051736,success,63,True,,,6.573697,success,79,True,,58.651014,6.35801,success,78,True,,347.77520899999996,1.0879465430221091,0.9518286382059795,1.0339236647944876
+multi-cut-gpu64-zipf08-s3103-m4-rho0,multi-cut/zipf08,0,,3103,multi-cut,64,zipf08,4,0,,paper,268369920,4193280,4193280,"multi-cut/64 GPUs zipf08
+4MiB s3103",6.558141,success,224,True,,,5.83484,success,63,True,,,6.420564,success,80,True,,50.970269,6.436342,success,81,True,,323.984825,1.018923637059684,0.9065459852817019,0.9975486075786526

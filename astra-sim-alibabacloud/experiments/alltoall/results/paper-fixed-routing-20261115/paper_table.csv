@@ -1,0 +1,7 @@
+topology,family,conditions,volume-maxq_paired,volume-maxq_unpaired,volume-maxq_geomean,volume-maxq_wins,volume-maxq_ties,volume-maxq_losses,fast-simai_paired,fast-simai_unpaired,fast-simai_geomean,fast-simai_wins,fast-simai_ties,fast-simai_losses,spreadout_paired,spreadout_unpaired,spreadout_geomean,spreadout_wins,spreadout_ties,spreadout_losses
+leaf-uniform,balanced,2,2,0,1.0,0,2,0,2,0,1.6344348021907285,2,0,0,2,0,2.6995576917886663,2,0,0
+leaf-uniform,zipf08,6,6,0,0.999539129005488,2,0,4,6,0,1.77597373856408,6,0,0,6,0,0.969555171803033,1,0,5
+leaf-bandwidth,balanced,2,2,0,1.0,0,2,0,2,0,1.5057527633473473,2,0,0,2,0,1.898606061925206,2,0,0
+leaf-bandwidth,zipf08,6,6,0,1.0046376500320475,3,0,3,6,0,1.3267159676735076,5,0,1,6,0,0.9302515055853064,2,0,4
+multi-cut,balanced,2,2,0,0.97652131837334,1,0,1,2,0,1.1198527264714278,2,0,0,2,0,1.1898014555201362,2,0,0
+multi-cut,zipf08,6,6,0,1.0010914638469102,4,0,2,6,0,1.197765291466972,5,0,1,6,0,0.9238413917989169,0,0,6

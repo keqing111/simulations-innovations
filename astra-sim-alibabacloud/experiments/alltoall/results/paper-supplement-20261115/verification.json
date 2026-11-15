@@ -1,0 +1,43 @@
+{
+  "registered_conditions": 52,
+  "records": 260,
+  "verified_execution_contracts": 260,
+  "applied_routes_verified": 1996480,
+  "failed_run_retries": 0,
+  "all_registered_source_hashes_unchanged": true,
+  "old_full_materializations_regenerated_without_backend": 96,
+  "core_balance_dispatch_congestion_configuration_unchanged": true,
+  "tests": {
+    "scoped_passed": 114,
+    "scoped_skipped": 6,
+    "full_passed": 266,
+    "full_failed": 10,
+    "full_errors": 3,
+    "full_skipped": 11,
+    "subtests_passed": 128,
+    "inherited_issues_unchanged": true,
+    "inherited_issues": [
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_batch_study.py::BatchStudyTests::test_audit_binds_variant_limits_to_registered_policy",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_batch_study.py::BatchStudyTests::test_direct_pair_misrouting_cannot_pass_just_by_conserving_bytes",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_batch_study.py::BatchStudyTests::test_mutated_registration_is_not_treated_as_frozen_grid",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_batch_study.py::BatchStudyTests::test_real_prepare_and_audit_reject_corrupt_membership",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_ei_study.py::EiStudyTests::test_boundary_plot_labels_only_real_winner_changes",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_ei_study.py::EiStudyTests::test_smoke_outputs_complete_grid_and_rejects_changed_artifact",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_paper_fast.py::StudyDriverTests::test_fingerprint_includes_matching_repair_and_schedule_construction_dependencies",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_paper_fast.py::StudyDriverTests::test_old_packet_scenarios_cannot_be_combined_with_new_analytical_study",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_paper_fast.py::StudyDriverTests::test_small_study_persists_all_policies_and_valid_selected_plan",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_tail_study.py::TailStudyTests::test_another_valid_full_decomposition_cannot_impersonate_registered_partition",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_packet_trace.py::PacketTraceTests::test_actual_cpp_layout_and_wrapped_payload_reconstruction",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_packet_trace.py::PacketTraceTests::test_truncated_headers_records_and_invalid_events_are_rejected",
+      "astra-sim-alibabacloud/experiments/alltoall/tests/test_packet_trace.py::PacketTraceTests::test_wrong_flow_sequence_or_truncated_payload_is_not_silently_counted"
+    ]
+  },
+  "evidence": {
+    "bytes": 68058649,
+    "sha256": "8cf5fa04b5c9442e8961baefd5762376147d001f373f20432a5c3fb3711f3259",
+    "members": 2483,
+    "member_hashes_verified": true,
+    "file": "paired-evidence.tar.gz",
+    "scope": "inputs/plans/FCT/diagnostics; actual port events for mechanism family; no executable or raw expert corpus"
+  }
+}

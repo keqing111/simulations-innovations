@@ -1,0 +1,32 @@
+{
+  "overall": {
+    "volume-maxq": {
+      "paired": 24,
+      "unpaired": 0,
+      "geomean": 0.9993345352301743,
+      "wins": 10,
+      "ties": 4,
+      "losses": 10
+    },
+    "fast-simai": {
+      "paired": 24,
+      "unpaired": 0,
+      "geomean": 1.4103819353763027,
+      "wins": 22,
+      "ties": 0,
+      "losses": 2
+    },
+    "spreadout": {
+      "paired": 24,
+      "unpaired": 0,
+      "geomean": 1.1107749550427803,
+      "wins": 9,
+      "ties": 0,
+      "losses": 15
+    }
+  },
+  "conditions": 24,
+  "changed_matching_cases": 20,
+  "same_coefficient_cases": 6,
+  "scope": "all24conditions; displayed error ranges are three input seeds, not confidence intervals"
+}

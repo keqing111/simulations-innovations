@@ -1,0 +1,224 @@
+{
+  "records": [
+    {
+      "case": "leaf-uniform-gpu64-balanced-s3101-m1-rho0",
+      "method": "fast-simai",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-uniform-gpu64-balanced-s3101-m1-rho0",
+      "method": "spreadout",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-uniform-gpu64-balanced-s3101-m1-rho0",
+      "method": "volume-maxq",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-uniform-gpu64-balanced-s3101-m1-rho0",
+      "method": "resource-maxq",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-uniform-gpu64-balanced-s3101-m4-rho0",
+      "method": "fast-simai",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-uniform-gpu64-balanced-s3101-m4-rho0",
+      "method": "spreadout",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-uniform-gpu64-balanced-s3101-m4-rho0",
+      "method": "volume-maxq",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-uniform-gpu64-balanced-s3101-m4-rho0",
+      "method": "resource-maxq",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-uniform-gpu64-zipf08-s3101-m1-rho0",
+      "method": "fast-simai",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-uniform-gpu64-zipf08-s3101-m1-rho0",
+      "method": "spreadout",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-uniform-gpu64-zipf08-s3101-m1-rho0",
+      "method": "volume-maxq",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-uniform-gpu64-zipf08-s3101-m1-rho0",
+      "method": "resource-maxq",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-uniform-gpu64-zipf08-s3101-m4-rho0",
+      "method": "fast-simai",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-uniform-gpu64-zipf08-s3101-m4-rho0",
+      "method": "spreadout",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-uniform-gpu64-zipf08-s3101-m4-rho0",
+      "method": "volume-maxq",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-uniform-gpu64-zipf08-s3101-m4-rho0",
+      "method": "resource-maxq",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-bandwidth-gpu64-balanced-s3101-m1-rho0",
+      "method": "fast-simai",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-bandwidth-gpu64-balanced-s3101-m1-rho0",
+      "method": "spreadout",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-bandwidth-gpu64-balanced-s3101-m1-rho0",
+      "method": "volume-maxq",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-bandwidth-gpu64-balanced-s3101-m1-rho0",
+      "method": "resource-maxq",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-bandwidth-gpu64-balanced-s3101-m4-rho0",
+      "method": "fast-simai",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-bandwidth-gpu64-balanced-s3101-m4-rho0",
+      "method": "spreadout",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-bandwidth-gpu64-balanced-s3101-m4-rho0",
+      "method": "volume-maxq",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-bandwidth-gpu64-balanced-s3101-m4-rho0",
+      "method": "resource-maxq",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-bandwidth-gpu64-zipf08-s3101-m1-rho0",
+      "method": "fast-simai",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-bandwidth-gpu64-zipf08-s3101-m1-rho0",
+      "method": "spreadout",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-bandwidth-gpu64-zipf08-s3101-m1-rho0",
+      "method": "volume-maxq",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-bandwidth-gpu64-zipf08-s3101-m1-rho0",
+      "method": "resource-maxq",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-bandwidth-gpu64-zipf08-s3101-m4-rho0",
+      "method": "fast-simai",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-bandwidth-gpu64-zipf08-s3101-m4-rho0",
+      "method": "spreadout",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-bandwidth-gpu64-zipf08-s3101-m4-rho0",
+      "method": "volume-maxq",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "leaf-bandwidth-gpu64-zipf08-s3101-m4-rho0",
+      "method": "resource-maxq",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "multi-cut-gpu64-balanced-s3101-m1-rho0",
+      "method": "fast-simai",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "multi-cut-gpu64-balanced-s3101-m1-rho0",
+      "method": "spreadout",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "multi-cut-gpu64-balanced-s3101-m1-rho0",
+      "method": "volume-maxq",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    },
+    {
+      "case": "multi-cut-gpu64-balanced-s3101-m1-rho0",
+      "method": "resource-maxq",
+      "materialized_schedule_verified": true,
+      "input_fingerprint_verified": true
+    }
+  ],
+  "verified_count": 36,
+  "cache_guard_sha256": "5356fe9fb907b7709007eed2920d1d9abb8510aa97a0bb13041b92d18d459b6a",
+  "backend_replays": 0,
+  "note": "After-review controller validation only. Original runtime/planner/materialized schedules and all FCTs unchanged."
+}

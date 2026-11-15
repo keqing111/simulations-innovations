@@ -22,7 +22,7 @@ def build_leafspine(hw,dcs):
                        tor_ids=tor,gateway_ids=gw,spine_ids=spine,background_ids=bg)
 
 
-def fixed_routes(top):
+def fixed_routes(top,*,route_classes=None):
     adjacency={i:[] for i in range(top.node_count)}
     for e in top.links:adjacency[e.src].append(e.dst);adjacency[e.dst].append(e.src)
     routes={}
@@ -37,7 +37,8 @@ def fixed_routes(top):
         for u in adjacency:
             if u==dst:continue
             choices=sorted(v for v in adjacency[u] if distance[v]==distance[u]-1)
-            routes[u,dst]=choices[(dst//top.gpus_per_server)%len(choices)]
+            route_class=(route_classes or {}).get(dst,dst//top.gpus_per_server)
+            routes[u,dst]=choices[route_class%len(choices)]
     return routes
 
 

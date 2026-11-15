@@ -30,16 +30,20 @@ CONFIG=json.loads(CONFIG_PATH.read_text())
 def case_specs(phase):
     cfg=CONFIG['phases'][phase];cases=[]
     allowed={t['id']:t['gpu_counts'] for t in CONFIG['topologies']}
-    families=cfg.get('families',cfg.get('models',[]))
-    for kind,p,family,mib,seed,rho in itertools.product(cfg['topologies'],cfg['gpu_counts'],families,
-            cfg.get('mib_per_rank',[4]),cfg.get('seeds',[1101]),cfg['rho']):
-        if p not in allowed[kind] or family=='balanced' and seed!=cfg['seeds'][0]:continue
-        for window in (cfg['windows'] if phase=='real' else [0]):
-            model=family if phase=='real' else None
-            stem=f'{model}-w{window}-lmid-b64' if model else f'{family}-s{seed}-m{mib}'
-            name=f'{kind}-gpu{p}-{stem}-rho{rho:g}'
-            cases.append(dict(name=name,group=kind+'/'+family,topology=kind,gpu_count=p,family=family,
-                mib=mib,seed=seed,rho=rho,window=window,layer=None,model=model))
+    for block in cfg.get('blocks',[dict(cfg,block=phase)]):
+        families=block.get('families',block.get('models',[]));real='models' in block
+        for kind,p,family,mib,seed,rho in itertools.product(block['topologies'],block['gpu_counts'],families,
+                block.get('mib_per_rank',[4]),block.get('seeds',[1101]),block['rho']):
+            if p not in allowed[kind] or family=='balanced' and seed!=block.get('seeds',[1101])[0]:continue
+            for window in (block['windows'] if real else [0]):
+                model=family if real else None
+                stem=f'{model}-w{window}-lmid-b64' if model else f'{family}-s{seed}-m{mib}'
+                name=f'{kind}-gpu{p}-{stem}-rho{rho:g}'
+                short={'leaf-uniform':'U','leaf-mixed':'M','leaf-route-asymmetric':'A','pod-mixed':'P','multi-cut-mixed':'C'}.get(kind,kind)
+                label=f'{short}/{p}G {family}\n'+(f'w{window} b64' if real else f'{mib}MiB r{rho:g}')
+                cases.append(dict(name=name,group=kind+'/'+family,topology=kind,gpu_count=p,family=family,
+                    mib=None if real else mib,seed=seed,rho=rho,window=window,layer=None,model=model,
+                    block=block['block'],plot_label=label))
     if len({c['name'] for c in cases})!=len(cases):raise ValueError('duplicate experiment conditions')
     if 'planned_conditions' in cfg and len(cases)!=cfg['planned_conditions']:raise ValueError('registered case count changed')
     return cases
@@ -59,17 +63,23 @@ def fabric(kind,p):
     if kind.startswith('leaf-'):
         spine=tuple(range(start,start+4));switches=tor+spine
         for rack,leaf in enumerate(tor):
-            for sp in spine:link(leaf,sp,spec['rack_uplink_gbps'][rack%4],spec['rack_delay_ns'][rack%4])
-    elif kind=='multi-cut':
-        agg=tuple(range(start,start+4));switches=tor+agg;spine=agg
+            for k,sp in enumerate(spine):
+                if 'rack_spine_gbps' in spec:
+                    bw,delay=spec['rack_spine_gbps'][rack%4][k],spec['rack_spine_delay_ns'][rack%4][k]
+                else:bw,delay=spec['rack_uplink_gbps'][rack%4],spec['rack_delay_ns'][rack%4]
+                link(leaf,sp,bw,delay)
+    elif kind.startswith('multi-cut'):
+        agg=tuple(range(start,start+racks));switches=tor+agg;spine=agg
         for leaf,a in zip(tor,agg):link(leaf,a,400)
-        for a,b,bw in zip(agg,agg[1:],spec['cut_gbps']):link(a,b,bw)
+        for k,(a,b) in enumerate(zip(agg,agg[1:])):
+            link(a,b,spec['cut_gbps'][k%len(spec['cut_gbps'])],spec.get('cut_delay_ns',[700])[k%len(spec.get('cut_delay_ns',[700]))])
     else:
-        agg=tuple(range(start,start+8));cores=tuple(range(start+8,start+10));switches=tor+agg+cores;spine=agg+cores
-        for pod in range(4):
+        pods=racks//2;agg=tuple(range(start,start+2*pods));cores=tuple(range(start+2*pods,start+2*pods+2));switches=tor+agg+cores;spine=agg+cores
+        for pod in range(pods):
             for leaf in tor[2*pod:2*pod+2]:
                 for a in agg[2*pod:2*pod+2]:link(leaf,a,1600)
-            for a,core in zip(agg[2*pod:2*pod+2],cores):link(a,core,spec['pod_uplink_gbps'][pod])
+            for a,core in zip(agg[2*pod:2*pod+2],cores):
+                link(a,core,spec['pod_uplink_gbps'][pod%4],spec.get('pod_delay_ns',[700])[pod%len(spec.get('pod_delay_ns',[700]))])
     top=Ns3Topology(tuple(range(p)),nv,tor[0],tuple(links),4,switch_ids=switches,tor_ids=tor,
                     spine_ids=spine,background_ids=bg)
     return top,hw
@@ -107,12 +117,16 @@ def background(top,routes,snapshot,rho):
 
 def prepare_case(base,case,trace_root=None):
     directory=base/case['name'];directory.mkdir(parents=True,exist_ok=False)
-    top,hw=fabric(case['topology'],case['gpu_count']);routes=fixed_routes(top);snapshot=server_snapshot(top,hw,routes)
+    top,hw=fabric(case['topology'],case['gpu_count'])
+    routes=fixed_routes(top,route_classes={h:i for i,h in enumerate(top.background_ids)})
+    snapshot=server_snapshot(top,hw,routes)
     snapshot['shared_resource_ids']=shared_ids(top,snapshot)
     if case['model']:
         info=catalog(case['model'],trace_root);layer=info['layers'][1];case['layer']=layer
         matrix=trace_input(info,case['window'],layer,case['gpu_count'],64)
     else:matrix=synthetic(case['gpu_count'],case['family'],case['seed'],case['mib'])
+    sends=matrix.values.sum(axis=1)
+    case.update(logical_bytes=matrix.logical_bytes,send_bytes_min=int(sends.min()),send_bytes_max=int(sends.max()))
     write_matrix_artifact(matrix,directory/'matrix');write_micro_workload(matrix,directory/'workload.csv')
     hardware=dict(schema_version=1,num_servers=hw.num_servers,gpus_per_server=4,intra_alpha_ns=100,
         intra_beta_ns_per_byte=.0023,inter_alpha_ns=700,inter_beta_ns_per_byte=.02,topology_id=case['topology'],
@@ -135,12 +149,12 @@ def prepare_case(base,case,trace_root=None):
 
 
 def execute(job):
-    output,source,case,timeout,hashes,binary=job
+    output,source,case,timeout,hashes,binary,methods=job
     for path,expected in hashes.items():
         if audit.digest(Path(path))!=expected:raise ValueError('registered source changed')
     top,_=fabric(case['topology'],case['gpu_count'])
     result=iterations.run(Path(output),Path(binary),
-        [case['name']],list(audit.METHODS),source_scenario=Path(source),source_topology=top,timeout=timeout)
+        [case['name']],methods,source_scenario=Path(source),source_topology=top,timeout=timeout)
     for row in result['runs']:
         row.update(group=case['group'],reused=False);audit.attach_contract(row)
     return result['runs']
@@ -164,11 +178,15 @@ def main():
         identities={r['input_contract']['binary_sha256'] for r in study['runs'] if r.get('input_contract')}
         study['backend_identity']=dict(sha256=next(iter(identities))) if len(identities)==1 else None
         shutil.copyfile(Path(__file__),out/'analysis_snapshot.py')
+        shutil.copyfile(audit.__file__,out/'analysis_audit_snapshot.py')
         audit.finish(out,study);(out/'heldout_speedup.png').replace(out/study['result_figure']);return
     out.mkdir(parents=True,exist_ok=False);cases=case_specs(args.phase)
+    methods=CONFIG['phases'][args.phase].get('methods',list(audit.METHODS))
     binary=args.binary.resolve()
     paths=[Path(__file__),CONFIG_PATH,EXPERIMENTS/'src/simai_a2a/schedulers/resource_budget.py',
            EXPERIMENTS/'configs/ns3-leafspine.conf',
+           EXPERIMENTS/'src/simai_a2a/leafspine.py',EXPERIMENTS/'src/simai_a2a/v2_workload.py',
+           EXPERIMENTS/'src/simai_a2a/schedulers/simai_plan.py',
            EXPERIMENTS/'tools/run_resource_budget_iterations.py',EXPERIMENTS/'tools/run_resource_budget_validation.py']
     hashes={str(p):audit.digest(p) for p in paths}
     if not args.prepare_only:hashes[str(binary)]=audit.digest(binary)
@@ -177,13 +195,15 @@ def main():
     jobs=[]
     for case in cases:
         source,_=prepare_case(out/'inputs',case,args.trace_root);case['source']=str(source)
-        jobs.append((str(out/'replays'/case['name']),str(source),case,args.timeout,hashes,str(binary)))
-    study=dict(complete=False,all_success=False,cases=cases,runs=[],phase=args.phase,planned_records=len(cases)*4,
-        source_hashes=hashes,planned_new_attempts=len(cases)*4,workers=args.workers,
+        jobs.append((str(out/'replays'/case['name']),str(source),case,args.timeout,hashes,str(binary),methods))
+    planned=len(cases)*len(methods)
+    if CONFIG['phases'][args.phase].get('planned_new_replays',planned)!=planned:raise ValueError('registered replay count changed')
+    study=dict(complete=False,all_success=False,cases=cases,runs=[],phase=args.phase,methods=methods,planned_records=planned,
+        source_hashes=hashes,planned_new_attempts=planned,workers=args.workers,
         backend_identity=None if args.prepare_only else dict(path=str(binary),sha256=hashes[str(binary)]),
         result_figure=f'{args.phase}_speedup.png',
         scope=f"fixed factorial; phase={args.phase}; configured background rho={sorted({c['rho'] for c in cases})}; no online or general superiority claim")
-    dump(out/'study.json',study);print('REGISTERED',len(cases),'conditions;',len(cases)*4,'methods',flush=True)
+    dump(out/'study.json',study);print('REGISTERED',len(cases),'conditions;',planned,'methods',flush=True)
     if args.prepare_only:return
     with ProcessPoolExecutor(max_workers=args.workers) as pool:
         futures={pool.submit(execute,job):case for job,case in zip(jobs,cases)}
@@ -191,7 +211,7 @@ def main():
             case=futures[future]
             try:rows=future.result()
             except Exception as error:
-                rows=audit.recover_worker(out/'replays'/case['name'],case['name'],audit.METHODS,error)
+                rows=audit.recover_worker(out/'replays'/case['name'],case['name'],methods,error)
                 for row in rows:row['group']=case['group']
             study['runs'].extend(rows);dump(out/'study.json',study)
             print('REGISTERED RESULTS',len(study['runs']),'/',study['planned_records'],flush=True)

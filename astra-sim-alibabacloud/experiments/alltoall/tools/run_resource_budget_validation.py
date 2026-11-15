@@ -159,7 +159,7 @@ def finish(out,study):
         group=[r for r in rows if r['case']==case['name']]
         mark_pair_eligibility(group)
         record=dict(case=case['name'],group=case['group'],window=case['window'],layer=case['layer'],seed=case['seed'])
-        record.update({k:case[k] for k in ('topology','gpu_count','family','mib','rho','model','block') if k in case})
+        record.update({k:case[k] for k in ('topology','gpu_count','family','mib','rho','model','block','logical_bytes','send_bytes_min','send_bytes_max') if k in case})
         record['plot_label']=case.get('plot_label',case['name'])
         for method in methods:
             matches=[r for r in group if r['method']==method]

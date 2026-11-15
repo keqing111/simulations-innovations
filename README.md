@@ -1,3 +1,6 @@
+> Research branch: [Resource-aware A2Av — report, code map, experiments and results](research/resource_a2av/README.md).
+> This branch preserves the upstream SimAI layout; it does not replace the repository's FAST main branch.
+
 <p align="left">
     <a href="README_CN.md">中文</a>&nbsp ｜ &nbspEnglish&nbsp ｜ &nbsp<a href="README.ja.md">日本語</a>
 </p>
